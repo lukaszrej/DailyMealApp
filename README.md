@@ -9,11 +9,18 @@ Work in progress...
 - [Redux](https://redux.js.org/)
 - [Chart.js](https://www.chartjs.org/)
 - [Material-UI](https://material-ui.com/)
-- [SASS](https://sass-lang.com/)
 
 ### Configuration of the project
 
-Work in progress...
+- Clone the repo and navigate to the main directory
+- Install node modules using ```npm i```
+- Start React using ```npm start```
+- See the project on a browser on the port listed below
+
+```sh
+http://localhost:3000/
+```
+
 
 #### Preview
 
