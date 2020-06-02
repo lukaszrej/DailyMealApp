@@ -1,35 +1,27 @@
-import AppBar from "@material-ui/core/AppBar";
-import clsx from "clsx";
-import Toolbar from "@material-ui/core/Toolbar";
+import React from "react";
 import IconButton from "@material-ui/core/IconButton";
+import useStyles from "./styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
-import React from "react";
-
-import useStyles from "./styles";
 
 interface Props {
-    handleDrawerOpen: () => void;
-    open: boolean;
+    handleDrawerToggle: () => void;
 }
 
-const Nav = (props: Props) => {
+const TopBar = (props: Props) => {
     const classes = useStyles();
 
     return (
-        <AppBar
-            position="fixed"
-            className={clsx(classes.appBar, {
-                [classes.appBarShift]: props.open,
-            })}
-        >
+        <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"
-                    onClick={props.handleDrawerOpen}
                     edge="start"
-                    className={clsx(classes.menuButton, props.open && classes.hide)}
+                    onClick={props.handleDrawerToggle}
+                    className={classes.menuButton}
                 >
                     <MenuIcon/>
                 </IconButton>
@@ -41,4 +33,4 @@ const Nav = (props: Props) => {
     )
 };
 
-export default Nav;
+export default TopBar;
