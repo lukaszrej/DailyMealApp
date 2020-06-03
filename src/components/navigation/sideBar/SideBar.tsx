@@ -24,7 +24,7 @@ const SideBar = (props: Props) => {
     const history = useHistory();
 
     const drawer = (
-        <div>
+        <>
             <div className={classes.toolbar}/>
             <Divider/>
 
@@ -43,15 +43,13 @@ const SideBar = (props: Props) => {
                 </ListItem>
             </List>
             <Divider/>
-        </div>
+        </>
     );
 
     return (
-        <nav className={classes.drawer} aria-label="mailbox folders">
-            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <nav className={classes.drawer} aria-label="sidebar navigation">
             <Hidden smUp implementation="css">
                 <Drawer
-                    // container={container}
                     variant="temporary"
                     anchor={theme.direction === 'rtl' ? 'right' : 'left'}
                     open={props.mobileOpen}
@@ -60,7 +58,7 @@ const SideBar = (props: Props) => {
                         paper: classes.drawerPaper,
                     }}
                     ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
+                        keepMounted: true, // Better open performance on mobile
                     }}
                 >
                     {drawer}

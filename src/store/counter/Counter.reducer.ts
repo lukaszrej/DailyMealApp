@@ -1,10 +1,10 @@
-import {allActionTypes, COUNTER} from './Counter.types';
+import {allCounterActionTypes, COUNTER} from './Counter.types';
 
 export const initialState = {
     mealCounter: 2
 };
 
-export const CounterReducer = (state = initialState, action: allActionTypes) => {
+export const CounterReducer = (state = initialState, action: allCounterActionTypes) => {
     switch (action.type) {
         case COUNTER:
             return {

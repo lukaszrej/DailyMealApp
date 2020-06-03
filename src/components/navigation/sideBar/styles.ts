@@ -1,10 +1,9 @@
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 
-const drawerWidth: number = 240;
+const drawerWidth: number = 280;
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-
         drawer: {
             [theme.breakpoints.up('sm')]: {
                 width: drawerWidth,
@@ -15,7 +14,6 @@ const useStyles = makeStyles((theme: Theme) =>
         drawerPaper: {
             width: drawerWidth,
         },
-
     }),
 );
 

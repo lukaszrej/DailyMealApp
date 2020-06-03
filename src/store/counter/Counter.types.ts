@@ -7,5 +7,5 @@ export interface CounterAction {
     counter: number;
 }
 
-export type allActionTypes =
+export type allCounterActionTypes =
     | CounterAction;

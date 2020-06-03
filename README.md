@@ -1,5 +1,7 @@
 # DailyMealApp
 
+It is an App for storing and fetching info about eaten products during a day.
+
 ### Demo
 Work in progress...
 
