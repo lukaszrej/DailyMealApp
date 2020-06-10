@@ -1,7 +1,7 @@
 import {ADD_PRODUCT, allProductActionTypes} from './Product.types';
 
 export const initialState = {
-    productList: []
+    productList: ""
 };
 
 export const ProductReducer = (state = initialState, action: allProductActionTypes) => {
@@ -9,7 +9,7 @@ export const ProductReducer = (state = initialState, action: allProductActionTyp
         case ADD_PRODUCT:
             return {
                 ...state,
-                productList: action.product
+                productList: action.payload
             }
         default:
             return state

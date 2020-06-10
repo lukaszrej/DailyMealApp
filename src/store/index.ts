@@ -1,10 +1,12 @@
 import {createStore, combineReducers, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
+import {StartReducer} from "./start/Start.reducer";
 import {CounterReducer} from "./counter/Counter.reducer";
 import {ChartReducer} from "./chart/Chart.reducer";
 import {ProductReducer} from "./product/Product.reducer";
 
 export const rootReducer: any = combineReducers({
+    start: StartReducer,
     counter: CounterReducer,
     chart: ChartReducer,
     product: ProductReducer

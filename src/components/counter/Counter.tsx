@@ -6,9 +6,9 @@ const Counter = () => {
     const counter = useSelector((state: AppState) => state.counter.mealCounter);
 
     return (
-        <div>
-            Current counter: {counter}
-        </div>
+        <>
+            <p>Current counter: {counter}</p>
+        </>
     );
 };
 

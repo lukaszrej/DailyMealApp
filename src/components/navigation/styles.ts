@@ -1,15 +1,42 @@
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
+const drawerWidth: number = 280;
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             display: 'flex',
         },
-        toolbar: theme.mixins.toolbar,
+        appBar: {
+            zIndex: theme.zIndex.drawer + 1,
+        },
+        drawer: {
+            width: drawerWidth,
+            flexShrink: 0,
+        },
+        drawerPaper: {
+            width: drawerWidth,
+        },
+        drawerContainer: {
+            overflow: 'auto',
+        },
         content: {
             flexGrow: 1,
             padding: theme.spacing(3),
         },
+
+
+
+
+        //
+        // root: {
+        //     display: 'flex',
+        // },
+        // // toolbar: theme.mixins.toolbar,
+        // content: {
+        //     flexGrow: 1,
+        //     padding: theme.spacing(3),
+        // },
     }),
 );
 
