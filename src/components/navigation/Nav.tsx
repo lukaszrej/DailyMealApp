@@ -9,11 +9,14 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import useStyles from "./styles";
-import {Dashboard} from "@material-ui/icons";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
+import {Dashboard} from "@material-ui/icons";
+
+import useStyles from "./styles";
 import {useHistory} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {AppState} from '../../store';
 
 interface Props {
     children: any
@@ -22,6 +25,7 @@ interface Props {
 const ClippedDrawer = ({children}: Props) => {
     const classes = useStyles();
     const history = useHistory();
+    const started = useSelector((state: AppState) => state.start.started);
 
     return (
         <div className={classes.root}>
@@ -43,17 +47,16 @@ const ClippedDrawer = ({children}: Props) => {
                 <Toolbar/>
                 <div className={classes.drawerContainer}>
                     <Divider/>
-
                     <List>
-                        <ListItem button onClick={() => history.push('/dashboard')}>
+                        <ListItem disabled={!started} button onClick={() => history.push('/dashboard')}>
                             <ListItemIcon> <Dashboard/> </ListItemIcon>
                             <ListItemText primary='Dashboard'/>
                         </ListItem>
-                        <ListItem button onClick={() => history.push('/user')}>
+                        <ListItem disabled={!started} button onClick={() => history.push('/user')}>
                             <ListItemIcon> <AccountCircleIcon/> </ListItemIcon>
                             <ListItemText primary='Your profile'/>
                         </ListItem>
-                        <ListItem button onClick={() => history.push('/meals')}>
+                        <ListItem disabled={!started} button onClick={() => history.push('/meals')}>
                             <ListItemIcon> <FormatListBulletedIcon/> </ListItemIcon>
                             <ListItemText primary='Your meals'/>
                         </ListItem>
