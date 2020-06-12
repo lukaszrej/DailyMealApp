@@ -1,8 +1,9 @@
 import React from 'react';
 import {Provider} from "react-redux";
 import {Switch, Route, Redirect} from "react-router-dom";
-import CssBaseline from '@material-ui/core/CssBaseline';
 import {store} from './store';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 import Router from "./utils/history/history";
 import Start from './components/start/Start'
 import Nav from "./components/navigation/Nav";

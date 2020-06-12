@@ -1,5 +1,4 @@
 import React from "react";
-import useStyles from "./styles";
 import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -7,15 +6,13 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
+
+import useStyles from "./styles";
 import {useSelector} from "react-redux";
 import {AppState} from '../../store/'
 import {generate} from 'shortid';
 
-interface Props {
-
-}
-
-const MealTable = (props: Props) => {
+const MealTable: React.FC = () => {
     const classes = useStyles();
     const labels = useSelector((state: AppState) => state.chart.labels)
 

@@ -1,10 +1,4 @@
-import React, {useState} from 'react';
-import useStyles from "./styles";
-import {useDispatch} from "react-redux";
-import {useSelector} from "react-redux";
-import {AppState} from '../../store';
-import {start} from '../../store/start/Start.actions';
-import {createUser} from '../../store/user/User.actions';
+import React, {useState, SyntheticEvent} from 'react';
 import SnackbarAlert from "../snackbar/SnackbarAlert";
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,6 +10,13 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+
+import useStyles from "./styles";
+import {useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
+import {AppState} from '../../store';
+import {start} from '../../store/start/Start.actions';
+import {createUser} from '../../store/user/User.actions';
 
 const Start: React.FC = () => {
     const classes = useStyles();
@@ -33,10 +34,9 @@ const Start: React.FC = () => {
         setGender((event.target as HTMLInputElement).value);
     };
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: SyntheticEvent) => {
         e.preventDefault();
 
-        console.log(name, 'name Start.tsx');
         dispatch(createUser({name, height, weight, age, gender}));
         dispatch(start(started));
     };

@@ -1,16 +1,16 @@
-import React from 'react';
-import useStyles from "./styles";
+import React, {SyntheticEvent, useState} from 'react';
+import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormGroup from '@material-ui/core/FormGroup';
+import Button from '@material-ui/core/Button';
+
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
 import {AppState} from '../../store';
 import {addProduct} from "../../store/product/Product.actions";
 import clsx from 'clsx';
-import Input from '@material-ui/core/Input';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormGroup from '@material-ui/core/FormGroup';
-
-import Button from '@material-ui/core/Button';
+import useStyles from "./styles";
 
 interface State {
     calories: number;
@@ -24,11 +24,12 @@ const AddProduct: React.FC = () => {
     const dispatch = useDispatch();
     const product = useSelector((state: AppState) => state.product.productList)
 
-    const handleAddProductClick = () => {
+    const handleAddProductClick = (e: SyntheticEvent) => {
+        e.preventDefault();
         dispatch(addProduct())
     };
 
-    const [values, setValues] = React.useState<State>({
+    const [values, setValues] = useState<State>({
         calories: 0,
         fat: 0,
         carbs: 0,
@@ -39,7 +40,8 @@ const AddProduct: React.FC = () => {
         setValues({...values, [prop]: event.target.value});
     };
 
-    const handleSubmitProduct = () => (event: any) => {
+    const handleSubmitProduct = () => (e: SyntheticEvent) => {
+        e.preventDefault();
         console.log('my values: ', values);
     }
 

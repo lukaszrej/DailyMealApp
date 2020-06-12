@@ -18,11 +18,11 @@ import {useHistory} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {AppState} from '../../store';
 
-interface Props {
-    children: any
+interface NavProps {
+    children: JSX.Element
 }
 
-const ClippedDrawer = ({children}: Props) => {
+const Nav: React.FC<NavProps> = ({children}: NavProps) => {
     const classes = useStyles();
     const history = useHistory();
     const started = useSelector((state: AppState) => state.start.started);
@@ -74,4 +74,4 @@ const ClippedDrawer = ({children}: Props) => {
     );
 }
 
-export default ClippedDrawer;
+export default Nav;

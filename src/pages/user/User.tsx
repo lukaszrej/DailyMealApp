@@ -11,11 +11,11 @@ const User: React.FC = () => {
 
     return (
         <>
-            <p>{name}</p>
-            <p>{height}</p>
-            <p>{weight}</p>
-            <p>{age}</p>
-            <p>{gender}</p>
+            <p>Your name: {name}</p>
+            <p>Your height {height} cm</p>
+            <p>Your current weight: {weight} kg</p>
+            <p>Your age: {age}</p>
+            <p>Your gender: {gender}</p>
         </>
     )
 };
