@@ -12,7 +12,7 @@ import {useSelector} from "react-redux";
 import {AppState} from '../../store/'
 import {generate} from 'shortid';
 
-const MealTable: React.FC = () => {
+const Meal: React.FC = () => {
     const classes = useStyles();
     const labels = useSelector((state: AppState) => state.chart.labels)
 
@@ -46,4 +46,4 @@ const MealTable: React.FC = () => {
     )
 };
 
-export default MealTable;
+export default Meal;

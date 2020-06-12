@@ -1,5 +1,5 @@
 import React, {useState, SyntheticEvent} from 'react';
-import SnackbarAlert from "../snackbar/SnackbarAlert";
+import SnackbarAlert from "../alert/SnackbarAlert";
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';

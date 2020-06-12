@@ -1,7 +1,6 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
@@ -11,12 +10,13 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
-import {Dashboard} from "@material-ui/icons";
+import HomeIcon from '@material-ui/icons/Home';
 
 import useStyles from "./styles";
 import {useHistory} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {AppState} from '../../store';
+import Footer from "../footer/Footer";
 
 interface NavProps {
     children: JSX.Element
@@ -29,7 +29,6 @@ const Nav: React.FC<NavProps> = ({children}: NavProps) => {
 
     return (
         <div className={classes.root}>
-            <CssBaseline/>
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
                     <Typography variant="h6" noWrap>
@@ -48,9 +47,9 @@ const Nav: React.FC<NavProps> = ({children}: NavProps) => {
                 <div className={classes.drawerContainer}>
                     <Divider/>
                     <List>
-                        <ListItem disabled={!started} button onClick={() => history.push('/dashboard')}>
-                            <ListItemIcon> <Dashboard/> </ListItemIcon>
-                            <ListItemText primary='Dashboard'/>
+                        <ListItem disabled={!started} button onClick={() => history.push('/home')}>
+                            <ListItemIcon> <HomeIcon/> </ListItemIcon>
+                            <ListItemText primary='Home'/>
                         </ListItem>
                         <ListItem disabled={!started} button onClick={() => history.push('/user')}>
                             <ListItemIcon> <AccountCircleIcon/> </ListItemIcon>
@@ -62,6 +61,7 @@ const Nav: React.FC<NavProps> = ({children}: NavProps) => {
                         </ListItem>
                     </List>
                     <Divider/>
+                    <Footer/>
                 </div>
             </Drawer>
             <main className={classes.content}>

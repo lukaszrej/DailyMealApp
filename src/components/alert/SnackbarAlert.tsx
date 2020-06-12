@@ -1,8 +1,8 @@
 import React, {SyntheticEvent, useState} from 'react';
-import useStyles from "./styles";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, {AlertProps} from '@material-ui/lab/Alert';
 
+import useStyles from "./styles";
 import {useSelector} from "react-redux";
 import {AppState} from '../../store';
 

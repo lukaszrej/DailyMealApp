@@ -1,6 +1,6 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 
-const drawerWidth: number = 280;
+const drawerWidth: number = 250;
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -24,19 +24,6 @@ const useStyles = makeStyles((theme: Theme) =>
             flexGrow: 1,
             padding: theme.spacing(3),
         },
-
-
-
-
-        //
-        // root: {
-        //     display: 'flex',
-        // },
-        // // toolbar: theme.mixins.toolbar,
-        // content: {
-        //     flexGrow: 1,
-        //     padding: theme.spacing(3),
-        // },
     }),
 );
 
