@@ -9,7 +9,6 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 
 import useStyles from "./styles";
 import {useDispatch} from "react-redux";
@@ -20,7 +19,6 @@ import {createUser} from '../../store/user/User.actions';
 
 const Start: React.FC = () => {
     const classes = useStyles();
-
     const dispatch = useDispatch();
     const started = useSelector((state: AppState) => state.start.started);
 
@@ -50,7 +48,8 @@ const Start: React.FC = () => {
                         <CssBaseline/>
                         <Container maxWidth="sm">
                             <Typography component="div">
-                                <form noValidate onSubmit={handleSubmit}>
+                                <form noValidate onSubmit={handleSubmit} className={classes.form}>
+
                                     <TextField
                                         variant="outlined" margin="normal" required fullWidth
                                         id="name" name="name" label="Your name"
@@ -79,19 +78,19 @@ const Start: React.FC = () => {
                                         onChange={e => setAge(e.target.value)}
                                         value={age}
                                     />
-                                    <div>
+                                    <FormControl component="fieldset" className={classes.fieldset}>
+                                        <RadioGroup aria-label="gender" name="gender1" value={gender}
+                                                    onChange={handleGenderChange} className={classes.radioGroup}>
+                                            <FormControlLabel value="male" control={<Radio/>} label="Male"/>
+                                            <FormControlLabel value="female" control={<Radio/>} label="Female"/>
+                                        </RadioGroup>
+                                    </FormControl>
 
-                                        <FormControl component="fieldset">
-                                            <FormLabel component="legend">Gender</FormLabel>
-                                            <RadioGroup aria-label="gender" name="gender1" value={gender}
-                                                        onChange={handleGenderChange}>
-                                                <FormControlLabel value="male" control={<Radio/>} label="Male"/>
-                                                <FormControlLabel value="female" control={<Radio/>} label="Female"/>
-                                            </RadioGroup>
-                                        </FormControl>
-                                    </div>
+                                    <Button type="submit" variant="contained" className={classes.button}
+                                            onSubmit={handleSubmit}>
+                                        Start
+                                    </Button>
 
-                                    <Button type="submit" variant="contained" onSubmit={handleSubmit}>Start</Button>
                                 </form>
                             </Typography>
                         </Container>

@@ -20,7 +20,7 @@ const App: React.FC = () => {
             <Router>
                 <Nav>
                     <Switch>
-                        <Redirect exact from="/" to="/start"/>
+                        <Redirect exact from="/" to="/home"/>
                         <Route path="/start" component={Start}/>
                         <PrivateRoute path="/home" component={Home}/>
                         <PrivateRoute path="/user" component={User}/>

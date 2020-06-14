@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         appBar: {
             zIndex: theme.zIndex.drawer + 1,
+            background: "linear-gradient(270deg, #025997 0%, #00A8CC 55%)",
         },
         drawer: {
             width: drawerWidth,
@@ -16,9 +17,20 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         drawerPaper: {
             width: drawerWidth,
+            background: '#282828',
+            color: '#e6e7e8',
         },
         drawerContainer: {
             overflow: 'auto',
+        },
+        listItem: {
+            "&:hover": {
+                background: "#4d4d4d",
+                textDecoration: 'underline',
+            },
+        },
+        listItemIcon: {
+            color: "#e6e7e8",
         },
         content: {
             flexGrow: 1,

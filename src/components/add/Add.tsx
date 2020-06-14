@@ -24,8 +24,8 @@ const Add = () => {
                     value={value}
                     onChange={handleChange}
                     variant="fullWidth"
-                    indicatorColor="secondary"
-                    textColor="secondary"
+                    indicatorColor="primary"
+                    textColor="inherit"
                     aria-label="icon label tabs example"
                 >
                     <Tab icon={<SearchIcon/>} label="Find product"/>

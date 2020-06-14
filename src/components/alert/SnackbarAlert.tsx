@@ -25,7 +25,7 @@ const SnackbarAlert: React.FC = () => {
 
     return (
         <div className={classes.root}>
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success">
                     Hello, {userName ? userName : "User"}. You can now use the App. Enjoy.
                 </Alert>

@@ -47,17 +47,32 @@ const Nav: React.FC<NavProps> = ({children}: NavProps) => {
                 <div className={classes.drawerContainer}>
                     <Divider/>
                     <List>
-                        <ListItem disabled={!started} button onClick={() => history.push('/home')}>
-                            <ListItemIcon> <HomeIcon/> </ListItemIcon>
+                        <ListItem className={classes.listItem} disabled={!started}
+                                  button onClick={() => history.push('/home')}>
+
+                            <ListItemIcon>
+                                <HomeIcon className={classes.listItemIcon}/>
+                            </ListItemIcon>
                             <ListItemText primary='Home'/>
+
                         </ListItem>
-                        <ListItem disabled={!started} button onClick={() => history.push('/user')}>
-                            <ListItemIcon> <AccountCircleIcon/> </ListItemIcon>
+                        <ListItem className={classes.listItem} disabled={!started}
+                                  button onClick={() => history.push('/user')}>
+
+                            <ListItemIcon>
+                                <AccountCircleIcon className={classes.listItemIcon}/>
+                            </ListItemIcon>
                             <ListItemText primary='Your profile'/>
+
                         </ListItem>
-                        <ListItem disabled={!started} button onClick={() => history.push('/meals')}>
-                            <ListItemIcon> <FormatListBulletedIcon/> </ListItemIcon>
+                        <ListItem className={classes.listItem} disabled={!started}
+                                  button onClick={() => history.push('/meals')}>
+
+                            <ListItemIcon>
+                                <FormatListBulletedIcon className={classes.listItemIcon}/>
+                            </ListItemIcon>
                             <ListItemText primary='Your meals'/>
+                            
                         </ListItem>
                     </List>
                     <Divider/>
