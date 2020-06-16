@@ -1,6 +1,7 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import {AppState} from '../../store';
+import EditModal from "./edit/EditModal";
 
 const User: React.FC = () => {
     const name = useSelector((state: AppState) => state.user.name);
@@ -16,6 +17,7 @@ const User: React.FC = () => {
             <p>Your current weight: {weight} kg</p>
             <p>Your age: {age}</p>
             <p>Your gender: {gender}</p>
+            <EditModal/>
         </>
     )
 };

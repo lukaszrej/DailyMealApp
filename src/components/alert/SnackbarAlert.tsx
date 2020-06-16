@@ -1,10 +1,7 @@
 import React, {SyntheticEvent, useState} from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, {AlertProps} from '@material-ui/lab/Alert';
-
 import useStyles from "./styles";
-import {useSelector} from "react-redux";
-import {AppState} from '../../store';
 
 const Alert = (props: AlertProps) => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -13,7 +10,6 @@ const Alert = (props: AlertProps) => {
 const SnackbarAlert: React.FC = () => {
     const classes = useStyles();
     const [open, setOpen] = useState(true);
-    const userName = useSelector((state: AppState) => state.user.name);
 
     const handleClose = (event?: SyntheticEvent, reason?: string) => {
         if (reason === 'clickaway') {
@@ -27,7 +23,7 @@ const SnackbarAlert: React.FC = () => {
         <div className={classes.root}>
             <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success">
-                    Hello, {userName ? userName : "User"}. You can now use the App. Enjoy.
+                    The data has been correctly updated.
                 </Alert>
             </Snackbar>
         </div>
