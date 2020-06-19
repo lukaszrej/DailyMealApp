@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
-const MealPage: React.FC = () => {
-	return <Fragment>Added meals goes here...</Fragment>;
+const MealPage: React.FC = (): JSX.Element => {
+	return <React.Fragment>Added meals goes here...</React.Fragment>;
 };
 
 export default MealPage;

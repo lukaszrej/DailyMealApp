@@ -1,16 +1,17 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import { AppState } from '../../store/index';
 import Add from '../../components/add/Add';
 import WelcomeAlert from '../../components/alert/welcome/WelcomeAlert';
 
-const HomePage: React.FC = () => {
-	const showMessage = useSelector((state: any) => state.start.showMessage);
+const HomePage: React.FC = (): JSX.Element => {
+	const showWelcomeMessage = useSelector((state: AppState) => state.start.showMessage);
 
 	return (
-		<Fragment>
+		<React.Fragment>
 			<Add />
-			{showMessage && <WelcomeAlert />}
-		</Fragment>
+			{showWelcomeMessage && <WelcomeAlert />}
+		</React.Fragment>
 	);
 };
 

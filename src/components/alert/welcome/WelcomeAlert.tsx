@@ -1,22 +1,21 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { hideWelcomeMessage } from '../../../store/start/Start.actions';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import useStyles from './styles';
-// import {showWelcomeMessage} from "../../../store/start/Start.actions";
-import { hideWelcomeMessage } from '../../../store/start/Start.actions';
 
-const Alert = (props: AlertProps) => {
+const Alert = (props: AlertProps): JSX.Element => {
 	return <MuiAlert elevation={6} variant='filled' {...props} />;
 };
 
-const WelcomeAlert: React.FC = () => {
+const WelcomeAlert: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const showMessage = useSelector((state: any) => state.start.showMessage);
 	const dispatch = useDispatch();
-	const [ open ] = useState(showMessage);
+	const [ open ] = React.useState(showMessage);
 
-	const handleClose = (event?: SyntheticEvent, reason?: string) => {
+	const handleClose = (event?: React.SyntheticEvent, reason?: string): void => {
 		if (reason === 'clickaway') {
 			return;
 		}

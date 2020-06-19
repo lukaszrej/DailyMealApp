@@ -13,7 +13,7 @@ import UserPage from './pages/user/UserPage';
 import MealPage from './pages/meals/MealPage';
 import PrivateRoute from './routing/PrivateRoute';
 
-const App: React.FC = () => {
+const App: React.FC = (): JSX.Element => {
 	return (
 		<Provider store={store}>
 			<CssBaseline />

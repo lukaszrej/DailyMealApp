@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NoMatchPage: React.FC = () => {
+const NoMatchPage: React.FC = (): JSX.Element => {
 	return (
-		<Fragment>
+		<React.Fragment>
 			The page does not exist. <Link to='/home'>Go back to the home page</Link>
-		</Fragment>
+		</React.Fragment>
 	);
 };
 

@@ -1,10 +1,10 @@
-import { ADD_PRODUCT, allProductActionTypes } from './Product.types';
+import { ADD_PRODUCT, allAddProductActionTypes } from './add.types';
 
 export const initialState = {
 	productList: ''
 };
 
-export const ProductReducer = (state = initialState, action: allProductActionTypes) => {
+export const AddProductReducer = (state = initialState, action: allAddProductActionTypes) => {
 	switch (action.type) {
 		case ADD_PRODUCT:
 			return {

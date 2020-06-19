@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React from 'react';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -14,9 +14,9 @@ interface State {
 	protein: number;
 }
 
-const ProductAdd: React.FC = () => {
+const ProductAdd: React.FC = (): JSX.Element => {
 	const classes = useStyles();
-	const [ values, setValues ] = useState<State>({
+	const [ values, setValues ] = React.useState<State>({
 		calories: 0,
 		fat: 0,
 		carbs: 0,
@@ -27,7 +27,7 @@ const ProductAdd: React.FC = () => {
 		setValues({ ...values, [prop]: event.target.value });
 	};
 
-	const handleSubmitProduct = () => (e: SyntheticEvent) => {
+	const handleSubmitProduct = () => (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		console.log('my values: ', values);
 	};

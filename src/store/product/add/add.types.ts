@@ -2,9 +2,9 @@
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 
 // types
-export interface ProductAction {
+export interface AddProductAction {
 	type: typeof ADD_PRODUCT;
 	payload?: any;
 }
 
-export type allProductActionTypes = ProductAction;
+export type allAddProductActionTypes = AddProductAction;

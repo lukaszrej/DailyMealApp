@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../store/';
 import { generate } from 'shortid';
 
-const Meal: React.FC = () => {
+const Meal: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const labels = useSelector((state: AppState) => state.chart.label95cca2e7s);
 

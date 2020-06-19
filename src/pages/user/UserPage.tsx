@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../store';
 import EditUser from './edit/EditUser';
 
-const UserPage: React.FC = () => {
+const UserPage: React.FC = (): JSX.Element => {
 	const name = useSelector((state: AppState) => state.user.name);
 	const height = useSelector((state: AppState) => state.user.height);
 	const weight = useSelector((state: AppState) => state.user.weight);
@@ -11,14 +11,14 @@ const UserPage: React.FC = () => {
 	const gender = useSelector((state: AppState) => state.user.gender);
 
 	return (
-		<Fragment>
-			<p>Your name: {name}</p>
-			<p>Your height {height} cm</p>
-			<p>Your current weight: {weight} kg</p>
-			<p>Your age: {age}</p>
-			<p>Your gender: {gender}</p>
+		<React.Fragment>
+			<p>Name: {name}</p>
+			<p>Height {height} cm</p>
+			<p>Current weight: {weight} kg</p>
+			<p>Age: {age}</p>
+			<p>Gender: {gender}</p>
 			<EditUser />
-		</Fragment>
+		</React.Fragment>
 	);
 };
 

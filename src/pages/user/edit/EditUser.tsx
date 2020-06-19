@@ -1,4 +1,4 @@
-import React, { useState, SyntheticEvent, Fragment } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import TextField from '@material-ui/core/TextField';
@@ -15,21 +15,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../../store/';
 import { createUser } from '../../../store/user/User.actions';
 
-const EditUser = () => {
+const EditUser: React.FC = (): JSX.Element => {
 	const dispatch = useDispatch();
-	const [ open, setOpen ] = useState(false);
-	const [ displayAlert, setDisplayAlert ] = useState(false);
+	const [ open, setOpen ] = React.useState(false);
+	const [ displayAlert, setDisplayAlert ] = React.useState(false);
 
 	const currentHeight = useSelector((state: AppState) => state.user.height);
-	const [ height, setHeight ] = useState(currentHeight);
+	const [ height, setHeight ] = React.useState(currentHeight);
 	const currentName = useSelector((state: AppState) => state.user.name);
-	const [ name, setName ] = useState(currentName);
+	const [ name, setName ] = React.useState(currentName);
 	const currentWeight = useSelector((state: AppState) => state.user.weight);
-	const [ weight, setWeight ] = useState(currentWeight);
+	const [ weight, setWeight ] = React.useState(currentWeight);
 	const currentAge = useSelector((state: AppState) => state.user.age);
-	const [ age, setAge ] = useState(currentAge);
+	const [ age, setAge ] = React.useState(currentAge);
 	const currentGender = useSelector((state: AppState) => state.user.gender);
-	const [ gender, setGender ] = useState(currentGender);
+	const [ gender, setGender ] = React.useState(currentGender);
 
 	const handleClickOpen = () => {
 		setOpen(true);
@@ -44,7 +44,7 @@ const EditUser = () => {
 		setGender((event.target as HTMLInputElement).value);
 	};
 
-	const handleSubmit = (e: SyntheticEvent) => {
+	const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
 
 		dispatch(createUser({ name, height, weight, age, gender }));
@@ -53,7 +53,7 @@ const EditUser = () => {
 	};
 
 	return (
-		<Fragment>
+		<React.Fragment>
 			<Button variant='outlined' color='primary' onClick={handleClickOpen}>
 				Edit data
 			</Button>
@@ -126,7 +126,7 @@ const EditUser = () => {
 			</Dialog>
 
 			{displayAlert && <SnackbarAlert />}
-		</Fragment>
+		</React.Fragment>
 	);
 };
 

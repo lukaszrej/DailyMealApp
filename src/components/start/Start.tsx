@@ -1,4 +1,4 @@
-import React, { useState, SyntheticEvent, Fragment } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
@@ -16,22 +16,22 @@ import { AppState } from '../../store';
 import { createUser } from '../../store/user/User.actions';
 import { start } from '../../store/start/Start.actions';
 
-const Start: React.FC = () => {
+const Start: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const started = useSelector((state: AppState) => state.start.started);
 
-	const [ name, setName ] = useState('');
-	const [ height, setHeight ] = useState('170');
-	const [ weight, setWeight ] = useState('70');
-	const [ age, setAge ] = useState('28');
+	const [ name, setName ] = React.useState('');
+	const [ height, setHeight ] = React.useState('170');
+	const [ weight, setWeight ] = React.useState('70');
+	const [ age, setAge ] = React.useState('28');
 	const [ gender, setGender ] = React.useState('male');
 
-	const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		setGender((event.target as HTMLInputElement).value);
 	};
 
-	const handleSubmit = (e: SyntheticEvent) => {
+	const handleStartSubmit = (e: React.SyntheticEvent): void => {
 		e.preventDefault();
 
 		dispatch(createUser({ name, height, weight, age, gender }));
@@ -41,11 +41,11 @@ const Start: React.FC = () => {
 	return (
 		<div className={classes.root}>
 			{!started && (
-				<Fragment>
+				<React.Fragment>
 					<CssBaseline />
 					<Container maxWidth='sm'>
 						<Typography variant='body2' component='div'>
-							<form noValidate onSubmit={handleSubmit} className={classes.form}>
+							<form noValidate onSubmit={handleStartSubmit} className={classes.form}>
 								<TextField
 									variant='outlined'
 									margin='normal'
@@ -110,18 +110,13 @@ const Start: React.FC = () => {
 									</RadioGroup>
 								</FormControl>
 
-								<Button
-									type='submit'
-									variant='contained'
-									className={classes.button}
-									onSubmit={handleSubmit}
-								>
+								<Button type='submit' variant='contained' className={classes.button}>
 									Start
 								</Button>
 							</form>
 						</Typography>
 					</Container>
-				</Fragment>
+				</React.Fragment>
 			)}
 		</div>
 	);

@@ -22,7 +22,7 @@ interface NavProps {
 	children: JSX.Element;
 }
 
-const Nav: React.FC<NavProps> = ({ children }: NavProps) => {
+const Nav: React.FC<NavProps> = ({ children }: NavProps): JSX.Element => {
 	const classes = useStyles();
 	const history = useHistory();
 	const started = useSelector((state: AppState) => state.start.started);
