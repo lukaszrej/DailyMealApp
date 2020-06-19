@@ -1,15 +1,15 @@
-import {createStore, combineReducers, applyMiddleware} from "redux";
-import thunk from "redux-thunk";
-import {StartReducer} from "./start/Start.reducer";
-import {UserReducer} from "./user/User.reducer";
-import {ChartReducer} from "./chart/Chart.reducer";
-import {ProductReducer} from "./product/Product.reducer";
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { StartReducer } from './start/Start.reducer';
+import { UserReducer } from './user/User.reducer';
+import { ChartReducer } from './chart/Chart.reducer';
+import { ProductReducer } from './product/Product.reducer';
 
 export const rootReducer: any = combineReducers({
-    start: StartReducer,
-    user: UserReducer,
-    chart: ChartReducer,
-    product: ProductReducer
+	start: StartReducer,
+	user: UserReducer,
+	chart: ChartReducer,
+	product: ProductReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

@@ -1,17 +1,17 @@
-import {ADD_PRODUCT, allProductActionTypes} from './Product.types';
+import { ADD_PRODUCT, allProductActionTypes } from './Product.types';
 
 export const initialState = {
-    productList: ""
+	productList: ''
 };
 
 export const ProductReducer = (state = initialState, action: allProductActionTypes) => {
-    switch (action.type) {
-        case ADD_PRODUCT:
-            return {
-                ...state,
-                productList: action.payload
-            }
-        default:
-            return state
-    }
+	switch (action.type) {
+		case ADD_PRODUCT:
+			return {
+				...state,
+				productList: action.payload
+			};
+		default:
+			return state;
+	}
 };
