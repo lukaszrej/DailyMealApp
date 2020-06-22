@@ -1,39 +1,43 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { findProduct } from '../../../store/product/find/Find.actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProduct } from '../../../store/product/Product.actions';
+import { AppState } from '../../../store';
 import Input from '@material-ui/core/Input';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 import Loader from '../../loader/Loader';
+import ProductList from '../../productList/ProductList';
 import useStyles from './styles';
 
 const ProductFind: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const [ productToBeFound, setProductToBeFound ] = React.useState('');
-	const [ isLoading, setIsLoading ] = React.useState(false);
+	const isLoading = useSelector((state: AppState) => state.product.isLoading);
 
 	const handleFindProductSubmit = (e: React.SyntheticEvent): void => {
 		e.preventDefault();
-		setIsLoading(true);
-		dispatch(findProduct(productToBeFound));
+		dispatch(fetchProduct(productToBeFound));
 		setProductToBeFound('');
 	};
 
 	return (
-		<form className={classes.root} onSubmit={handleFindProductSubmit} noValidate autoComplete='off'>
-			<Input
-				id='standard-adornment-calories'
-				type='text'
-				value={productToBeFound}
-				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProductToBeFound(e.currentTarget.value)}
-				aria-describedby='standard-find-product-helper-text'
-			/>
-			<FormHelperText id='standard-find-product-helper-text'>Find product</FormHelperText>
-			<Button type='submit' disabled={productToBeFound ? false : true}>
-				Search {isLoading && <Loader />}
-			</Button>
-		</form>
+		<React.Fragment>
+			<form className={classes.root} onSubmit={handleFindProductSubmit} noValidate autoComplete='on'>
+				<Input
+					id='standard-adornment-find-product'
+					type='text'
+					value={productToBeFound}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProductToBeFound(e.currentTarget.value)}
+					aria-describedby='standard-find-product-helper-text'
+				/>
+				<FormHelperText id='standard-find-product-helper-text'>Find product</FormHelperText>
+				<Button type='submit' disabled={isLoading} className={classes.buttonProgress}>
+					Search {isLoading && <Loader />}
+				</Button>
+			</form>
+			<ProductList />
+		</React.Fragment>
 	);
 };
 

@@ -3,15 +3,13 @@ import thunk from 'redux-thunk';
 import { StartReducer } from './start/Start.reducer';
 import { UserReducer } from './user/User.reducer';
 import { ChartReducer } from './chart/Chart.reducer';
-import { AddProductReducer } from './product/add/add.reducer';
-import { FindProductReducer } from './product/find/Find.reducer';
+import { ProductReducer } from './product/Product.reducer';
 
 export const rootReducer: any = combineReducers({
 	start: StartReducer,
 	user: UserReducer,
-	find: FindProductReducer,
-	chart: ChartReducer,
-	product: AddProductReducer
+	product: ProductReducer,
+	chart: ChartReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
