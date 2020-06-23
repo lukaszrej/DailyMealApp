@@ -1,15 +1,18 @@
-// action constants
 export const LOADING = 'LOADING';
-export const FOUND_PRODUCTS = 'FOUND_PRODUCTS';
-
-// types
 export interface LoadingProductsAction {
 	type: typeof LOADING;
 }
 
-export interface FoundProductsAction {
-	type: typeof FOUND_PRODUCTS;
-	payload: Array<any>;
+export const FIND_PRODUCT = 'FIND_PRODUCT';
+export interface FindProductAction {
+	type: typeof FIND_PRODUCT;
+	payload: Array<Object>;
 }
 
-export type allFetchProductActionTypes = LoadingProductsAction | FoundProductsAction;
+export const STORE_PRODUCT = 'STORE_PRODUCT';
+export interface StoreProductAction {
+	type: typeof STORE_PRODUCT;
+	payload: string;
+}
+
+export type allProductActionTypes = LoadingProductsAction | FindProductAction | StoreProductAction;

@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme: Theme) =>
 			padding: 0,
 			'& > li': {
 				paddingTop: 4
+			},
+			'& > li:hover': {
+				background: 'red',
 			}
 		}
 	})

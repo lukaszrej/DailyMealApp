@@ -14,7 +14,8 @@ import { generate } from 'shortid';
 
 const Meal: React.FC = (): JSX.Element => {
 	const classes = useStyles();
-	const labels = useSelector((state: AppState) => state.chart.label95cca2e7s);
+	const labels = useSelector((state: AppState) => state.chart.label);
+	const products = useSelector((state: any) => state.product.productSelected);
 
 	return (
 		<TableContainer component={Paper} className={classes.tableContainer}>

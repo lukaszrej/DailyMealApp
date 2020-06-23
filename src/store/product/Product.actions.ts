@@ -1,7 +1,8 @@
-import { LOADING, FOUND_PRODUCTS } from './Product.types';
+import { LOADING, FIND_PRODUCT, STORE_PRODUCT } from './Product.types';
+import { Dispatch } from 'redux';
 import getData from './Product.api';
 
-export const fetchProduct = (productName: string) => async (dispatch: Function) => {
+export const fetchProduct = (productName: string) => async (dispatch: Dispatch): Promise<void> => {
 	dispatch({
 		type: LOADING
 	});
@@ -10,7 +11,7 @@ export const fetchProduct = (productName: string) => async (dispatch: Function) 
 		const response = await getData(productName);
 
 		dispatch({
-			type: FOUND_PRODUCTS,
+			type: FIND_PRODUCT,
 			payload: response.data.hints
 		});
 
@@ -18,4 +19,11 @@ export const fetchProduct = (productName: string) => async (dispatch: Function) 
 	} catch (error) {
 		console.warn('server problem, error -> ', error);
 	}
+};
+
+export const storeProduct = (product: string) => (dispatch: Dispatch): void => {
+	dispatch({
+		type: STORE_PRODUCT,
+		payload: product
+	});
 };
