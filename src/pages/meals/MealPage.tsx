@@ -1,7 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../store/index';
 
 const MealPage: React.FC = (): JSX.Element => {
-	return <React.Fragment>Your meals goes here...</React.Fragment>;
+	const addedProducts = useSelector((state: AppState) => state.product.storedProducts);
+
+	return (
+		<React.Fragment>
+			<div>
+				Your meals goes here...
+				{addedProducts.map((product: typeof addedProducts) => {
+					return <div key={product.food.foodId}>{product.food.label}</div>;
+				})}
+			</div>
+		</React.Fragment>
+	);
 };
 
 export default MealPage;

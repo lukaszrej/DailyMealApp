@@ -49,7 +49,6 @@ const Start: React.FC = (): JSX.Element => {
 								<TextField
 									variant='outlined'
 									margin='normal'
-									required
 									fullWidth
 									id='name'
 									name='name'
@@ -109,7 +108,6 @@ const Start: React.FC = (): JSX.Element => {
 										<FormControlLabel value='female' control={<Radio />} label='Female' />
 									</RadioGroup>
 								</FormControl>
-
 								<Button type='submit' variant='contained' className={classes.button}>
 									Start
 								</Button>

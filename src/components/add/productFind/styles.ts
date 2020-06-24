@@ -6,17 +6,13 @@ const useStyles = makeStyles((theme: Theme) =>
 			marginTop: 24,
 			marginBottom: 24,
 			'& .MuiButton-root': {
-				background: 'green',
-				color: 'white'
+				marginTop: 16,
+				background: '#00A8CC',
+				color: 'white',
+				'&:hover': {
+					background: '#025997'
+				}
 			}
-		},
-		buttonProgress: {
-			// color: 'green[500]',
-			// position: 'absolute',
-			// top: '50%',
-			// left: '50%',
-			// marginTop: -12,
-			// marginLeft: -12
 		}
 	})
 );

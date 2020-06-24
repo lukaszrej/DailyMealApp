@@ -7,7 +7,7 @@ const Loader: React.FC = (): JSX.Element => {
 
 	return (
 		<div className={classes.root}>
-			<CircularProgress color='secondary' size={24} />
+			<CircularProgress size={24} />
 		</div>
 	);
 };

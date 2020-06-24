@@ -6,14 +6,19 @@ import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 
 import useStyles from './styles';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../store/index';
+import Meal from '../meal/Meal';
 import ProductAdd from './productAdd/ProductAdd';
 import ProductFind from './productFind/ProductFind';
 
 const Add: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const [ value, setValue ] = React.useState(0);
+	const isAdding = useSelector((state: AppState) => state.product.isAdding);
 
 	const handleChange = (event: React.ChangeEvent<{}>, newValue: number): void => {
+		event.preventDefault();
 		setValue(newValue);
 	};
 
@@ -33,6 +38,7 @@ const Add: React.FC = (): JSX.Element => {
 				</Tabs>
 			</Paper>
 			{value ? <ProductAdd /> : <ProductFind />}
+			{isAdding && <Meal />}
 		</React.Fragment>
 	);
 };

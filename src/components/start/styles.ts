@@ -21,6 +21,8 @@ const useStyles = makeStyles(() =>
 		},
 		button: {
 			marginTop: 16,
+			fontSize: 18,
+			minHeight: 48,
 			background: '#00A8CC',
 			color: 'white',
 			'&:hover': {

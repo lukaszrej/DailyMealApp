@@ -3,6 +3,7 @@ import { LOADING, FIND_PRODUCT, STORE_PRODUCT, allProductActionTypes } from './P
 export const initialState = {
 	isLoading: false,
 	foundProducts: [],
+	isAdding: false,
 	storedProducts: []
 };
 
@@ -23,6 +24,7 @@ export const ProductReducer = (state = initialState, action: allProductActionTyp
 			return {
 				...state,
 				storedProducts: [ ...state.storedProducts, action.payload ],
+				isAdding: true,
 				foundProducts: []
 			};
 		default:

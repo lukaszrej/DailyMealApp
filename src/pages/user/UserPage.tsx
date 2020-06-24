@@ -12,11 +12,11 @@ const UserPage: React.FC = (): JSX.Element => {
 
 	return (
 		<React.Fragment>
-			<p>Name: {name}</p>
-			<p>Height {height} cm</p>
-			<p>Current weight: {weight} kg</p>
-			<p>Age: {age}</p>
-			<p>Gender: {gender}</p>
+			{name && <p>Name: {name}</p>}
+			{height && <p>Height: {height} cm</p>}
+			{weight && <p>Current weight: {weight} kg</p>}
+			{age && <p>Age: {age}</p>}
+			{gender && <p>Gender: {gender}</p>}
 			<EditUser />
 		</React.Fragment>
 	);
