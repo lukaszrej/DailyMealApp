@@ -7,12 +7,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import FormControl from '@material-ui/core/FormControl';
 
-import SnackbarAlert from '../../../components/alert/SnackbarAlert';
+import SnackbarAlert from '../../alert/SnackbarAlert';
 import ModalTitle from './dialog/ModalTitle';
 import ModalContent from './dialog/ModalContent';
 import ModalActions from './dialog/ModalActions';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppState } from '../../../store/';
+import { AppState } from '../../../store';
 import { createUser } from '../../../store/user/User.actions';
 
 const EditUser: React.FC = (): JSX.Element => {

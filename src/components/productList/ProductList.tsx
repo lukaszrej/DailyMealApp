@@ -2,7 +2,8 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import shortid from 'shortid';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppState } from '../../store/index';
+import { getFoundProducts } from '../../store/product/Product.selectors';
+// import { AppState } from '../../store/index';
 import { storeProduct } from '../../store/product/Product.actions';
 import TooltipComponent from '../tooltip/Tooltip';
 import useStyles from './styles';
@@ -10,7 +11,7 @@ import useStyles from './styles';
 const ProductList: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
-	const foundProducts = useSelector((state: AppState) => state.product.foundProducts);
+	const foundProducts = useSelector(getFoundProducts);
 
 	const handleListItemClick = (e: React.SyntheticEvent, product: any): void => {
 		e.preventDefault();

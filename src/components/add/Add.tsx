@@ -7,7 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import useStyles from './styles';
 import { useSelector } from 'react-redux';
-import { AppState } from '../../store/index';
+import { getIsAdding } from '../../store/product/Product.selectors';
 import Meal from '../meal/Meal';
 import ProductAdd from './productAdd/ProductAdd';
 import ProductFind from './productFind/ProductFind';
@@ -15,7 +15,7 @@ import ProductFind from './productFind/ProductFind';
 const Add: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const [ value, setValue ] = React.useState(0);
-	const isAdding = useSelector((state: AppState) => state.product.isAdding);
+	const isAdding = useSelector(getIsAdding);
 
 	const handleChange = (event: React.ChangeEvent<{}>, newValue: number): void => {
 		event.preventDefault();

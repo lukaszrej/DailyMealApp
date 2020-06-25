@@ -8,14 +8,13 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import HomeIcon from '@material-ui/icons/Home';
 
 import useStyles from './styles';
 import { useHistory } from 'react-router-dom';
+import { getStarted } from '../../store/start/Start.selectors';
 import { useSelector } from 'react-redux';
-import { AppState } from '../../store';
 import Footer from '../footer/Footer';
 
 interface NavProps {
@@ -25,7 +24,7 @@ interface NavProps {
 const Nav: React.FC<NavProps> = ({ children }: NavProps): JSX.Element => {
 	const classes = useStyles();
 	const history = useHistory();
-	const started = useSelector((state: AppState) => state.start.started);
+	const started = useSelector(getStarted);
 
 	return (
 		<div className={classes.root}>
@@ -57,17 +56,6 @@ const Nav: React.FC<NavProps> = ({ children }: NavProps): JSX.Element => {
 								<HomeIcon className={classes.listItemIcon} />
 							</ListItemIcon>
 							<ListItemText primary='Home' />
-						</ListItem>
-						<ListItem
-							className={classes.listItem}
-							disabled={!started}
-							button
-							onClick={() => history.push('/user')}
-						>
-							<ListItemIcon>
-								<AccountCircleIcon className={classes.listItemIcon} />
-							</ListItemIcon>
-							<ListItemText primary='Your profile' />
 						</ListItem>
 						<ListItem
 							className={classes.listItem}

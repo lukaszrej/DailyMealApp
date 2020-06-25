@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct } from '../../../store/product/Product.actions';
-import { AppState } from '../../../store';
+import { getIsLoading } from '../../../store/product/Product.selectors';
 import Input from '@material-ui/core/Input';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
@@ -13,7 +13,7 @@ const ProductFind: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const [ productToBeFound, setProductToBeFound ] = React.useState('');
-	const isLoading = useSelector((state: AppState) => state.product.isLoading);
+	const isLoading = useSelector(getIsLoading);
 
 	const handleFindProductSubmit = (e: React.SyntheticEvent): void => {
 		e.preventDefault();

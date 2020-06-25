@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../store/index';
 import Add from '../../components/add/Add';
-import UserPage from '../../pages/user/UserPage';
+import UserPage from '../../components/user/User';
 import WelcomeAlert from '../../components/alert/welcome/WelcomeAlert';
 import useStyles from './styles';
 

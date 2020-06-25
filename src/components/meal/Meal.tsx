@@ -10,12 +10,12 @@ import TableBody from '@material-ui/core/TableBody';
 
 import useStyles from './styles';
 import { useSelector } from 'react-redux';
-import { AppState } from '../../store/';
+import { getLabels } from '../../store/chart/Chart.selectors';
 import { generate } from 'shortid';
 
 const Meal: React.FC = (): JSX.Element => {
 	const classes = useStyles();
-	const labels = useSelector((state: AppState) => state.chart.labels);
+	const labels = useSelector(getLabels);
 
 	return (
 		<React.Fragment>

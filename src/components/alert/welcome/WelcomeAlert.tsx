@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { getUserName } from '../../../store/user/User.selectors';
+import { getShowMessage } from '../../../store/start/Start.selectors';
 import { hideWelcomeMessage } from '../../../store/start/Start.actions';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
@@ -11,7 +13,8 @@ const Alert = (props: AlertProps): JSX.Element => {
 
 const WelcomeAlert: React.FC = (): JSX.Element => {
 	const classes = useStyles();
-	const showMessage = useSelector((state: any) => state.start.showMessage);
+	const userName = useSelector(getUserName);
+	const showMessage = useSelector(getShowMessage);
 	const dispatch = useDispatch();
 	const [ open ] = React.useState(showMessage);
 
@@ -27,7 +30,7 @@ const WelcomeAlert: React.FC = (): JSX.Element => {
 		<div className={classes.root}>
 			<Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
 				<Alert onClose={handleClose} severity='success'>
-					Welcome User!
+					Welcome {userName ? userName : 'User'}!
 				</Alert>
 			</Snackbar>
 		</div>

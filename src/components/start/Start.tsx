@@ -10,16 +10,16 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 import useStyles from './styles';
+import { getStarted } from '../../store/start/Start.selectors';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { AppState } from '../../store';
 import { createUser } from '../../store/user/User.actions';
 import { start } from '../../store/start/Start.actions';
 
 const Start: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
-	const started = useSelector((state: AppState) => state.start.started);
+	const started = useSelector(getStarted);
 
 	const [ name, setName ] = React.useState('');
 	const [ height, setHeight ] = React.useState('170');
