@@ -8,27 +8,33 @@ import Radio from '@material-ui/core/Radio';
 import FormControl from '@material-ui/core/FormControl';
 
 import SnackbarAlert from '../../alert/SnackbarAlert';
-import ModalTitle from './dialog/ModalTitle';
-import ModalContent from './dialog/ModalContent';
-import ModalActions from './dialog/ModalActions';
+import ModalTitle from '../../modal/ModalTitle';
+import ModalContent from '../../modal/ModalContent';
+import ModalActions from '../../modal/ModalActions';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppState } from '../../../store';
 import { createUser } from '../../../store/user/User.actions';
+import {
+	getUserName,
+	getUserHeight,
+	getUserWeight,
+	getUserAge,
+	getUserGender
+} from '../../../store/user/User.selectors';
 
 const EditUser: React.FC = (): JSX.Element => {
 	const dispatch = useDispatch();
 	const [ open, setOpen ] = React.useState(false);
 	const [ displayAlert, setDisplayAlert ] = React.useState(false);
 
-	const currentHeight = useSelector((state: AppState) => state.user.height);
-	const [ height, setHeight ] = React.useState(currentHeight);
-	const currentName = useSelector((state: AppState) => state.user.name);
+	const currentName = useSelector(getUserName);
 	const [ name, setName ] = React.useState(currentName);
-	const currentWeight = useSelector((state: AppState) => state.user.weight);
+	const currentHeight = useSelector(getUserHeight);
+	const [ height, setHeight ] = React.useState(currentHeight);
+	const currentWeight = useSelector(getUserWeight);
 	const [ weight, setWeight ] = React.useState(currentWeight);
-	const currentAge = useSelector((state: AppState) => state.user.age);
+	const currentAge = useSelector(getUserAge);
 	const [ age, setAge ] = React.useState(currentAge);
-	const currentGender = useSelector((state: AppState) => state.user.gender);
+	const currentGender = useSelector(getUserGender);
 	const [ gender, setGender ] = React.useState(currentGender);
 
 	const handleClickOpen = () => {

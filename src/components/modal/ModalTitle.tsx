@@ -20,13 +20,13 @@ const styles = (theme: Theme) =>
 		}
 	});
 
-export interface DialogTitleProps extends WithStyles<typeof styles> {
+export interface ModalTitleProps extends WithStyles<typeof styles> {
 	id: string;
 	children: React.ReactNode;
-	onClose: () => void;
+	onClose?: () => void;
 }
 
-const ModalTitle = withStyles(styles)((props: DialogTitleProps): JSX.Element => {
+const ModalTitle = withStyles(styles)((props: ModalTitleProps): JSX.Element => {
 	const { children, classes, onClose, ...other } = props;
 
 	return (

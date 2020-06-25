@@ -7,7 +7,7 @@ const PrivateRoute = ({ component, ...options }) => {
     const started = useSelector((state) => state.start.started);
     const finalComponent = started ? component : Start;
 
-    return <Route {...options} component={finalComponent} />
+    return <Route { ...options } component={ finalComponent } />
 };
 
 export default PrivateRoute;

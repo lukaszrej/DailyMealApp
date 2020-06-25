@@ -1,14 +1,14 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import Dialog from '@material-ui/core/Dialog';
 
+import ModalTitle from '../modal/ModalTitle';
+import ModalContent from '../modal/ModalContent';
 import useStyles from './styles';
 import { getStarted } from '../../store/start/Start.selectors';
 import { useDispatch } from 'react-redux';
@@ -39,84 +39,78 @@ const Start: React.FC = (): JSX.Element => {
 	};
 
 	return (
-		<div className={classes.root}>
-			{!started && (
-				<React.Fragment>
-					<CssBaseline />
-					<Container maxWidth='sm'>
-						<Typography variant='body2' component='div'>
-							<form noValidate onSubmit={handleStartSubmit} className={classes.form}>
-								<TextField
-									variant='outlined'
-									margin='normal'
-									fullWidth
-									id='name'
-									name='name'
-									label='Your name'
-									autoComplete='name'
-									onChange={(e) => setName(e.target.value)}
-									value={name}
-								/>
-								<TextField
-									variant='outlined'
-									margin='normal'
-									required
-									fullWidth
-									id='height'
-									name='height'
-									label='Your height (cm)'
-									autoComplete='height'
-									type='number'
-									onChange={(e) => setHeight(e.target.value)}
-									value={height}
-								/>
-								<TextField
-									variant='outlined'
-									margin='normal'
-									required
-									fullWidth
-									id='weight'
-									name='weight'
-									label='Your weight (kg)'
-									autoComplete='weight'
-									type='number'
-									onChange={(e) => setWeight(e.target.value)}
-									value={weight}
-								/>
-								<TextField
-									variant='outlined'
-									margin='normal'
-									required
-									fullWidth
-									id='age'
-									name='age'
-									label='Your age (years)'
-									autoComplete='age'
-									type='number'
-									onChange={(e) => setAge(e.target.value)}
-									value={age}
-								/>
-								<FormControl component='fieldset' className={classes.fieldset}>
-									<RadioGroup
-										aria-label='gender'
-										name='gender1'
-										value={gender}
-										onChange={handleGenderChange}
-										className={classes.radioGroup}
-									>
-										<FormControlLabel value='male' control={<Radio />} label='Male' />
-										<FormControlLabel value='female' control={<Radio />} label='Female' />
-									</RadioGroup>
-								</FormControl>
-								<Button type='submit' variant='contained' className={classes.button}>
-									Start
-								</Button>
-							</form>
-						</Typography>
-					</Container>
-				</React.Fragment>
-			)}
-		</div>
+		<Dialog open={!started} aria-labelledby='customized-dialog-title'>
+			<ModalTitle id='customized-dialog-title'>Fill the form and start the app!</ModalTitle>
+			<ModalContent dividers>
+				<form noValidate onSubmit={handleStartSubmit} className={classes.form}>
+					<TextField
+						variant='outlined'
+						margin='normal'
+						fullWidth
+						id='name'
+						name='name'
+						label='Your name'
+						autoComplete='name'
+						onChange={(e) => setName(e.target.value)}
+						value={name}
+					/>
+					<TextField
+						variant='outlined'
+						margin='normal'
+						required
+						fullWidth
+						id='height'
+						name='height'
+						label='Your height (cm)'
+						autoComplete='height'
+						type='number'
+						onChange={(e) => setHeight(e.target.value)}
+						value={height}
+					/>
+					<TextField
+						variant='outlined'
+						margin='normal'
+						required
+						fullWidth
+						id='weight'
+						name='weight'
+						label='Your weight (kg)'
+						autoComplete='weight'
+						type='number'
+						onChange={(e) => setWeight(e.target.value)}
+						value={weight}
+					/>
+					<TextField
+						variant='outlined'
+						margin='normal'
+						required
+						fullWidth
+						id='age'
+						name='age'
+						label='Your age (years)'
+						autoComplete='age'
+						type='number'
+						onChange={(e) => setAge(e.target.value)}
+						value={age}
+					/>
+					<FormControl component='fieldset' className={classes.fieldset}>
+						<RadioGroup
+							aria-label='gender'
+							name='gender1'
+							value={gender}
+							onChange={handleGenderChange}
+							className={classes.radioGroup}
+						>
+							<FormControlLabel value='male' control={<Radio />} label='Male' />
+							<FormControlLabel value='female' control={<Radio />} label='Female' />
+						</RadioGroup>
+					</FormControl>
+					<Button type='submit' variant='contained' className={classes.button}>
+						Start
+					</Button>
+				</form>
+			</ModalContent>
+		</Dialog>
 	);
 };
 
