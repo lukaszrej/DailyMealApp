@@ -9,7 +9,7 @@ export const fetchProduct = (productName: string) => async (dispatch: Dispatch):
 
 	try {
 		const response = await getData(productName);
-
+		
 		dispatch({
 			type: FIND_PRODUCT,
 			payload: response.data.hints

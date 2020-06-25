@@ -87,7 +87,7 @@ const Nav: React.FC<NavProps> = ({ children }: NavProps): JSX.Element => {
 			</Drawer>
 			<main className={classes.content}>
 				<Toolbar />
-				<section>{children}</section>
+				<React.Fragment>{children}</React.Fragment>
 			</main>
 		</div>
 	);

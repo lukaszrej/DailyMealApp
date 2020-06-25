@@ -5,6 +5,9 @@ const useStyles = makeStyles((theme: Theme) =>
 		root: {
 			marginTop: 24,
 			marginBottom: 24,
+			'& > div': {
+				width: '100%'
+			},
 			'& .MuiButton-root': {
 				marginTop: 16,
 				background: '#00A8CC',

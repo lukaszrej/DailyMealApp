@@ -27,6 +27,7 @@ const ProductFind: React.FC = (): JSX.Element => {
 				<Input
 					id='standard-adornment-find-product'
 					type='text'
+					placeholder='Type product to be found'
 					value={productToBeFound}
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProductToBeFound(e.currentTarget.value)}
 					aria-describedby='standard-find-product-helper-text'

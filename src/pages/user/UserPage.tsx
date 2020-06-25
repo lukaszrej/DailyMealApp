@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../store';
 import EditUser from './edit/EditUser';
+import Paper from '@material-ui/core/Paper';
 
 const UserPage: React.FC = (): JSX.Element => {
 	const name = useSelector((state: AppState) => state.user.name);
@@ -12,12 +13,14 @@ const UserPage: React.FC = (): JSX.Element => {
 
 	return (
 		<React.Fragment>
-			{name && <p>Name: {name}</p>}
-			{height && <p>Height: {height} cm</p>}
-			{weight && <p>Current weight: {weight} kg</p>}
-			{age && <p>Age: {age}</p>}
-			{gender && <p>Gender: {gender}</p>}
-			<EditUser />
+			<Paper>
+				{name && <p>Name: {name}</p>}
+				{height && <p>Height: {height} cm</p>}
+				{weight && <p>Current weight: {weight} kg</p>}
+				{age && <p>Age: {age}</p>}
+				{gender && <p>Gender: {gender}</p>}
+				<EditUser />
+			</Paper>
 		</React.Fragment>
 	);
 };

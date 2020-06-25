@@ -3,15 +3,21 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
-			background: '#e6e7e8',
-			color: '#282828',
 			listStyle: 'none',
 			padding: 0,
 			'& > li': {
-				paddingTop: 4
+				paddingTop: 8,
+				paddingBottom: 4,
+				paddingLeft: 8,
+				borderBottom: "1px solid #3f51b5",
 			},
 			'& > li:hover': {
-				background: 'red',
+				background: '#00A8CC',
+				color: 'white',
+			},
+			'& > * > div': {
+				fontSize: 13,
+				fontStyle: 'italic',
 			}
 		}
 	})
