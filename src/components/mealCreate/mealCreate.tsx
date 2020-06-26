@@ -5,17 +5,14 @@ import Tab from '@material-ui/core/Tab';
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 
-import useStyles from './styles';
-import { useSelector } from 'react-redux';
-import { getIsAdding } from '../../store/product/Product.selectors';
 import MealTable from '../mealTable/MealTable';
 import ProductAddOwn from '../productAddOwn/ProductAddOwn';
 import ProductFind from '../productFind/ProductFind';
+import useStyles from './styles';
 
 const MealCreate: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const [ value, setValue ] = React.useState(0);
-	const isAdding = useSelector(getIsAdding);
 
 	const handleChange = (event: React.ChangeEvent<{}>, newValue: number): void => {
 		event.preventDefault();
@@ -37,8 +34,10 @@ const MealCreate: React.FC = (): JSX.Element => {
 					<Tab icon={<AddIcon />} label='Add own product' />
 				</Tabs>
 			</Paper>
+
 			{value ? <ProductAddOwn /> : <ProductFind />}
-			{isAdding && <MealTable />}
+
+			<MealTable />
 		</React.Fragment>
 	);
 };
