@@ -1,4 +1,4 @@
-import { AppState } from '..';
+import { AppState } from '../../store/index';
 
 export const getIsLoading = (state: AppState) => state.product.isLoading;
 export const getFoundProducts = (state: AppState) => state.product.foundProducts;

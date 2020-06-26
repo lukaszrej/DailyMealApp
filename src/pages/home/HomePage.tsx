@@ -1,14 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from '../../store/index';
+import { getShowAlert } from '../../store/start/Start.selectors';
+import { getUserName } from '../../store/user/User.selectors';
 import MealCreate from '../../components/mealCreate/mealCreate';
 import UserPage from '../../components/user/User';
-import WelcomeAlert from '../../components/alert/welcome/WelcomeAlert';
+import Alert from '../../components/alert/Alert';
 import useStyles from './styles';
 
 const HomePage: React.FC = (): JSX.Element => {
 	const classes = useStyles();
-	const showWelcomeMessage = useSelector((state: AppState) => state.start.showMessage);
+	const showAlert = useSelector(getShowAlert);
+	const userName = useSelector(getUserName);
 
 	return (
 		<React.Fragment>
@@ -20,7 +22,7 @@ const HomePage: React.FC = (): JSX.Element => {
 					<UserPage />
 				</aside>
 			</section>
-			{showWelcomeMessage && <WelcomeAlert />}
+			{showAlert && <Alert severity='info'>Hello {userName ? userName : 'User'}!</Alert>}
 		</React.Fragment>
 	);
 };

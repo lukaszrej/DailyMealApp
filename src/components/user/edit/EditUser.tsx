@@ -7,7 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import FormControl from '@material-ui/core/FormControl';
 
-import SnackbarAlert from '../../alert/SnackbarAlert';
+import Alert from '../../alert/Alert';
 import ModalTitle from '../../modal/ModalTitle';
 import ModalContent from '../../modal/ModalContent';
 import ModalActions from '../../modal/ModalActions';
@@ -139,8 +139,7 @@ const EditUser: React.FC = (): JSX.Element => {
 					</ModalActions>
 				</form>
 			</Dialog>
-
-			{displayAlert && <SnackbarAlert />}
+			{displayAlert && <Alert severity='success'>The data has been correctly updated.</Alert>}
 		</React.Fragment>
 	);
 };

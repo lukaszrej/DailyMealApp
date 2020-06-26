@@ -6,7 +6,7 @@ export interface LoadingProductsAction {
 export const FIND_PRODUCT = 'FIND_PRODUCT';
 export interface FindProductAction {
 	type: typeof FIND_PRODUCT;
-	payload: Array<Object>;
+	payload: any;
 }
 
 export const STORE_PRODUCT = 'STORE_PRODUCT';

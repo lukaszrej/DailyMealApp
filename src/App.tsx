@@ -9,7 +9,7 @@ import Start from './components/start/Start';
 import Nav from './components/navigation/Nav';
 import NoMatchPage from './pages/noMatch/NoMatchPage';
 import HomePage from './pages/home/HomePage';
-import MealsPage from './pages/meals/MealPage';
+import MealsPage from './pages/meals/MealsPage';
 import PrivateRoute from './routing/PrivateRoute';
 
 const App: React.FC = (): JSX.Element => {

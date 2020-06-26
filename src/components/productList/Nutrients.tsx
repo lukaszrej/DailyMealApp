@@ -1,10 +1,20 @@
 import React from 'react';
 
-interface Props {
-	product: any;
+interface NutrientsProps {
+	product: {
+		food: {
+			nutrients: {
+				CHOCDF: number;
+				ENERC_KCAL: number;
+				FAT: number;
+				FIBTG: number;
+				PROCNT: number;
+			};
+		};
+	};
 }
 
-const Nutrients: any = ({ product }: Props): JSX.Element => {
+const Nutrients: React.FC<NutrientsProps> = ({ product }: NutrientsProps): JSX.Element => {
 	return (
 		<div>
 			{!isNaN(Math.ceil(product.food.nutrients.ENERC_KCAL)) &&

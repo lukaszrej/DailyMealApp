@@ -2,7 +2,7 @@ import { LOADING, FIND_PRODUCT, STORE_PRODUCT } from './Product.types';
 import { Dispatch } from 'redux';
 import getData from './Product.api';
 
-export const fetchProduct = (productName: string) => async (dispatch: Dispatch): Promise<void> => {
+export const fetchProduct = (productName: string) => async (dispatch: Dispatch) => {
 	dispatch({
 		type: LOADING
 	});
@@ -21,7 +21,7 @@ export const fetchProduct = (productName: string) => async (dispatch: Dispatch):
 	}
 };
 
-export const storeProduct = (product: string) => (dispatch: Dispatch): void => {
+export const storeProduct = (product: string) => (dispatch: Dispatch) => {
 	dispatch({
 		type: STORE_PRODUCT,
 		payload: product

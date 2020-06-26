@@ -3,12 +3,18 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import useStyles from './styles';
 
-const Alert = (props: AlertProps) => {
+interface AlertExtendedProps extends AlertProps {
+	children?: React.ReactNode;
+	severity?: 'error' | 'info' | 'success' | 'warning';
+}
+
+const AlertMaterialUI = (props: AlertExtendedProps) => {
 	return <MuiAlert elevation={6} variant='filled' {...props} />;
 };
 
-const SnackbarAlert: React.FC = (): JSX.Element => {
+const Alert: React.FC<AlertExtendedProps> = (props: AlertExtendedProps): JSX.Element => {
 	const classes = useStyles();
+	const { children, severity } = props;
 	const [ open, setOpen ] = React.useState(true);
 
 	const handleClose = (event?: React.SyntheticEvent, reason?: string): void => {
@@ -21,13 +27,13 @@ const SnackbarAlert: React.FC = (): JSX.Element => {
 
 	return (
 		<div className={classes.root}>
-			<Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
-				<Alert onClose={handleClose} severity='success'>
-					The data has been correctly updated.
-				</Alert>
+			<Snackbar open={open} autoHideDuration={3500} onClose={handleClose}>
+				<AlertMaterialUI onClose={handleClose} severity={severity}>
+					{children}
+				</AlertMaterialUI>
 			</Snackbar>
 		</div>
 	);
 };
 
-export default SnackbarAlert;
+export default Alert;
