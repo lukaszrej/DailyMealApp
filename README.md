@@ -9,6 +9,7 @@ Work in progress...
 
 - [React](https://reactjs.org/) (with hooks)
 - [Redux](https://redux.js.org/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [Chart.js](https://www.chartjs.org/)
 - [Material-UI](https://material-ui.com/)
 

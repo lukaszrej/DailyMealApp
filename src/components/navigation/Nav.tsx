@@ -10,7 +10,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import HomeIcon from '@material-ui/icons/Home';
-
 import useStyles from './styles';
 import { useHistory } from 'react-router-dom';
 import { getStarted } from '../../store/start/Start.selectors';

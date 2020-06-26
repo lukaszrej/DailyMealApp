@@ -9,9 +9,9 @@ const Footer: React.FC = (): JSX.Element => {
 
 	return (
 		<footer>
-			<List className={classes.root}>
-				<ListItem>
-					<ListItemText className={classes.text} primary='@2020 DailyMealApp' />
+			<List>
+				<ListItem className={classes.root}>
+					<ListItemText primary='@2020 DailyMealApp' />
 				</ListItem>
 			</List>
 		</footer>

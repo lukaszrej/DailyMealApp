@@ -57,7 +57,6 @@ const Start: React.FC = (): JSX.Element => {
 					<TextField
 						variant='outlined'
 						margin='normal'
-						required
 						fullWidth
 						id='height'
 						name='height'
@@ -70,7 +69,6 @@ const Start: React.FC = (): JSX.Element => {
 					<TextField
 						variant='outlined'
 						margin='normal'
-						required
 						fullWidth
 						id='weight'
 						name='weight'
@@ -83,7 +81,6 @@ const Start: React.FC = (): JSX.Element => {
 					<TextField
 						variant='outlined'
 						margin='normal'
-						required
 						fullWidth
 						id='age'
 						name='age'

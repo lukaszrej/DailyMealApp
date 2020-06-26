@@ -55,7 +55,16 @@ const EditUser: React.FC = (): JSX.Element => {
 
 		dispatch(createUser({ name, height, weight, age, gender }));
 		setOpen(false);
-		setDisplayAlert(true);
+
+		if (
+			name !== currentName ||
+			height !== currentHeight ||
+			weight !== currentWeight ||
+			age !== currentAge ||
+			gender !== currentGender
+		) {
+			setDisplayAlert(true);
+		}
 	};
 
 	return (

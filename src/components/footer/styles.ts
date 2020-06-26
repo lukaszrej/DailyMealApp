@@ -1,12 +1,9 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
 	createStyles({
 		root: {
-			display: 'flex'
-		},
-		text: {
-			'& > .MuiTypography-body1': {
+			'& > div > span.MuiTypography-displayBlock': {
 				fontSize: 14,
 				color: 'grey'
 			}
