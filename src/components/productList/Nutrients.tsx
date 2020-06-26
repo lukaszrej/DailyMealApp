@@ -4,7 +4,7 @@ interface Props {
 	product: any;
 }
 
-const NutrientsWrapper: any = ({ product }: Props): JSX.Element => {
+const Nutrients: any = ({ product }: Props): JSX.Element => {
 	return (
 		<div>
 			{!isNaN(Math.ceil(product.food.nutrients.ENERC_KCAL)) &&
@@ -21,4 +21,4 @@ const NutrientsWrapper: any = ({ product }: Props): JSX.Element => {
 	);
 };
 
-export default NutrientsWrapper;
+export default Nutrients;

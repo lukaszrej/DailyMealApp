@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 import { getLabels } from '../../store/chart/Chart.selectors';
 import { generate } from 'shortid';
 
-const Meal: React.FC = (): JSX.Element => {
+const MealTable: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const labels = useSelector(getLabels);
 
@@ -59,4 +59,4 @@ const Meal: React.FC = (): JSX.Element => {
 	);
 };
 
-export default Meal;
+export default MealTable;

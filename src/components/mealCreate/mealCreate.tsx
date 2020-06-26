@@ -8,11 +8,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './styles';
 import { useSelector } from 'react-redux';
 import { getIsAdding } from '../../store/product/Product.selectors';
-import Meal from '../meal/Meal';
-import ProductAdd from './productAdd/ProductAdd';
-import ProductFind from './productFind/ProductFind';
+import MealTable from '../mealTable/MealTable';
+import ProductAddOwn from '../productAddOwn/ProductAddOwn';
+import ProductFind from '../productFind/ProductFind';
 
-const Add: React.FC = (): JSX.Element => {
+const MealCreate: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const [ value, setValue ] = React.useState(0);
 	const isAdding = useSelector(getIsAdding);
@@ -37,10 +37,10 @@ const Add: React.FC = (): JSX.Element => {
 					<Tab icon={<AddIcon />} label='Add own product' />
 				</Tabs>
 			</Paper>
-			{value ? <ProductAdd /> : <ProductFind />}
-			{isAdding && <Meal />}
+			{value ? <ProductAddOwn /> : <ProductFind />}
+			{isAdding && <MealTable />}
 		</React.Fragment>
 	);
 };
 
-export default Add;
+export default MealCreate;

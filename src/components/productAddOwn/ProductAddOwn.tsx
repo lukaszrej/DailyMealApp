@@ -14,7 +14,7 @@ interface State {
 	protein: number;
 }
 
-const ProductAdd: React.FC = (): JSX.Element => {
+const ProductAddOwn: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const [ values, setValues ] = React.useState<State>({
 		calories: 0,
@@ -67,4 +67,4 @@ const ProductAdd: React.FC = (): JSX.Element => {
 	);
 };
 
-export default ProductAdd;
+export default ProductAddOwn;

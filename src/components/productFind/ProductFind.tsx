@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProduct } from '../../../store/product/Product.actions';
-import { getIsLoading } from '../../../store/product/Product.selectors';
+import { fetchProduct } from '../../store/product/Product.actions';
+import { getIsLoading } from '../../store/product/Product.selectors';
 import Input from '@material-ui/core/Input';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
-import Loader from '../../loader/Loader';
-import ProductList from '../../productList/ProductList';
+import Loader from '../loader/Loader';
+import ProductList from '../productList/ProductList';
 import useStyles from './styles';
 
 const ProductFind: React.FC = (): JSX.Element => {

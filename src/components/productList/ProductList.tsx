@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getFoundProducts } from '../../store/product/Product.selectors';
 import { storeProduct } from '../../store/product/Product.actions';
 import TooltipComponent from '../tooltip/Tooltip';
-import NutrientsWrapper from './NutrientsWrapper';
+import Nutrients from './Nutrients';
 import useStyles from './styles';
 
 const ProductList: React.FC = (): JSX.Element => {
@@ -33,7 +33,7 @@ const ProductList: React.FC = (): JSX.Element => {
 						>
 							<li onClick={(e) => handleListItemClick(e, product)}>
 								{product.food.label.toLowerCase()}
-								<NutrientsWrapper product={product} />
+								<Nutrients product={product} />
 							</li>
 						</TooltipComponent>
 					);
