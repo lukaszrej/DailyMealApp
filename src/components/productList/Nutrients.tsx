@@ -1,8 +1,12 @@
 import React from 'react';
 
-interface NutrientsProps {
+interface Nutrients {
 	product: {
 		food: {
+			category: string;
+			categoryLabel: string;
+			foodId: string;
+			label: string;
 			nutrients: {
 				CHOCDF: number;
 				ENERC_KCAL: number;
@@ -14,7 +18,7 @@ interface NutrientsProps {
 	};
 }
 
-const Nutrients: React.FC<NutrientsProps> = ({ product }: NutrientsProps): JSX.Element => {
+const Nutrients: React.FC<Nutrients> = ({ product }: Nutrients): JSX.Element => {
 	return (
 		<div>
 			{!isNaN(Math.ceil(product.food.nutrients.ENERC_KCAL)) &&

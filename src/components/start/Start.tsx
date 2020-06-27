@@ -6,7 +6,6 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Dialog from '@material-ui/core/Dialog';
-
 import ModalTitle from '../modal/ModalTitle';
 import ModalContent from '../modal/ModalContent';
 import useStyles from './styles';
@@ -33,9 +32,8 @@ const Start: React.FC = (): JSX.Element => {
 
 	const handleStartSubmit = (e: React.SyntheticEvent): void => {
 		e.preventDefault();
-
 		dispatch(createUser({ name, height, weight, age, gender }));
-		dispatch(start(true, true));
+		dispatch(start());
 	};
 
 	return (

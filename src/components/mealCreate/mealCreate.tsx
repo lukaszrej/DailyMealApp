@@ -4,6 +4,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
+import Typography from '@material-ui/core/Typography';
 
 import MealTable from '../mealTable/MealTable';
 import ProductAddOwn from '../productAddOwn/ProductAddOwn';
@@ -20,8 +21,11 @@ const MealCreate: React.FC = (): JSX.Element => {
 	};
 
 	return (
-		<React.Fragment>
-			<Paper square className={classes.root}>
+		<main className={classes.root}>
+			<Paper square>
+				<Typography variant='h6' noWrap>
+					Find or add own product to the report
+				</Typography>
 				<Tabs
 					value={value}
 					onChange={handleChange}
@@ -33,12 +37,12 @@ const MealCreate: React.FC = (): JSX.Element => {
 					<Tab icon={<SearchIcon />} label='Find product' />
 					<Tab icon={<AddIcon />} label='Add own product' />
 				</Tabs>
+
+				{value ? <ProductAddOwn /> : <ProductFind />}
 			</Paper>
 
-			{value ? <ProductAddOwn /> : <ProductFind />}
-
 			<MealTable />
-		</React.Fragment>
+		</main>
 	);
 };
 

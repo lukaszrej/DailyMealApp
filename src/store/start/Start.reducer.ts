@@ -1,4 +1,4 @@
-import { allStartActionTypes, HIDE_WELCOME_MESSAGE, START } from './Start.types';
+import { allStartActionTypes, START, HIDE_ALERT } from './Start.types';
 
 export const initialState = {
 	started: false,
@@ -10,10 +10,10 @@ export const StartReducer = (state = initialState, action: allStartActionTypes) 
 		case START:
 			return {
 				...state,
-				started: action.payload.started,
-				showAlert: action.payload.show
+				started: true,
+				showAlert: true
 			};
-		case HIDE_WELCOME_MESSAGE:
+		case HIDE_ALERT:
 			return {
 				...state,
 				showAlert: false

@@ -1,6 +1,8 @@
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import { useDispatch } from 'react-redux';
+import { hideAlert } from '../../store/start/Start.actions';
 import useStyles from './styles';
 
 interface AlertExtendedProps extends AlertProps {
@@ -14,6 +16,7 @@ const AlertMaterialUI = (props: AlertExtendedProps) => {
 
 const Alert: React.FC<AlertExtendedProps> = (props: AlertExtendedProps): JSX.Element => {
 	const classes = useStyles();
+	const dispatch = useDispatch();
 	const { children, severity } = props;
 	const [ open, setOpen ] = React.useState(true);
 
@@ -22,6 +25,7 @@ const Alert: React.FC<AlertExtendedProps> = (props: AlertExtendedProps): JSX.Ele
 			return;
 		}
 
+		dispatch(hideAlert());
 		setOpen(false);
 	};
 

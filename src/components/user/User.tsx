@@ -2,9 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { getUserName, getUserHeight, getUserWeight, getUserAge, getUserGender } from '../../store/user/User.selectors';
 import EditUser from './edit/EditUser';
+import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import useStyles from './styles';
 
 const User: React.FC = (): JSX.Element => {
+	const classes = useStyles();
 	const userName = useSelector(getUserName);
 	const userHeight = useSelector(getUserHeight);
 	const userWeight = useSelector(getUserWeight);
@@ -13,7 +16,10 @@ const User: React.FC = (): JSX.Element => {
 
 	return (
 		<React.Fragment>
-			<Paper>
+			<Paper className={classes.root}>
+				<Typography variant='h6' noWrap>
+					User details
+				</Typography>
 				{userName && <p>Name: {userName}</p>}
 				{userHeight && <p>Height: {userHeight} cm</p>}
 				{userWeight && <p>Current weight: {userWeight} kg</p>}

@@ -1,5 +1,4 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 import shortid from 'shortid';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFoundProducts } from '../../store/product/Product.selectors';
@@ -19,27 +18,25 @@ const ProductList: React.FC = (): JSX.Element => {
 	};
 
 	return (
-		<Paper square>
-			<ul className={classes.root}>
-				{foundProducts.map((product: typeof foundProducts) => {
-					return (
-						<TooltipComponent
-							key={shortid.generate()}
-							arrow
-							title='Click to add'
-							placement='top'
-							enterDelay={450}
-							leaveDelay={50}
-						>
-							<li onClick={(e) => handleListItemClick(e, product)}>
-								{product.food.label.toLowerCase()}
-								<Nutrients product={product} />
-							</li>
-						</TooltipComponent>
-					);
-				})}
-			</ul>
-		</Paper>
+		<ul className={classes.root}>
+			{foundProducts.map((product: typeof foundProducts) => {
+				return (
+					<TooltipComponent
+						key={shortid.generate()}
+						arrow
+						title='Click to add'
+						placement='top'
+						enterDelay={450}
+						leaveDelay={50}
+					>
+						<li onClick={(e) => handleListItemClick(e, product)}>
+							{product.food.label.toLowerCase()}
+							<Nutrients product={product} />
+						</li>
+					</TooltipComponent>
+				);
+			})}
+		</ul>
 	);
 };
 

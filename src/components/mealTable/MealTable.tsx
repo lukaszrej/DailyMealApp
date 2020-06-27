@@ -7,6 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
+import Typography from '@material-ui/core/Typography';
 
 import { useSelector } from 'react-redux';
 import { getLabels } from '../../store/chart/Chart.selectors';
@@ -23,6 +24,9 @@ const MealTable: React.FC = (): JSX.Element | null => {
 	else {
 		return (
 			<React.Fragment>
+				<Typography variant='h6' noWrap>
+					Add other product or submit meal
+				</Typography>
 				<TableContainer component={Paper} className={classes.tableContainer}>
 					<Table className={classes.table} aria-label='simple table'>
 						<TableHead>

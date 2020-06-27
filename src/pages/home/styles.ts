@@ -9,10 +9,7 @@ const useStyles = makeStyles((theme: Theme) =>
 				marginRight: 24
 			},
 			'& > aside': {
-				width: '30%',
-				'& > div': {
-					padding: 12
-				}
+				width: '30%'
 			}
 		}
 	})

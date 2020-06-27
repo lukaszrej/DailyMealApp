@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { getShowAlert } from '../../store/start/Start.selectors';
 import { getUserName } from '../../store/user/User.selectors';
 import MealCreate from '../../components/mealCreate/mealCreate';
-import UserPage from '../../components/user/User';
+import User from '../../components/user/User';
+import UserNeed from '../../components/userNeed/UserNeed';
 import Alert from '../../components/alert/Alert';
 import useStyles from './styles';
 
@@ -19,7 +20,8 @@ const HomePage: React.FC = (): JSX.Element => {
 					<MealCreate />
 				</article>
 				<aside>
-					<UserPage />
+					<User />
+					<UserNeed />
 				</aside>
 			</section>
 			{showAlert && <Alert severity='info'>Hello {userName ? userName : 'User'}!</Alert>}
