@@ -39,9 +39,9 @@ const MealCreate: React.FC = (): JSX.Element => {
 				</Tabs>
 
 				{value ? <ProductAddOwn /> : <ProductFind />}
-			</Paper>
 
-			<MealTable />
+				<MealTable />
+			</Paper>
 		</main>
 	);
 };

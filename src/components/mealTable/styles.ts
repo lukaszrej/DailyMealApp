@@ -1,14 +1,13 @@
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
-		tableContainer: {
-			padding: 12,
-			marginBottom: 24
+		head: {
+			backgroundColor: theme.palette.common.black,
+			color: theme.palette.common.white
 		},
-		table: {
-			minWidth: 450,
-			margin: 0
+		body: {
+			fontSize: 14
 		}
 	})
 );
