@@ -1,6 +1,6 @@
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			display: 'flex',
@@ -28,6 +28,11 @@ const useStyles = makeStyles(() =>
 			'&:hover': {
 				background: '#025997'
 			}
+		},
+		formControl: {
+			minWidth: 120,
+			marginTop: 16,
+			marginBottom: 8
 		}
 	})
 );

@@ -8,7 +8,12 @@ import FormControl from '@material-ui/core/FormControl';
 import Dialog from '@material-ui/core/Dialog';
 import ModalTitle from '../modal/ModalTitle';
 import ModalContent from '../modal/ModalContent';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import shortid from 'shortid';
 import useStyles from './styles';
+import { activityOptions } from './activityOptions';
 import { getStarted } from '../../store/start/Start.selectors';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -25,9 +30,14 @@ const Start: React.FC = (): JSX.Element => {
 	const [ weight, setWeight ] = React.useState('70');
 	const [ age, setAge ] = React.useState('28');
 	const [ gender, setGender ] = React.useState('male');
+	const [ activityLevel, setActivityLevel ] = React.useState('1.2');
 
-	const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+	const handleGenderChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>): void => {
 		setGender((event.target as HTMLInputElement).value);
+	};
+
+	const handleActivityLevelChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
+		setActivityLevel((event.target as HTMLInputElement).value);
 	};
 
 	const handleStartSubmit = (e: React.SyntheticEvent): void => {
@@ -88,6 +98,26 @@ const Start: React.FC = (): JSX.Element => {
 						onChange={(e) => setAge(e.target.value)}
 						value={age}
 					/>
+					<FormControl variant='outlined' className={classes.formControl}>
+						<InputLabel id='demo-simple-select-outlined-label'>Activity level</InputLabel>
+						<Select
+							labelId='demo-simple-select-outlined-label'
+							id='demo-simple-select-outlined'
+							value={activityLevel}
+							displayEmpty
+							onChange={handleActivityLevelChange}
+							label='Activity level'
+						>
+							{activityOptions.map((element: any) => {
+								return (
+									<MenuItem value={element.activityValue} key={shortid.generate()}>
+										{element.activityDescription}
+									</MenuItem>
+								);
+							})}
+						</Select>
+					</FormControl>
+
 					<FormControl component='fieldset' className={classes.fieldset}>
 						<RadioGroup
 							aria-label='gender'
@@ -100,6 +130,7 @@ const Start: React.FC = (): JSX.Element => {
 							<FormControlLabel value='female' control={<Radio />} label='Female' />
 						</RadioGroup>
 					</FormControl>
+
 					<Button type='submit' variant='contained' className={classes.button}>
 						Start
 					</Button>
