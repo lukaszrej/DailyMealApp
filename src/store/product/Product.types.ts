@@ -14,6 +14,12 @@ export interface Product {
 	};
 }
 
+export interface ProductsApiResponse {
+	data: {
+		hints: Array<Product>
+	}
+}
+
 export const LOADING = 'LOADING';
 export interface LoadingProductsAction {
 	type: typeof LOADING;

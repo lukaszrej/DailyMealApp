@@ -3,6 +3,7 @@ import shortid from 'shortid';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFoundProducts } from '../../store/product/Product.selectors';
 import { storeProduct } from '../../store/product/Product.actions';
+import { Product } from '../../store/product/Product.types';
 import TooltipComponent from '../tooltip/Tooltip';
 import Nutrients from './Nutrients';
 import useStyles from './styles';
@@ -12,14 +13,14 @@ const ProductList: React.FC = (): JSX.Element => {
 	const dispatch = useDispatch();
 	const foundProducts = useSelector(getFoundProducts);
 
-	const handleListItemClick = (e: React.SyntheticEvent, product: string): void => {
+	const handleListItemClick = (e: React.SyntheticEvent, product: Product): void => {
 		e.preventDefault();
 		dispatch(storeProduct(product));
 	};
 
 	return (
 		<ul className={classes.root}>
-			{foundProducts.map((product: typeof foundProducts) => {
+			{foundProducts.map((product: Product) => {
 				return (
 					<TooltipComponent
 						key={shortid.generate()}

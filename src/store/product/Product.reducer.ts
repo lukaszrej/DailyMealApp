@@ -1,6 +1,13 @@
 import { LOADING, FIND_PRODUCT, STORE_PRODUCT, allProductActionTypes } from './Product.types';
+import { Product } from '../../store/product/Product.types';
 
-export const initialState = {
+interface ProductState {
+	isLoading: boolean;
+	foundProducts: Product[];
+	storedProducts: Product[];
+}
+
+export const initialState: ProductState = {
 	isLoading: false,
 	foundProducts: [],
 	storedProducts: []
