@@ -1,7 +1,7 @@
 import { UserAction, USER } from './User.types';
 import { Dispatch } from 'redux';
 
-export const createUser = ({ name, height, weight, age, gender }: UserAction) => {
+export const createUser = ({ name, height, weight, age, gender, activityLevel }: UserAction) => {
 	return (dispatch: Dispatch) => {
 		dispatch({
 			type: USER,
@@ -9,7 +9,8 @@ export const createUser = ({ name, height, weight, age, gender }: UserAction) =>
 			height,
 			weight,
 			age,
-			gender
+			gender,
+			activityLevel
 		});
 	};
 };

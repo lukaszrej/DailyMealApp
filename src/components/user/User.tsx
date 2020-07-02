@@ -1,7 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getUserName, getUserHeight, getUserWeight, getUserAge, getUserGender } from '../../store/user/User.selectors';
-import EditUser from './edit/EditUser';
+import {
+	getUserName,
+	getUserHeight,
+	getUserWeight,
+	getUserAge,
+	getUserGender,
+	getUserActivityLevel
+} from '../../store/user/User.selectors';
+import getActivityLevelDesc from '../../utils/activityLevels/getActivityLevelsDesc';
+import EditUser from '../userEdit/EditUser';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import useStyles from './styles';
@@ -13,6 +21,7 @@ const User: React.FC = (): JSX.Element => {
 	const userWeight = useSelector(getUserWeight);
 	const userAge = useSelector(getUserAge);
 	const userGender = useSelector(getUserGender);
+	const userActivityLevel = useSelector(getUserActivityLevel);
 
 	return (
 		<React.Fragment>
@@ -25,6 +34,7 @@ const User: React.FC = (): JSX.Element => {
 				{userWeight && <p>Current weight: {userWeight} kg</p>}
 				{userAge && <p>Age: {userAge}</p>}
 				{userGender && <p>Gender: {userGender}</p>}
+				{userActivityLevel && <p>Activity level: {getActivityLevelDesc(userActivityLevel)}</p>}
 
 				<EditUser />
 			</Paper>

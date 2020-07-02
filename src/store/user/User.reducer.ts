@@ -5,7 +5,8 @@ export const initialState = {
 	height: '',
 	weight: '',
 	age: '',
-	gender: 'male'
+	gender: 'male',
+	activityLevel: '1.2'
 };
 
 export const UserReducer = (state = initialState, action: allUserActionTypes) => {
@@ -17,7 +18,8 @@ export const UserReducer = (state = initialState, action: allUserActionTypes) =>
 				height: action.height,
 				weight: action.weight,
 				age: action.age,
-				gender: action.gender
+				gender: action.gender,
+				activityLevel: action.activityLevel
 			};
 		default:
 			return state;

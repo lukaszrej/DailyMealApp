@@ -6,22 +6,29 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import FormControl from '@material-ui/core/FormControl';
-
-import Alert from '../../alert/Alert';
-import ModalTitle from '../../modal/ModalTitle';
-import ModalContent from '../../modal/ModalContent';
-import ModalActions from '../../modal/ModalActions';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Alert from '../alert/Alert';
+import ModalTitle from '../modal/ModalTitle';
+import ModalContent from '../modal/ModalContent';
+import ModalActions from '../modal/ModalActions';
+import shortid from 'shortid';
+import useStyles from './styles';
 import { useSelector, useDispatch } from 'react-redux';
-import { createUser } from '../../../store/user/User.actions';
+import { activityOptions } from '../../utils/activityLevels/activityLevels';
+import { createUser } from '../../store/user/User.actions';
 import {
 	getUserName,
 	getUserHeight,
 	getUserWeight,
 	getUserAge,
-	getUserGender
-} from '../../../store/user/User.selectors';
+	getUserGender,
+	getUserActivityLevel
+} from '../../store/user/User.selectors';
 
 const EditUser: React.FC = (): JSX.Element => {
+	const classes = useStyles();
 	const dispatch = useDispatch();
 	const [ open, setOpen ] = React.useState(false);
 	const [ displayAlert, setDisplayAlert ] = React.useState(false);
@@ -36,6 +43,8 @@ const EditUser: React.FC = (): JSX.Element => {
 	const [ age, setAge ] = React.useState(currentAge);
 	const currentGender = useSelector(getUserGender);
 	const [ gender, setGender ] = React.useState(currentGender);
+	const currentActivityLevel = useSelector(getUserActivityLevel);
+	const [ activityLevel, setActivityLevel ] = React.useState(currentActivityLevel);
 
 	const handleClickOpen = () => {
 		setOpen(true);
@@ -46,14 +55,17 @@ const EditUser: React.FC = (): JSX.Element => {
 		setOpen(false);
 	};
 
+	const handleActivityLevelChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
+		setActivityLevel((event.target as HTMLInputElement).value);
+	};
+
 	const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setGender((event.target as HTMLInputElement).value);
 	};
 
 	const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
-
-		dispatch(createUser({ name, height, weight, age, gender }));
+		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		setOpen(false);
 
 		if (
@@ -61,7 +73,8 @@ const EditUser: React.FC = (): JSX.Element => {
 			height !== currentHeight ||
 			weight !== currentWeight ||
 			age !== currentAge ||
-			gender !== currentGender
+			gender !== currentGender ||
+			activityLevel !== currentActivityLevel
 		) {
 			setDisplayAlert(true);
 		}
@@ -124,7 +137,25 @@ const EditUser: React.FC = (): JSX.Element => {
 							onChange={(e) => setAge(e.target.value)}
 							value={age}
 						/>
-
+						<FormControl variant='outlined' className={classes.activity}>
+							<InputLabel id='demo-simple-select-outlined-label'>Activity level</InputLabel>
+							<Select
+								labelId='demo-simple-select-outlined-label'
+								id='demo-simple-select-outlined'
+								value={activityLevel}
+								displayEmpty
+								onChange={handleActivityLevelChange}
+								label='Activity level'
+							>
+								{activityOptions.map((element) => {
+									return (
+										<MenuItem value={element.activityValue} key={shortid.generate()}>
+											{element.activityDescription}
+										</MenuItem>
+									);
+								})}
+							</Select>
+						</FormControl>
 						<FormControl component='fieldset'>
 							<RadioGroup aria-label='gender' name='gender1' value={gender} onChange={handleGenderChange}>
 								<FormControlLabel value='male' control={<Radio />} label='Male' />

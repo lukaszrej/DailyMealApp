@@ -1,7 +1,4 @@
-// action constants
 export const USER = 'USER';
-
-// types
 export interface UserAction {
 	type?: typeof USER;
 	name: string;
@@ -9,6 +6,7 @@ export interface UserAction {
 	weight: string;
 	age: string;
 	gender: string;
+	activityLevel: string;
 }
 
 export type allUserActionTypes = UserAction;

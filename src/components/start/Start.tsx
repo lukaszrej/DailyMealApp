@@ -13,7 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import shortid from 'shortid';
 import useStyles from './styles';
-import { activityOptions } from './activityOptions';
+import { activityOptions } from '../../utils/activityLevels/activityLevels';
 import { getStarted } from '../../store/start/Start.selectors';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -32,7 +32,7 @@ const Start: React.FC = (): JSX.Element => {
 	const [ gender, setGender ] = React.useState('male');
 	const [ activityLevel, setActivityLevel ] = React.useState('1.2');
 
-	const handleGenderChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>): void => {
+	const handleGenderChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
 		setGender((event.target as HTMLInputElement).value);
 	};
 
@@ -42,7 +42,7 @@ const Start: React.FC = (): JSX.Element => {
 
 	const handleStartSubmit = (e: React.SyntheticEvent): void => {
 		e.preventDefault();
-		dispatch(createUser({ name, height, weight, age, gender }));
+		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		dispatch(start());
 	};
 
@@ -108,7 +108,7 @@ const Start: React.FC = (): JSX.Element => {
 							onChange={handleActivityLevelChange}
 							label='Activity level'
 						>
-							{activityOptions.map((element: any) => {
+							{activityOptions.map((element) => {
 								return (
 									<MenuItem value={element.activityValue} key={shortid.generate()}>
 										{element.activityDescription}

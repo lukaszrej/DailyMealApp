@@ -1,15 +1,15 @@
-export type Option = {
+export type ActivityOption = {
 	activityValue: string;
 	activityDescription: string;
 };
 
-export const activityOptions: Array<Option> = [
+export const activityOptions: Array<ActivityOption> = [
 	{
 		activityValue: '1.2',
 		activityDescription: 'Sedentary (little or no exercise)'
 	},
 	{
-		activityValue: '1.385',
+		activityValue: '1.375',
 		activityDescription: 'Lightly active (light exercise 1-3 days/week)'
 	},
 	{
