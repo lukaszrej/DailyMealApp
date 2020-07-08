@@ -26,13 +26,15 @@ const MealCreate: React.FC = (): JSX.Element => {
 				<Typography variant='h6' noWrap>
 					Find or add own product to the report
 				</Typography>
+			</Paper>
+			<Paper square>
 				<Tabs
 					value={value}
 					onChange={handleChange}
 					variant='fullWidth'
 					indicatorColor='primary'
 					textColor='inherit'
-					aria-label='icon label tabs example'
+					aria-label='add or find product tabs'
 				>
 					<Tab icon={<SearchIcon />} label='Find product' />
 					<Tab icon={<AddIcon />} label='Add own product' />

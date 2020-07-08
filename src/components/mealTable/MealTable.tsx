@@ -14,6 +14,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { Product } from '../../store/product/Product.types';
 import { useSelector } from 'react-redux';
 import { getStoredProducts } from '../../store/product/Product.selectors';
 
@@ -25,19 +26,6 @@ interface Data {
 	protein: number;
 }
 
-function createData(name: string, calories: number, fat: number, carbs: number, protein: number): Data {
-	return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-	createData('Cupcake', 305, 3.7, 67, 4.3),
-	createData('Donut', 452, 25.0, 51, 4.9),
-	createData('Eclair', 262, 16.0, 24, 6.0),
-	createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-	createData('Gingerbread', 356, 16.0, 49, 3.9),
-	createData('Honeycomb', 408, 3.2, 87, 6.5)
-];
-
 interface HeadCell {
 	disablePadding: boolean;
 	id: keyof Data;
@@ -46,7 +34,7 @@ interface HeadCell {
 }
 
 const headCells: HeadCell[] = [
-	{ id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
+	{ id: 'name', numeric: false, disablePadding: true, label: 'Product (100g serving)' },
 	{ id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
 	{ id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
 	{ id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
@@ -177,7 +165,7 @@ const MealTable = () => {
 
 	const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.checked) {
-			const newSelecteds = rows.map((n) => n.name);
+			const newSelecteds = storedProducts.map((product: Product) => product.food.label);
 			setSelected(newSelecteds);
 			return;
 		}
@@ -220,21 +208,21 @@ const MealTable = () => {
 								classes={classes}
 								numSelected={selected.length}
 								onSelectAllClick={handleSelectAllClick}
-								rowCount={rows.length}
+								rowCount={storedProducts.length}
 							/>
 							<TableBody>
-								{rows.map((row, index) => {
-									const isItemSelected = isSelected(row.name);
+								{storedProducts.map((product: Product, index: number) => {
+									const isItemSelected = isSelected(product.food.label);
 									const labelId = `enhanced-table-checkbox-${index}`;
 
 									return (
 										<TableRow
 											hover
-											onClick={(event) => handleClick(event, row.name)}
+											onClick={(event) => handleClick(event, product.food.label)}
 											role='checkbox'
 											aria-checked={isItemSelected}
 											tabIndex={-1}
-											key={row.name}
+											key={product.food.foodId}
 											selected={isItemSelected}
 										>
 											<TableCell padding='checkbox'>
@@ -244,12 +232,12 @@ const MealTable = () => {
 												/>
 											</TableCell>
 											<TableCell component='th' id={labelId} scope='row' padding='none'>
-												{row.name}
+												{product.food.label}
 											</TableCell>
-											<TableCell align='right'>{row.calories}</TableCell>
-											<TableCell align='right'>{row.fat}</TableCell>
-											<TableCell align='right'>{row.carbs}</TableCell>
-											<TableCell align='right'>{row.protein}</TableCell>
+											<TableCell align='right'>{product.food.nutrients.ENERC_KCAL}</TableCell>
+											<TableCell align='right'>{product.food.nutrients.FAT}</TableCell>
+											<TableCell align='right'>{product.food.nutrients.CHOCDF}</TableCell>
+											<TableCell align='right'>{product.food.nutrients.PROCNT}</TableCell>
 										</TableRow>
 									);
 								})}
@@ -260,6 +248,6 @@ const MealTable = () => {
 			</div>
 		);
 	}
-}
+};
 
 export default MealTable;
