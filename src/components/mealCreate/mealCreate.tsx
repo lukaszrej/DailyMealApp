@@ -5,8 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
-
-import MealTable from '../mealTable/MealTable';
+import MealTable from '../mealTable/table/Table';
 import ProductAddOwn from '../productAddOwn/ProductAddOwn';
 import ProductFind from '../productFind/ProductFind';
 import useStyles from './styles';
