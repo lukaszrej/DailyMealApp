@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import useStyles from './styles';
 
 interface State {
+	name: string;
 	calories: number;
 	fat: number;
 	carbs: number;
@@ -17,6 +18,7 @@ interface State {
 const ProductAddOwn: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const [ values, setValues ] = React.useState<State>({
+		name: '',
 		calories: 0,
 		fat: 0,
 		carbs: 0,
@@ -24,43 +26,82 @@ const ProductAddOwn: React.FC = (): JSX.Element => {
 	});
 
 	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-		setValues({ ...values, [prop]: event.target.value });
+		setValues({ ...values, [prop]: event.currentTarget.value });
 	};
 
-	const handleSubmitProduct = () => (e: React.SyntheticEvent) => {
+	const handleSubmitProduct = (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		console.log('my values: ', values);
 	};
 
 	return (
 		<div className={classes.root}>
-			<FormGroup className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
-				<Input
-					id='standard-adornment-calories'
-					value={values.calories}
-					type='number'
-					onChange={handleChange('calories')}
-					endAdornment={<InputAdornment position='end'>g/100g</InputAdornment>}
-					aria-describedby='standard-calories-helper-text'
-					inputProps={{ 'aria-label': 'calories' }}
-				/>
-				<FormHelperText id='standard-weight-helper-text'>Calories</FormHelperText>
+			<form onSubmit={handleSubmitProduct}>
+				<FormGroup className={clsx(classes.margin, classes.withoutLabel)}>
+					<Input
+						id='standard-adornment-product-name'
+						type='text'
+						placeholder='Type product name'
+						value={values.name}
+						onChange={handleChange('name')}
+						aria-describedby='standard-product-name-helper-text'
+					/>
+					<FormHelperText id='standard-product-name-helper-text'>Product name</FormHelperText>
 
-				<Input
-					id='standard-adornment-fat'
-					value={values.fat}
-					type='number'
-					onChange={handleChange('fat')}
-					endAdornment={<InputAdornment position='end'>g/100g</InputAdornment>}
-					aria-describedby='standard-fat-helper-text'
-					inputProps={{ 'aria-label': 'fat' }}
-				/>
-				<FormHelperText id='standard-fat-helper-text'>Fat</FormHelperText>
+					<Input
+						id='standard-adornment-calories'
+						value={values.calories}
+						type='number'
+						onChange={handleChange('calories')}
+						endAdornment={<InputAdornment position='end'>kcal</InputAdornment>}
+						aria-describedby='standard-calories-helper-text'
+						inputProps={{ 'aria-label': 'calories', min: '0', max: '100', step: '1' }}
+					/>
+					<FormHelperText id='standard-weight-helper-text'>Calories</FormHelperText>
 
-				<Button onSubmit={handleSubmitProduct} variant='contained' color='secondary' type='submit'>
-					Submit product
-				</Button>
-			</FormGroup>
+					<Input
+						id='standard-adornment-fat'
+						value={values.fat}
+						type='number'
+						onChange={handleChange('fat')}
+						endAdornment={<InputAdornment position='end'>g/100g</InputAdornment>}
+						aria-describedby='standard-fat-helper-text'
+						inputProps={{ 'aria-label': 'fat', min: '0', max: '100', step: '1' }}
+					/>
+					<FormHelperText id='standard-fat-helper-text'>Fat</FormHelperText>
+
+					<Input
+						id='standard-adornment-carbs'
+						value={values.carbs}
+						type='number'
+						onChange={handleChange('carbs')}
+						endAdornment={<InputAdornment position='end'>g/100g</InputAdornment>}
+						aria-describedby='standard-carbs-helper-text'
+						inputProps={{ 'aria-label': 'carbs', min: '0', max: '100', step: '1' }}
+					/>
+					<FormHelperText id='standard-carbs-helper-text'>Carbs</FormHelperText>
+
+					<Input
+						id='standard-adornment-protein'
+						value={values.protein}
+						type='number'
+						onChange={handleChange('protein')}
+						endAdornment={<InputAdornment position='end'>g/100g</InputAdornment>}
+						aria-describedby='standard-protein-helper-text'
+						inputProps={{ 'aria-label': 'protein', min: '0', max: '100', step: '1' }}
+					/>
+					<FormHelperText id='standard-carbs-helper-text'>Protein</FormHelperText>
+
+					<Button
+						onSubmit={(e: React.SyntheticEvent) => handleSubmitProduct(e)}
+						variant='contained'
+						color='secondary'
+						type='submit'
+					>
+						Submit product
+					</Button>
+				</FormGroup>
+			</form>
 
 			<pre>{JSON.stringify(values, null, 3)}</pre>
 		</div>

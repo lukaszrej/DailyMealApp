@@ -5,19 +5,20 @@ const useStyles = makeStyles((theme: Theme) =>
 		root: {
 			listStyle: 'none',
 			padding: 0,
+			width: '80%',
 			'& > li': {
 				paddingTop: 8,
 				paddingBottom: 4,
 				paddingLeft: 8,
-				borderBottom: "1px solid #3f51b5",
+				borderBottom: '1px solid #3f51b5'
 			},
 			'& > li:hover': {
 				background: '#00A8CC',
-				color: 'white',
+				color: 'white'
 			},
 			'& > * > div': {
 				fontSize: 13,
-				fontStyle: 'italic',
+				fontStyle: 'italic'
 			}
 		}
 	})

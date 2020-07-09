@@ -39,7 +39,7 @@ const MealCreate: React.FC = (): JSX.Element => {
 					<Tab icon={<AddIcon />} label='Add own product' />
 				</Tabs>
 
-				{value ? <ProductAddOwn /> : <ProductFind />}
+				<div className={classes.tabs}>{value ? <ProductAddOwn /> : <ProductFind />}</div>
 
 				<MealTable />
 			</Paper>
