@@ -9,12 +9,12 @@ import { getStoredProducts } from '../../../store/product/Product.selectors';
 
 interface TableBodyProps {
 	isSelected: (name: string) => boolean;
-	handleClick: (event: React.MouseEvent<unknown>, name: string) => void;
+	handleSelectClick: (event: React.MouseEvent<unknown>, name: string) => void;
 }
 
 const MealTableBody = (props: TableBodyProps) => {
 	const storedProducts = useSelector(getStoredProducts);
-	const { isSelected, handleClick } = props;
+	const { isSelected, handleSelectClick } = props;
 
 	return (
 		<TableBody>
@@ -25,7 +25,7 @@ const MealTableBody = (props: TableBodyProps) => {
 				return (
 					<TableRow
 						hover
-						onClick={(event) => handleClick(event, product.food.label)}
+						onClick={(event) => handleSelectClick(event, product.food.label)}
 						role='checkbox'
 						aria-checked={isItemSelected}
 						tabIndex={-1}

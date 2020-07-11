@@ -5,7 +5,10 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormGroup from '@material-ui/core/FormGroup';
 import Button from '@material-ui/core/Button';
 import clsx from 'clsx';
+import { useDispatch } from 'react-redux';
 import useStyles from './styles';
+import { storeProduct } from '../../store/product/Product.actions';
+import shortid from 'shortid';
 
 interface State {
 	name: string;
@@ -17,6 +20,7 @@ interface State {
 
 const ProductAddOwn: React.FC = (): JSX.Element => {
 	const classes = useStyles();
+	const dispatch = useDispatch();
 	const [ values, setValues ] = React.useState<State>({
 		name: '',
 		calories: 0,
@@ -31,7 +35,28 @@ const ProductAddOwn: React.FC = (): JSX.Element => {
 
 	const handleSubmitProduct = (e: React.SyntheticEvent) => {
 		e.preventDefault();
-		console.log('my values: ', values);
+		dispatch(
+			storeProduct({
+				food: {
+					foodId: shortid.generate(),
+					label: values.name,
+					nutrients: {
+						CHOCDF: values.carbs,
+						ENERC_KCAL: values.calories,
+						FAT: values.fat,
+						PROCNT: values.protein
+					}
+				}
+			})
+		);
+
+		setValues({
+			name: '',
+			calories: 0,
+			fat: 0,
+			carbs: 0,
+			protein: 0
+		});
 	};
 
 	return (
@@ -97,13 +122,12 @@ const ProductAddOwn: React.FC = (): JSX.Element => {
 						variant='contained'
 						color='secondary'
 						type='submit'
+						disabled={values.name === '' ? true : false}
 					>
 						Submit product
 					</Button>
 				</FormGroup>
 			</form>
-
-			<pre>{JSON.stringify(values, null, 3)}</pre>
 		</div>
 	);
 };

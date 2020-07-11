@@ -24,7 +24,7 @@ const MealTableHead = (props: TableHeadProps) => {
 						indeterminate={numSelected > 0 && numSelected < rowCount}
 						checked={rowCount > 0 && numSelected === rowCount}
 						onChange={onSelectAllClick}
-						inputProps={{ 'aria-label': 'select all desserts' }}
+						inputProps={{ 'aria-label': 'select all products' }}
 					/>
 				</TableCell>
 				{headCells.map((headCell) => (

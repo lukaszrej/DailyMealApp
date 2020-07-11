@@ -6,10 +6,16 @@ const useStyles = makeStyles((theme: Theme) =>
 			display: 'flex',
 			flexWrap: 'wrap',
 			flexDirection: 'column',
-			width: '80%'
+			width: '80%',
+			'& button': {
+				marginTop: 18
+			}
 		},
 		margin: {
-			margin: theme.spacing(1)
+			margin: theme.spacing(1),
+			marginBottom: 0,
+			marginLeft: 0,
+			marginRight: 0
 		},
 		withoutLabel: {
 			marginTop: theme.spacing(3)

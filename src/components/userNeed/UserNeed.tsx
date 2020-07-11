@@ -29,9 +29,6 @@ const UserNeed: React.FC = (): JSX.Element => {
 				<Typography variant='h3' color='primary' noWrap>
 					{getDailyNeed({ weight, height, age, gender, activityLevel })} kcal
 				</Typography>
-				<Typography variant='subtitle1' noWrap>
-					is your daily calorie need
-				</Typography>
 			</Paper>
 		</React.Fragment>
 	);

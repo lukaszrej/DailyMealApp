@@ -40,9 +40,8 @@ const MealCreate: React.FC = (): JSX.Element => {
 				</Tabs>
 
 				<div className={classes.tabs}>{value ? <ProductAddOwn /> : <ProductFind />}</div>
-
-				<MealTable />
 			</Paper>
+			<MealTable />
 		</main>
 	);
 };

@@ -1,14 +1,11 @@
 export interface Product {
 	food: {
-		category: string;
-		categoryLabel: string;
 		foodId: string;
 		label: string;
 		nutrients: {
 			CHOCDF: number;
 			ENERC_KCAL: number;
 			FAT: number;
-			FIBTG: number;
 			PROCNT: number;
 		};
 	};
@@ -16,8 +13,8 @@ export interface Product {
 
 export interface ProductsApiResponse {
 	data: {
-		hints: Array<Product>
-	}
+		hints: Array<Product>;
+	};
 }
 
 export const LOADING = 'LOADING';
@@ -37,4 +34,13 @@ export interface StoreProductAction {
 	payload: Product;
 }
 
-export type allProductActionTypes = LoadingProductsAction | FindProductAction | StoreProductAction;
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+export interface DeleteProductAction {
+	type: typeof DELETE_PRODUCT;
+}
+
+export type allProductActionTypes =
+	| LoadingProductsAction
+	| FindProductAction
+	| StoreProductAction
+	| DeleteProductAction;

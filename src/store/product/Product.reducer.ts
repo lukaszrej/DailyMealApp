@@ -1,4 +1,4 @@
-import { LOADING, FIND_PRODUCT, STORE_PRODUCT, allProductActionTypes } from './Product.types';
+import { LOADING, FIND_PRODUCT, STORE_PRODUCT, DELETE_PRODUCT, allProductActionTypes } from './Product.types';
 import { Product } from '../../store/product/Product.types';
 
 interface ProductState {
@@ -32,6 +32,11 @@ export const ProductReducer = (state = initialState, action: allProductActionTyp
 				storedProducts: [ ...state.storedProducts, action.payload ],
 				foundProducts: []
 			};
+			case DELETE_PRODUCT:
+				return {
+					...state,
+					// storedProducts: [...state.storedProducts, action.payload]
+				}
 		default:
 			return state;
 	}

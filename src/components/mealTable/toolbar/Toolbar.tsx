@@ -9,11 +9,12 @@ import useStyles from './styles';
 
 interface TableToolbarProps {
 	numSelected: number;
+	handleDeleteAllProducts: () => void;
 }
 
 const MealTableToolbar = (props: TableToolbarProps) => {
 	const classes = useStyles();
-	const { numSelected } = props;
+	const { numSelected, handleDeleteAllProducts } = props;
 
 	return (
 		<Toolbar
@@ -32,7 +33,7 @@ const MealTableToolbar = (props: TableToolbarProps) => {
 			)}
 			{numSelected > 0 && (
 				<Tooltip title='Delete'>
-					<IconButton aria-label='delete'>
+					<IconButton aria-label='delete' onClick={handleDeleteAllProducts}>
 						<DeleteIcon />
 					</IconButton>
 				</Tooltip>

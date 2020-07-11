@@ -8,10 +8,12 @@ import MealTableBody from '../body/Body';
 import { useSelector } from 'react-redux';
 import { getStoredProducts } from '../../../store/product/Product.selectors';
 import { Product } from '../../../store/product/Product.types';
+// import { deleteProduct } from '../../../store/product/Product.actions';
 import useStyles from './styles';
 
 const MealTable = () => {
 	const classes = useStyles();
+	// const dispatch = useDispatch();
 	const storedProducts = useSelector(getStoredProducts);
 	const [ selected, setSelected ] = React.useState<string[]>([]);
 
@@ -24,7 +26,7 @@ const MealTable = () => {
 		setSelected([]);
 	};
 
-	const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
+	const handleSelectClick = (event: React.MouseEvent<unknown>, name: string) => {
 		const selectedIndex = selected.indexOf(name);
 		let newSelected: string[] = [];
 
@@ -43,12 +45,18 @@ const MealTable = () => {
 
 	const isSelected = (name: string) => selected.indexOf(name) !== -1;
 
+	const handleDeleteAllProducts = () => {
+		console.log('handle delete products');
+		// dispatch(deleteProduct());
+
+	};
+
 	if (storedProducts.length === 0) return null;
 	else {
 		return (
 			<div className={classes.root}>
 				<Paper className={classes.paper}>
-					<MealTableToolbar numSelected={selected.length} />
+					<MealTableToolbar numSelected={selected.length} handleDeleteAllProducts={handleDeleteAllProducts} />
 					<TableContainer>
 						<Table
 							className={classes.table}
@@ -61,7 +69,7 @@ const MealTable = () => {
 								onSelectAllClick={handleSelectAllClick}
 								rowCount={storedProducts.length}
 							/>
-							<MealTableBody isSelected={isSelected} handleClick={handleClick} />
+							<MealTableBody isSelected={isSelected} handleSelectClick={handleSelectClick} />
 						</Table>
 					</TableContainer>
 				</Paper>

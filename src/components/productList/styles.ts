@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			listStyle: 'none',
 			padding: 0,
 			width: '80%',
+			margin: 0,
 			'& > li': {
 				paddingTop: 8,
 				paddingBottom: 4,
