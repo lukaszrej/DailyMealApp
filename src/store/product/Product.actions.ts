@@ -29,9 +29,13 @@ export const storeProduct = (product: Product) => (dispatch: Dispatch) => {
 	});
 };
 
-export const deleteProduct = (product: Product) => (dispatch: Dispatch) => {
+export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getState: Function) => {
+	const state = getState();
+	const products = state.product.storedProducts;
+	const newProducts: Product = products.filter((storedProduct: Product) => storedProduct.food.foodId !== selectedId);
+
 	dispatch({
 		type: DELETE_PRODUCT,
-		payload: product
-	})
+		payload: newProducts
+	});
 };

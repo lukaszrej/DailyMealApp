@@ -1,18 +1,32 @@
 import React from 'react';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import MealCounter from '../../components/mealCounter/MealCounter';
 import { useSelector } from 'react-redux';
 import { getStoredProducts } from '../../store/product/Product.selectors';
 import { Product } from '../../store/product/Product.types';
+import useStyles from './styles';
 
 const MealsPage: React.FC = (): JSX.Element => {
+	const classes = useStyles();
 	const addedProducts = useSelector(getStoredProducts);
 
 	return (
-		<React.Fragment>
-			Your meals goes here...
-			{addedProducts.map((product: Product) => {
-				return <div key={product.food.foodId}>{product.food.label}</div>;
-			})}
-		</React.Fragment>
+		<main className={classes.root}>
+			<article>
+				<Paper square>
+					<Typography variant='h6' noWrap>
+						Your meals goes here...
+					</Typography>
+					{addedProducts.map((product: Product) => {
+						return <div key={product.food.foodId}>{product.food.label}</div>;
+					})}
+				</Paper>
+			</article>
+			<aside>
+				<MealCounter />
+			</aside>
+		</main>
 	);
 };
 

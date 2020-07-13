@@ -15,7 +15,7 @@ const HomePage: React.FC = (): JSX.Element => {
 
 	return (
 		<React.Fragment>
-			<section className={classes.root}>
+			<main className={classes.root}>
 				<article>
 					<MealCreate />
 				</article>
@@ -23,7 +23,7 @@ const HomePage: React.FC = (): JSX.Element => {
 					<User />
 					<UserNeed />
 				</aside>
-			</section>
+			</main>
 			{showAlert && <Alert severity='info'>Hello {userName ? userName : 'User'}!</Alert>}
 		</React.Fragment>
 	);

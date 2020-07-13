@@ -20,7 +20,7 @@ const MealCreate: React.FC = (): JSX.Element => {
 	};
 
 	return (
-		<main className={classes.root}>
+		<section className={classes.root}>
 			<Paper square>
 				<Typography variant='h6' noWrap>
 					Find or add own product to the report
@@ -42,7 +42,7 @@ const MealCreate: React.FC = (): JSX.Element => {
 				<div className={classes.tabs}>{value ? <ProductAddOwn /> : <ProductFind />}</div>
 			</Paper>
 			<MealTable />
-		</main>
+		</section>
 	);
 };
 

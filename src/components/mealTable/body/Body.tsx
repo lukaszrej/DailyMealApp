@@ -9,7 +9,7 @@ import { getStoredProducts } from '../../../store/product/Product.selectors';
 
 interface TableBodyProps {
 	isSelected: (name: string) => boolean;
-	handleSelectClick: (event: React.MouseEvent<unknown>, name: string) => void;
+	handleSelectClick: (event: React.MouseEvent<unknown>, itemIndex: string) => void;
 }
 
 const MealTableBody = (props: TableBodyProps) => {
@@ -19,13 +19,13 @@ const MealTableBody = (props: TableBodyProps) => {
 	return (
 		<TableBody>
 			{storedProducts.map((product: Product, index: number) => {
-				const isItemSelected = isSelected(product.food.label);
+				const isItemSelected = isSelected(product.food.foodId);
 				const labelId = `enhanced-table-checkbox-${index}`;
 
 				return (
 					<TableRow
 						hover
-						onClick={(event) => handleSelectClick(event, product.food.label)}
+						onClick={(event) => handleSelectClick(event, product.food.foodId)}
 						role='checkbox'
 						aria-checked={isItemSelected}
 						tabIndex={-1}

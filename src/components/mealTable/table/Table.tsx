@@ -5,33 +5,33 @@ import Paper from '@material-ui/core/Paper';
 import MealTableToolbar from '../toolbar/Toolbar';
 import MealTableHead from '../head/Head';
 import MealTableBody from '../body/Body';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getStoredProducts } from '../../../store/product/Product.selectors';
 import { Product } from '../../../store/product/Product.types';
-// import { deleteProduct } from '../../../store/product/Product.actions';
+import { deleteProduct } from '../../../store/product/Product.actions';
 import useStyles from './styles';
 
 const MealTable = () => {
 	const classes = useStyles();
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const storedProducts = useSelector(getStoredProducts);
 	const [ selected, setSelected ] = React.useState<string[]>([]);
 
 	const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.checked) {
-			const newSelectedItems = storedProducts.map((product: Product) => product.food.label);
+			const newSelectedItems = storedProducts.map((product: Product) => product.food.foodId);
 			setSelected(newSelectedItems);
 			return;
 		}
 		setSelected([]);
 	};
 
-	const handleSelectClick = (event: React.MouseEvent<unknown>, name: string) => {
-		const selectedIndex = selected.indexOf(name);
+	const handleSelectClick = (event: React.MouseEvent<unknown>, itemIndex: string) => {
+		const selectedIndex = selected.indexOf(itemIndex);
 		let newSelected: string[] = [];
 
 		if (selectedIndex === -1) {
-			newSelected = newSelected.concat(selected, name);
+			newSelected = newSelected.concat(selected, itemIndex);
 		} else if (selectedIndex === 0) {
 			newSelected = newSelected.concat(selected.slice(1));
 		} else if (selectedIndex === selected.length - 1) {
@@ -43,12 +43,12 @@ const MealTable = () => {
 		setSelected(newSelected);
 	};
 
-	const isSelected = (name: string) => selected.indexOf(name) !== -1;
+	const isSelected = (itemIndex: string) => selected.indexOf(itemIndex) !== -1;
 
 	const handleDeleteAllProducts = () => {
-		console.log('handle delete products');
-		// dispatch(deleteProduct());
-
+		selected.map((selectedId: string) => {
+			return dispatch(deleteProduct(selectedId));
+		});
 	};
 
 	if (storedProducts.length === 0) return null;

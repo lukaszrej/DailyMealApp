@@ -32,11 +32,11 @@ export const ProductReducer = (state = initialState, action: allProductActionTyp
 				storedProducts: [ ...state.storedProducts, action.payload ],
 				foundProducts: []
 			};
-			case DELETE_PRODUCT:
-				return {
-					...state,
-					// storedProducts: [...state.storedProducts, action.payload]
-				}
+		case DELETE_PRODUCT:
+			return {
+				...state,
+				storedProducts: action.payload
+			};
 		default:
 			return state;
 	}
