@@ -1,4 +1,4 @@
-import { LOADING, FIND_PRODUCT, STORE_PRODUCT, DELETE_PRODUCT } from './Product.types';
+import { LOADING, FIND_PRODUCT, STORE_PRODUCT, DELETE_PRODUCT, DELETE_ALL_PRODUCTS } from './Product.types';
 import { Dispatch } from 'redux';
 import { Product } from '../../store/product/Product.types';
 import getData from './Product.api';
@@ -37,5 +37,11 @@ export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getSta
 	dispatch({
 		type: DELETE_PRODUCT,
 		payload: newProducts
+	});
+};
+
+export const deleteAllProducts = () => (dispatch: Dispatch) => {
+	dispatch({
+		type: DELETE_ALL_PRODUCTS
 	});
 };

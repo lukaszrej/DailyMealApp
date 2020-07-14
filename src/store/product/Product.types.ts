@@ -40,8 +40,14 @@ export interface DeleteProductAction {
 	payload: Product;
 }
 
+export const DELETE_ALL_PRODUCTS = 'DELETE_ALL_PRODUCTS';
+export interface DeleteAllProductsAction {
+	type: typeof DELETE_ALL_PRODUCTS;
+}
+
 export type allProductActionTypes =
 	| LoadingProductsAction
 	| FindProductAction
 	| StoreProductAction
-	| DeleteProductAction;
+	| DeleteProductAction
+	| DeleteAllProductsAction;

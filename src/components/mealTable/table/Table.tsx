@@ -9,7 +9,8 @@ import MealTableBody from '../body/Body';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStoredProducts } from '../../../store/product/Product.selectors';
 import { Product } from '../../../store/product/Product.types';
-import { deleteProduct } from '../../../store/product/Product.actions';
+import { deleteProduct, deleteAllProducts } from '../../../store/product/Product.actions';
+import { storeMeal } from '../../../store/meal/Meal.actions';
 import useStyles from './styles';
 
 const MealTable = () => {
@@ -46,10 +47,19 @@ const MealTable = () => {
 
 	const isSelected = (itemIndex: string) => selected.indexOf(itemIndex) !== -1;
 
-	const handleDeleteAllProducts = () => {
+	const handleDeleteSelectedProducts = () => {
 		selected.map((selectedId: string) => {
 			return dispatch(deleteProduct(selectedId));
 		});
+	};
+
+	const handleSubmitMeal = () => {
+		dispatch(storeMeal(storedProducts));
+		dispatch(deleteAllProducts());
+	};
+
+	const handleDismissMeal = () => {
+		dispatch(deleteAllProducts());
 	};
 
 	if (storedProducts.length === 0) return null;
@@ -57,7 +67,10 @@ const MealTable = () => {
 		return (
 			<div className={classes.root}>
 				<Paper className={classes.paper}>
-					<MealTableToolbar numSelected={selected.length} handleDeleteAllProducts={handleDeleteAllProducts} />
+					<MealTableToolbar
+						numSelected={selected.length}
+						handleDeleteSelectedProducts={handleDeleteSelectedProducts}
+					/>
 					<TableContainer>
 						<Table
 							className={classes.table}
@@ -74,10 +87,12 @@ const MealTable = () => {
 						</Table>
 					</TableContainer>
 					<section className={classes.buttons}>
-						<Button color='primary' variant='contained'>
+						<Button color='primary' variant='contained' onClick={handleSubmitMeal}>
 							Submit meal
 						</Button>
-						<Button color='secondary'>Dismiss</Button>
+						<Button color='secondary' onClick={handleDismissMeal}>
+							Dismiss
+						</Button>
 					</section>
 				</Paper>
 			</div>
