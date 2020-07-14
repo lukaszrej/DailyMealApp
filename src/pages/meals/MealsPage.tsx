@@ -13,16 +13,18 @@ const MealsPage: React.FC = (): JSX.Element => {
 
 	return (
 		<main className={classes.root}>
-			<article>
+			<section>
 				<Paper square>
 					<Typography variant='h6' noWrap>
 						Your meals goes here...
 					</Typography>
-					{addedProducts.map((product: Product) => {
-						return <div key={product.food.foodId}>{product.food.label}</div>;
-					})}
+					<article className={classes.article}>
+						{addedProducts.map((product: Product) => {
+							return <div key={product.food.foodId}>{product.food.label}</div>;
+						})}
+					</article>
 				</Paper>
-			</article>
+			</section>
 			<aside>
 				<MealCounter />
 			</aside>

@@ -2,6 +2,7 @@ import React from 'react';
 import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import MealTableToolbar from '../toolbar/Toolbar';
 import MealTableHead from '../head/Head';
 import MealTableBody from '../body/Body';
@@ -72,6 +73,12 @@ const MealTable = () => {
 							<MealTableBody isSelected={isSelected} handleSelectClick={handleSelectClick} />
 						</Table>
 					</TableContainer>
+					<section className={classes.buttons}>
+						<Button color='primary' variant='contained'>
+							Submit meal
+						</Button>
+						<Button color='secondary'>Dismiss</Button>
+					</section>
 				</Paper>
 			</div>
 		);

@@ -20,6 +20,8 @@ const App: React.FC = (): JSX.Element => {
 				<Nav>
 					<Switch>
 						<Redirect exact from='/' to='/home' />
+						<Redirect exact from='/.' to='/home' />
+						<Redirect exact from='/DailyMealApp/' to='/home' />
 						<Route path='/start' component={Start} />
 						<PrivateRoute path='/home' component={HomePage} />
 						<PrivateRoute path='/meals' component={MealsPage} />

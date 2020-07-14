@@ -22,6 +22,15 @@ const useStyles = makeStyles((theme: Theme) =>
 			position: 'absolute',
 			top: 20,
 			width: 1
+		},
+		buttons: {
+			display: 'flex',
+			marginTop: 12,
+			marginLeft: 12,
+			marginRight: 12,
+			'& > button:first-of-type': {
+				marginRight: 16
+			}
 		}
 	})
 );
