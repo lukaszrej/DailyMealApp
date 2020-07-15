@@ -34,6 +34,17 @@ export interface StoreProductAction {
 	payload: Product;
 }
 
+export const SELECT_PRODUCT = 'SELECT_PRODUCT';
+export interface SelectProductAction {
+	type: typeof SELECT_PRODUCT;
+	payload: string[];
+}
+
+export const SELECT_PRODUCT_RESET = 'SELECT_PRODUCT_RESET';
+export interface SelectProductResetAction {
+	type: typeof SELECT_PRODUCT_RESET;
+}
+
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export interface DeleteProductAction {
 	type: typeof DELETE_PRODUCT;
@@ -49,5 +60,7 @@ export type allProductActionTypes =
 	| LoadingProductsAction
 	| FindProductAction
 	| StoreProductAction
+	| SelectProductAction
+	| SelectProductResetAction
 	| DeleteProductAction
 	| DeleteAllProductsAction;

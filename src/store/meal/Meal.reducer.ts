@@ -2,7 +2,7 @@ import { allMealActionTypes, STORE_MEAL } from './Meal.types';
 import { Product } from '../../store/product/Product.types';
 
 interface MealState {
-	meals: Product[][];
+	meals: Array<Product>;
 }
 
 export const initialState: MealState = {
@@ -14,7 +14,7 @@ export const MealReducer = (state = initialState, action: allMealActionTypes) =>
 		case STORE_MEAL:
 			return {
 				...state,
-				meals: action.payload
+				meals: [...state.meals, action.payload]
 			};
 		default:
 			return state;

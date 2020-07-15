@@ -19,7 +19,13 @@ const useStyles = makeStyles((theme: Theme) =>
 			}
 		},
 		article: {
-			padding: 24
+			paddingLeft: 24,
+			paddingRight: 24,
+			paddingBottom: 26,
+			'& h5': {
+				marginTop: 8,
+				marginBottom: 8,
+			}
 		}
 	})
 );

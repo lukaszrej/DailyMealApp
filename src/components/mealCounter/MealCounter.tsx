@@ -1,10 +1,16 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import { Product } from '../../store/product/Product.types';
 import useStyles from './styles';
 
-const MealCounter: React.FC = (): JSX.Element => {
+interface CounterProps {
+	meals?: Array<Product>;
+}
+
+const MealCounter: React.FC<CounterProps> = (props: CounterProps): JSX.Element => {
 	const classes = useStyles();
+	const { meals } = props;
 
 	return (
 		<React.Fragment>
@@ -13,7 +19,7 @@ const MealCounter: React.FC = (): JSX.Element => {
 					Meals addded
 				</Typography>
 				<Typography variant='h3' color='primary' noWrap>
-					0
+					{meals ? meals.length : '0'}
 				</Typography>
 			</Paper>
 		</React.Fragment>

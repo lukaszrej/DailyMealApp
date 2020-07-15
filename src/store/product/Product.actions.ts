@@ -1,4 +1,12 @@
-import { LOADING, FIND_PRODUCT, STORE_PRODUCT, DELETE_PRODUCT, DELETE_ALL_PRODUCTS } from './Product.types';
+import {
+	LOADING,
+	FIND_PRODUCT,
+	STORE_PRODUCT,
+	SELECT_PRODUCT,
+	SELECT_PRODUCT_RESET,
+	DELETE_PRODUCT,
+	DELETE_ALL_PRODUCTS
+} from './Product.types';
 import { Dispatch } from 'redux';
 import { Product } from '../../store/product/Product.types';
 import getData from './Product.api';
@@ -26,6 +34,35 @@ export const storeProduct = (product: Product) => (dispatch: Dispatch) => {
 	dispatch({
 		type: STORE_PRODUCT,
 		payload: product
+	});
+};
+
+export const selectProduct = (selectedProductId: string) => (dispatch: Dispatch, getState: Function) => {
+	const state = getState();
+	const selected = state.product.selectedProducts;
+	const selectedIndex = selected.indexOf(selectedProductId);
+
+	let newSelected: string[] = [];
+
+	if (selectedIndex === -1) {
+		newSelected = newSelected.concat(selected, selectedProductId);
+	} else if (selectedIndex === 0) {
+		newSelected = newSelected.concat(selected.slice(1));
+	} else if (selectedIndex === selected.length - 1) {
+		newSelected = newSelected.concat(selected.slice(0, -1));
+	} else if (selectedIndex > 0) {
+		newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
+	}
+
+	dispatch({
+		type: SELECT_PRODUCT,
+		payload: newSelected
+	});
+};
+
+export const selectProductReset = () => (dispatch: Dispatch) => {
+	dispatch({
+		type: SELECT_PRODUCT_RESET
 	});
 };
 

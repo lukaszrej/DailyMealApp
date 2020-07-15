@@ -5,28 +5,37 @@ import MealCounter from '../../components/mealCounter/MealCounter';
 import { useSelector } from 'react-redux';
 import { getMeals } from '../../store/meal/Meal.selectors';
 import { Product } from '../../store/product/Product.types';
+import shortid from 'shortid';
 import useStyles from './styles';
 
 const MealsPage: React.FC = (): JSX.Element => {
 	const classes = useStyles();
-	const addedMeals = useSelector(getMeals);
+	const meals = useSelector(getMeals);
 
 	return (
 		<main className={classes.root}>
 			<section>
 				<Paper square>
 					<Typography variant='h6' noWrap>
-						Your meals goes here...
+						Your meals
 					</Typography>
 					<article className={classes.article}>
-						{addedMeals.map((product: Product) => {
-							return <div key={product.food.foodId}>{product.food.label}</div>;
+						{meals.map((meal: Array<Product>) => {
+							return (
+								<div key={shortid.generate()}>
+									<h5>Meal</h5>
+									{meal.map((item: Product) => {
+										return <div key={item.food.foodId}>{item.food.label}</div>;
+									})}
+								</div>
+							);
 						})}
 					</article>
 				</Paper>
 			</section>
+
 			<aside>
-				<MealCounter />
+				<MealCounter meals={meals} />
 			</aside>
 		</main>
 	);

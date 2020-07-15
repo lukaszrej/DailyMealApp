@@ -2,6 +2,8 @@ import {
 	LOADING,
 	FIND_PRODUCT,
 	STORE_PRODUCT,
+	SELECT_PRODUCT,
+	SELECT_PRODUCT_RESET,
 	DELETE_PRODUCT,
 	DELETE_ALL_PRODUCTS,
 	allProductActionTypes
@@ -12,12 +14,14 @@ interface ProductState {
 	isLoading: boolean;
 	foundProducts: Product[];
 	storedProducts: Product[];
+	selectedProducts: string[];
 }
 
 export const initialState: ProductState = {
 	isLoading: false,
 	foundProducts: [],
-	storedProducts: []
+	storedProducts: [],
+	selectedProducts: []
 };
 
 export const ProductReducer = (state = initialState, action: allProductActionTypes) => {
@@ -39,15 +43,27 @@ export const ProductReducer = (state = initialState, action: allProductActionTyp
 				storedProducts: [ ...state.storedProducts, action.payload ],
 				foundProducts: []
 			};
+		case SELECT_PRODUCT:
+			return {
+				...state,
+				selectedProducts: action.payload
+			};
+		case SELECT_PRODUCT_RESET:
+			return {
+				...state,
+				selectedProducts: []
+			};
 		case DELETE_PRODUCT:
 			return {
 				...state,
-				storedProducts: action.payload
+				storedProducts: action.payload,
+				selectedProducts: []
 			};
 		case DELETE_ALL_PRODUCTS:
 			return {
 				...state,
-				storedProducts: []
+				storedProducts: [],
+				selectedProducts: []
 			};
 		default:
 			return state;
