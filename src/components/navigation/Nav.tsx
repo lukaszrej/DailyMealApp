@@ -10,11 +10,13 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import HomeIcon from '@material-ui/icons/Home';
-import useStyles from './styles';
+import Badge from '@material-ui/core/Badge';
+import Footer from '../footer/Footer';
 import { useHistory } from 'react-router-dom';
 import { getStarted } from '../../store/start/Start.selectors';
 import { useSelector } from 'react-redux';
-import Footer from '../footer/Footer';
+import { getMeals } from '../../store/meal/Meal.selectors';
+import useStyles from './styles';
 
 interface NavProps {
 	children: JSX.Element;
@@ -24,6 +26,7 @@ const Nav: React.FC<NavProps> = ({ children }: NavProps): JSX.Element => {
 	const classes = useStyles();
 	const history = useHistory();
 	const started = useSelector(getStarted);
+	const meals = useSelector(getMeals);
 
 	return (
 		<div className={classes.root}>
@@ -63,7 +66,9 @@ const Nav: React.FC<NavProps> = ({ children }: NavProps): JSX.Element => {
 							onClick={() => history.push('/meals')}
 						>
 							<ListItemIcon>
-								<FormatListBulletedIcon className={classes.listItemIcon} />
+								<Badge badgeContent={meals ? meals.length : 0} max={99} color='primary'>
+									<FormatListBulletedIcon className={classes.listItemIcon} />
+								</Badge>
 							</ListItemIcon>
 							<ListItemText primary='Your meals' />
 						</ListItem>

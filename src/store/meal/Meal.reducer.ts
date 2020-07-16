@@ -1,4 +1,4 @@
-import { allMealActionTypes, STORE_MEAL } from './Meal.types';
+import { STORE_MEAL, allMealActionTypes } from './Meal.types';
 import { Product } from '../../store/product/Product.types';
 
 interface MealState {
@@ -14,7 +14,7 @@ export const MealReducer = (state = initialState, action: allMealActionTypes) =>
 		case STORE_MEAL:
 			return {
 				...state,
-				meals: [...state.meals, action.payload]
+				meals: [ ...state.meals, action.payload ]
 			};
 		default:
 			return state;

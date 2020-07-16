@@ -24,7 +24,22 @@ const useStyles = makeStyles((theme: Theme) =>
 			paddingBottom: 26,
 			'& h5': {
 				marginTop: 8,
+				marginBottom: 8
+			}
+		},
+		meal: {
+			'& header': {
 				marginBottom: 8,
+				fontSize: 28
+			},
+			'& h4': {
+				margin: 0
+			},
+			'& p': {
+				margin: 0
+			},
+			'& footer': {
+				marginBottom: 8
 			}
 		}
 	})

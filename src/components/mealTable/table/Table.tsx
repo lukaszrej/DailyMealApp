@@ -22,7 +22,7 @@ const MealTable = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const storedProducts = useSelector(getStoredProducts);
-	const selected = useSelector(getSelectedProducts);
+	const selectedProducts = useSelector(getSelectedProducts);
 
 	const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.checked) {
@@ -38,10 +38,10 @@ const MealTable = () => {
 		dispatch(selectProduct(productId));
 	};
 
-	const isSelected = (itemIndex: string) => selected.indexOf(itemIndex) !== -1;
+	const isSelected = (itemIndex: string) => selectedProducts.indexOf(itemIndex) !== -1;
 
 	const handleDeleteSelectedProducts = () => {
-		selected.map((selectedId: string) => {
+		selectedProducts.map((selectedId: string) => {
 			return dispatch(deleteProduct(selectedId));
 		});
 	};
@@ -61,7 +61,7 @@ const MealTable = () => {
 			<div className={classes.root}>
 				<Paper className={classes.paper}>
 					<MealTableToolbar
-						numSelected={selected.length}
+						numSelected={selectedProducts.length}
 						handleDeleteSelectedProducts={handleDeleteSelectedProducts}
 					/>
 					<TableContainer>
@@ -72,7 +72,7 @@ const MealTable = () => {
 							aria-label='enhanced table'
 						>
 							<MealTableHead
-								numSelected={selected.length}
+								numSelected={selectedProducts.length}
 								onSelectAllClick={handleSelectAllClick}
 								rowCount={storedProducts.length}
 							/>

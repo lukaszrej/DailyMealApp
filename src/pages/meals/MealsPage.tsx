@@ -19,15 +19,25 @@ const MealsPage: React.FC = (): JSX.Element => {
 					<Typography variant='h6' noWrap>
 						Your meals
 					</Typography>
+
 					<article className={classes.article}>
-						{meals.map((meal: Array<Product>) => {
+						{meals.map((meal: Array<Product>, index: number) => {
+							let totalCalories = 0;
+
 							return (
-								<div key={shortid.generate()}>
-									<h5>Meal</h5>
+								<section key={shortid.generate()} className={classes.meal}>
+									<header>Meal {index + 1}</header>
 									{meal.map((item: Product) => {
-										return <div key={item.food.foodId}>{item.food.label}</div>;
+										totalCalories += Math.round(Number(item.food.nutrients.ENERC_KCAL));
+										return (
+											<main key={item.food.foodId + shortid.generate()}>
+												<h4>{item.food.label.toUpperCase()}</h4>
+												<p>{Math.round(Number(item.food.nutrients.ENERC_KCAL))} kcal</p>
+											</main>
+										);
 									})}
-								</div>
+									<footer>Total: {Math.round(totalCalories)} kcal</footer>
+								</section>
 							);
 						})}
 					</article>

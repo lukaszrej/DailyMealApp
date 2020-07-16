@@ -80,7 +80,7 @@ const ProductAddOwn: React.FC = (): JSX.Element => {
 						onChange={handleChange('calories')}
 						endAdornment={<InputAdornment position='end'>kcal</InputAdornment>}
 						aria-describedby='standard-calories-helper-text'
-						inputProps={{ 'aria-label': 'calories', min: '0', max: '100', step: '1' }}
+						inputProps={{ 'aria-label': 'calories', min: '0', max: '600', step: '1' }}
 					/>
 					<FormHelperText id='standard-weight-helper-text'>Calories</FormHelperText>
 
