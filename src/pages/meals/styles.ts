@@ -41,6 +41,11 @@ const useStyles = makeStyles((theme: Theme) =>
 			'& footer': {
 				marginBottom: 8
 			}
+		},
+		chart: {
+			background: 'yellow',
+			minWidth: 300,
+			minHeight: 300
 		}
 	})
 );

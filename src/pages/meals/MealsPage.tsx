@@ -2,6 +2,7 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import MealCounter from '../../components/mealCounter/MealCounter';
+import Chart from '../../components/chart/Chart';
 import { useSelector } from 'react-redux';
 import { getMeals } from '../../store/meal/Meal.selectors';
 import { Product } from '../../store/product/Product.types';
@@ -33,6 +34,7 @@ const MealsPage: React.FC = (): JSX.Element => {
 											<main key={item.food.foodId + shortid.generate()}>
 												<h4>{item.food.label.toUpperCase()}</h4>
 												<p>{Math.round(Number(item.food.nutrients.ENERC_KCAL))} kcal</p>
+												<Chart/>
 											</main>
 										);
 									})}
