@@ -11,12 +11,12 @@ const useStyles = makeStyles((theme: Theme) =>
 				paddingTop: 0
 			},
 			'& > section': {
-				width: '70%',
+				width: '100%',
 				marginRight: 24
 			},
-			'& > aside': {
-				width: '30%'
-			}
+			// '& > aside': {
+			// 	width: '30%'
+			// }
 		},
 		article: {
 			paddingLeft: 24,

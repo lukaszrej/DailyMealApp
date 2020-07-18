@@ -10,7 +10,7 @@ import ProductAddOwn from '../productAddOwn/ProductAddOwn';
 import ProductFind from '../productFind/ProductFind';
 import useStyles from './styles';
 
-const MealCreate: React.FC = (): JSX.Element => {
+const ProductAdd: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const [ value, setValue ] = React.useState(0);
 
@@ -46,4 +46,4 @@ const MealCreate: React.FC = (): JSX.Element => {
 	);
 };
 
-export default MealCreate;
+export default ProductAdd;

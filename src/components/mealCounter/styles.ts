@@ -5,6 +5,8 @@ const useStyles = makeStyles(() =>
 		root: {
 			display: 'flex',
 			flexDirection: 'column',
+			padding: 24,
+			marginTop: 24,
 			'& .MuiTypography-h6': {
 				paddingBottom: 12
 			}

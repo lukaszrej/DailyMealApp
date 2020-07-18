@@ -2,33 +2,34 @@ import React from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
 
 interface ChartProps {
-	totalCalories?: number;
-	totalFat?: number;
-	totalCarbs?: number;
-	totalProtein?: number;
+	mealTotalCalories?: number;
+	mealTotalFat?: number;
+	mealTotalCarbs?: number;
+	mealTotalProtein?: number;
+	dailyNeed: number;
 }
 
 const Chart: React.FC<ChartProps> = (props: ChartProps) => {
-	const { totalCalories, totalFat, totalCarbs, totalProtein } = props;
+	const { mealTotalCalories, mealTotalFat, mealTotalCarbs, mealTotalProtein, dailyNeed } = props;
 
 	const nutrientsChartData = {
-		labels: [ 'calories', 'fat', 'carbs', 'protein' ],
+		labels: [ ' calories', ' fat', ' carbs', ' protein' ],
 		datasets: [
 			{
 				label: 'Nutrients info',
-				data: [ totalCalories, totalFat, totalCarbs, totalProtein ],
+				data: [ mealTotalCalories, mealTotalFat, mealTotalCarbs, mealTotalProtein ],
 				backgroundColor: [ '#007EA7', '#80CED7', '#9AD1D4', '#CCDBDC' ]
 			}
 		]
 	};
 
 	const caloriesChartData = {
-		labels: [ 'meal intake', 'daily need' ],
+		labels: [ 'meal calorie intake', 'expected meal calorie intake (5 meals a day)', 'daily calorie need' ],
 		datasets: [
 			{
-				label: 'Calories',
-				data: [ 1200, 1600 ],
-				backgroundColor: [ '#fbd1a2', '#f79256' ]
+				label: ' calories',
+				data: [ mealTotalCalories, dailyNeed / 5, dailyNeed ],
+				backgroundColor: [ '#fbd1a2', 'red', '#f79256' ]
 			}
 		]
 	};

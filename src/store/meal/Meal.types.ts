@@ -6,4 +6,9 @@ export interface StoreMealAction {
 	payload: Array<Product>;
 }
 
-export type allMealActionTypes = StoreMealAction;
+export const SET_IS_MEAL_ADDED = 'SET_IS_MEAL_ADDED';
+export interface SetIsMealAddedAction {
+	type: typeof SET_IS_MEAL_ADDED;
+}
+
+export type allMealActionTypes = StoreMealAction | SetIsMealAddedAction;

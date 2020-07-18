@@ -9,7 +9,7 @@ import MealTableBody from '../body/Body';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSelectedProducts, getStoredProducts } from '../../../store/product/Product.selectors';
 import { Product } from '../../../store/product/Product.types';
-import { storeMeal } from '../../../store/meal/Meal.actions';
+import { storeMeal, setIsMealAdded } from '../../../store/meal/Meal.actions';
 import {
 	selectProduct,
 	selectProductReset,
@@ -48,6 +48,7 @@ const MealTable = () => {
 
 	const handleSubmitMeal = () => {
 		dispatch(storeMeal(storedProducts));
+		dispatch(setIsMealAdded());
 		dispatch(deleteAllProducts());
 	};
 
