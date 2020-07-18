@@ -23,22 +23,35 @@ const MealsPage: React.FC = (): JSX.Element => {
 
 					<article className={classes.article}>
 						{meals.map((meal: Array<Product>, index: number) => {
-							let totalCalories = 0;
+							const total = {
+								calories: 0,
+								fat: 0,
+								carbs: 0,
+								protein: 0
+							};
 
 							return (
 								<section key={shortid.generate()} className={classes.meal}>
 									<header>Meal {index + 1}</header>
 									{meal.map((item: Product) => {
-										totalCalories += Math.round(Number(item.food.nutrients.ENERC_KCAL));
+										total.calories += Math.round(Number(item.food.nutrients.ENERC_KCAL));
+										total.fat += Math.round(Number(item.food.nutrients.FAT));
+										total.carbs += Math.round(Number(item.food.nutrients.CHOCDF));
+										total.protein += Math.round(Number(item.food.nutrients.PROCNT));
 										return (
 											<main key={item.food.foodId + shortid.generate()}>
 												<h4>{item.food.label.toUpperCase()}</h4>
 												<p>{Math.round(Number(item.food.nutrients.ENERC_KCAL))} kcal</p>
-												<Chart/>
 											</main>
 										);
 									})}
-									<footer>Total: {Math.round(totalCalories)} kcal</footer>
+									<Chart
+										totalCalories={total.calories}
+										totalFat={total.fat}
+										totalCarbs={total.carbs}
+										totalProtein={total.protein}
+									/>
+									<footer>Total: {Math.round(total.calories)} kcal</footer>
 								</section>
 							);
 						})}

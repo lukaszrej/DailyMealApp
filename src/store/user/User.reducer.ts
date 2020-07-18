@@ -1,17 +1,28 @@
-import { allUserActionTypes, USER } from './User.types';
+import { allUserActionTypes, CREATE_USER, CALCULATE_DAILY_NEED } from './User.types';
 
-export const initialState = {
+interface UserDetailsState {
+	name: string;
+	height: string;
+	weight: string;
+	age: string;
+	gender: string;
+	activityLevel: string;
+	dailyNeed: number;
+}
+
+export const initialState: UserDetailsState = {
 	name: '',
 	height: '',
 	weight: '',
 	age: '',
 	gender: 'male',
-	activityLevel: '1.2'
+	activityLevel: '1.2',
+	dailyNeed: 0
 };
 
-export const UserReducer = (state = initialState, action: allUserActionTypes) => {
+export const UserReducer = (state: UserDetailsState = initialState, action: allUserActionTypes) => {
 	switch (action.type) {
-		case USER:
+		case CREATE_USER:
 			return {
 				...state,
 				name: action.name,
@@ -20,6 +31,11 @@ export const UserReducer = (state = initialState, action: allUserActionTypes) =>
 				age: action.age,
 				gender: action.gender,
 				activityLevel: action.activityLevel
+			};
+		case CALCULATE_DAILY_NEED:
+			return {
+				...state,
+				dailyNeed: action.payload
 			};
 		default:
 			return state;

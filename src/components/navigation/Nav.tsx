@@ -13,7 +13,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import Badge from '@material-ui/core/Badge';
 import Footer from '../footer/Footer';
 import { useHistory } from 'react-router-dom';
-import { getStarted } from '../../store/start/Start.selectors';
 import { useSelector } from 'react-redux';
 import { getMeals } from '../../store/meal/Meal.selectors';
 import useStyles from './styles';
@@ -25,7 +24,6 @@ interface NavProps {
 const Nav: React.FC<NavProps> = ({ children }: NavProps): JSX.Element => {
 	const classes = useStyles();
 	const history = useHistory();
-	const started = useSelector(getStarted);
 	const meals = useSelector(getMeals);
 
 	return (
@@ -48,23 +46,13 @@ const Nav: React.FC<NavProps> = ({ children }: NavProps): JSX.Element => {
 				<div className={classes.drawerContainer}>
 					<Divider />
 					<List>
-						<ListItem
-							className={classes.listItem}
-							disabled={!started}
-							button
-							onClick={() => history.push('/home')}
-						>
+						<ListItem className={classes.listItem} button onClick={() => history.push('/home')}>
 							<ListItemIcon>
 								<HomeIcon className={classes.listItemIcon} />
 							</ListItemIcon>
 							<ListItemText primary='Home' />
 						</ListItem>
-						<ListItem
-							className={classes.listItem}
-							disabled={!started}
-							button
-							onClick={() => history.push('/meals')}
-						>
+						<ListItem className={classes.listItem} button onClick={() => history.push('/meals')}>
 							<ListItemIcon>
 								<Badge badgeContent={meals ? meals.length : 0} max={99} color='primary'>
 									<FormatListBulletedIcon className={classes.listItemIcon} />

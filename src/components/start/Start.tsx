@@ -1,4 +1,5 @@
 import React from 'react';
+import shortid from 'shortid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Radio from '@material-ui/core/Radio';
@@ -11,14 +12,13 @@ import ModalContent from '../modal/ModalContent';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import shortid from 'shortid';
-import useStyles from './styles';
 import { activityOptions } from '../../utils/activityLevels/activityLevels';
 import { getStarted } from '../../store/start/Start.selectors';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { createUser } from '../../store/user/User.actions';
+import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
 import { start } from '../../store/start/Start.actions';
+import useStyles from './styles';
 
 const Start: React.FC = (): JSX.Element => {
 	const classes = useStyles();
@@ -43,6 +43,7 @@ const Start: React.FC = (): JSX.Element => {
 	const handleStartSubmit = (e: React.SyntheticEvent): void => {
 		e.preventDefault();
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
+		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
 		dispatch(start());
 	};
 

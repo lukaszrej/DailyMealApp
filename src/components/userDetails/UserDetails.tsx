@@ -1,5 +1,9 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import EditUser from '../userEdit/EditUser';
 import { useSelector } from 'react-redux';
+import getActivityLevelDesc from '../../utils/activityLevels/getActivityLevelsDesc';
 import {
 	getUserName,
 	getUserHeight,
@@ -8,13 +12,9 @@ import {
 	getUserGender,
 	getUserActivityLevel
 } from '../../store/user/User.selectors';
-import getActivityLevelDesc from '../../utils/activityLevels/getActivityLevelsDesc';
-import EditUser from '../userEdit/EditUser';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import useStyles from './styles';
 
-const User: React.FC = (): JSX.Element => {
+const UserDetails: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const userName = useSelector(getUserName);
 	const userHeight = useSelector(getUserHeight);
@@ -35,11 +35,10 @@ const User: React.FC = (): JSX.Element => {
 				{userAge && <p>Age: {userAge}</p>}
 				{userGender && <p>Gender: {userGender}</p>}
 				{userActivityLevel && <p>Activity level: {getActivityLevelDesc(userActivityLevel)}</p>}
-
 				<EditUser />
 			</Paper>
 		</React.Fragment>
 	);
 };
 
-export default User;
+export default UserDetails;

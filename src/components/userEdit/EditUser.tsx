@@ -17,7 +17,7 @@ import shortid from 'shortid';
 import useStyles from './styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { activityOptions } from '../../utils/activityLevels/activityLevels';
-import { createUser } from '../../store/user/User.actions';
+import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
 import {
 	getUserName,
 	getUserHeight,
@@ -66,6 +66,7 @@ const EditUser: React.FC = (): JSX.Element => {
 	const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
+		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
 		setOpen(false);
 
 		if (
