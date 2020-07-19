@@ -3,9 +3,6 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(() =>
 	createStyles({
 		root: {
-			'& h6': {
-				padding: 24
-			},
 			'& > div': {
 				marginBottom: 12
 			}

@@ -4,10 +4,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
-import Typography from '@material-ui/core/Typography';
 import MealTable from '../mealTable/table/Table';
 import ProductAddOwn from '../productAddOwn/ProductAddOwn';
 import ProductFind from '../productFind/ProductFind';
+import InfoStepper from '../stepper/InfoStepper';
 import useStyles from './styles';
 
 const ProductAdd: React.FC = (): JSX.Element => {
@@ -21,11 +21,7 @@ const ProductAdd: React.FC = (): JSX.Element => {
 
 	return (
 		<section className={classes.root}>
-			<Paper square>
-				<Typography variant='h6' noWrap>
-					Find or add own product to the report
-				</Typography>
-			</Paper>
+			<InfoStepper />
 			<Paper square>
 				<Tabs
 					value={value}

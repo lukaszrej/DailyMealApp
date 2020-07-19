@@ -1,22 +1,34 @@
-import { allStartActionTypes, START, HIDE_ALERT } from './Start.types';
+import { allStartActionTypes, START_APP, REMOVE_WELCOME_ALERT, REMOVE_STEPPER } from './Start.types';
 
-export const initialState = {
+interface StartState {
+	started: boolean;
+	showAlert: boolean;
+	showStepper: boolean;
+}
+
+export const initialState: StartState = {
 	started: false,
-	showAlert: false
+	showAlert: false,
+	showStepper: true
 };
 
-export const StartReducer = (state = initialState, action: allStartActionTypes) => {
+export const StartReducer = (state: StartState = initialState, action: allStartActionTypes) => {
 	switch (action.type) {
-		case START:
+		case START_APP:
 			return {
 				...state,
 				started: true,
 				showAlert: true
 			};
-		case HIDE_ALERT:
+		case REMOVE_WELCOME_ALERT:
 			return {
 				...state,
 				showAlert: false
+			};
+		case REMOVE_STEPPER:
+			return {
+				...state,
+				showStepper: false
 			};
 		default:
 			return state;

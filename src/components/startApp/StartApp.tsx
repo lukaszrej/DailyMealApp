@@ -17,10 +17,10 @@ import { getStarted } from '../../store/start/Start.selectors';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
-import { start } from '../../store/start/Start.actions';
+import { startApp } from '../../store/start/Start.actions';
 import useStyles from './styles';
 
-const Start: React.FC = (): JSX.Element => {
+const StartApp: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const started = useSelector(getStarted);
@@ -44,7 +44,7 @@ const Start: React.FC = (): JSX.Element => {
 		e.preventDefault();
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
-		dispatch(start());
+		dispatch(startApp());
 	};
 
 	return (
@@ -141,4 +141,4 @@ const Start: React.FC = (): JSX.Element => {
 	);
 };
 
-export default Start;
+export default StartApp;

@@ -1,11 +1,16 @@
-export const START = 'START';
-export interface StartAction {
-	type: typeof START;
+export const START_APP = 'START_APP';
+export interface StartAppAction {
+	type: typeof START_APP;
 }
 
-export const HIDE_ALERT = 'HIDE_WELCOME_MESSAGE';
+export const REMOVE_WELCOME_ALERT = 'REMOVE_WELCOME_ALERT';
 export interface HideAlertAction {
-	type: typeof HIDE_ALERT;
+	type: typeof REMOVE_WELCOME_ALERT;
 }
 
-export type allStartActionTypes = StartAction | HideAlertAction;
+export const REMOVE_STEPPER = 'REMOVE_STEPPER';
+export interface RemoveStepperAction {
+	type: typeof REMOVE_STEPPER;
+}
+
+export type allStartActionTypes = StartAppAction | HideAlertAction | RemoveStepperAction;

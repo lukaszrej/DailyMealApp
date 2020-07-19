@@ -1,18 +1,26 @@
-import { START, HIDE_ALERT } from './Start.types';
+import { START_APP, REMOVE_WELCOME_ALERT, REMOVE_STEPPER } from './Start.types';
 import { Dispatch } from 'redux';
 
-export const start = () => {
+export const startApp = () => {
 	return (dispatch: Dispatch) => {
 		dispatch({
-			type: START
+			type: START_APP
 		});
 	};
 };
 
-export const hideAlert = () => {
+export const removeAlert = () => {
 	return (dispatch: Dispatch) => {
 		dispatch({
-			type: HIDE_ALERT
+			type: REMOVE_WELCOME_ALERT
+		});
+	};
+};
+
+export const removeStepper = () => {
+	return (dispatch: Dispatch) => {
+		dispatch({
+			type: REMOVE_STEPPER
 		});
 	};
 };
