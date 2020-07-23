@@ -21,7 +21,10 @@ const useStyles = makeStyles((theme: Theme) =>
 			color: '#e6e7e8'
 		},
 		drawerContainer: {
-			overflow: 'auto'
+			overflow: 'auto',
+			'& hr:last-of-type': {
+				background: '#00A8CC',
+			}
 		},
 		listItem: {
 			'&:hover': {
@@ -35,9 +38,6 @@ const useStyles = makeStyles((theme: Theme) =>
 		content: {
 			flexGrow: 1,
 			padding: theme.spacing(3)
-		},
-		home: {
-			background: 'red',
 		}
 	})
 );

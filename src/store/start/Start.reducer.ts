@@ -1,4 +1,4 @@
-import { allStartActionTypes, START_APP, REMOVE_WELCOME_ALERT, REMOVE_STEPPER } from './Start.types';
+import { allStartActionTypes, START_APP, REMOVE_WELCOME_ALERT, SHOW_STEPPER, REMOVE_STEPPER } from './Start.types';
 
 interface StartState {
 	started: boolean;
@@ -29,6 +29,11 @@ export const StartReducer = (state: StartState = initialState, action: allStartA
 			return {
 				...state,
 				showStepper: false
+			};
+		case SHOW_STEPPER:
+			return {
+				...state,
+				showStepper: true
 			};
 		default:
 			return state;

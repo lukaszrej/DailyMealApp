@@ -32,6 +32,7 @@ const InfoStepper: React.FC = (): JSX.Element | null => {
 	};
 
 	const handleRemove = () => {
+		setActiveStep(0);
 		dispatch(removeStepper());
 	};
 

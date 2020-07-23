@@ -1,4 +1,4 @@
-import { START_APP, REMOVE_WELCOME_ALERT, REMOVE_STEPPER } from './Start.types';
+import { START_APP, REMOVE_WELCOME_ALERT, SHOW_STEPPER, REMOVE_STEPPER } from './Start.types';
 import { Dispatch } from 'redux';
 
 export const startApp = () => {
@@ -15,6 +15,14 @@ export const removeAlert = () => {
 			type: REMOVE_WELCOME_ALERT
 		});
 	};
+};
+
+export const showStepper = () => {
+	return (dispatch: Dispatch) => {
+		dispatch({
+			type: SHOW_STEPPER
+		})
+	}
 };
 
 export const removeStepper = () => {
