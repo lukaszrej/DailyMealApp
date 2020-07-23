@@ -3,7 +3,7 @@
 It is an App for storing and fetching info about eaten products during a day.
 
 ### Demo
-Work in progress... Current demo [here](https://lukaszrej.github.io/DailyMealApp/).
+Demo [here](https://lukaszrej.github.io/DailyMealApp/) (work is still in progress).
 
 ### Technologies used for this project
 

@@ -14,9 +14,9 @@ const useStyles = makeStyles((theme: Theme) =>
 				width: '100%',
 				marginRight: 24
 			},
-			// '& > aside': {
-			// 	width: '30%'
-			// }
+			'& div:first-of-type': {
+				marginBottom: 24
+			}
 		},
 		article: {
 			paddingLeft: 24,
@@ -25,27 +25,18 @@ const useStyles = makeStyles((theme: Theme) =>
 			'& h5': {
 				marginTop: 8,
 				marginBottom: 8
+			},
+			'& header': {
+				marginBottom: 8,
+				paddingTop: 24,
+				fontSize: 28
 			}
 		},
 		meal: {
-			'& header': {
-				marginBottom: 8,
-				fontSize: 28
-			},
-			'& h4': {
-				margin: 0
-			},
+			display: 'flex',
 			'& p': {
 				margin: 0
-			},
-			'& footer': {
-				marginBottom: 8
 			}
-		},
-		chart: {
-			background: 'yellow',
-			minWidth: 300,
-			minHeight: 300
 		}
 	})
 );

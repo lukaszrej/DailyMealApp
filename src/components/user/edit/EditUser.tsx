@@ -9,15 +9,15 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import Alert from '../alert/Alert';
-import ModalTitle from '../modal/ModalTitle';
-import ModalContent from '../modal/ModalContent';
-import ModalActions from '../modal/ModalActions';
+import Alert from '../../alert/Alert';
+import ModalTitle from '../../modal/ModalTitle';
+import ModalContent from '../../modal/ModalContent';
+import ModalActions from '../../modal/ModalActions';
 import shortid from 'shortid';
 import useStyles from './styles';
 import { useSelector, useDispatch } from 'react-redux';
-import { activityOptions } from '../../utils/activityLevels/activityLevels';
-import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
+import { activityOptions } from '../../../utils/activityLevels/activityLevels';
+import { createUser, calculateDailyNeed } from '../../../store/user/User.actions';
 import {
 	getUserName,
 	getUserHeight,
@@ -25,7 +25,7 @@ import {
 	getUserAge,
 	getUserGender,
 	getUserActivityLevel
-} from '../../store/user/User.selectors';
+} from '../../../store/user/User.selectors';
 
 const EditUser: React.FC = (): JSX.Element => {
 	const classes = useStyles();

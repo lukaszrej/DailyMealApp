@@ -1,26 +1,29 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import { useSelector } from 'react-redux';
-import { getUserDailyNeed } from '../../store/user/User.selectors';
+import { Product } from '../../../store/product/Product.types';
 import useStyles from './styles';
 
-const UserNeed: React.FC = (): JSX.Element => {
+interface CounterProps {
+	meals?: Array<Product>;
+}
+
+const MealCounter: React.FC<CounterProps> = (props: CounterProps): JSX.Element => {
 	const classes = useStyles();
-	const dailyNeed = useSelector(getUserDailyNeed);
+	const { meals } = props;
 
 	return (
 		<React.Fragment>
 			<Paper className={classes.root}>
 				<Typography variant='h6' noWrap>
-					Daily calorie need
+					Meals addded
 				</Typography>
 				<Typography variant='h3' color='primary' noWrap>
-					{dailyNeed} kcal
+					{meals ? meals.length : '0'}
 				</Typography>
 			</Paper>
 		</React.Fragment>
 	);
 };
 
-export default UserNeed;
+export default MealCounter;

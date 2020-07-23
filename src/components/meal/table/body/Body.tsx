@@ -3,9 +3,9 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Product } from '../../../store/product/Product.types';
+import { Product } from '../../../../store/product/Product.types';
 import { useSelector } from 'react-redux';
-import { getStoredProducts } from '../../../store/product/Product.selectors';
+import { getStoredProducts } from '../../../../store/product/Product.selectors';
 
 interface TableBodyProps {
 	isSelected: (name: string) => boolean;

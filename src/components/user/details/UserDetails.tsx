@@ -1,9 +1,9 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import EditUser from '../userEdit/EditUser';
+import EditUser from '../edit/EditUser';
 import { useSelector } from 'react-redux';
-import getActivityLevelDesc from '../../utils/activityLevels/getActivityLevelsDesc';
+import getActivityLevelDesc from '../../../utils/activityLevels/getActivityLevelsDesc';
 import {
 	getUserName,
 	getUserHeight,
@@ -11,7 +11,7 @@ import {
 	getUserAge,
 	getUserGender,
 	getUserActivityLevel
-} from '../../store/user/User.selectors';
+} from '../../../store/user/User.selectors';
 import useStyles from './styles';
 
 const UserDetails: React.FC = (): JSX.Element => {

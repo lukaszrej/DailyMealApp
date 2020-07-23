@@ -7,13 +7,14 @@ interface ChartProps {
 	mealTotalCarbs?: number;
 	mealTotalProtein?: number;
 	dailyNeed: number;
+	mealIndex: number;
 }
 
 const Chart: React.FC<ChartProps> = (props: ChartProps) => {
-	const { mealTotalCalories, mealTotalFat, mealTotalCarbs, mealTotalProtein, dailyNeed } = props;
+	const { mealTotalCalories, mealTotalFat, mealTotalCarbs, mealTotalProtein, dailyNeed, mealIndex } = props;
 
 	const nutrientsChartData = {
-		labels: [ ' calories', ' fat', ' carbs', ' protein' ],
+		labels: [ ' Calories', ' Fat (g)', ' Carbs (g)', ' Protein (g)' ],
 		datasets: [
 			{
 				label: 'Nutrients info',
@@ -24,12 +25,12 @@ const Chart: React.FC<ChartProps> = (props: ChartProps) => {
 	};
 
 	const caloriesChartData = {
-		labels: [ 'meal calorie intake', 'expected meal calorie intake (5 meals a day)', 'daily calorie need' ],
+		labels: [ 'Meal calorie intake', '(expected) Meal calorie intake (5 meals a day)', 'Daily calorie need' ],
 		datasets: [
 			{
-				label: ' calories',
+				label: ' Calories',
 				data: [ mealTotalCalories, dailyNeed / 5, dailyNeed ],
-				backgroundColor: [ '#fbd1a2', 'red', '#f79256' ]
+				backgroundColor: [ '#da627d', '#a53860', '#450920' ]
 			}
 		]
 	};
@@ -40,12 +41,13 @@ const Chart: React.FC<ChartProps> = (props: ChartProps) => {
 				data={nutrientsChartData}
 				options={{
 					title: {
-						display: false,
-						fontSize: 25
+						display: true,
+						fontSize: 25,
+						text: `Meal ${mealIndex}`
 					},
 					legend: {
-						display: false,
-						position: 'right'
+						display: true,
+						position: 'bottom'
 					}
 				}}
 			/>
@@ -57,8 +59,8 @@ const Chart: React.FC<ChartProps> = (props: ChartProps) => {
 						fontSize: 25
 					},
 					legend: {
-						display: false,
-						position: 'right'
+						display: true,
+						position: 'bottom'
 					},
 					scales: {
 						yAxes: [

@@ -4,10 +4,10 @@ import { getShowAlert } from '../../store/start/Start.selectors';
 import { getUserName } from '../../store/user/User.selectors';
 import { getMeals } from '../../store/meal/Meal.selectors';
 import Alert from '../../components/alert/Alert';
-import ProductAdd from '../../components/productAdd/ProductAdd';
-import UserDetails from '../../components/userDetails/UserDetails';
-import UserNeed from '../../components/userNeed/UserNeed';
-import MealCounter from '../../components/mealCounter/MealCounter';
+import ProductAdd from '../../components/product/add/ProductAdd';
+import UserDetails from '../../components/user/details/UserDetails';
+import UserNeed from '../../components/user/need/UserNeed';
+import MealCounter from '../../components/meal/counter/MealCounter';
 import useStyles from './styles';
 
 const HomePage: React.FC = (): JSX.Element => {

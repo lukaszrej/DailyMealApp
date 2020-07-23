@@ -5,6 +5,9 @@ const useStyles = makeStyles(() =>
 		root: {
 			'& > div': {
 				marginBottom: 12
+			},
+			'& > div> h6': {
+				padding: 24
 			}
 		},
 		tabs: {

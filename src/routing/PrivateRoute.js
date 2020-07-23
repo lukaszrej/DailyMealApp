@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getStarted } from '../store/start/Start.selectors';
-import StartApp from '../components/startApp/StartApp';
+import StartApp from '../components/start/StartApp';
 
 const PrivateRoute = ({ component, ...options }) => {
     const isStarted = useSelector(getStarted);

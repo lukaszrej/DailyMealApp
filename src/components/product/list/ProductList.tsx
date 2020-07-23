@@ -1,10 +1,10 @@
 import React from 'react';
 import shortid from 'shortid';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFoundProducts } from '../../store/product/Product.selectors';
-import { storeProduct } from '../../store/product/Product.actions';
-import { Product } from '../../store/product/Product.types';
-import TooltipComponent from '../tooltip/Tooltip';
+import { getFoundProducts } from '../../../store/product/Product.selectors';
+import { storeProduct } from '../../../store/product/Product.actions';
+import { Product } from '../../../store/product/Product.types';
+import TooltipComponent from '../../tooltip/Tooltip';
 import Nutrients from './Nutrients';
 import useStyles from './styles';
 

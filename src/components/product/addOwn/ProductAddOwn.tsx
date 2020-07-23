@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 import useStyles from './styles';
-import { storeProduct } from '../../store/product/Product.actions';
+import { storeProduct } from '../../../store/product/Product.actions';
 import shortid from 'shortid';
 
 interface State {

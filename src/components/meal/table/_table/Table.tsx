@@ -7,15 +7,15 @@ import MealTableToolbar from '../toolbar/Toolbar';
 import MealTableHead from '../head/Head';
 import MealTableBody from '../body/Body';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSelectedProducts, getStoredProducts } from '../../../store/product/Product.selectors';
-import { Product } from '../../../store/product/Product.types';
-import { storeMeal, setIsMealAdded } from '../../../store/meal/Meal.actions';
+import { getSelectedProducts, getStoredProducts } from '../../../../store/product/Product.selectors';
+import { Product } from '../../../../store/product/Product.types';
+import { storeMeal, setIsMealAdded } from '../../../../store/meal/Meal.actions';
 import {
 	selectProduct,
 	selectProductReset,
 	deleteProduct,
 	deleteAllProducts
-} from '../../../store/product/Product.actions';
+} from '../../../../store/product/Product.actions';
 import useStyles from './styles';
 
 const MealTable = () => {
