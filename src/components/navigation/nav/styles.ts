@@ -7,13 +7,25 @@ const useStyles = makeStyles((theme: Theme) =>
 		root: {
 			display: 'flex'
 		},
+		drawer: {
+			[theme.breakpoints.up('sm')]: {
+				width: drawerWidth,
+				flexShrink: 0
+			}
+		},
 		appBar: {
 			zIndex: theme.zIndex.drawer + 1,
-			background: 'linear-gradient(270deg, #025997 0%, #00A8CC 55%)'
+			background: 'linear-gradient(270deg, #025997 0%, #00A8CC 55%)',
+			[theme.breakpoints.up('sm')]: {
+				width: `calc(100% - ${drawerWidth}px)`,
+				marginLeft: drawerWidth
+			}
 		},
-		drawer: {
-			width: drawerWidth,
-			flexShrink: 0
+		menuButton: {
+			marginRight: theme.spacing(2),
+			[theme.breakpoints.up('sm')]: {
+				display: 'none'
+			}
 		},
 		drawerPaper: {
 			width: drawerWidth,
@@ -21,9 +33,19 @@ const useStyles = makeStyles((theme: Theme) =>
 			color: '#e6e7e8'
 		},
 		drawerContainer: {
-			overflow: 'auto',
-			'& hr:last-of-type': {
-				background: '#00A8CC',
+			'& h6': {
+				color: 'grey'
+			},
+			'& hr': {
+				background: 'grey'
+			}
+		},
+		content: {
+			flexGrow: 1,
+			marginLeft: drawerWidth,
+			padding: theme.spacing(3),
+			[theme.breakpoints.down('xs')]: {
+				marginLeft: 24
 			}
 		},
 		listItem: {
@@ -34,10 +56,6 @@ const useStyles = makeStyles((theme: Theme) =>
 		},
 		listItemIcon: {
 			color: '#e6e7e8'
-		},
-		content: {
-			flexGrow: 1,
-			padding: theme.spacing(3)
 		}
 	})
 );

@@ -26,8 +26,8 @@ const MealTable = () => {
 
 	const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.checked) {
-			const newSelectedItems = storedProducts.map((product: Product) => product.food.foodId);
-			dispatch(selectProduct(newSelectedItems));
+			const newSelectedItem: string = storedProducts.map((product: Product) => product.food.foodId);
+			dispatch(selectProduct(newSelectedItem));
 			return;
 		} else {
 			dispatch(selectProductReset());

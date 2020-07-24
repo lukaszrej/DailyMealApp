@@ -19,12 +19,12 @@ interface ProductState {
 
 export const initialState: ProductState = {
 	isLoading: false,
-	foundProducts: [],
-	storedProducts: [],
-	selectedProducts: []
+	foundProducts: [] as Product[],
+	storedProducts: [] as Product[],
+	selectedProducts: [] as string[]
 };
 
-export const ProductReducer = (state = initialState, action: allProductActionTypes) => {
+export const ProductReducer = (state: ProductState = initialState, action: allProductActionTypes) => {
 	switch (action.type) {
 		case LOADING:
 			return {
@@ -41,7 +41,7 @@ export const ProductReducer = (state = initialState, action: allProductActionTyp
 			return {
 				...state,
 				storedProducts: [ ...state.storedProducts, action.payload ],
-				foundProducts: []
+				foundProducts: [] as Product[]
 			};
 		case SELECT_PRODUCT:
 			return {
@@ -51,19 +51,19 @@ export const ProductReducer = (state = initialState, action: allProductActionTyp
 		case SELECT_PRODUCT_RESET:
 			return {
 				...state,
-				selectedProducts: []
+				selectedProducts: [] as string[]
 			};
 		case DELETE_PRODUCT:
 			return {
 				...state,
 				storedProducts: action.payload,
-				selectedProducts: []
+				selectedProducts: [] as string[]
 			};
 		case DELETE_ALL_PRODUCTS:
 			return {
 				...state,
-				storedProducts: [],
-				selectedProducts: []
+				storedProducts: [] as Product[],
+				selectedProducts: [] as string[]
 			};
 		default:
 			return state;

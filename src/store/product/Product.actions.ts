@@ -11,7 +11,7 @@ import { Dispatch } from 'redux';
 import { Product } from '../../store/product/Product.types';
 import getData from './Product.api';
 
-export const fetchProduct = (productName: string) => async (dispatch: Dispatch) => {
+export const findProduct = (productName: string) => async (dispatch: Dispatch) => {
 	dispatch({
 		type: LOADING
 	});

@@ -25,7 +25,7 @@ const MealsPage: React.FC = (): JSX.Element => {
 				</Paper>
 				<Paper square>
 					<article className={classes.article}>
-						{meals.map((meal: Array<Product>, index: number) => {
+						{meals.map((meal: (Product | any)[], index: number) => {
 							const mealTotal = {
 								calories: 0,
 								fat: 0,
