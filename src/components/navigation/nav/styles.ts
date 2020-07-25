@@ -33,11 +33,16 @@ const useStyles = makeStyles((theme: Theme) =>
 			color: '#e6e7e8'
 		},
 		drawerContainer: {
+			'& div:first-of-type': {
+				display: 'flex',
+				justifyContent: 'center'
+			},
 			'& h6': {
-				color: 'grey'
+				color: 'grey',
+				fontSize: 19
 			},
 			'& hr': {
-				background: 'grey'
+				background: '#343a40'
 			}
 		},
 		content: {
@@ -52,6 +57,9 @@ const useStyles = makeStyles((theme: Theme) =>
 			'&:hover': {
 				background: '#4d4d4d',
 				textDecoration: 'underline'
+			},
+			'&.MuiListItem-root.Mui-disabled': {
+				opacity: 0.3
 			}
 		},
 		listItemIcon: {

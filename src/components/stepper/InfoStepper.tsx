@@ -78,7 +78,7 @@ const InfoStepper: React.FC = (): JSX.Element | null => {
 							</Button>
 							<Button
 								onClick={handleRemove}
-								color='secondary'
+								color='primary'
 								variant='contained'
 								className={classes.button}
 							>
