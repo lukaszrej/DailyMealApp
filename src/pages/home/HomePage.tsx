@@ -4,11 +4,10 @@ import { getShowAlert } from '../../store/start/Start.selectors';
 import { getUserName } from '../../store/user/User.selectors';
 import { getMeals } from '../../store/meal/Meal.selectors';
 import Alert from '../../components/alert/Alert';
-import ProductAdd from '../../components/product/add/ProductAdd';
+import ProductAdd from '../../components/product/_add/ProductAdd';
 import UserDetails from '../../components/user/details/UserDetails';
 import UserNeed from '../../components/user/need/UserNeed';
 import MealCounter from '../../components/meal/counter/MealCounter';
-// import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useStyles from './styles';
 
 const HomePage: React.FC = (): JSX.Element => {
@@ -16,7 +15,6 @@ const HomePage: React.FC = (): JSX.Element => {
 	const showAlert = useSelector(getShowAlert);
 	const userName = useSelector(getUserName);
 	const meals = useSelector(getMeals);
-	// const matches = useMediaQuery('(min-width:800px)');
 
 	return (
 		<React.Fragment>
@@ -30,7 +28,7 @@ const HomePage: React.FC = (): JSX.Element => {
 					<MealCounter meals={meals} />
 				</aside>
 			</main>
-			
+
 			{showAlert && <Alert severity='info'>Hello {userName ? userName : 'User'}!</Alert>}
 		</React.Fragment>
 	);

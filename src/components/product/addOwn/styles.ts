@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme: Theme) =>
 			width: '80%',
 			'& button': {
 				marginTop: 18
+			},
+			// rwd
+			[theme.breakpoints.down('sm')]: {
+				width: '90%'
 			}
 		},
 		margin: {

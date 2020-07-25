@@ -1,6 +1,6 @@
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			'& > div': {
@@ -8,6 +8,13 @@ const useStyles = makeStyles(() =>
 			},
 			'& > div> h6': {
 				padding: 24
+			},
+			// rwd
+			[theme.breakpoints.down('sm')]: {
+				marginBottom: 24,
+				'& > div> h6': {
+					marginBottom: 24
+				}
 			}
 		},
 		tabs: {

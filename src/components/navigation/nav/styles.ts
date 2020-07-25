@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			display: 'flex'
 		},
 		drawer: {
-			[theme.breakpoints.up('sm')]: {
+			[theme.breakpoints.up('md')]: {
 				width: drawerWidth,
 				flexShrink: 0
 			}
@@ -16,14 +16,14 @@ const useStyles = makeStyles((theme: Theme) =>
 		appBar: {
 			zIndex: theme.zIndex.drawer + 1,
 			background: 'linear-gradient(270deg, #025997 0%, #00A8CC 55%)',
-			[theme.breakpoints.up('sm')]: {
+			[theme.breakpoints.up('md')]: {
 				width: `calc(100% - ${drawerWidth}px)`,
 				marginLeft: drawerWidth
 			}
 		},
 		menuButton: {
 			marginRight: theme.spacing(2),
-			[theme.breakpoints.up('sm')]: {
+			[theme.breakpoints.up('md')]: {
 				display: 'none'
 			}
 		},
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			flexGrow: 1,
 			marginLeft: drawerWidth,
 			padding: theme.spacing(3),
-			[theme.breakpoints.down('xs')]: {
+			[theme.breakpoints.down('sm')]: {
 				marginLeft: 24
 			}
 		},

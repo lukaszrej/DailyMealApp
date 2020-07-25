@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme: Theme) =>
 			'& .MuiButton-root': {
 				width: '100%',
 				marginTop: 18
+			},
+			// rwd
+			[theme.breakpoints.down('sm')]: {
+				width: '90%'
 			}
 		}
 	})

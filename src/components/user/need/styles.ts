@@ -6,7 +6,7 @@ const useStyles = makeStyles(() =>
 			padding: 24,
 			display: 'flex',
 			flexDirection: 'column',
-			marginTop: 24,
+			marginTop: 12,
 			'& p': {
 				margin: 0,
 				marginBottom: 12

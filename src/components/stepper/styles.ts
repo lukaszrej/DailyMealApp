@@ -2,7 +2,11 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
 	root: {
-		width: '100%'
+		width: '100%',
+		// rwd
+		[theme.breakpoints.down('sm')]: {
+			marginBottom: 24
+		}
 	},
 	button: {
 		marginTop: theme.spacing(1),
