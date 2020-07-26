@@ -6,8 +6,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Button from '@material-ui/core/Button';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
+import { storeProduct, updateCurrentKcalSum } from '../../../store/product/Product.actions';
 import useStyles from './styles';
-import { storeProduct } from '../../../store/product/Product.actions';
 import shortid from 'shortid';
 
 interface State {
@@ -49,6 +49,9 @@ const ProductAddOwn: React.FC = (): JSX.Element => {
 				}
 			})
 		);
+
+		const currentKcalSum = Math.ceil(Number(values.calories));
+		dispatch(updateCurrentKcalSum(currentKcalSum));
 
 		setValues({
 			name: '',

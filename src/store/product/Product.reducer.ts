@@ -2,6 +2,7 @@ import {
 	LOADING,
 	FIND_PRODUCT,
 	STORE_PRODUCT,
+	UPDATE_CURRENT_KCAL_SUM,
 	SELECT_PRODUCT,
 	SELECT_PRODUCT_RESET,
 	DELETE_PRODUCT,
@@ -15,13 +16,15 @@ interface ProductState {
 	foundProducts: Product[];
 	storedProducts: Product[];
 	selectedProducts: string[];
+	currentKcalSum: number;
 }
 
 export const initialState: ProductState = {
 	isLoading: false,
 	foundProducts: [] as Product[],
 	storedProducts: [] as Product[],
-	selectedProducts: [] as string[]
+	selectedProducts: [] as string[],
+	currentKcalSum: 0
 };
 
 export const ProductReducer = (state: ProductState = initialState, action: allProductActionTypes) => {
@@ -43,6 +46,11 @@ export const ProductReducer = (state: ProductState = initialState, action: allPr
 				storedProducts: [ ...state.storedProducts, action.payload ],
 				foundProducts: [] as Product[]
 			};
+		case UPDATE_CURRENT_KCAL_SUM:
+			return {
+				...state,
+				currentKcalSum: state.currentKcalSum + action.payload
+			};
 		case SELECT_PRODUCT:
 			return {
 				...state,
@@ -56,14 +64,16 @@ export const ProductReducer = (state: ProductState = initialState, action: allPr
 		case DELETE_PRODUCT:
 			return {
 				...state,
-				storedProducts: action.payload,
+				storedProducts: action.payload.newProducts,
+				currentKcalSum: action.payload.newKcal,
 				selectedProducts: [] as string[]
 			};
 		case DELETE_ALL_PRODUCTS:
 			return {
 				...state,
 				storedProducts: [] as Product[],
-				selectedProducts: [] as string[]
+				selectedProducts: [] as string[],
+				currentKcalSum: 0
 			};
 		default:
 			return state;

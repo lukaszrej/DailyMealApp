@@ -2,7 +2,7 @@ import React from 'react';
 import shortid from 'shortid';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFoundProducts } from '../../../store/product/Product.selectors';
-import { storeProduct } from '../../../store/product/Product.actions';
+import { storeProduct, updateCurrentKcalSum } from '../../../store/product/Product.actions';
 import { Product } from '../../../store/product/Product.types';
 import TooltipComponent from '../../tooltip/Tooltip';
 import Nutrients from './Nutrients';
@@ -15,7 +15,10 @@ const ProductList: React.FC = (): JSX.Element => {
 
 	const handleListItemClick = (e: React.SyntheticEvent, product: Product): void => {
 		e.preventDefault();
+
+		const currentKcalSum = Math.ceil(Number(product.food.nutrients.ENERC_KCAL));
 		dispatch(storeProduct(product));
+		dispatch(updateCurrentKcalSum(currentKcalSum));
 	};
 
 	return (

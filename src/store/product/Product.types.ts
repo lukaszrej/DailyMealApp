@@ -34,6 +34,12 @@ export interface StoreProductAction {
 	payload: Product;
 }
 
+export const UPDATE_CURRENT_KCAL_SUM = 'UPDATE_CURRENT_KCAL_SUM';
+export interface UpdateCurrentKcalSumAction {
+	type: typeof UPDATE_CURRENT_KCAL_SUM;
+	payload: number;
+}
+
 export const SELECT_PRODUCT = 'SELECT_PRODUCT';
 export interface SelectProductAction {
 	type: typeof SELECT_PRODUCT;
@@ -48,7 +54,7 @@ export interface SelectProductResetAction {
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export interface DeleteProductAction {
 	type: typeof DELETE_PRODUCT;
-	payload: Product;
+	payload: { newProducts: Product; newKcal: number };
 }
 
 export const DELETE_ALL_PRODUCTS = 'DELETE_ALL_PRODUCTS';
@@ -60,6 +66,7 @@ export type allProductActionTypes =
 	| LoadingProductsAction
 	| FindProductAction
 	| StoreProductAction
+	| UpdateCurrentKcalSumAction
 	| SelectProductAction
 	| SelectProductResetAction
 	| DeleteProductAction

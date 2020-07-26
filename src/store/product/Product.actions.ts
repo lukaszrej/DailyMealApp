@@ -2,6 +2,7 @@ import {
 	LOADING,
 	FIND_PRODUCT,
 	STORE_PRODUCT,
+	UPDATE_CURRENT_KCAL_SUM,
 	SELECT_PRODUCT,
 	SELECT_PRODUCT_RESET,
 	DELETE_PRODUCT,
@@ -34,6 +35,13 @@ export const storeProduct = (product: Product) => (dispatch: Dispatch) => {
 	dispatch({
 		type: STORE_PRODUCT,
 		payload: product
+	});
+};
+
+export const updateCurrentKcalSum = (productKcal: number) => (dispatch: Dispatch) => {
+	dispatch({
+		type: UPDATE_CURRENT_KCAL_SUM,
+		payload: productKcal
 	});
 };
 
@@ -71,9 +79,17 @@ export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getSta
 	const products = state.product.storedProducts;
 	const newProducts: Product = products.filter((storedProduct: Product) => storedProduct.food.foodId !== selectedId);
 
+	let newKcal = 0;
+	products.map((product: Product) => {
+		if (product.food.foodId !== selectedId) {
+			newKcal += Number(product.food.nutrients.ENERC_KCAL);
+		}
+		return newKcal;
+	});
+
 	dispatch({
 		type: DELETE_PRODUCT,
-		payload: newProducts
+		payload: { newProducts, newKcal }
 	});
 };
 
