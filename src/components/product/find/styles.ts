@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			marginTop: 24,
-			width: '80%',
+			width: '90%',
 			'& > div': {
 				width: '100%'
 			},
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			},
 			// rwd
 			[theme.breakpoints.down('sm')]: {
-				width: '90%'
+				width: '95%'
 			}
 		}
 	})

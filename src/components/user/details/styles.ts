@@ -1,6 +1,6 @@
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			padding: 24,
@@ -12,6 +12,12 @@ const useStyles = makeStyles(() =>
 			},
 			'& h6': {
 				marginBottom: 12
+			},
+			// rwd
+			[theme.breakpoints.only('xs')]: {
+				'& > button': {
+					width: '90%'
+				}
 			}
 		}
 	})

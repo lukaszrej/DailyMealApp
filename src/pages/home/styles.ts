@@ -4,8 +4,7 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			display: 'flex',
-			marginLeft: 24,
-			marginRight: 24,
+			width: '100%',
 			'& > article': {
 				width: '70%',
 				marginRight: 24
@@ -14,7 +13,8 @@ const useStyles = makeStyles((theme: Theme) =>
 				width: '30%'
 			},
 			// rwd
-			[theme.breakpoints.down('sm')]: {
+			[theme.breakpoints.down('md')]: {
+				width: '100%',
 				flexDirection: 'column',
 				marginLeft: 0,
 				'& > article': {
@@ -30,6 +30,17 @@ const useStyles = makeStyles((theme: Theme) =>
 					'& > div': {
 						width: '33%',
 						marginTop: 0
+					}
+				}
+			},
+			// rwd
+			[theme.breakpoints.only('xs')]: {
+				'& > aside': {
+					flexDirection: 'column-reverse',
+					'& > div': {
+						width: '100%',
+						alignItems: 'center',
+						marginBottom: 24
 					}
 				}
 			}

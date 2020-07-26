@@ -6,13 +6,13 @@ const useStyles = makeStyles((theme: Theme) =>
 			display: 'flex',
 			flexWrap: 'wrap',
 			flexDirection: 'column',
-			width: '80%',
+			width: '90%',
 			'& button': {
 				marginTop: 18
 			},
 			// rwd
 			[theme.breakpoints.down('sm')]: {
-				width: '90%'
+				width: '95%'
 			}
 		},
 		margin: {

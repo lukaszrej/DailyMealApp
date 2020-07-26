@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
 		appBar: {
 			zIndex: theme.zIndex.drawer + 1,
 			background: 'linear-gradient(270deg, #025997 0%, #00A8CC 55%)',
+			// rwd
 			[theme.breakpoints.up('md')]: {
 				width: `calc(100% - ${drawerWidth}px)`,
 				marginLeft: drawerWidth
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
 		},
 		menuButton: {
 			marginRight: theme.spacing(2),
+			// rwd
 			[theme.breakpoints.up('md')]: {
 				display: 'none'
 			}
@@ -49,8 +51,11 @@ const useStyles = makeStyles((theme: Theme) =>
 			flexGrow: 1,
 			marginLeft: drawerWidth,
 			padding: theme.spacing(3),
+			// rwd
 			[theme.breakpoints.down('sm')]: {
-				marginLeft: 24
+				marginLeft: 0,
+				marginRight: 0,
+				width: '100%'
 			}
 		},
 		listItem: {
