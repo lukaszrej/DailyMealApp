@@ -10,7 +10,7 @@ interface ChartProps {
 	mealIndex: number;
 }
 
-const Chart: React.FC<ChartProps> = (props: ChartProps) => {
+const MealChart: React.FC<ChartProps> = (props: ChartProps) => {
 	const { mealTotalCalories, mealTotalFat, mealTotalCarbs, mealTotalProtein, dailyNeed, mealIndex } = props;
 
 	const nutrientsChartData = {
@@ -77,4 +77,4 @@ const Chart: React.FC<ChartProps> = (props: ChartProps) => {
 	);
 };
 
-export default Chart;
+export default MealChart;

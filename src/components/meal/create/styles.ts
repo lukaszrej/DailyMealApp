@@ -3,14 +3,12 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
-			width: '100%'
+			width: '100%',
+			marginBottom: 24
 		},
 		paper: {
 			width: '100%',
 			padding: 12
-		},
-		table: {
-			minWidth: 750
 		},
 		visuallyHidden: {
 			border: 0,
@@ -25,9 +23,12 @@ const useStyles = makeStyles((theme: Theme) =>
 		},
 		buttons: {
 			display: 'flex',
-			marginTop: 12,
-			marginLeft: 12,
-			marginRight: 12,
+			justifyContent: 'center',
+			margin: 12,
+			marginTop: 24,
+			'& > button': {
+				width: '40%'
+			},
 			'& > button:first-of-type': {
 				marginRight: 16
 			}

@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme: Theme) =>
 			'& button': {
 				marginTop: 18
 			},
+			'& input': {
+				letterSpacing: 2,
+				fontSize: 20
+			},
 			// rwd
 			[theme.breakpoints.down('sm')]: {
 				width: '95%'

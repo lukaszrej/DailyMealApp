@@ -1,16 +1,13 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import { Product } from '../../../store/product/Product.types';
+import { useSelector } from 'react-redux';
+import { getMeals } from '../../../store/meal/Meal.selectors';
 import useStyles from './styles';
 
-interface CounterProps {
-	meals?: Array<Product>;
-}
-
-const MealCounter: React.FC<CounterProps> = (props: CounterProps): JSX.Element => {
+const MealCounter: React.FC = (): JSX.Element => {
 	const classes = useStyles();
-	const { meals } = props;
+	const meals = useSelector(getMeals);
 
 	return (
 		<React.Fragment>

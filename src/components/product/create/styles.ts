@@ -4,7 +4,8 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			'& > div': {
-				marginBottom: 12
+				marginBottom: 12,
+				textAlign: 'center',
 			},
 			'& > div> h6': {
 				padding: 24

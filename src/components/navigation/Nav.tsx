@@ -14,10 +14,10 @@ import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
-import Footer from '../footer/Footer';
+import Footer from './footer/Footer';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getMeals, getIsMealAdded } from '../../../store/meal/Meal.selectors';
+import { getMeals, getIsMealAdded } from '../../store/meal/Meal.selectors';
 import useStyles from './styles';
 
 interface NavProps {

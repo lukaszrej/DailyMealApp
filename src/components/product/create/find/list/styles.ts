@@ -4,14 +4,17 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			listStyle: 'none',
+			width: '90%',
 			padding: 0,
-			width: '80%',
 			margin: 0,
+			textAlign: 'center',
 			'& > li': {
 				paddingTop: 8,
-				paddingBottom: 4,
+				paddingBottom: 8,
 				paddingLeft: 8,
-				borderBottom: '1px solid #3f51b5'
+				borderBottom: '1px solid #3f51b5',
+				fontWeight: 700,
+				letterSpacing: 2
 			},
 			'& > li:hover': {
 				background: '#00A8CC',
@@ -19,7 +22,10 @@ const useStyles = makeStyles((theme: Theme) =>
 			},
 			'& > * > div': {
 				fontSize: 13,
-				fontStyle: 'italic'
+				fontStyle: 'italic',
+				fontWeight: 'normal',
+				letterSpacing: 0,
+				wordSpacing: 2
 			}
 		}
 	})

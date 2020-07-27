@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import EditUser from '../edit/EditUser';
+import UserEdit from './edit/UserEdit';
 import { useSelector } from 'react-redux';
 import getActivityLevelDesc from '../../../utils/activityLevels/getActivityLevelsDesc';
 import {
@@ -35,7 +35,7 @@ const UserDetails: React.FC = (): JSX.Element => {
 				{userAge && <p>Age: {userAge}</p>}
 				{userGender && <p>Gender: {userGender}</p>}
 				{userActivityLevel && <p>Activity level: {getActivityLevelDesc(userActivityLevel)}</p>}
-				<EditUser />
+				<UserEdit />
 			</Paper>
 		</React.Fragment>
 	);

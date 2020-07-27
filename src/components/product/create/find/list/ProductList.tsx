@@ -1,11 +1,11 @@
 import React from 'react';
 import shortid from 'shortid';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFoundProducts } from '../../../store/product/Product.selectors';
-import { storeProduct, updateCurrentKcalSum } from '../../../store/product/Product.actions';
-import { Product } from '../../../store/product/Product.types';
-import TooltipComponent from '../../tooltip/Tooltip';
-import Nutrients from './Nutrients';
+import { getFoundProducts } from '../../../../../store/product/Product.selectors';
+import { storeProduct, updateCurrentKcalSum } from '../../../../../store/product/Product.actions';
+import { Product } from '../../../../../store/product/Product.types';
+import TooltipComponent from '../../../../utilsComponents/tooltip/Tooltip';
+import ProductNutrients from './ProductNutrients';
 import useStyles from './styles';
 
 const ProductList: React.FC = (): JSX.Element => {
@@ -35,7 +35,7 @@ const ProductList: React.FC = (): JSX.Element => {
 					>
 						<li onClick={(e) => handleListItemClick(e, product)}>
 							{product.food.label.toLowerCase()}
-							<Nutrients product={product} />
+							<ProductNutrients product={product} />
 						</li>
 					</TooltipComponent>
 				);

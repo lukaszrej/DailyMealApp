@@ -5,18 +5,13 @@ import Tab from '@material-ui/core/Tab';
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
-import MealTable from '../../meal/table/_table/Table';
-import ProductAddOwn from '../addOwn/ProductAddOwn';
-import ProductFind from '../find/ProductFind';
-import InfoStepper from '../../stepper/InfoStepper';
+import ProductAddOwn from './addOwn/ProductAddOwn';
+import ProductFind from './find/ProductFind';
 import useStyles from './styles';
-import { useSelector } from 'react-redux';
-import { getShowStepper } from '../../../store/start/Start.selectors';
 
-const ProductAdd: React.FC = (): JSX.Element => {
+const ProductCreate: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const [ value, setValue ] = React.useState(0);
-	const showStepper = useSelector(getShowStepper);
 
 	const handleChange = (event: React.ChangeEvent<{}>, newValue: number): void => {
 		event.preventDefault();
@@ -25,17 +20,11 @@ const ProductAdd: React.FC = (): JSX.Element => {
 
 	return (
 		<section className={classes.root}>
-			{!showStepper && (
-				<Paper square>
-					<Typography variant='h6' noWrap>
-						Find product or add own product
-					</Typography>
-				</Paper>
-			)}
-
-			<InfoStepper />
-
 			<Paper square>
+				<Typography variant='h6' noWrap>
+					Find product or add own product
+				</Typography>
+
 				<Tabs
 					value={value}
 					onChange={handleChange}
@@ -50,10 +39,8 @@ const ProductAdd: React.FC = (): JSX.Element => {
 
 				<div className={classes.tabs}>{value ? <ProductAddOwn /> : <ProductFind />}</div>
 			</Paper>
-
-			<MealTable />
 		</section>
 	);
 };
 
-export default ProductAdd;
+export default ProductCreate;

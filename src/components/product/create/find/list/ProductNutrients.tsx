@@ -15,7 +15,7 @@ interface Nutrients {
 	};
 }
 
-const Nutrients: React.FC<Nutrients> = ({ product }: Nutrients): JSX.Element => {
+const ProductNutrients: React.FC<Nutrients> = ({ product }: Nutrients): JSX.Element => {
 	return (
 		<div>
 			{!isNaN(Math.ceil(product.food.nutrients.ENERC_KCAL)) &&
@@ -32,4 +32,4 @@ const Nutrients: React.FC<Nutrients> = ({ product }: Nutrients): JSX.Element => 
 	);
 };
 
-export default Nutrients;
+export default ProductNutrients;

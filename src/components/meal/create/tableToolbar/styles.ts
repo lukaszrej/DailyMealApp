@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme: Theme) =>
 						backgroundColor: theme.palette.secondary.dark
 					},
 		title: {
-			flex: '1 1 100%'
+			flex: '1 1 100%',
+			textAlign: 'center'
 		}
 	})
 );

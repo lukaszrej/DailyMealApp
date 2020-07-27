@@ -5,7 +5,7 @@ import { store } from './store';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Router from './utils/history/history';
 import StartApp from './components/start/StartApp';
-import Nav from './components/navigation/nav/Nav';
+import Nav from './components/navigation/Nav';
 import NoMatchPage from './pages/noMatch/NoMatchPage';
 import HomePage from './pages/home/HomePage';
 import MealsPage from './pages/meals/MealsPage';

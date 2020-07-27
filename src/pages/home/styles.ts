@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme: Theme) =>
 				}
 			},
 			// rwd
-			[theme.breakpoints.only('xs')]: {
+			// [theme.breakpoints.only('xs')]: {
+			[theme.breakpoints.between('xs', 'md')]: {
 				'& > aside': {
 					flexDirection: 'column-reverse',
 					'& > div': {

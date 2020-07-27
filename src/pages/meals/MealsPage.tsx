@@ -1,7 +1,7 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Chart from '../../components/meal/chart/Chart';
+import MealChart from '../../components/meal/chart/MealChart';
 import ProductTag from '../../components/product/tag/ProductTag';
 import { useSelector } from 'react-redux';
 import { getMeals } from '../../store/meal/Meal.selectors';
@@ -53,7 +53,7 @@ const MealsPage: React.FC = (): JSX.Element => {
 										})}
 									</main>
 
-									<Chart
+									<MealChart
 										mealTotalCalories={mealTotal.calories}
 										mealTotalFat={mealTotal.fat}
 										mealTotalCarbs={mealTotal.carbs}

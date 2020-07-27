@@ -3,22 +3,22 @@ import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import MealTableToolbar from '../toolbar/Toolbar';
-import MealTableHead from '../head/Head';
-import MealTableBody from '../body/Body';
+import MealTableToolbar from './tableToolbar/MealTableToolbar';
+import MealTableHead from './tableHead/MealTableHead';
+import MealTableBody from './tableBody/MealTableBody';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSelectedProducts, getStoredProducts } from '../../../../store/product/Product.selectors';
-import { Product } from '../../../../store/product/Product.types';
-import { storeMeal, setIsMealAdded } from '../../../../store/meal/Meal.actions';
+import { getSelectedProducts, getStoredProducts } from '../../../store/product/Product.selectors';
+import { Product } from '../../../store/product/Product.types';
+import { storeMeal, setIsMealAdded } from '../../../store/meal/Meal.actions';
 import {
 	selectProduct,
 	selectProductReset,
 	deleteProduct,
 	deleteAllProducts
-} from '../../../../store/product/Product.actions';
+} from '../../../store/product/Product.actions';
 import useStyles from './styles';
 
-const MealTable = () => {
+const MealCreate = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const storedProducts = useSelector(getStoredProducts);
@@ -66,12 +66,7 @@ const MealTable = () => {
 						handleDeleteSelectedProducts={handleDeleteSelectedProducts}
 					/>
 					<TableContainer>
-						<Table
-							className={classes.table}
-							aria-labelledby='tableTitle'
-							size='medium'
-							aria-label='enhanced table'
-						>
+						<Table aria-labelledby='tableTitle' size='medium' aria-label='enhanced table'>
 							<MealTableHead
 								numSelected={selectedProducts.length}
 								onSelectAllClick={handleSelectAllClick}
@@ -94,4 +89,4 @@ const MealTable = () => {
 	}
 };
 
-export default MealTable;
+export default MealCreate;

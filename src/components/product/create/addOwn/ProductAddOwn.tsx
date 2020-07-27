@@ -6,7 +6,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Button from '@material-ui/core/Button';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
-import { storeProduct, updateCurrentKcalSum } from '../../../store/product/Product.actions';
+import { storeProduct, updateCurrentKcalSum } from '../../../../store/product/Product.actions';
 import useStyles from './styles';
 import shortid from 'shortid';
 

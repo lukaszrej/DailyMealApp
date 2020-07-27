@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { findProduct } from '../../../store/product/Product.actions';
-import { getIsLoading } from '../../../store/product/Product.selectors';
+import { findProduct } from '../../../../store/product/Product.actions';
+import { getIsLoading } from '../../../../store/product/Product.selectors';
 import Input from '@material-ui/core/Input';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
-import Loader from '../../loader/Loader';
-import ProductList from '../list/ProductList';
+import Loader from '../../../utilsComponents/loader/Loader';
+import ProductList from './list/ProductList';
 import useStyles from './styles';
 
 const ProductFind: React.FC = (): JSX.Element => {
@@ -33,7 +33,12 @@ const ProductFind: React.FC = (): JSX.Element => {
 					aria-describedby='standard-find-product-helper-text'
 				/>
 				<FormHelperText id='standard-find-product-helper-text'>Product name</FormHelperText>
-				<Button type='submit' disabled={productToBeFound === '' ? true : false} color='secondary' variant='contained'>
+				<Button
+					type='submit'
+					disabled={productToBeFound === '' ? true : false}
+					color='secondary'
+					variant='contained'
+				>
 					{isLoading ? <Loader /> : 'Search'}
 				</Button>
 			</form>

@@ -2,7 +2,7 @@ import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { useDispatch } from 'react-redux';
-import { removeAlert } from '../../store/start/Start.actions';
+import { removeAlert } from '../../../store/start/Start.actions';
 import useStyles from './styles';
 
 interface AlertExtendedProps extends AlertProps {

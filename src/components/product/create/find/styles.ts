@@ -4,6 +4,10 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			marginTop: 24,
+			'& input': {
+				letterSpacing: 2,
+				fontSize: 20
+			},
 			width: '90%',
 			'& > div': {
 				width: '100%'

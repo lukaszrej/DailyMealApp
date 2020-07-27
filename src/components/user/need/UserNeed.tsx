@@ -20,12 +20,17 @@ const UserNeed: React.FC = (): JSX.Element => {
 				<Typography variant='h3' color='primary' noWrap>
 					{dailyNeed} kcal
 				</Typography>
-				<Typography variant='h6' noWrap>
-					Current meal
-				</Typography>
-				<Typography variant='h3' color='secondary' noWrap>
-					{currentKcalSum} kcal
-				</Typography>
+
+				{currentKcalSum !== 0 && (
+					<React.Fragment>
+						<Typography variant='h6' noWrap>
+							Current meal
+						</Typography>
+						<Typography variant='h3' color='secondary' noWrap>
+							{currentKcalSum} kcal
+						</Typography>
+					</React.Fragment>
+				)}
 			</Paper>
 		</React.Fragment>
 	);

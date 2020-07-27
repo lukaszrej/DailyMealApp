@@ -13,6 +13,9 @@ const useStyles = makeStyles(() =>
 			},
 			'& h6': {
 				marginBottom: 12
+			},
+			'& h3': {
+				paddingBottom: 12
 			}
 		}
 	})
