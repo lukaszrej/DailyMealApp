@@ -37,6 +37,19 @@ const useStyles = makeStyles((theme: Theme) =>
 			'& p': {
 				margin: 0
 			}
+		},
+		buttons: {
+			display: 'flex',
+			justifyContent: 'center',
+			marginTop: 48,
+			marginBottom: 24,
+			'& button': {
+				background: '#00A8CC',
+				color: 'white',
+				'&:hover': {
+					background: '#025997'
+				}
+			}
 		}
 	})
 );

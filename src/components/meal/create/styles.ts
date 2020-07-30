@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			margin: 12,
 			marginTop: 24,
 			'& > button': {
-				width: '40%'
+				width: '48%'
 			},
 			'& > button:first-of-type': {
 				marginRight: 16

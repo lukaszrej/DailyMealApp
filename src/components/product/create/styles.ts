@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme: Theme) =>
 		root: {
 			'& > div': {
 				marginBottom: 12,
-				textAlign: 'center',
+				textAlign: 'center'
 			},
 			'& > div> h6': {
 				padding: 24
@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme: Theme) =>
 			[theme.breakpoints.down('sm')]: {
 				marginBottom: 24,
 				'& > div> h6': {
-					marginBottom: 24
+					marginBottom: 24,
+					fontSize: 18
 				}
 			}
 		},
@@ -24,7 +25,13 @@ const useStyles = makeStyles((theme: Theme) =>
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'center',
-			alignItems: 'center'
+			alignItems: 'center',
+
+			// rwd
+			[theme.breakpoints.down('sm')]: {
+				paddingRight: 12,
+				paddingLeft: 12
+			}
 		}
 	})
 );

@@ -1,4 +1,5 @@
 import React from 'react';
+import shortid from 'shortid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import MealChart from '../../components/meal/chart/MealChart';
@@ -7,13 +8,17 @@ import { useSelector } from 'react-redux';
 import { getMeals } from '../../store/meal/Meal.selectors';
 import { getUserDailyNeed } from '../../store/user/User.selectors';
 import { Product } from '../../store/product/Product.types';
-import shortid from 'shortid';
 import useStyles from './styles';
+import Button from '@material-ui/core/Button';
+import HomeIcon from '@material-ui/icons/Home';
+
+import { useHistory } from 'react-router-dom';
 
 const MealsPage: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const meals = useSelector(getMeals);
 	const dailyNeed = useSelector(getUserDailyNeed);
+	const history = useHistory();
 
 	return (
 		<main className={classes.root}>
@@ -66,6 +71,18 @@ const MealsPage: React.FC = (): JSX.Element => {
 						})}
 					</article>
 				</Paper>
+
+				<div className={classes.buttons}>
+					<Button
+						variant='contained'
+						color='primary'
+						size='large'
+						onClick={() => history.push('/home')}
+						endIcon={<HomeIcon />}
+					>
+						Go back
+					</Button>
+				</div>
 			</section>
 		</main>
 	);
