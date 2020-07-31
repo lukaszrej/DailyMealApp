@@ -5,7 +5,7 @@ It is an App for storing and fetching info about eaten products during a day.
 ### Demo :rocket:
 [Demo here](https://lukaszrej.github.io/DailyMealApp/)
 
-### Technologies used for this project
+### Technologies used for the project
 
 - [React](https://reactjs.org/) (with hooks)
 - [Redux](https://redux.js.org/)
@@ -13,7 +13,7 @@ It is an App for storing and fetching info about eaten products during a day.
 - [Chart.js](https://www.chartjs.org/)
 - [Material-UI](https://material-ui.com/)
 
-### Configuration of the project
+### Configuration
 
 - Clone the repo and navigate to the main directory
 - Install node modules using ```npm i```
@@ -23,8 +23,8 @@ It is an App for storing and fetching info about eaten products during a day.
 #### Configuration
 
 If you would like to configure correctly the project consider following steps
-- Create free account on [the API provider platform Edamam](https://developer.edamam.com/)
-- Configure your local environment variables [learn more](https://create-react-app.dev/docs/adding-custom-environment-variables/)
+- Create free account on the API provider platform - [Edamam](https://developer.edamam.com/)
+- Configure your local environment variables ([learn more](https://create-react-app.dev/docs/adding-custom-environment-variables/))
 - You will need your API key and API id from the provider
 
 ```sh

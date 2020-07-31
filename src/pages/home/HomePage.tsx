@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { getShowAlert } from '../../store/start/Start.selectors';
 import { getUserName } from '../../store/user/User.selectors';
 import Alert from '../../components/utilsComponents/alert/Alert';
-import InfoStepper from '../../components/stepper/InfoStepper';
+import Stepper from '../../components/stepper/Stepper';
 import ProductCreate from '../../components/product/create/ProductCreate';
 import UserDetails from '../../components/user/details/UserDetails';
 import UserNeed from '../../components/user/need/UserNeed';
@@ -20,7 +20,7 @@ const HomePage: React.FC = (): JSX.Element => {
 		<React.Fragment>
 			<main className={classes.root}>
 				<article>
-					<InfoStepper />
+					<Stepper />
 					<ProductCreate />
 					<MealCreate />
 				</article>

@@ -12,27 +12,25 @@ const UserNeed: React.FC = (): JSX.Element => {
 	const currentKcalSum = useSelector(getCurrentKcalSum);
 
 	return (
-		<React.Fragment>
-			<Paper className={classes.root}>
-				<Typography variant='h6' noWrap>
-					Daily calorie need
-				</Typography>
-				<Typography variant='h3' color='primary' noWrap>
-					{dailyNeed} kcal
-				</Typography>
+		<Paper className={classes.root}>
+			<Typography variant='h6' noWrap>
+				Daily calorie need
+			</Typography>
+			<Typography variant='h3' color='primary' noWrap>
+				{dailyNeed} kcal
+			</Typography>
 
-				{currentKcalSum !== 0 && (
-					<React.Fragment>
-						<Typography variant='h6' noWrap>
-							Current meal
-						</Typography>
-						<Typography variant='h3' color='secondary' noWrap>
-							{currentKcalSum} kcal
-						</Typography>
-					</React.Fragment>
-				)}
-			</Paper>
-		</React.Fragment>
+			{currentKcalSum !== 0 && (
+				<React.Fragment>
+					<Typography variant='h6' noWrap>
+						Current meal
+					</Typography>
+					<Typography variant='h3' color='secondary' noWrap>
+						{currentKcalSum} kcal
+					</Typography>
+				</React.Fragment>
+			)}
+		</Paper>
 	);
 };
 

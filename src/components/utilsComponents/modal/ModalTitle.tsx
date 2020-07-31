@@ -10,13 +10,13 @@ const styles = (theme: Theme) =>
 		root: {
 			margin: 0,
 			padding: theme.spacing(2),
-			minWidth: 500
-		},
-		closeButton: {
-			position: 'absolute',
-			right: theme.spacing(1),
-			top: theme.spacing(1),
-			color: theme.palette.grey[500]
+			minWidth: 500,
+			'& button': {
+				position: 'absolute',
+				right: theme.spacing(1),
+				top: theme.spacing(1),
+				color: theme.palette.grey[500]
+			}
 		}
 	});
 
@@ -30,10 +30,10 @@ const ModalTitle = withStyles(styles)((props: ModalTitleProps): JSX.Element => {
 	const { children, classes, onClose, ...other } = props;
 
 	return (
-		<MuiDialogTitle disableTypography className={classes.root} {...other}>
+		<MuiDialogTitle className={classes.root} disableTypography {...other}>
 			<Typography variant='h6'>{children}</Typography>
 			{onClose ? (
-				<IconButton aria-label='close' className={classes.closeButton} onClick={onClose}>
+				<IconButton aria-label='close' onClick={onClose}>
 					<CloseIcon />
 				</IconButton>
 			) : null}

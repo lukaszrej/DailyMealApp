@@ -12,7 +12,6 @@ import Select from '@material-ui/core/Select';
 import Alert from '../../../utilsComponents/alert/Alert';
 import ModalTitle from '../../../utilsComponents/modal/ModalTitle';
 import ModalContent from '../../../utilsComponents/modal/ModalContent';
-import ModalActions from '../../../utilsComponents/modal/ModalActions';
 import shortid from 'shortid';
 import useStyles from './styles';
 import { useSelector, useDispatch } from 'react-redux';
@@ -164,11 +163,11 @@ const UserEdit: React.FC = (): JSX.Element => {
 							</RadioGroup>
 						</FormControl>
 					</ModalContent>
-					<ModalActions>
+					<div className={classes.button}>
 						<Button autoFocus type='submit' color='primary'>
 							Save
 						</Button>
-					</ModalActions>
+					</div>
 				</form>
 			</Dialog>
 			{displayAlert && <Alert severity='success'>The data has been correctly updated.</Alert>}

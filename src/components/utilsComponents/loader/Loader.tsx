@@ -1,15 +1,25 @@
 import React from 'react';
+import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import useStyles from './styles';
 
-const Loader: React.FC = (): JSX.Element => {
-	const classes = useStyles();
+const styles = (theme: Theme) =>
+	createStyles({
+		root: {
+			display: 'flex',
+			'& > * + *': {
+				marginLeft: theme.spacing(2)
+			}
+		}
+	});
+
+const Loader = withStyles(styles)((props: WithStyles<typeof styles>) => {
+	const { classes } = props;
 
 	return (
 		<div className={classes.root}>
 			<CircularProgress size={24} />
 		</div>
 	);
-};
+});
 
 export default Loader;

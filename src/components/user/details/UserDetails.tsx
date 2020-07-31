@@ -24,20 +24,18 @@ const UserDetails: React.FC = (): JSX.Element => {
 	const userActivityLevel = useSelector(getUserActivityLevel);
 
 	return (
-		<React.Fragment>
-			<Paper className={classes.root}>
-				<Typography variant='h6' noWrap>
-					User details
-				</Typography>
-				{userName && <p>Name: {userName}</p>}
-				{userHeight && <p>Height: {userHeight} cm</p>}
-				{userWeight && <p>Current weight: {userWeight} kg</p>}
-				{userAge && <p>Age: {userAge}</p>}
-				{userGender && <p>Gender: {userGender}</p>}
-				{userActivityLevel && <p>Activity level: {getActivityLevelDesc(userActivityLevel)}</p>}
-				<UserEdit />
-			</Paper>
-		</React.Fragment>
+		<Paper className={classes.root}>
+			<Typography variant='h6' noWrap>
+				User details
+			</Typography>
+			{userName && <p>Name: {userName}</p>}
+			{userHeight && <p>Height: {userHeight} cm</p>}
+			{userWeight && <p>Current weight: {userWeight} kg</p>}
+			{userAge && <p>Age: {userAge}</p>}
+			{userGender && <p>Gender: {userGender}</p>}
+			{userActivityLevel && <p>Activity level: {getActivityLevelDesc(userActivityLevel)}</p>}
+			<UserEdit />
+		</Paper>
 	);
 };
 

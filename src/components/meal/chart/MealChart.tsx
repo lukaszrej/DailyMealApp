@@ -1,14 +1,6 @@
 import React from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
-
-interface ChartProps {
-	mealTotalCalories?: number;
-	mealTotalFat?: number;
-	mealTotalCarbs?: number;
-	mealTotalProtein?: number;
-	dailyNeed: number;
-	mealIndex: number;
-}
+import { ChartProps } from './MealChart.types';
 
 const MealChart: React.FC<ChartProps> = (props: ChartProps) => {
 	const { mealTotalCalories, mealTotalFat, mealTotalCarbs, mealTotalProtein, dailyNeed, mealIndex } = props;
