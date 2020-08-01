@@ -6,7 +6,7 @@ import Alert from '../../components/utilsComponents/alert/Alert';
 import Stepper from '../../components/stepper/Stepper';
 import ProductCreate from '../../components/product/create/ProductCreate';
 import UserDetails from '../../components/user/details/UserDetails';
-import UserNeed from '../../components/user/need/UserNeed';
+import UserNeed from '../../components/user/dailyNeed/UserNeed';
 import MealCounter from '../../components/meal/counter/MealCounter';
 import MealCreate from '../../components/meal/create/MealCreate';
 import useStyles from './styles';

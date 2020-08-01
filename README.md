@@ -5,13 +5,14 @@ It is an App for storing and fetching info about eaten products during a day.
 ### Demo :rocket:
 [Demo here](https://lukaszrej.github.io/DailyMealApp/)
 
-### Technologies used for the project
+### Technologies and libraries used
 
 - [React](https://reactjs.org/) (with hooks)
-- [Redux](https://redux.js.org/)
+- [Redux](https://redux.js.org/), [Redux-thunk](https://github.com/reduxjs/redux-thunk)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Chart.js](https://www.chartjs.org/)
 - [Material-UI](https://material-ui.com/)
+- [Axios](https://github.com/axios/axios)
 
 ### Configuration
 

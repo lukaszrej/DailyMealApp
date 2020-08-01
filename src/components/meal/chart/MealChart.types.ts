@@ -1,8 +1,12 @@
+export interface MealTotal {
+	calories?: number;
+	fat?: number;
+	carbs?: number;
+	protein?: number;
+}
+
 export interface ChartProps {
-	mealTotalCalories?: number;
-	mealTotalFat?: number;
-	mealTotalCarbs?: number;
-	mealTotalProtein?: number;
+	mealTotal: MealTotal;
 	dailyNeed: number;
 	mealIndex: number;
 }

@@ -33,6 +33,7 @@ const ProductFind: React.FC = (): JSX.Element => {
 					aria-describedby='standard-find-product-helper-text'
 				/>
 				<FormHelperText id='standard-find-product-helper-text'>Product name</FormHelperText>
+
 				<Button
 					type='submit'
 					disabled={productToBeFound === '' ? true : false}

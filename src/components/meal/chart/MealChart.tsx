@@ -3,14 +3,15 @@ import { Pie, Bar } from 'react-chartjs-2';
 import { ChartProps } from './MealChart.types';
 
 const MealChart: React.FC<ChartProps> = (props: ChartProps) => {
-	const { mealTotalCalories, mealTotalFat, mealTotalCarbs, mealTotalProtein, dailyNeed, mealIndex } = props;
+	const { mealTotal, dailyNeed, mealIndex } = props;
+	const { calories, fat, carbs, protein } = mealTotal;
 
 	const nutrientsChartData = {
 		labels: [ ' Calories', ' Fat (g)', ' Carbs (g)', ' Protein (g)' ],
 		datasets: [
 			{
 				label: 'Nutrients info',
-				data: [ mealTotalCalories, mealTotalFat, mealTotalCarbs, mealTotalProtein ],
+				data: [ calories, fat, carbs, protein ],
 				backgroundColor: [ '#007EA7', '#80CED7', '#9AD1D4', '#CCDBDC' ]
 			}
 		]
@@ -21,7 +22,7 @@ const MealChart: React.FC<ChartProps> = (props: ChartProps) => {
 		datasets: [
 			{
 				label: ' Calories',
-				data: [ mealTotalCalories, dailyNeed / 5, dailyNeed ],
+				data: [ calories, dailyNeed / 5, dailyNeed ],
 				backgroundColor: [ '#da627d', '#a53860', '#450920' ]
 			}
 		]
