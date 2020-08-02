@@ -16,6 +16,12 @@ const useStyles = makeStyles((theme: Theme) =>
 					marginLeft: 0,
 					marginRight: 0,
 					width: '100%'
+				},
+
+				// rwd
+				[theme.breakpoints.down('md')]: {
+					marginRight: 0,
+					width: '100%'
 				}
 			}
 		}

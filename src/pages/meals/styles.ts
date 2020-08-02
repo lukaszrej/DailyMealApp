@@ -11,8 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
 				paddingTop: 0
 			},
 			'& > section': {
-				width: '100%',
-				marginRight: 24
+				width: '100%'
 			},
 			'& div:first-of-type': {
 				marginBottom: 24

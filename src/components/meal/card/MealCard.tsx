@@ -2,7 +2,7 @@ import React from 'react';
 import shortid from 'shortid';
 import Paper from '@material-ui/core/Paper';
 import { Product } from '../../../store/product/Product.types';
-import MealChart from '../chart/MealChart';
+import MealChart from './chart/MealChart';
 import ProductTag from '../../product/tag/ProductTag';
 import useStyles from './styles';
 
