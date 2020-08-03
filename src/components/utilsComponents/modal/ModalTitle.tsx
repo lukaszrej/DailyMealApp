@@ -26,7 +26,7 @@ export interface ModalTitleProps extends WithStyles<typeof styles> {
 	onClose?: () => void;
 }
 
-const ModalTitle = withStyles(styles)((props: ModalTitleProps): JSX.Element => {
+const ModalTitle = (props: ModalTitleProps): JSX.Element => {
 	const { children, classes, onClose, ...other } = props;
 
 	return (
@@ -39,6 +39,6 @@ const ModalTitle = withStyles(styles)((props: ModalTitleProps): JSX.Element => {
 			) : null}
 		</MuiDialogTitle>
 	);
-});
+};
 
-export default ModalTitle;
+export default withStyles(styles)(ModalTitle);

@@ -21,6 +21,7 @@ const Container: React.FC<ContainerProps> = (props: ContainerProps): JSX.Element
 		<React.Fragment>
 			<div className={classes.root}>
 				<Sidebar />
+
 				<main>
 					<Toolbar />
 					<React.Fragment>{children}</React.Fragment>

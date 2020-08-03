@@ -12,7 +12,7 @@ const styles = (theme: Theme) =>
 		}
 	});
 
-const Loader = withStyles(styles)((props: WithStyles<typeof styles>) => {
+const Loader = (props: WithStyles<typeof styles>) => {
 	const { classes } = props;
 
 	return (
@@ -20,6 +20,6 @@ const Loader = withStyles(styles)((props: WithStyles<typeof styles>) => {
 			<CircularProgress size={24} />
 		</div>
 	);
-});
+};
 
-export default Loader;
+export default withStyles(styles)(Loader);

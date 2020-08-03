@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			display: 'flex',
+
 			'& > main': {
 				flexGrow: 1,
 				marginLeft: drawerWidth,

@@ -24,6 +24,7 @@ const MealsPage: React.FC = (): JSX.Element => {
 						Your meals
 					</Typography>
 				</Paper>
+
 				<MealCard meals={meals} dailyNeed={dailyNeed} />
 
 				<div className={classes.buttons}>

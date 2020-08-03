@@ -15,14 +15,14 @@ import { useSelector } from 'react-redux';
 import { getMeals, getIsMealAdded } from '../../../store/meal/Meal.selectors';
 import useStyles from './styles';
 
-const DrawerComponent: React.FC = (): JSX.Element => {
+const Nav: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 	const history = useHistory();
 	const meals = useSelector(getMeals);
 	const isMealAdded = useSelector(getIsMealAdded);
 
 	return (
-		<div className={classes.root}>
+		<nav className={classes.root}>
 			<Toolbar>
 				<Typography variant='h6' noWrap>
 					DailyMealApp
@@ -32,21 +32,16 @@ const DrawerComponent: React.FC = (): JSX.Element => {
 			<Divider />
 
 			<List>
-				<ListItem className={classes.item} button onClick={() => history.push('/home')}>
+				<ListItem button onClick={() => history.push('/home')}>
 					<ListItemIcon>
-						<HomeIcon className={classes.icon} />
+						<HomeIcon />
 					</ListItemIcon>
 					<ListItemText primary='Home' />
 				</ListItem>
-				<ListItem
-					className={classes.item}
-					button
-					onClick={() => history.push('/meals')}
-					disabled={!isMealAdded}
-				>
+				<ListItem button onClick={() => history.push('/meals')} disabled={!isMealAdded}>
 					<ListItemIcon>
 						<Badge badgeContent={meals ? meals.length : 0} max={99} color='primary'>
-							<FormatListBulletedIcon className={classes.icon} />
+							<FormatListBulletedIcon />
 						</Badge>
 					</ListItemIcon>
 					<ListItemText primary='Your meals' />
@@ -56,8 +51,8 @@ const DrawerComponent: React.FC = (): JSX.Element => {
 			<Divider />
 
 			<Footer />
-		</div>
+		</nav>
 	);
 };
 
-export default DrawerComponent;
+export default Nav;

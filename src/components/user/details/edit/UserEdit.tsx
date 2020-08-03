@@ -9,7 +9,6 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import Alert from '../../../utilsComponents/alert/Alert';
 import ModalTitle from '../../../utilsComponents/modal/ModalTitle';
 import ModalContent from '../../../utilsComponents/modal/ModalContent';
 import shortid from 'shortid';
@@ -26,11 +25,17 @@ import {
 	getUserActivityLevel
 } from '../../../../store/user/User.selectors';
 
-const UserEdit: React.FC = (): JSX.Element => {
+interface UserEditProps {
+	handleClose: () => void;
+	openEditModal: boolean;
+	setOpenEditModal: (open: boolean) => void;
+	setDisplayAlert: (displayAlert: boolean) => void;
+}
+
+const UserEdit: React.FC<UserEditProps> = (props: UserEditProps): JSX.Element => {
+	const { handleClose, openEditModal, setOpenEditModal, setDisplayAlert } = props;
 	const classes = useStyles();
 	const dispatch = useDispatch();
-	const [ open, setOpen ] = React.useState(false);
-	const [ displayAlert, setDisplayAlert ] = React.useState(false);
 
 	const currentName = useSelector(getUserName);
 	const [ name, setName ] = React.useState(currentName);
@@ -45,15 +50,6 @@ const UserEdit: React.FC = (): JSX.Element => {
 	const currentActivityLevel = useSelector(getUserActivityLevel);
 	const [ activityLevel, setActivityLevel ] = React.useState(currentActivityLevel);
 
-	const handleClickOpen = () => {
-		setOpen(true);
-		setDisplayAlert(false);
-	};
-
-	const handleClose = () => {
-		setOpen(false);
-	};
-
 	const handleActivityLevelChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
 		setActivityLevel((event.target as HTMLInputElement).value);
 	};
@@ -66,7 +62,7 @@ const UserEdit: React.FC = (): JSX.Element => {
 		e.preventDefault();
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
-		setOpen(false);
+		setOpenEditModal(false);
 
 		if (
 			name !== currentName ||
@@ -81,97 +77,91 @@ const UserEdit: React.FC = (): JSX.Element => {
 	};
 
 	return (
-		<React.Fragment>
-			<Button variant='outlined' color='primary' onClick={handleClickOpen}>
-				Edit data
-			</Button>
+		<Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={openEditModal}>
+			<ModalTitle id='customized-dialog-title' onClose={handleClose}>
+				Edit user data
+			</ModalTitle>
 
-			<Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={open}>
-				<ModalTitle id='customized-dialog-title' onClose={handleClose}>
-					Edit user data
-				</ModalTitle>
+			<form onSubmit={handleSubmit}>
+				<ModalContent dividers>
+					<TextField
+						variant='outlined'
+						fullWidth
+						id='name'
+						name='name'
+						label='Name'
+						autoComplete='name'
+						onChange={(e) => setName(e.target.value)}
+						value={name}
+					/>
+					<TextField
+						variant='outlined'
+						margin='normal'
+						fullWidth
+						id='height'
+						name='height'
+						label='Height (cm)'
+						autoComplete='height'
+						type='number'
+						onChange={(e) => setHeight(e.target.value)}
+						value={height}
+					/>
+					<TextField
+						variant='outlined'
+						fullWidth
+						id='weight'
+						name='weight'
+						label='Weight (kg)'
+						autoComplete='weight'
+						type='number'
+						onChange={(e) => setWeight(e.target.value)}
+						value={weight}
+					/>
+					<TextField
+						variant='outlined'
+						fullWidth
+						id='age'
+						name='age'
+						label='Age (years)'
+						autoComplete='age'
+						type='number'
+						onChange={(e) => setAge(e.target.value)}
+						value={age}
+					/>
+					<FormControl variant='outlined' className={classes.activity}>
+						<InputLabel id='demo-simple-select-outlined-label'>Activity level</InputLabel>
+						<Select
+							labelId='demo-simple-select-outlined-label'
+							id='demo-simple-select-outlined'
+							value={activityLevel}
+							displayEmpty
+							onChange={handleActivityLevelChange}
+							label='Activity level'
+						>
+							{activityOptions.map((element) => {
+								return (
+									<MenuItem value={element.activityValue} key={shortid.generate()}>
+										{element.activityDescription}
+									</MenuItem>
+								);
+							})}
+						</Select>
+					</FormControl>
+					<FormControl component='fieldset'>
+						<RadioGroup aria-label='gender' name='gender1' value={gender} onChange={handleGenderChange}>
+							<FormControlLabel value='male' control={<Radio />} label='Male' />
+							<FormControlLabel value='female' control={<Radio />} label='Female' />
+						</RadioGroup>
+					</FormControl>
+				</ModalContent>
 
-				<form onSubmit={handleSubmit}>
-					<ModalContent dividers>
-						<TextField
-							variant='outlined'
-							fullWidth
-							id='name'
-							name='name'
-							label='Name'
-							autoComplete='name'
-							onChange={(e) => setName(e.target.value)}
-							value={name}
-						/>
-						<TextField
-							variant='outlined'
-							margin='normal'
-							fullWidth
-							id='height'
-							name='height'
-							label='Height (cm)'
-							autoComplete='height'
-							type='number'
-							onChange={(e) => setHeight(e.target.value)}
-							value={height}
-						/>
-						<TextField
-							variant='outlined'
-							fullWidth
-							id='weight'
-							name='weight'
-							label='Weight (kg)'
-							autoComplete='weight'
-							type='number'
-							onChange={(e) => setWeight(e.target.value)}
-							value={weight}
-						/>
-						<TextField
-							variant='outlined'
-							fullWidth
-							id='age'
-							name='age'
-							label='Age (years)'
-							autoComplete='age'
-							type='number'
-							onChange={(e) => setAge(e.target.value)}
-							value={age}
-						/>
-						<FormControl variant='outlined' className={classes.activity}>
-							<InputLabel id='demo-simple-select-outlined-label'>Activity level</InputLabel>
-							<Select
-								labelId='demo-simple-select-outlined-label'
-								id='demo-simple-select-outlined'
-								value={activityLevel}
-								displayEmpty
-								onChange={handleActivityLevelChange}
-								label='Activity level'
-							>
-								{activityOptions.map((element) => {
-									return (
-										<MenuItem value={element.activityValue} key={shortid.generate()}>
-											{element.activityDescription}
-										</MenuItem>
-									);
-								})}
-							</Select>
-						</FormControl>
-						<FormControl component='fieldset'>
-							<RadioGroup aria-label='gender' name='gender1' value={gender} onChange={handleGenderChange}>
-								<FormControlLabel value='male' control={<Radio />} label='Male' />
-								<FormControlLabel value='female' control={<Radio />} label='Female' />
-							</RadioGroup>
-						</FormControl>
-					</ModalContent>
-					<div className={classes.button}>
-						<Button autoFocus type='submit' color='primary'>
-							Save
-						</Button>
-					</div>
-				</form>
-			</Dialog>
-			{displayAlert && <Alert severity='success'>The data has been correctly updated.</Alert>}
-		</React.Fragment>
+				<div className={classes.buttons}>
+					<Button autoFocus type='submit' color='primary'>
+						Save
+					</Button>
+				</div>
+			</form>
+		</Dialog>
 	);
 };
 

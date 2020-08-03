@@ -13,19 +13,21 @@ const useStyles = makeStyles((theme: Theme) =>
 			},
 			'& hr': {
 				background: '#343a40'
-			}
-		},
-		item: {
-			'&:hover': {
-				background: '#4d4d4d',
-				textDecoration: 'underline'
 			},
-			'&.MuiListItem-root.Mui-disabled': {
-				opacity: 0.3
+
+			// list items elements
+			'& ul > div': {
+				'&:hover': {
+					background: '#4d4d4d',
+					textDecoration: 'underline'
+				},
+				'&.MuiListItem-root.Mui-disabled': {
+					opacity: 0.3
+				},
+				'& svg': {
+					color: '#e6e7e8'
+				}
 			}
-		},
-		icon: {
-			color: '#e6e7e8'
 		}
 	})
 );

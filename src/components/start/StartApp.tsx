@@ -50,8 +50,9 @@ const StartApp: React.FC = (): JSX.Element => {
 	return (
 		<Dialog open={!started} aria-labelledby='customized-dialog-title'>
 			<ModalTitle id='customized-dialog-title'>Fill the form and start the app!</ModalTitle>
+
 			<ModalContent dividers>
-				<form noValidate onSubmit={handleStartSubmit} className={classes.form}>
+				<form noValidate onSubmit={handleStartSubmit} className={classes.root}>
 					<TextField
 						variant='outlined'
 						margin='normal'
@@ -99,7 +100,7 @@ const StartApp: React.FC = (): JSX.Element => {
 						onChange={(e) => setAge(e.target.value)}
 						value={age}
 					/>
-					<FormControl variant='outlined' className={classes.formControl}>
+					<FormControl variant='outlined' className={classes.activity}>
 						<InputLabel id='demo-simple-select-outlined-label'>Activity level</InputLabel>
 						<Select
 							labelId='demo-simple-select-outlined-label'
@@ -119,20 +120,14 @@ const StartApp: React.FC = (): JSX.Element => {
 						</Select>
 					</FormControl>
 
-					<FormControl component='fieldset' className={classes.fieldset}>
-						<RadioGroup
-							aria-label='gender'
-							name='gender1'
-							value={gender}
-							onChange={handleGenderChange}
-							className={classes.radioGroup}
-						>
+					<FormControl component='fieldset' className={classes.gender}>
+						<RadioGroup aria-label='gender' name='gender1' value={gender} onChange={handleGenderChange}>
 							<FormControlLabel value='male' control={<Radio />} label='Male' />
 							<FormControlLabel value='female' control={<Radio />} label='Female' />
 						</RadioGroup>
 					</FormControl>
 
-					<Button type='submit' variant='contained' className={classes.button}>
+					<Button type='submit' variant='contained'>
 						Start
 					</Button>
 				</form>

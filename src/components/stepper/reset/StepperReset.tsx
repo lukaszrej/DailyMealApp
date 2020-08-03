@@ -18,19 +18,16 @@ const StepperReset: React.FC<StepperResetProps> = (props: StepperResetProps) => 
 
 	return (
 		<React.Fragment>
-
 			{activeStep === steps.length && (
-				<Paper square elevation={0} className={classes.resetContainer}>
+				<Paper square elevation={0} className={classes.root}>
 					<Typography>All steps completed - you&apos;re finished</Typography>
-					<Button onClick={handleReset} className={classes.button}>
-						Reset
-					</Button>
-					<Button onClick={handleRemove} color='primary' variant='contained' className={classes.button}>
+
+					<Button onClick={handleReset}>Reset</Button>
+					<Button onClick={handleRemove} color='primary' variant='contained'>
 						Got it, remove section
 					</Button>
 				</Paper>
 			)}
-			
 		</React.Fragment>
 	);
 };

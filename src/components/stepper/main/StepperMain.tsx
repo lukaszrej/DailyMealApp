@@ -22,21 +22,17 @@ const StepperMain: React.FC<StepperMainProps> = (props: StepperMainProps) => {
 	return (
 		<Stepper activeStep={activeStep} orientation='vertical'>
 			{steps.map((label, index) => (
-				<Step key={label}>
+				<Step key={label + index}>
 					<StepLabel>{label}</StepLabel>
+
 					<StepContent>
 						<Typography>{getStepContent(index)}</Typography>
-						<div className={classes.actionsContainer}>
+						<div className={classes.root}>
 							<div>
-								<Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
+								<Button disabled={activeStep === 0} onClick={handleBack}>
 									Back
 								</Button>
-								<Button
-									variant='contained'
-									color='primary'
-									onClick={handleNext}
-									className={classes.button}
-								>
+								<Button variant='contained' color='primary' onClick={handleNext}>
 									{activeStep === steps.length - 1 ? 'Finish' : 'Next'}
 								</Button>
 							</div>

@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			padding: 24,
 			display: 'flex',
 			flexDirection: 'column',
+
 			'& p': {
 				margin: 0,
 				marginBottom: 12
@@ -13,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			'& h6': {
 				marginBottom: 12
 			},
+
 			// rwd
 			[theme.breakpoints.only('xs')]: {
 				'& > button': {

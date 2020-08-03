@@ -11,25 +11,23 @@ const StepperLink: React.FC = (): JSX.Element => {
 	const classes = useStyles();
 
 	return (
-		<React.Fragment>
-			<List className={classes.root}>
-				<ListItem>
-					<Link variant='body2' href='https://www.linkedin.com/in/lukasz-rej/' target='_blank' rel='noopener'>
-						<LinkedInIcon fontSize='small' />
-					</Link>
-				</ListItem>
-				<ListItem>
-					<Link variant='body2' href='https://github.com/lukaszrej' target='_blank' rel='noopener'>
-						<GitHubIcon fontSize='small' />
-					</Link>
-				</ListItem>
-				<ListItem>
-					<Link variant='body2' href='mailto:rejlukasz@gmail.com'>
-						<MailIcon color='inherit' fontSize='small' />
-					</Link>
-				</ListItem>
-			</List>
-		</React.Fragment>
+		<List className={classes.root}>
+			<ListItem>
+				<Link variant='body2' href='https://www.linkedin.com/in/lukasz-rej/' target='_blank' rel='noopener'>
+					<LinkedInIcon fontSize='small' />
+				</Link>
+			</ListItem>
+			<ListItem>
+				<Link variant='body2' href='https://github.com/lukaszrej' target='_blank' rel='noopener'>
+					<GitHubIcon fontSize='small' />
+				</Link>
+			</ListItem>
+			<ListItem>
+				<Link variant='body2' href='mailto:rejlukasz@gmail.com'>
+					<MailIcon color='inherit' fontSize='small' />
+				</Link>
+			</ListItem>
+		</List>
 	);
 };
 

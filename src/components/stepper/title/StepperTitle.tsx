@@ -1,9 +1,18 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import useStyles from './styles';
+import { createStyles, withStyles, WithStyles } from '@material-ui/core/styles';
 
-const StepperTitle: React.FC = () => {
-	const classes = useStyles();
+const styles = () =>
+	createStyles({
+		root: {
+			padding: 24,
+			paddingBottom: 0,
+			textAlign: 'center'
+		}
+	});
+
+const StepperTitle = (props: WithStyles<typeof styles>) => {
+	const { classes } = props;
 
 	return (
 		<Typography variant='h6' noWrap className={classes.root}>
@@ -12,4 +21,4 @@ const StepperTitle: React.FC = () => {
 	);
 };
 
-export default StepperTitle;
+export default withStyles(styles)(StepperTitle);

@@ -2,7 +2,7 @@ import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import AppBarComponent from './appBar/AppBar';
-import DrawerComponent from './drawer/Drawer';
+import Nav from './nav/Nav';
 import useStyles from './styles';
 
 interface SidebarProps {
@@ -10,8 +10,8 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = (props: SidebarProps): JSX.Element => {
-	const classes = useStyles();
 	const { window } = props;
+	const classes = useStyles();
 	const [ mobileOpen, setMobileOpen ] = React.useState(false);
 
 	const handleDrawerToggle = () => {
@@ -30,26 +30,16 @@ const Sidebar: React.FC<SidebarProps> = (props: SidebarProps): JSX.Element => {
 					variant='temporary'
 					open={mobileOpen}
 					onClose={handleDrawerToggle}
-					classes={{
-						paper: classes.drawer
-					}}
-					ModalProps={{
-						keepMounted: true
-					}}
+					classes={{ paper: classes.drawer }}
+					ModalProps={{ keepMounted: true }}
 				>
-					<DrawerComponent />
+					<Nav />
 				</Drawer>
 			</Hidden>
 
 			<Hidden smDown implementation='css'>
-				<Drawer
-					classes={{
-						paper: classes.drawer
-					}}
-					variant='permanent'
-					open={mobileOpen}
-				>
-					<DrawerComponent />
+				<Drawer classes={{ paper: classes.drawer }} variant='permanent' open={mobileOpen}>
+					<Nav />
 				</Drawer>
 			</Hidden>
 		</div>

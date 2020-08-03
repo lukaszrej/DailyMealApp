@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme: Theme) =>
 		activity: {
 			width: '100%'
 		},
-		button: {
+		buttons: {
 			display: 'flex',
 			justifyContent: 'center',
 			margin: 0,
