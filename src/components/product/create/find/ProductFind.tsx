@@ -43,6 +43,7 @@ const ProductFind: React.FC = (): JSX.Element => {
 					{isLoading ? <Loader /> : 'Search'}
 				</Button>
 			</form>
+
 			<ProductList />
 		</React.Fragment>
 	);

@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			'& > div> h6': {
 				padding: 24
 			},
+
 			// rwd
 			[theme.breakpoints.down('sm')]: {
 				marginBottom: 24,

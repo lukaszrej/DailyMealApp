@@ -9,8 +9,9 @@ interface TagProps extends ChipProps {
 }
 
 const ProductTag: React.FC<TagProps> = (props: TagProps): JSX.Element => {
-	const classes = useStyles();
 	const { label, calories } = props;
+	const classes = useStyles();
+
 	const combinedLabel = `${label} ${calories} kcal`;
 
 	return (

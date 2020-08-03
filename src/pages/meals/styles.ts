@@ -4,16 +4,18 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			display: 'flex',
+			flexDirection: 'column',
+			width: '100%',
+			marginBottom: 24,
+
 			'& h6, & h3': {
-				padding: 24
+				padding: 24,
+				textAlign: 'center'
 			},
 			'& h3': {
 				paddingTop: 0
 			},
-			'& > section': {
-				width: '100%'
-			},
-			'& div:first-of-type': {
+			'& > div:first-of-type': {
 				marginBottom: 24
 			}
 		},

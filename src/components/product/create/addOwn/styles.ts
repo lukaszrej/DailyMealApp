@@ -14,18 +14,16 @@ const useStyles = makeStyles((theme: Theme) =>
 				letterSpacing: 2,
 				fontSize: 20
 			},
+
 			// rwd
 			[theme.breakpoints.down('sm')]: {
 				width: '95%'
 			}
 		},
-		margin: {
-			margin: theme.spacing(1),
+		group: {
 			marginBottom: 0,
 			marginLeft: 0,
-			marginRight: 0
-		},
-		withoutLabel: {
+			marginRight: 0,
 			marginTop: theme.spacing(3)
 		}
 	})

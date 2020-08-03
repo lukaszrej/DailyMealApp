@@ -1,6 +1,7 @@
 import React from 'react';
 import shortid from 'shortid';
 import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
 import { Product } from '../../../store/product/Product.types';
 import MealChart from './chart/MealChart';
 import ProductTag from '../../product/tag/ProductTag';
@@ -29,23 +30,27 @@ const MealCard: React.FC<MealCardProps> = (props: MealCardProps): JSX.Element =>
 					return (
 						<section key={shortid.generate()}>
 							<header>Meal {index + 1}</header>
+
 							<main className={classes.meal}>
 								{meal.map((item: Product) => {
-									mealTotal.calories += Math.round(Number(item.food.nutrients.ENERC_KCAL));
-									mealTotal.fat += Math.round(Number(item.food.nutrients.FAT));
-									mealTotal.carbs += Math.round(Number(item.food.nutrients.CHOCDF));
-									mealTotal.protein += Math.round(Number(item.food.nutrients.PROCNT));
-									return (
-										<ProductTag
-											key={shortid.generate()}
-											label={item.food.label.toUpperCase()}
-											calories={Math.round(Number(item.food.nutrients.ENERC_KCAL))}
-										/>
-									);
+									const calories = Math.round(item.food.nutrients.ENERC_KCAL);
+									const protein = Math.round(item.food.nutrients.PROCNT);
+									const carbs = Math.round(item.food.nutrients.CHOCDF);
+									const fat = Math.round(item.food.nutrients.FAT);
+									const label = item.food.label;
+
+									mealTotal.calories += calories;
+									mealTotal.fat += fat;
+									mealTotal.carbs += carbs;
+									mealTotal.protein += protein;
+
+									return <ProductTag key={shortid.generate()} label={label} calories={calories} />;
 								})}
 							</main>
 
-							<MealChart mealTotal={mealTotal} dailyNeed={dailyNeed} mealIndex={index + 1} />
+							<MealChart mealTotal={mealTotal} dailyNeed={dailyNeed} />
+
+							{meals.length > 1 ? <Divider /> : ''}
 						</section>
 					);
 				})}

@@ -13,35 +13,42 @@ interface TableBodyProps {
 }
 
 const MealTableBody = (props: TableBodyProps) => {
-	const storedProducts = useSelector(getStoredProducts);
 	const { isSelected, handleSelectClick } = props;
+	const storedProducts = useSelector(getStoredProducts);
 
 	return (
 		<TableBody>
 			{storedProducts.map((product: Product, index: number) => {
-				const isItemSelected = isSelected(product.food.foodId);
+				const productId = product.food.foodId;
+				const productLabel = product.food.label;
+				const calories = product.food.nutrients.ENERC_KCAL;
+				const protein = product.food.nutrients.PROCNT;
+				const carbs = product.food.nutrients.CHOCDF;
+				const fat = product.food.nutrients.FAT;
+
+				const isItemSelected = isSelected(productId);
 				const labelId = `enhanced-table-checkbox-${index}`;
 
 				return (
 					<TableRow
 						hover
-						onClick={() => handleSelectClick(product.food.foodId)}
+						onClick={() => handleSelectClick(productId)}
 						role='checkbox'
 						aria-checked={isItemSelected}
 						tabIndex={-1}
-						key={product.food.foodId}
+						key={productId}
 						selected={isItemSelected}
 					>
 						<TableCell padding='checkbox'>
 							<Checkbox checked={isItemSelected} inputProps={{ 'aria-labelledby': labelId }} />
 						</TableCell>
 						<TableCell component='th' id={labelId} scope='row' padding='none'>
-							{product.food.label}
+							{productLabel}
 						</TableCell>
-						<TableCell align='right'>{Math.round(product.food.nutrients.ENERC_KCAL)}</TableCell>
-						<TableCell align='right'>{Math.round(product.food.nutrients.FAT)}</TableCell>
-						<TableCell align='right'>{Math.round(product.food.nutrients.CHOCDF)}</TableCell>
-						<TableCell align='right'>{Math.round(product.food.nutrients.PROCNT)}</TableCell>
+						<TableCell align='right'>{Math.round(calories)}</TableCell>
+						<TableCell align='right'>{Math.round(fat)}</TableCell>
+						<TableCell align='right'>{Math.round(carbs)}</TableCell>
+						<TableCell align='right'>{Math.round(protein)}</TableCell>
 					</TableRow>
 				);
 			})}

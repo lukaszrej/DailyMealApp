@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { getSteps } from '../utils';
+import { getSteps } from '../Stepper.utils';
 import useStyles from './styles';
 
 interface StepperResetProps {

@@ -1,4 +1,5 @@
 import React from 'react';
+import shortid from 'shortid';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -8,7 +9,6 @@ import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 import { storeProduct, updateCurrentKcalSum } from '../../../../store/product/Product.actions';
 import useStyles from './styles';
-import shortid from 'shortid';
 
 interface State {
 	name: string;
@@ -65,7 +65,7 @@ const ProductAddOwn: React.FC = (): JSX.Element => {
 	return (
 		<div className={classes.root}>
 			<form onSubmit={handleSubmitProduct}>
-				<FormGroup className={clsx(classes.margin, classes.withoutLabel)}>
+				<FormGroup className={clsx(classes.group)}>
 					<Input
 						id='standard-adornment-product-name'
 						type='text'

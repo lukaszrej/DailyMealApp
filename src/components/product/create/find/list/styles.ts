@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme: Theme) =>
 				paddingLeft: 8,
 				borderBottom: '1px solid #3f51b5',
 				fontWeight: 700,
-				letterSpacing: 2
+				letterSpacing: 2,
+				textTransform: 'lowercase'
 			},
 			'& > li:hover': {
 				background: '#00A8CC',

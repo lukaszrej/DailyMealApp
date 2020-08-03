@@ -13,8 +13,8 @@ interface TableToolbarProps {
 }
 
 const MealTableToolbar = (props: TableToolbarProps) => {
-	const classes = useStyles();
 	const { numSelected, handleDeleteSelectedProducts } = props;
+	const classes = useStyles();
 
 	return (
 		<Toolbar
@@ -23,11 +23,11 @@ const MealTableToolbar = (props: TableToolbarProps) => {
 			})}
 		>
 			{numSelected > 0 ? (
-				<Typography className={classes.title} color='inherit' variant='subtitle1' component='div'>
+				<Typography color='inherit' variant='subtitle1' component='div'>
 					{numSelected} selected
 				</Typography>
 			) : (
-				<Typography className={classes.title} variant='h6' id='tableTitle' component='div'>
+				<Typography variant='h6' id='tableTitle' component='div'>
 					Your meal
 				</Typography>
 			)}

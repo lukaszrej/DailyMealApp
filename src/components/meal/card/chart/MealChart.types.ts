@@ -8,5 +8,4 @@ export interface MealTotal {
 export interface ChartProps {
 	mealTotal: MealTotal;
 	dailyNeed: number;
-	mealIndex: number;
 }

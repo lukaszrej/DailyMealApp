@@ -21,8 +21,8 @@ export const showStepper = () => {
 	return (dispatch: Dispatch) => {
 		dispatch({
 			type: SHOW_STEPPER
-		})
-	}
+		});
+	};
 };
 
 export const removeStepper = () => {

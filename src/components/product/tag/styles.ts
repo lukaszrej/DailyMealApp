@@ -4,7 +4,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 	root: {
 		display: 'flex',
 		flexWrap: 'wrap',
-		marginTop: 12,
+		textTransform: 'uppercase',
+
 		'& div > svg': {
 			marginLeft: 11,
 			marginRight: -6,

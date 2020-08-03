@@ -3,15 +3,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Checkbox from '@material-ui/core/Checkbox';
-import { HeadCell, TableHeadProps } from './MealTableHead.types';
-
-const headCells: HeadCell[] = [
-	{ id: 'name', numeric: false, disablePadding: true, label: 'Product (100g serving)' },
-	{ id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
-	{ id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
-	{ id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-	{ id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' }
-];
+import { TableHeadProps } from './MealTableHead.types';
+import { headCells } from './MealTableHead.utils';
 
 const MealTableHead = (props: TableHeadProps) => {
 	const { onSelectAllClick, numSelected, rowCount } = props;

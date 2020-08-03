@@ -12,7 +12,8 @@ const useStyles = makeStyles(() =>
 				marginBottom: 12
 			},
 			'& h6': {
-				marginBottom: 12
+				marginBottom: 12,
+				textAlign: 'center'
 			},
 			'& h3': {
 				paddingBottom: 12

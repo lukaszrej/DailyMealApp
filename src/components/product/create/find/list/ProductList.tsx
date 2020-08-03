@@ -5,7 +5,7 @@ import { getFoundProducts } from '../../../../../store/product/Product.selectors
 import { storeProduct, updateCurrentKcalSum } from '../../../../../store/product/Product.actions';
 import { Product } from '../../../../../store/product/Product.types';
 import TooltipComponent from '../../../../utilsComponents/tooltip/Tooltip';
-import ProductNutrients from './ProductNutrients';
+import ProductNutrients from './nutrients/ProductNutrients';
 import useStyles from './styles';
 
 const ProductList: React.FC = (): JSX.Element => {
@@ -16,7 +16,9 @@ const ProductList: React.FC = (): JSX.Element => {
 	const handleListItemClick = (e: React.SyntheticEvent, product: Product): void => {
 		e.preventDefault();
 
-		const currentKcalSum = Math.ceil(Number(product.food.nutrients.ENERC_KCAL));
+		const calories = product.food.nutrients.ENERC_KCAL;
+		const currentKcalSum = Math.ceil(Number(calories));
+
 		dispatch(storeProduct(product));
 		dispatch(updateCurrentKcalSum(currentKcalSum));
 	};
@@ -24,6 +26,7 @@ const ProductList: React.FC = (): JSX.Element => {
 	return (
 		<ul className={classes.root}>
 			{foundProducts.map((product: Product) => {
+				const label = product.food.label;
 				return (
 					<TooltipComponent
 						key={shortid.generate()}
@@ -34,7 +37,7 @@ const ProductList: React.FC = (): JSX.Element => {
 						leaveDelay={50}
 					>
 						<li onClick={(e) => handleListItemClick(e, product)}>
-							{product.food.label.toLowerCase()}
+							{label}
 							<ProductNutrients product={product} />
 						</li>
 					</TooltipComponent>

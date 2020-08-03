@@ -4,7 +4,11 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			paddingLeft: theme.spacing(2),
-			paddingRight: theme.spacing(1)
+			paddingRight: theme.spacing(1),
+			'& > div': {
+				flex: '1 1 100%',
+				textAlign: 'center'
+			}
 		},
 		highlight:
 			theme.palette.type === 'light'
@@ -15,11 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
 				: {
 						color: theme.palette.text.primary,
 						backgroundColor: theme.palette.secondary.dark
-					},
-		title: {
-			flex: '1 1 100%',
-			textAlign: 'center'
-		}
+					}
 	})
 );
 

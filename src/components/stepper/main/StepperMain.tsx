@@ -5,7 +5,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { getSteps, getStepContent } from '../utils';
+import { getSteps, getStepContent } from '../Stepper.utils';
 import useStyles from './styles';
 
 interface StepperMainProps {

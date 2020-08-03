@@ -10,16 +10,14 @@ const MealCounter: React.FC = (): JSX.Element => {
 	const meals = useSelector(getMeals);
 
 	return (
-		<React.Fragment>
-			<Paper className={classes.root}>
-				<Typography variant='h6' noWrap>
-					Meals addded
-				</Typography>
-				<Typography variant='h3' color='primary' noWrap>
-					{meals ? meals.length : '0'}
-				</Typography>
-			</Paper>
-		</React.Fragment>
+		<Paper className={classes.root}>
+			<Typography variant='h6' noWrap>
+				Meals added
+			</Typography>
+			<Typography variant='h3' color='primary' noWrap>
+				{meals ? meals.length : '0'}
+			</Typography>
+		</Paper>
 	);
 };
 

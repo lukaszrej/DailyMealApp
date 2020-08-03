@@ -18,27 +18,25 @@ const MealsPage: React.FC = (): JSX.Element => {
 
 	return (
 		<main className={classes.root}>
-			<section>
-				<Paper square>
-					<Typography variant='h6' noWrap>
-						Your meals
-					</Typography>
-				</Paper>
+			<Paper square>
+				<Typography variant='h6' noWrap>
+					Your meals
+				</Typography>
+			</Paper>
 
-				<MealCard meals={meals} dailyNeed={dailyNeed} />
+			<MealCard meals={meals} dailyNeed={dailyNeed} />
 
-				<div className={classes.buttons}>
-					<Button
-						variant='contained'
-						color='primary'
-						size='large'
-						onClick={() => history.push('/home')}
-						endIcon={<HomeIcon />}
-					>
-						Go back
-					</Button>
-				</div>
-			</section>
+			<div className={classes.buttons}>
+				<Button
+					variant='contained'
+					color='primary'
+					size='large'
+					onClick={() => history.push('/home')}
+					endIcon={<HomeIcon />}
+				>
+					Go back
+				</Button>
+			</div>
 		</main>
 	);
 };

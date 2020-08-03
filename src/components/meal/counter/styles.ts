@@ -8,7 +8,8 @@ const useStyles = makeStyles(() =>
 			padding: 24,
 			marginTop: 12,
 			'& .MuiTypography-h6': {
-				paddingBottom: 12
+				paddingBottom: 12,
+				textAlign: 'center'
 			}
 		}
 	})
