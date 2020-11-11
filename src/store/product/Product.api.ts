@@ -7,6 +7,7 @@ const API_Keys: string | undefined = process.env.REACT_APP_API_KEYS;
 
 const getData = async (productName: string): Promise<ProductsApiResponse> => {
 	const productURL = API_Url + `${API_ID}&&app_key=${API_Keys}&ingr=${productName}`;
+	console.log(productURL, 'product.api')
 
 	return await axios.get(productURL);
 };

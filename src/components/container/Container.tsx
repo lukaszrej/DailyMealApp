@@ -1,4 +1,5 @@
 import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Sidebar from '../sidebar/Sidebar';
 import Alert from '../../components/utilsComponents/alert/Alert';
@@ -20,6 +21,7 @@ const Container: React.FC<ContainerProps> = (props: ContainerProps): JSX.Element
 	return (
 		<React.Fragment>
 			<div className={classes.root}>
+				<CssBaseline />
 				<Sidebar />
 
 				<main>
