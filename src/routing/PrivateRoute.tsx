@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, RouteProps } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getStarted } from '../store/start/Start.selectors';
-import StartApp from '../components/start/StartApp';
+import StartForm from '../components/StartForm';
 
 interface PrivateRouteProps extends RouteProps {
     component: React.ComponentType<any>;
@@ -11,7 +11,7 @@ interface PrivateRouteProps extends RouteProps {
 
 export default ({ component, ...options }: PrivateRouteProps) => {
     const isStarted = useSelector(getStarted);
-    const finalComponent = isStarted ? component : StartApp;
+    const finalComponent = isStarted ? component : StartForm;
 
     return <Route {...options} component={finalComponent} />
 };
