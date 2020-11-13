@@ -1,18 +1,17 @@
 import React from 'react';
+import styled from "styled-components";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { useDispatch } from 'react-redux';
 import { removeAlert } from '../store/start/Start.actions';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: Theme) => ({
-	root: {
-		width: '100%',
-		'& > * + *': {
-			marginTop: theme.spacing(2)
-		}
+const AlertWrapper = styled.div`
+	width: 100%;
+
+	& > * + * {
+		margin-top: 16px;
 	}
-}));
+`;
 
 interface AlertExtendedProps extends AlertProps {
 	children?: React.ReactNode;
@@ -23,8 +22,7 @@ const AlertMaterialUI = (props: AlertExtendedProps) => {
 	return <MuiAlert elevation={6} variant='filled' {...props} />;
 };
 
-const Alert: React.FC<AlertExtendedProps> = (props: AlertExtendedProps): JSX.Element => {
-	const classes = useStyles();
+const Alert = (props: AlertExtendedProps) => {
 	const dispatch = useDispatch();
 	const { children, severity } = props;
 	const [ open, setOpen ] = React.useState(true);
@@ -39,13 +37,13 @@ const Alert: React.FC<AlertExtendedProps> = (props: AlertExtendedProps): JSX.Ele
 	};
 
 	return (
-		<div className={classes.root}>
+		<AlertWrapper>
 			<Snackbar open={open} autoHideDuration={3500} onClose={handleClose}>
 				<AlertMaterialUI onClose={handleClose} severity={severity}>
 					{children}
 				</AlertMaterialUI>
 			</Snackbar>
-		</div>
+		</AlertWrapper>
 	);
 };
 

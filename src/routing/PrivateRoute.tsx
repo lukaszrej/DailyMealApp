@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, RouteProps } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getStarted } from '../store/start/Start.selectors';
-import StartForm from '../components/StartForm';
+import StartForm from '../components/StartForm/StartForm';
 
 interface PrivateRouteProps extends RouteProps {
     component: React.ComponentType<any>;

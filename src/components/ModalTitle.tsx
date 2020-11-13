@@ -26,7 +26,7 @@ export interface ModalTitleProps extends WithStyles<typeof styles> {
 	onClose?: () => void;
 }
 
-const ModalTitle = (props: ModalTitleProps): JSX.Element => {
+const ModalTitle = (props: ModalTitleProps) => {
 	const { children, classes, onClose, ...other } = props;
 
 	return (

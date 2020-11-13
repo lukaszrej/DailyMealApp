@@ -1,27 +1,25 @@
 import React from 'react';
-import Stepper from '../components/Stepper';
-import ProductCreate from '../components/ProductCreate';
-import MealCreate from '../components/MealCreate';
-import UserDetails from '../components/UserDetails';
-import UserNeed from '../components/UserNeed';
-import MealCounter from '../components/MealCounter';
+import InfoStepper from '../components/InfoStepper/Stepper';
+import ProductSection from '../components/ProductSection/ProductSection';
+import MealSection from '../components/MealSection/MealSection';
+import UserDetails from '../components/UserDetails/UserDetails';
+import UserDailyNeed from '../components/UserDailyNeed/UserDailyNeed';
+import MealCounter from '../components/MealCounter/MealCounter';
 import * as S from './styles';
 
-const HomePage: React.FC = (): JSX.Element => {
+export default () => {
 	return (
 		<S.Home>
 			<article>
-				<Stepper />
-				<ProductCreate />
-				<MealCreate />
+				<InfoStepper />
+				<ProductSection />
+				<MealSection />
 			</article>
 			<aside>
 				<UserDetails />
-				<UserNeed />
+				<UserDailyNeed />
 				<MealCounter />
 			</aside>
 		</S.Home>
 	);
 };
-
-export default HomePage;

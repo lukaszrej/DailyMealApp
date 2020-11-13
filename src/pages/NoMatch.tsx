@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+	PAGE_NOT_EXIST,
+	GO_BACK_HOME
+} from "../utils/constants";
 
-const NoMatchPage: React.FC = (): JSX.Element => {
+export default () => {
 	return (
 		<main>
-			The page does not exist. <Link to='/home'>Go back to the home page</Link>
+			{PAGE_NOT_EXIST} <Link to='/home'>{GO_BACK_HOME}</Link>
 		</main>
 	);
 };
-
-export default NoMatchPage;

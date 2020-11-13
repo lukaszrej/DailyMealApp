@@ -1,4 +1,10 @@
-import { allStartActionTypes, START_APP, REMOVE_WELCOME_ALERT, SHOW_STEPPER, REMOVE_STEPPER } from './Start.types';
+import {
+	allStartActionTypes,
+	START_APP,
+	REMOVE_WELCOME_ALERT,
+	SHOW_STEPPER,
+	REMOVE_STEPPER
+} from './Start.types';
 
 interface StartState {
 	started: boolean | string | null;
@@ -15,6 +21,7 @@ export const initialState: StartState = {
 export const StartReducer = (state: StartState = initialState, action: allStartActionTypes) => {
 	switch (action.type) {
 		case START_APP:
+
 			localStorage.setItem('start', JSON.stringify(state.started))
 
 			return {
