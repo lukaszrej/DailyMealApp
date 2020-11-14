@@ -10,9 +10,8 @@ export * from "./_sidebar";
 export * from "./_footerSocialLinks";
 
 // info stepper
-export * from "./_stepperMain";
 export * from "./_stepper";
-export * from "./_stepperReset";
+export * from "./_stepperContent";
 
 // product section
 export * from "./_productSection";

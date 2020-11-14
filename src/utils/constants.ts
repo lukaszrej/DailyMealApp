@@ -33,6 +33,12 @@ export const ACTIVITY_LEVEL_LABEL = "Activity level";
 export const MALE = "Male";
 export const FEMALE = "Female";
 
+// stepper
+export const RESET = "Reset";
+export const BACK = "Back";
+export const NEXT = "Next";
+export const FINISH_AND_REMOVE = "Finish and remove section";
+
 // forms
 export const PRODUCT_NAME = "Product name";
 export const TYPE_PRODUCT_NAME = "Type product name";

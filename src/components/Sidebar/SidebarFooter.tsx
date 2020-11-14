@@ -10,13 +10,17 @@ import { FOOTER_HEADING } from "../../utils/constants";
 const styles = () =>
 	createStyles({
 		root: {
-			flexDirection: 'column',
+			minHeight: 72,
 
-			'& > div > span.MuiTypography-displayBlock': {
-				fontSize: 12,
-				color: 'grey'
+			'& li': {
+				flexDirection: 'column',
+
+				'& > div > span.MuiTypography-displayBlock': {
+					fontSize: 12,
+					color: 'grey'
+				}
 			}
-		}
+		},
 	});
 
 const SidebarFooter = (props: WithStyles<typeof styles>) => {
@@ -24,8 +28,8 @@ const SidebarFooter = (props: WithStyles<typeof styles>) => {
 
 	return (
 		<footer>
-			<List>
-				<ListItem className={classes.root}>
+			<List className={classes.root}>
+				<ListItem>
 					<ListItemText primary={FOOTER_HEADING} />
 					<StepperLink />
 				</ListItem>

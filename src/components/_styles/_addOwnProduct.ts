@@ -23,6 +23,5 @@ export const AddOwnProduct = styled.div`
 		margin-bottom: 0;
 		margin-left: 0;
 		margin-right: 0;
-		margin-top: 24px;
 	}
 `;

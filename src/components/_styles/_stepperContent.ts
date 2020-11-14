@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StepperMain = styled.div`
+export const StepperContent = styled.div`
 	margin-bottom: 16px;
 
 	& button {
