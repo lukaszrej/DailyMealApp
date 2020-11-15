@@ -12,7 +12,7 @@ const Stepper = () => {
 	const dispatch = useDispatch();
 	const showStepper = useSelector(getShowStepper);
 	const [activeStep, setActiveStep] = useState(0);
-	const [seconds, setSeconds] = useState(15);
+	const [secondsToRemove, setSecondsToRemove] = useState(15);
 
 	const handleNext = (activeStep: number, steps: string[]) => {
 		setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -20,7 +20,7 @@ const Stepper = () => {
 		if (activeStep === steps.length - 1) {
 			dispatch(removeStepper());
 			setActiveStep(0);
-			setSeconds(0);
+			setSecondsToRemove(0);
 		}
 	};
 
@@ -33,7 +33,7 @@ const Stepper = () => {
 	};
 
 	// remove initial stepper after 15 seconds
-	useRemoveStepper(seconds, setSeconds);
+	useRemoveStepper(secondsToRemove, setSecondsToRemove);
 
 	if (!showStepper) return null;
 
@@ -42,9 +42,13 @@ const Stepper = () => {
 			<Typography variant='h6' noWrap>
 				{INFO_STEPPER_HEADING}
 			</Typography>
-			<StepperContent activeStep={activeStep} handleBack={handleBack} handleNext={handleNext} handleReset={handleReset} />
-			{/* todo: organize below section of removing initial stepper */}
-			{seconds > 0 && <div>Section will be removed after {seconds} seconds.</div>}
+			<StepperContent
+				activeStep={activeStep}
+				handleBack={handleBack}
+				handleNext={handleNext}
+				handleReset={handleReset}
+				secondsToRemove={secondsToRemove}
+			/>
 		</S.Stepper>
 	);
 };
