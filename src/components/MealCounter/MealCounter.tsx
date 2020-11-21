@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import { getMeals } from '../../store/meal/Meal.selectors';
 import { MEAL_COUNTER_HEADING } from "../../utils/constants";
-import * as S from "../_styles";
+import * as S from "../../styles/components";
 
 const MealCounter = () => {
 	const meals = useSelector(getMeals);

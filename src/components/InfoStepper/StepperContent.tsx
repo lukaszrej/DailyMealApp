@@ -6,8 +6,8 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { getSteps, getStepContent } from '../../utils/stepperContent';
-import { BACK, FINISH_AND_REMOVE, NEXT, RESET } from "../../utils/constants";
-import * as S from "../_styles";
+import * as T from "../../utils/constants";
+import * as S from "../../styles/components";
 
 interface StepperMainProps {
 	activeStep: number;
@@ -32,18 +32,18 @@ const StepperMain = (props: StepperMainProps) => {
 						<S.StepperContent>
 							<div>
 								<Button disabled={activeStep === 0} variant="outlined" onClick={handleBack}>
-									{BACK}
+									{T.BACK}
 								</Button>
 								<Button
 									variant='outlined'
 									color={activeStep === steps.length - 1 ? 'secondary' : 'primary'}
 									onClick={() => handleNext(activeStep, steps)}>
 
-									{activeStep === steps.length - 1 ? FINISH_AND_REMOVE : NEXT}
+									{activeStep === steps.length - 1 ? T.FINISH_AND_REMOVE : T.NEXT}
 								</Button>
 								{activeStep === steps.length - 1 &&
 									<Button variant='outlined' color="primary" onClick={handleReset}>
-										{RESET}
+										{T.RESET}
 									</Button>
 								}
 							</div>
@@ -54,7 +54,7 @@ const StepperMain = (props: StepperMainProps) => {
 
 			{
 				secondsToRemove > 0 &&
-				<S.StepperRemove>Section will be removed after <span>{secondsToRemove}</span> seconds</S.StepperRemove>
+				<S.StepperRemove>{T.WILL_BE_REMOVED_AFTER} <span>{secondsToRemove}</span> {T.SECONDS}</S.StepperRemove>
 			}
 		</Stepper>
 	);

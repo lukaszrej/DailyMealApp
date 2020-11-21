@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeStepper } from '../../store/start/Start.actions';
 import { getShowStepper } from '../../store/start/Start.selectors';
 import { INFO_STEPPER_HEADING } from "../../utils/constants";
-import * as S from "../_styles";
+import * as S from "../../styles/components";
 
 const Stepper = () => {
 	const dispatch = useDispatch();

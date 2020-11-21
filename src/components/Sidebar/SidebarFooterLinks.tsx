@@ -4,7 +4,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import MailIcon from '@material-ui/icons/Mail';
 import Link from '@material-ui/core/Link';
-import * as S from '../_styles';
+import * as S from '../../styles/components';
 
 const SocialLinks = () => {
 	return (

@@ -6,7 +6,7 @@ import { Product } from '../../store/product/Product.types';
 import MealChart from './MealChart';
 import MealProductTag from '../MealSection/MealProductTag';
 import { MEAL } from "../../utils/constants";
-import * as S from "../_styles";
+import * as S from "../../styles/components";
 
 interface MealCardProps {
 	meals: any[];

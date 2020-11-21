@@ -38,6 +38,8 @@ export const RESET = "Reset";
 export const BACK = "Back";
 export const NEXT = "Next";
 export const FINISH_AND_REMOVE = "Finish and remove section";
+export const WILL_BE_REMOVED_AFTER = "Section will be removed after";
+export const SECONDS = "seconds";
 
 // forms
 export const PRODUCT_NAME = "Product name";

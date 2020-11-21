@@ -6,7 +6,7 @@ import { storeProduct, updateCurrentKcalSum } from '../../store/product/Product.
 import { Product } from '../../store/product/Product.types';
 import TooltipComponent from '../Tooltip';
 import ProductNutrients from './ProductListNutrients';
-import * as S from '../_styles';
+import * as S from '../../styles/components';
 
 const ProductList = () => {
 	const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import React from 'react';
 import Chip, { ChipProps } from '@material-ui/core/Chip';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
-import * as S from "../_styles";
+import * as S from "../../styles/components";
 
 interface TagProps extends ChipProps {
 	label: string;

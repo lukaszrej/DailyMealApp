@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import AddOwnProduct from './AddOwnProduct';
 import FindProduct from './FindProduct';
 import { PRODUCT_SECTION_HEADING, FIND_PRODUCT, ADD_OWN_PRODUCT } from "../../utils/constants";
-import * as S from "../_styles";
+import * as S from "../../styles/components";
 
 const ProductSection = () => {
 	const [ value, setValue ] = React.useState(0);

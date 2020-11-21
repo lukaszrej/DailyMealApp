@@ -15,7 +15,7 @@ import ModalTitle from '../ModalTitle';
 import ModalContent from '../ModalContent';
 import { activityOptions } from '../../utils/activityLevels';
 import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
-import * as S from '../_styles';
+import * as S from '../../styles/components';
 import {
 	EDIT_USER_DATA,
 	NAME_LABEL,

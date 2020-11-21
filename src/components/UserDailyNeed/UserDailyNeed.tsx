@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { getUserDailyNeed } from '../../store/user/User.selectors';
 import { getCurrentKcalSum } from '../../store/product/Product.selectors';
 import { CALORIE_NEED_HEADING, CURRENT_MEAL, KCAL } from "../../utils/constants";
-import * as S from '../_styles';
+import * as S from '../../styles/components';
 
 const UserNeed = () => {
 	const dailyNeed = useSelector(getUserDailyNeed);

@@ -7,7 +7,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
 import { storeProduct, updateCurrentKcalSum } from '../../store/product/Product.actions';
-import * as S from '../_styles';
+import * as S from '../../styles/components';
 
 interface State {
 	name: string;

@@ -18,7 +18,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
 import { startApp } from '../../store/start/Start.actions';
-import * as S from '../_styles/_startForm';
+import * as S from '../../styles/components';
 
 const StartForm = () => {
 	const dispatch = useDispatch();

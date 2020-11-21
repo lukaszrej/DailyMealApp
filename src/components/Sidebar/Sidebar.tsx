@@ -14,7 +14,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getMeals, getIsMealAdded } from '../../store/meal/Meal.selectors';
 import { APP_NAME, HOME, YOUR_MEALS } from "../../utils/constants";
-import * as S from '../_styles';
+import * as S from '../../styles/components';
 
 const Sidebar = () => {
 	const history = useHistory();

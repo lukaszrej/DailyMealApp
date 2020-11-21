@@ -6,7 +6,7 @@ import { getStoredProducts } from '../../store/product/Product.selectors';
 import { storeMeal, setIsMealAdded } from '../../store/meal/Meal.actions';
 import { deleteAllProducts } from '../../store/product/Product.actions';
 import { SUBMIT_MEAL, DISMISS } from "../../utils/constants";
-import * as S from "../_styles";
+import * as S from "../../styles/components";
 
 const MealSection = () => {
 	const dispatch = useDispatch();

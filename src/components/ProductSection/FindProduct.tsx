@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Loader from '../Loader';
 import ProductList from './ProductList';
 import { PRODUCT_NAME, TYPE_PRODUCT_NAME, SEARCH } from "../../utils/constants";
-import * as S from '../_styles';
+import * as S from '../../styles/components';
 
 const FindProduct = () => {
 	const dispatch = useDispatch();

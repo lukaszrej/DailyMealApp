@@ -6,7 +6,7 @@ import Alert from './Alert';
 import { useSelector } from 'react-redux';
 import { getShowAlert } from '../store/start/Start.selectors';
 import { getUserName } from '../store/user/User.selectors';
-import * as S from "./_styles";
+import * as S from "../styles/components";
 
 interface ContainerProps {
 	children: JSX.Element;
