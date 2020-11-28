@@ -10,7 +10,12 @@ export const USER_DETAILS_HEADING = "User details";
 export const CALORIE_NEED_HEADING = "Daily calorie need";
 export const MEAL_COUNTER_HEADING = "Meals added";
 
+// start form
+export const FILL_THE_FORM = "Fill the form and start the app!";
+
+
 // nav, buttons and links
+export const START = "Start";
 export const HOME = "Home";
 export const YOUR_MEALS = "Your meals";
 export const SAVE = "Save";

@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import UserDetailsEdit from './UserDetailsEdit';
 import Alert from '../Alert';
-import * as S from '../../styles/components';
 import { useSelector } from 'react-redux';
 import getActivityLevelDesc from '../../utils/activityLevelsDesc';
 import {
@@ -14,17 +13,8 @@ import {
 	getUserGender,
 	getUserActivityLevel
 } from '../../store/user/User.selectors';
-import {
-	USER_DETAILS_HEADING,
-	EDIT_DATA,
-	DATA_CORRECTLY_UPDATED,
-	NAME,
-	HEIGHT,
-	CURRENT_WEIGHT,
-	GENDER,
-	AGE,
-	ACTIVITY_LEVEL
-} from "../../utils/constants";
+import * as S from '../../styles/components';
+import * as T from "../../utils/constants";
 
 const UserDetails = () => {
 	const userName = useSelector(getUserName);
@@ -34,8 +24,8 @@ const UserDetails = () => {
 	const userGender = useSelector(getUserGender);
 	const userActivityLevel = useSelector(getUserActivityLevel);
 
-	const [ displayAlert, setDisplayAlert ] = useState(false);
-	const [ openEditModal, setOpenEditModal ] = useState(false);
+	const [displayAlert, setDisplayAlert] = useState(false);
+	const [openEditModal, setOpenEditModal] = useState(false);
 
 	const handleOpen = () => {
 		setOpenEditModal(true);
@@ -50,18 +40,18 @@ const UserDetails = () => {
 		<>
 			<S.UserDetails>
 				<Typography variant='h6' noWrap>
-					{USER_DETAILS_HEADING}
+					{T.USER_DETAILS_HEADING}
 				</Typography>
 
-				{userName && <p>{NAME}: {userName}</p>}
-				{userHeight && <p>{HEIGHT}: {userHeight} cm</p>}
-				{userWeight && <p>{CURRENT_WEIGHT}: {userWeight} kg</p>}
-				{userAge && <p>{AGE}: {userAge}</p>}
-				{userGender && <p>{GENDER}: {userGender}</p>}
-				{userActivityLevel && <p>{ACTIVITY_LEVEL}: {getActivityLevelDesc(userActivityLevel)}</p>}
+				{userName && <p>{T.NAME}: {userName}</p>}
+				{userHeight && <p>{T.HEIGHT}: {userHeight} cm</p>}
+				{userWeight && <p>{T.CURRENT_WEIGHT}: {userWeight} kg</p>}
+				{userAge && <p>{T.AGE}: {userAge}</p>}
+				{userGender && <p>{T.GENDER}: {userGender}</p>}
+				{userActivityLevel && <p>{T.ACTIVITY_LEVEL}: {getActivityLevelDesc(userActivityLevel)}</p>}
 
 				<Button variant='outlined' color='primary' onClick={handleOpen}>
-					{EDIT_DATA}
+					{T.EDIT_DATA}
 				</Button>
 
 				{openEditModal && (
@@ -74,7 +64,7 @@ const UserDetails = () => {
 				)}
 			</S.UserDetails>
 
-			{displayAlert && <Alert severity='success'>{DATA_CORRECTLY_UPDATED}</Alert>}
+			{displayAlert && <Alert severity='success'>{T.DATA_CORRECTLY_UPDATED}</Alert>}
 		</>
 	);
 };

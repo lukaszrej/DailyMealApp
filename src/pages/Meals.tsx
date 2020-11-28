@@ -5,8 +5,6 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import HomeIcon from '@material-ui/icons/Home';
 import MealCard from '../components/MealsPage/MealCard';
-import ModalTitle from '../components/ModalTitle';
-import ModalContent from '../components/ModalContent';
 import { useSelector } from 'react-redux';
 import { getMeals } from '../store/meal/Meal.selectors';
 import { getUserDailyNeed } from '../store/user/User.selectors';
@@ -39,8 +37,6 @@ export default () => {
 
 			<Button onClick={handleOpen}>Open modal something</Button>
 
-			<MealCard meals={meals} dailyNeed={dailyNeed} />
-
 			<div className="buttons">
 				<Button
 					variant='contained'
@@ -54,12 +50,7 @@ export default () => {
 			</div>
 
 			<Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={openModal}>
-				<ModalTitle id='customized-dialog-title' onClose={handleClose}>
-					Hello, world!
-				</ModalTitle>
-				<ModalContent dividers>
-					Content will be added soon.
-				</ModalContent>
+				<MealCard meals={meals} dailyNeed={dailyNeed} />
 			</Dialog>
 		</S.Meals>
 	);

@@ -1,31 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
-import { useSelector } from 'react-redux';
 import { getUserDailyNeed } from '../../store/user/User.selectors';
 import { getCurrentKcalSum } from '../../store/product/Product.selectors';
-import { CALORIE_NEED_HEADING, CURRENT_MEAL, KCAL } from "../../utils/constants";
+import { calculateDailyNeed } from '../../store/user/User.actions';
 import * as S from '../../styles/components';
+import * as T from "../../utils/constants";
 
 const UserNeed = () => {
+	const dispatch = useDispatch();
 	const dailyNeed = useSelector(getUserDailyNeed);
 	const currentKcalSum = useSelector(getCurrentKcalSum);
+
+	useEffect(() => {
+		const localStorageUser = localStorage.getItem("user");
+		const parsedUser = JSON.parse(localStorageUser as string)
+
+		dispatch(calculateDailyNeed(parsedUser))
+	});
 
 	return (
 		<S.UserDailyNeed >
 			<Typography variant='h6' noWrap>
-				{CALORIE_NEED_HEADING}
+				{T.CALORIE_NEED_HEADING}
 			</Typography>
 			<Typography variant='h3' color='primary' noWrap>
-				{dailyNeed} {KCAL}
+				{dailyNeed} {T.KCAL}
 			</Typography>
 
 			{currentKcalSum !== 0 && (
 				<React.Fragment>
 					<Typography variant='h6' noWrap>
-						{CURRENT_MEAL}
+						{T.CURRENT_MEAL}
 					</Typography>
 					<Typography variant='h3' color='secondary' noWrap>
-						{currentKcalSum} {KCAL}
+						{currentKcalSum} {T.KCAL}
 					</Typography>
 				</React.Fragment>
 			)}

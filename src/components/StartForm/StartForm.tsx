@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import shortid from 'shortid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -14,22 +14,22 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { activityOptions } from '../../utils/activityLevels';
 import { getStarted } from '../../store/start/Start.selectors';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
 import { startApp } from '../../store/start/Start.actions';
 import * as S from '../../styles/components';
+import * as T from '../../utils/constants';
 
 const StartForm = () => {
 	const dispatch = useDispatch();
-	const started = useSelector(getStarted);
+	const isStarted = useSelector(getStarted);
 
-	const [name, setName] = React.useState('');
-	const [height, setHeight] = React.useState('170');
-	const [weight, setWeight] = React.useState('70');
-	const [age, setAge] = React.useState('28');
-	const [gender, setGender] = React.useState('male');
-	const [activityLevel, setActivityLevel] = React.useState('1.2');
+	const [name, setName] = useState('');
+	const [height, setHeight] = useState('170');
+	const [weight, setWeight] = useState('70');
+	const [age, setAge] = useState('28');
+	const [gender, setGender] = useState('male');
+	const [activityLevel, setActivityLevel] = useState('1.2');
 
 	const handleGenderChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
 		setGender((event.target as HTMLInputElement).value);
@@ -39,16 +39,19 @@ const StartForm = () => {
 		setActivityLevel((event.target as HTMLInputElement).value);
 	};
 
-	const handleStartSubmit = (e: React.SyntheticEvent): void => {
+	const handleStartSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
+
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
 		dispatch(startApp());
+		localStorage.setItem("started", "true");
+		localStorage.setItem("user", JSON.stringify({ name, height, weight, age, gender, activityLevel }));
 	};
 
 	return (
-		<Dialog open={!started} aria-labelledby='customized-dialog-title'>
-			<ModalTitle id='customized-dialog-title'>Fill the form and start the app!</ModalTitle>
+		<Dialog open={!isStarted} aria-labelledby='start-form-title'>
+			<ModalTitle id='start-form-title'>{T.FILL_THE_FORM}</ModalTitle>
 
 			<ModalContent dividers>
 				<S.StartForm noValidate onSubmit={handleStartSubmit}>
@@ -120,14 +123,14 @@ const StartForm = () => {
 					</FormControl>
 
 					<FormControl component='fieldset' className="gender">
-						<RadioGroup aria-label='gender' name='gender1' value={gender} onChange={handleGenderChange}>
-							<FormControlLabel value='male' control={<Radio />} label='Male' />
-							<FormControlLabel value='female' control={<Radio />} label='Female' />
+						<RadioGroup aria-label={T.GENDER} name={T.GENDER} value={gender} onChange={handleGenderChange}>
+							<FormControlLabel value='male' control={<Radio />} label={T.MALE} />
+							<FormControlLabel value='female' control={<Radio />} label={T.FEMALE} />
 						</RadioGroup>
 					</FormControl>
 
 					<Button type='submit' variant='contained'>
-						Start
+						{T.START}
 					</Button>
 				</S.StartForm>
 			</ModalContent>

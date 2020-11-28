@@ -22,7 +22,7 @@ interface ProductState {
 export const initialState: ProductState = {
 	isLoading: false,
 	foundProducts: [] as Product[],
-	storedProducts: [] as Product[],
+	storedProducts: []  as Product[],
 	selectedProducts: [] as string[],
 	currentKcalSum: 0
 };
@@ -43,7 +43,7 @@ export const ProductReducer = (state: ProductState = initialState, action: allPr
 		case STORE_PRODUCT:
 			return {
 				...state,
-				storedProducts: [ ...state.storedProducts, action.payload ],
+				storedProducts: [...state.storedProducts, action.payload],
 				foundProducts: [] as Product[]
 			};
 		case UPDATE_CURRENT_KCAL_SUM:

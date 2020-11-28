@@ -1,6 +1,6 @@
 import { allUserActionTypes, CREATE_USER, CALCULATE_DAILY_NEED } from './User.types';
 
-interface UserDetailsState {
+interface UserState {
 	name: string;
 	height: string;
 	weight: string;
@@ -10,17 +10,19 @@ interface UserDetailsState {
 	dailyNeed: number;
 }
 
-export const initialState: UserDetailsState = {
-	name: '',
-	height: '',
-	weight: '',
-	age: '',
-	gender: 'male',
-	activityLevel: '1.2',
-	dailyNeed: 0
+const localStorageUser = JSON.parse(localStorage.getItem("user") as string);
+
+export const initialState: UserState = {
+	name: localStorageUser ? localStorageUser.name : '',
+	height: localStorageUser ? localStorageUser.height : '',
+	weight: localStorageUser ? localStorageUser.weight : '',
+	age: localStorageUser ? localStorageUser.age : '',
+	gender: localStorageUser ? localStorageUser.gender : 'male',
+	activityLevel: localStorageUser ? localStorageUser.activityLevel : '1.2',
+	dailyNeed: localStorageUser ? localStorageUser.dailyNeed : 0
 };
 
-export const UserReducer = (state: UserDetailsState = initialState, action: allUserActionTypes) => {
+export const UserReducer = (state: UserState = initialState, action: allUserActionTypes) => {
 	switch (action.type) {
 		case CREATE_USER:
 			return {
@@ -32,11 +34,13 @@ export const UserReducer = (state: UserDetailsState = initialState, action: allU
 				gender: action.gender,
 				activityLevel: action.activityLevel
 			};
+
 		case CALCULATE_DAILY_NEED:
 			return {
 				...state,
 				dailyNeed: action.payload
 			};
+
 		default:
 			return state;
 	}

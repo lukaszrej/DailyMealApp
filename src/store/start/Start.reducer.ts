@@ -7,13 +7,13 @@ import {
 } from './Start.types';
 
 interface StartState {
-	started: boolean | string | null;
+	started: string | boolean | null;
 	showAlert: boolean;
 	showStepper: boolean;
 }
 
 export const initialState: StartState = {
-	started: localStorage.getItem("start") ? localStorage.getItem("start") : false,
+	started: localStorage.getItem("started") ? localStorage.getItem("started") : false,
 	showAlert: false,
 	showStepper: true
 };
@@ -21,9 +21,6 @@ export const initialState: StartState = {
 export const StartReducer = (state: StartState = initialState, action: allStartActionTypes) => {
 	switch (action.type) {
 		case START_APP:
-
-			localStorage.setItem('start', JSON.stringify(state.started))
-
 			return {
 				...state,
 				started: true,

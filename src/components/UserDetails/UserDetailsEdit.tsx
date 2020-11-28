@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import shortid from 'shortid';
 import Button from '@material-ui/core/Button';
@@ -48,17 +48,17 @@ const UserDetailsEdit = (props: UserEditProps) => {
 	const dispatch = useDispatch();
 
 	const currentName = useSelector(getUserName);
-	const [ name, setName ] = useState(currentName);
+	const [name, setName] = useState(currentName);
 	const currentHeight = useSelector(getUserHeight);
-	const [ height, setHeight ] = useState(currentHeight);
+	const [height, setHeight] = useState(currentHeight);
 	const currentWeight = useSelector(getUserWeight);
-	const [ weight, setWeight ] = useState(currentWeight);
+	const [weight, setWeight] = useState(currentWeight);
 	const currentAge = useSelector(getUserAge);
-	const [ age, setAge ] = useState(currentAge);
+	const [age, setAge] = useState(currentAge);
 	const currentGender = useSelector(getUserGender);
-	const [ gender, setGender ] = useState(currentGender);
+	const [gender, setGender] = useState(currentGender);
 	const currentActivityLevel = useSelector(getUserActivityLevel);
-	const [ activityLevel, setActivityLevel ] = useState(currentActivityLevel);
+	const [activityLevel, setActivityLevel] = useState(currentActivityLevel);
 
 	const handleActivityLevelChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
 		setActivityLevel((event.target as HTMLInputElement).value);
@@ -72,6 +72,8 @@ const UserDetailsEdit = (props: UserEditProps) => {
 		e.preventDefault();
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
+
+		localStorage.setItem("user", JSON.stringify({ name, height, weight, age, gender, activityLevel }));
 		setOpenEditModal(false);
 
 		if (
@@ -159,8 +161,8 @@ const UserDetailsEdit = (props: UserEditProps) => {
 					</S.UserDetailsEdit>
 					<FormControl component='fieldset'>
 						<RadioGroup aria-label='gender' name='gender1' value={gender} onChange={handleGenderChange}>
-							<FormControlLabel value={MALE} control={<Radio />} label={MALE} />
-							<FormControlLabel value={FEMALE} control={<Radio />} label={FEMALE} />
+							<FormControlLabel value='male' control={<Radio />} label={MALE} />
+							<FormControlLabel value='female' control={<Radio />} label={FEMALE} />
 						</RadioGroup>
 					</FormControl>
 				</ModalContent>
