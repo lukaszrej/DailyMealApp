@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import shortid from 'shortid';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
 import { storeProduct, updateCurrentKcalSum } from '../../store/product/Product.actions';
 import * as S from '../../styles/components';
+import * as T from "../../utils/constants";
 
 interface State {
 	name: string;
@@ -19,7 +20,7 @@ interface State {
 
 const AddOwnProduct = () => {
 	const dispatch = useDispatch();
-	const [ values, setValues ] = React.useState<State>({
+	const [values, setValues] = useState<State>({
 		name: '',
 		calories: 0,
 		fat: 0,
@@ -67,56 +68,56 @@ const AddOwnProduct = () => {
 					<Input
 						id='standard-adornment-product-name'
 						type='text'
-						placeholder='Type product name'
+						placeholder={T.TYPE_PRODUCT_NAME}
 						value={values.name}
 						onChange={handleChange('name')}
 						aria-describedby='standard-product-name-helper-text'
 					/>
-					<FormHelperText id='standard-product-name-helper-text'>Product name</FormHelperText>
+					<FormHelperText id='standard-product-name-helper-text'>{T.PRODUCT_NAME}</FormHelperText>
 
 					<Input
 						id='standard-adornment-calories'
 						value={values.calories}
 						type='number'
 						onChange={handleChange('calories')}
-						endAdornment={<InputAdornment position='end'>kcal</InputAdornment>}
+						endAdornment={<InputAdornment position='end'>{T.KCAL}</InputAdornment>}
 						aria-describedby='standard-calories-helper-text'
-						inputProps={{ 'aria-label': 'calories', min: '0', max: '600', step: '1' }}
+						inputProps={{ 'aria-label': T.CALORIES, min: '0', max: '600', step: '1' }}
 					/>
-					<FormHelperText id='standard-weight-helper-text'>Calories</FormHelperText>
+					<FormHelperText id='standard-weight-helper-text'>{T.CALORIES}</FormHelperText>
 
 					<Input
 						id='standard-adornment-fat'
 						value={values.fat}
 						type='number'
 						onChange={handleChange('fat')}
-						endAdornment={<InputAdornment position='end'>g/100g</InputAdornment>}
+						endAdornment={<InputAdornment position='end'>{T.SLASH_100G}</InputAdornment>}
 						aria-describedby='standard-fat-helper-text'
-						inputProps={{ 'aria-label': 'fat', min: '0', max: '100', step: '1' }}
+						inputProps={{ 'aria-label': T.FAT, min: '0', max: '100', step: '1' }}
 					/>
-					<FormHelperText id='standard-fat-helper-text'>Fat</FormHelperText>
+					<FormHelperText id='standard-fat-helper-text'>{T.FAT}</FormHelperText>
 
 					<Input
 						id='standard-adornment-carbs'
 						value={values.carbs}
 						type='number'
 						onChange={handleChange('carbs')}
-						endAdornment={<InputAdornment position='end'>g/100g</InputAdornment>}
+						endAdornment={<InputAdornment position='end'>{T.SLASH_100G}</InputAdornment>}
 						aria-describedby='standard-carbs-helper-text'
-						inputProps={{ 'aria-label': 'carbs', min: '0', max: '100', step: '1' }}
+						inputProps={{ 'aria-label': T.CARBS, min: '0', max: '100', step: '1' }}
 					/>
-					<FormHelperText id='standard-carbs-helper-text'>Carbs</FormHelperText>
+					<FormHelperText id='standard-carbs-helper-text'>{T.CARBS}</FormHelperText>
 
 					<Input
 						id='standard-adornment-protein'
 						value={values.protein}
 						type='number'
 						onChange={handleChange('protein')}
-						endAdornment={<InputAdornment position='end'>g/100g</InputAdornment>}
+						endAdornment={<InputAdornment position='end'>{T.SLASH_100G}</InputAdornment>}
 						aria-describedby='standard-protein-helper-text'
-						inputProps={{ 'aria-label': 'protein', min: '0', max: '100', step: '1' }}
+						inputProps={{ 'aria-label': T.PROTEIN, min: '0', max: '100', step: '1' }}
 					/>
-					<FormHelperText id='standard-carbs-helper-text'>Protein</FormHelperText>
+					<FormHelperText id='standard-carbs-helper-text'>{T.PROTEIN}</FormHelperText>
 
 					<Button
 						onSubmit={(e: React.SyntheticEvent) => handleSubmitProduct(e)}
@@ -125,7 +126,7 @@ const AddOwnProduct = () => {
 						type='submit'
 						disabled={values.name === '' ? true : false}
 					>
-						Submit product
+						{T.SUBMIT_PRODUCT}
 					</Button>
 				</FormGroup>
 			</form>

@@ -19,7 +19,7 @@ const MealCard = (props: MealCardProps) => {
 	return (
 		<Paper square>
 			<S.MealCard>
-				{meals.map((meal: (Product | any)[], index: number) => {
+				{meals.map((meal: Product[], index: number) => {
 					const mealTotal = {
 						calories: 0,
 						fat: 0,

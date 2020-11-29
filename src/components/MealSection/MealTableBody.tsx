@@ -6,6 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { Product } from '../../store/product/Product.types';
 import { useSelector } from 'react-redux';
 import { getStoredProducts } from '../../store/product/Product.selectors';
+import * as T from "../../utils/constants";
 
 interface TableBodyProps {
 	isSelected: (name: string) => boolean;
@@ -27,7 +28,7 @@ const MealTableBody = (props: TableBodyProps) => {
 				const fat = product.food.nutrients.FAT;
 
 				const isItemSelected = isSelected(productId);
-				const labelId = `enhanced-table-checkbox-${index}`;
+				const labelId = `${T.MEAL_CHECKBOX_LABELLED}-${index}`;
 
 				return (
 					<TableRow

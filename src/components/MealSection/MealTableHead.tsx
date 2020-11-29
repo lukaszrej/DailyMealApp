@@ -4,6 +4,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Checkbox from '@material-ui/core/Checkbox';
 import { headCells } from '../../utils/mealTableConfig';
+import * as T from "../../utils/constants";
 
 interface TableHeadProps {
 	numSelected: number;
@@ -22,7 +23,7 @@ const MealTableHead = (props: TableHeadProps) => {
 						indeterminate={numSelected > 0 && numSelected < rowCount}
 						checked={rowCount > 0 && numSelected === rowCount}
 						onChange={onSelectAllClick}
-						inputProps={{ 'aria-label': 'select all products' }}
+						inputProps={{ 'aria-label': T.SELECT_ALL_PRODUCTS_ARIA }}
 					/>
 				</TableCell>
 				{headCells.map((headCell) => (

@@ -7,12 +7,12 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 import Loader from '../Loader';
 import ProductList from './ProductList';
-import { PRODUCT_NAME, TYPE_PRODUCT_NAME, SEARCH } from "../../utils/constants";
+import * as T from "../../utils/constants";
 import * as S from '../../styles/components';
 
 const FindProduct = () => {
 	const dispatch = useDispatch();
-	const [ productToBeFound, setProductToBeFound ] = React.useState('');
+	const [productToBeFound, setProductToBeFound] = React.useState('');
 	const isLoading = useSelector(getIsLoading);
 
 	const handleFindProductSubmit = (e: React.SyntheticEvent): void => {
@@ -25,14 +25,13 @@ const FindProduct = () => {
 		<>
 			<S.FindProduct onSubmit={handleFindProductSubmit} noValidate autoComplete='on'>
 				<Input
-					id='standard-adornment-find-product'
 					type='text'
-					placeholder={TYPE_PRODUCT_NAME}
+					placeholder={T.TYPE_PRODUCT_NAME}
 					value={productToBeFound}
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProductToBeFound(e.currentTarget.value)}
 					aria-describedby='standard-find-product-helper-text'
 				/>
-				<FormHelperText id='standard-find-product-helper-text'>{PRODUCT_NAME}</FormHelperText>
+				<FormHelperText>{T.PRODUCT_NAME}</FormHelperText>
 
 				<Button
 					type='submit'
@@ -40,7 +39,7 @@ const FindProduct = () => {
 					color='secondary'
 					variant='contained'
 				>
-					{isLoading ? <Loader /> : SEARCH}
+					{isLoading ? <Loader /> : T.SEARCH}
 				</Button>
 			</S.FindProduct>
 

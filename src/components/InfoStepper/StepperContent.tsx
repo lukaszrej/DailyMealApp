@@ -6,8 +6,8 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { getSteps, getStepContent } from '../../utils/stepperContent';
-import * as T from "../../utils/constants";
 import * as S from "../../styles/components";
+import * as T from "../../utils/constants";
 
 interface StepperMainProps {
 	activeStep: number;

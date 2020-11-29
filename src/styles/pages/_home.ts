@@ -37,7 +37,7 @@ export const Home = styled.main`
 		}
 	}
 
-	@media screen and (max-width: 600px) {
+	@media screen and (max-width: 960px) {
 		& > aside {
 			flex-direction: column-reverse;
 

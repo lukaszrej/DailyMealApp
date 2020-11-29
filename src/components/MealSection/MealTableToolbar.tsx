@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
+import * as T from "../../utils/constants";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -20,13 +21,13 @@ const useStyles = makeStyles((theme: Theme) =>
 		highlight:
 			theme.palette.type === 'light'
 				? {
-						color: theme.palette.secondary.main,
-						backgroundColor: lighten(theme.palette.secondary.light, 0.85)
-					}
+					color: theme.palette.secondary.main,
+					backgroundColor: lighten(theme.palette.secondary.light, 0.85)
+				}
 				: {
-						color: theme.palette.text.primary,
-						backgroundColor: theme.palette.secondary.dark
-					}
+					color: theme.palette.text.primary,
+					backgroundColor: theme.palette.secondary.dark
+				}
 	})
 );
 
@@ -47,16 +48,16 @@ const MealTableToolbar = (props: TableToolbarProps) => {
 		>
 			{numSelected > 0 ? (
 				<Typography color='inherit' variant='subtitle1' component='div'>
-					{numSelected} selected
+					{numSelected} {T.SELECTED}
 				</Typography>
 			) : (
-				<Typography variant='h6' id='tableTitle' component='div'>
-					Your meal
-				</Typography>
-			)}
+					<Typography variant='h6' component='div'>
+						{T.YOUR_MEAL}
+					</Typography>
+				)}
 			{numSelected > 0 && (
-				<Tooltip title='Delete'>
-					<IconButton aria-label='delete' onClick={handleDeleteSelectedProducts}>
+				<Tooltip title={T.DELETE}>
+					<IconButton aria-label={T.DELETE} onClick={handleDeleteSelectedProducts}>
 						<DeleteIcon />
 					</IconButton>
 				</Tooltip>

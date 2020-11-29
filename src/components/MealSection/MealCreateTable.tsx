@@ -1,13 +1,14 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
 import MealTableToolbar from './MealTableToolbar';
 import MealTableHead from './MealTableHead';
 import MealTableBody from './MealTableBody';
 import { Product } from '../../store/product/Product.types';
-import { useSelector, useDispatch } from 'react-redux';
 import { getSelectedProducts, getStoredProducts } from '../../store/product/Product.selectors';
 import { selectProduct, selectProductReset, deleteProduct } from '../../store/product/Product.actions';
+import * as T from "../../utils/constants";
 
 const MealTable = () => {
 	const dispatch = useDispatch();
@@ -18,7 +19,6 @@ const MealTable = () => {
 		if (event.target.checked) {
 			const newSelectedItem: string = storedProducts.map((product: Product) => product.food.foodId);
 			dispatch(selectProduct(newSelectedItem));
-			return;
 		} else {
 			dispatch(selectProductReset());
 		}
@@ -39,23 +39,24 @@ const MealTable = () => {
 	if (storedProducts.length === 0) return null;
 
 	return (
-		<React.Fragment>
+		<>
 			<MealTableToolbar
 				numSelected={selectedProducts.length}
 				handleDeleteSelectedProducts={handleDeleteSelectedProducts}
 			/>
 			<TableContainer>
-				<Table aria-labelledby='tableTitle' size='medium' aria-label='enhanced table'>
+				<Table size='medium' aria-labelledby={T.CREATE_MEAL_ARIA_LABELLED} aria-label={T.CREATE_MEAL_ARIA}>
 					<MealTableHead
 						numSelected={selectedProducts.length}
 						onSelectAllClick={handleSelectAllClick}
 						rowCount={storedProducts.length}
 					/>
-
-					<MealTableBody isSelected={isSelected} handleSelectClick={handleSelectClick} />
+					<MealTableBody
+						isSelected={isSelected}
+						handleSelectClick={handleSelectClick} />
 				</Table>
 			</TableContainer>
-		</React.Fragment>
+		</>
 	);
 };
 

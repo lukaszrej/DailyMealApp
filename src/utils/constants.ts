@@ -13,11 +13,11 @@ export const MEAL_COUNTER_HEADING = "Meals added";
 // start form
 export const FILL_THE_FORM = "Fill the form and start the app!";
 
-
 // nav, buttons and links
 export const START = "Start";
 export const HOME = "Home";
 export const YOUR_MEALS = "Your meals";
+export const YOUR_MEAL = "Your meal";
 export const SAVE = "Save";
 export const GO_BACK = "Go back";
 export const GO_BACK_HOME = "Go back to the home page";
@@ -27,7 +27,9 @@ export const ADD_OWN_PRODUCT = "Add own product";
 export const EDIT_DATA = "Edit data";
 export const EDIT_USER_DATA = "Edit user data";
 export const SUBMIT_MEAL = "Submit meal";
+export const SUBMIT_PRODUCT = "Submit product";
 export const DISMISS = "Dismiss";
+export const DELETE = "Delete";
 
 // labels
 export const NAME_LABEL = "Name";
@@ -37,6 +39,11 @@ export const AGE_LABEL = "Age (years)";
 export const ACTIVITY_LEVEL_LABEL = "Activity level";
 export const MALE = "Male";
 export const FEMALE = "Female";
+export const CREATE_MEAL_ARIA_LABELLED = "create-meal-table";
+export const CREATE_MEAL_ARIA = "Create meal table";
+export const MEAL_CHECKBOX_LABELLED = "meal-table-checkbox";
+export const SELECT_ALL_PRODUCTS_ARIA = "select all products";
+export const SELECTED = "selected";
 
 // stepper
 export const RESET = "Reset";
@@ -58,8 +65,13 @@ export const ACTIVITY_LEVEL = "Activity level";
 
 // meals, calories etc. texts
 export const KCAL = "kcal";
+export const CALORIES = "Calories";
 export const CURRENT_MEAL = "Current meal";
 export const MEAL = "Meal";
+export const FAT = "Fat";
+export const CARBS = "Carbs";
+export const PROTEIN = "Protein";
+export const SLASH_100G = "g/100g";
 
 // other
 export const STEPPER_LINK_TEXT = "Still don't know how to use?";

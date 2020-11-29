@@ -32,7 +32,7 @@ const ProductList = () => {
 						arrow
 						title='Click to add'
 						placement='top'
-						enterDelay={450}
+						enterDelay={650}
 						leaveDelay={50}
 					>
 						<li onClick={(e) => handleListItemClick(e, product)}>
