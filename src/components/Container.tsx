@@ -25,7 +25,9 @@ const Container = (props: ContainerProps) => {
 				<SidebarWrapper />
 
 				<main>
-					<Toolbar />
+					<Toolbar>
+                        dupa, jasiu
+                    </Toolbar>      
 					{children}
 				</main>
 			</S.Container>

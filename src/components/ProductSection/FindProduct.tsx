@@ -15,7 +15,7 @@ const FindProduct = () => {
 	const [productToBeFound, setProductToBeFound] = React.useState('');
 	const isLoading = useSelector(getIsLoading);
 
-	const handleFindProductSubmit = (e: React.SyntheticEvent): void => {
+	const handleFindProductSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		dispatch(findProduct(productToBeFound));
 		setProductToBeFound('');

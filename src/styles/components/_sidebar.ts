@@ -30,4 +30,10 @@ export const Sidebar = styled.nav`
 			color: #e6e7e8;
 		}
 	}
+
+    & aside {
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+    }
 `;

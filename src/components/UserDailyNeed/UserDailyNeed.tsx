@@ -29,14 +29,14 @@ const UserNeed = () => {
 			</Typography>
 
 			{currentKcalSum !== 0 && (
-				<React.Fragment>
+				<>
 					<Typography variant='h6' noWrap>
 						{T.CURRENT_MEAL}
 					</Typography>
 					<Typography variant='h3' color='secondary' noWrap>
 						{currentKcalSum} {T.KCAL}
 					</Typography>
-				</React.Fragment>
+				</>
 			)}
 		</S.UserDailyNeed>
 	);

@@ -1,6 +1,7 @@
 import {
 	allStartActionTypes,
-	START_APP,
+    START_APP,
+	END_APP,
 	REMOVE_WELCOME_ALERT,
 	SHOW_STEPPER,
 	REMOVE_STEPPER
@@ -13,7 +14,7 @@ interface StartState {
 }
 
 export const initialState: StartState = {
-	started: localStorage.getItem("started") ? localStorage.getItem("started") : false,
+	started: localStorage.getItem('started') ? localStorage.getItem('started') : false,
 	showAlert: false,
 	showStepper: true
 };
@@ -40,6 +41,11 @@ export const StartReducer = (state: StartState = initialState, action: allStartA
 			return {
 				...state,
 				showStepper: true
+			};
+		case END_APP:
+			return {
+				...state,
+				started: false
 			};
 		default:
 			return state;

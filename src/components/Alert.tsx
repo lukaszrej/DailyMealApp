@@ -14,8 +14,8 @@ const AlertWrapper = styled.div`
 `;
 
 interface AlertExtendedProps extends AlertProps {
-	children?: React.ReactNode;
-	severity?: 'error' | 'info' | 'success' | 'warning';
+	children: React.ReactNode;
+	severity: 'error' | 'info' | 'success' | 'warning';
 }
 
 const AlertMaterialUI = (props: AlertExtendedProps) => {

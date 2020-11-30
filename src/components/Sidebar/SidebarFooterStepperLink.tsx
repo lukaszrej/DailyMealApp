@@ -4,7 +4,7 @@ import { createStyles, withStyles, WithStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { showStepper } from '../../store/start/Start.actions';
 import { getShowStepper } from '../../store/start/Start.selectors';
-import { STEPPER_LINK_TEXT } from "../../utils/constants";
+import * as T from "../../utils/constants";
 
 const styles = () =>
 	createStyles({
@@ -30,7 +30,7 @@ const StepperLink = (props: WithStyles<typeof styles>) => {
 		<>
 			{!isStepper && (
 				<Link variant='body2' onClick={handleClick} className={classes.root}>
-					{STEPPER_LINK_TEXT}
+					{T.STEPPER_LINK_TEXT}
 				</Link>
 			)}
 		</>

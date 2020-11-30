@@ -61,7 +61,7 @@ const StartForm = () => {
 						fullWidth
 						id='name'
 						name='name'
-						label='Your name'
+						label={T.YOUR_NAME}
 						autoComplete='name'
 						onChange={(e) => setName(e.target.value)}
 						value={name}
@@ -72,7 +72,7 @@ const StartForm = () => {
 						fullWidth
 						id='height'
 						name='height'
-						label='Your height (cm)'
+						label={T.YOUR_HEIGHT}
 						autoComplete='height'
 						type='number'
 						onChange={(e) => setHeight(e.target.value)}
@@ -84,7 +84,7 @@ const StartForm = () => {
 						fullWidth
 						id='weight'
 						name='weight'
-						label='Your weight (kg)'
+						label={T.YOUR_WEIGHT}
 						autoComplete='weight'
 						type='number'
 						onChange={(e) => setWeight(e.target.value)}
@@ -96,7 +96,7 @@ const StartForm = () => {
 						fullWidth
 						id='age'
 						name='age'
-						label='Your age (years)'
+						label={T.YOUR_AGE}
 						autoComplete='age'
 						type='number'
 						onChange={(e) => setAge(e.target.value)}
@@ -110,7 +110,7 @@ const StartForm = () => {
 							value={activityLevel}
 							displayEmpty
 							onChange={handleActivityLevelChange}
-							label='Activity level'
+							label={T.ACTIVITY_LEVEL}
 						>
 							{activityOptions.map((element) => {
 								return (

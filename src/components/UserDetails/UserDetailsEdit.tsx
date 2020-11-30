@@ -16,17 +16,7 @@ import ModalContent from '../ModalContent';
 import { activityOptions } from '../../utils/activityLevels';
 import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
 import * as S from '../../styles/components';
-import {
-	EDIT_USER_DATA,
-	NAME_LABEL,
-	HEIGHT_LABEL,
-	WEIGHT_LABEL,
-	AGE_LABEL,
-	ACTIVITY_LEVEL_LABEL,
-	MALE,
-	FEMALE,
-	SAVE
-} from "../../utils/constants";
+import * as T from '../../utils/constants';
 import {
 	getUserName,
 	getUserHeight,
@@ -48,17 +38,17 @@ const UserDetailsEdit = (props: UserEditProps) => {
 	const dispatch = useDispatch();
 
 	const currentName = useSelector(getUserName);
-	const [name, setName] = useState(currentName);
+	const [ name, setName ] = useState(currentName);
 	const currentHeight = useSelector(getUserHeight);
-	const [height, setHeight] = useState(currentHeight);
+	const [ height, setHeight ] = useState(currentHeight);
 	const currentWeight = useSelector(getUserWeight);
-	const [weight, setWeight] = useState(currentWeight);
+	const [ weight, setWeight ] = useState(currentWeight);
 	const currentAge = useSelector(getUserAge);
-	const [age, setAge] = useState(currentAge);
+	const [ age, setAge ] = useState(currentAge);
 	const currentGender = useSelector(getUserGender);
-	const [gender, setGender] = useState(currentGender);
+	const [ gender, setGender ] = useState(currentGender);
 	const currentActivityLevel = useSelector(getUserActivityLevel);
-	const [activityLevel, setActivityLevel] = useState(currentActivityLevel);
+	const [ activityLevel, setActivityLevel ] = useState(currentActivityLevel);
 
 	const handleActivityLevelChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
 		setActivityLevel((event.target as HTMLInputElement).value);
@@ -73,7 +63,7 @@ const UserDetailsEdit = (props: UserEditProps) => {
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
 
-		localStorage.setItem("user", JSON.stringify({ name, height, weight, age, gender, activityLevel }));
+		localStorage.setItem('user', JSON.stringify({ name, height, weight, age, gender, activityLevel }));
 		setOpenEditModal(false);
 
 		if (
@@ -91,7 +81,7 @@ const UserDetailsEdit = (props: UserEditProps) => {
 	return (
 		<Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={openEditModal}>
 			<ModalTitle id='customized-dialog-title' onClose={handleClose}>
-				{EDIT_USER_DATA}
+				{T.EDIT_USER_DATA}
 			</ModalTitle>
 
 			<form onSubmit={handleSubmit}>
@@ -101,7 +91,7 @@ const UserDetailsEdit = (props: UserEditProps) => {
 						fullWidth
 						id='name'
 						name='name'
-						label={NAME_LABEL}
+						label={T.NAME_LABEL}
 						autoComplete='name'
 						onChange={(e) => setName(e.target.value)}
 						value={name}
@@ -112,7 +102,7 @@ const UserDetailsEdit = (props: UserEditProps) => {
 						fullWidth
 						id='height'
 						name='height'
-						label={HEIGHT_LABEL}
+						label={T.HEIGHT_LABEL}
 						autoComplete='height'
 						type='number'
 						onChange={(e) => setHeight(e.target.value)}
@@ -123,7 +113,7 @@ const UserDetailsEdit = (props: UserEditProps) => {
 						fullWidth
 						id='weight'
 						name='weight'
-						label={WEIGHT_LABEL}
+						label={T.WEIGHT_LABEL}
 						autoComplete='weight'
 						type='number'
 						onChange={(e) => setWeight(e.target.value)}
@@ -134,21 +124,21 @@ const UserDetailsEdit = (props: UserEditProps) => {
 						fullWidth
 						id='age'
 						name='age'
-						label={AGE_LABEL}
+						label={T.AGE_LABEL}
 						autoComplete='age'
 						type='number'
 						onChange={(e) => setAge(e.target.value)}
 						value={age}
 					/>
-					<S.UserDetailsEdit variant='outlined' className="activity">
-						<InputLabel id='demo-simple-select-outlined-label'>Activity level</InputLabel>
+					<S.UserDetailsEdit variant='outlined' className='activity'>
+						<InputLabel id='demo-simple-select-outlined-label'>{T.ACTIVITY_LEVEL}</InputLabel>
 						<Select
 							labelId='demo-simple-select-outlined-label'
 							id='demo-simple-select-outlined'
 							value={activityLevel}
 							displayEmpty
 							onChange={handleActivityLevelChange}
-							label={ACTIVITY_LEVEL_LABEL}
+							label={T.ACTIVITY_LEVEL_LABEL}
 						>
 							{activityOptions.map((element) => {
 								return (
@@ -161,15 +151,15 @@ const UserDetailsEdit = (props: UserEditProps) => {
 					</S.UserDetailsEdit>
 					<FormControl component='fieldset'>
 						<RadioGroup aria-label='gender' name='gender1' value={gender} onChange={handleGenderChange}>
-							<FormControlLabel value='male' control={<Radio />} label={MALE} />
-							<FormControlLabel value='female' control={<Radio />} label={FEMALE} />
+							<FormControlLabel value='male' control={<Radio />} label={T.MALE} />
+							<FormControlLabel value='female' control={<Radio />} label={T.FEMALE} />
 						</RadioGroup>
 					</FormControl>
 				</ModalContent>
 
 				<S.UserDetailsButtons>
 					<Button autoFocus type='submit' color='primary'>
-						{SAVE}
+						{T.SAVE}
 					</Button>
 				</S.UserDetailsButtons>
 			</form>

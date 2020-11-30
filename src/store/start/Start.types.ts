@@ -18,4 +18,14 @@ export interface RemoveStepperAction {
 	type: typeof REMOVE_STEPPER;
 }
 
-export type allStartActionTypes = StartAppAction | HideAlertAction | ShowStepperAction | RemoveStepperAction;
+export const END_APP = 'END_APP';
+export interface EndAppAction {
+	type: typeof END_APP;
+}
+
+export type allStartActionTypes =
+	| StartAppAction
+	| HideAlertAction
+	| ShowStepperAction
+	| RemoveStepperAction
+    | EndAppAction;

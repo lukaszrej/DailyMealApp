@@ -12,6 +12,10 @@ export const MEAL_COUNTER_HEADING = "Meals added";
 
 // start form
 export const FILL_THE_FORM = "Fill the form and start the app!";
+export const YOUR_NAME = "Your name";
+export const YOUR_HEIGHT = "Your height (cm)";
+export const YOUR_WEIGHT = "Your weight (kg)";
+export const YOUR_AGE = "Your age (years)";
 
 // nav, buttons and links
 export const START = "Start";
@@ -72,6 +76,7 @@ export const FAT = "Fat";
 export const CARBS = "Carbs";
 export const PROTEIN = "Protein";
 export const SLASH_100G = "g/100g";
+export const ADD_OR_FIND_PRODUCT_ARIA = "add or find product tabs";
 
 // other
 export const STEPPER_LINK_TEXT = "Still don't know how to use?";

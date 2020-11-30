@@ -1,12 +1,28 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Dispatch } from 'redux';
-import { START_APP, REMOVE_WELCOME_ALERT, SHOW_STEPPER, REMOVE_STEPPER } from './Start.types';
+import { 
+    START_APP,
+    END_APP,
+    REMOVE_WELCOME_ALERT, 
+    SHOW_STEPPER, 
+    REMOVE_STEPPER 
+} from './Start.types';
 
 export const startApp = () => {
 	return (dispatch: Dispatch) => {
 		dispatch({
 			type: START_APP
+		});
+	};
+};
+
+export const endApp = () => {
+	return (dispatch: Dispatch) => {
+        localStorage.clear();
+
+		dispatch({
+			type: END_APP
 		});
 	};
 };

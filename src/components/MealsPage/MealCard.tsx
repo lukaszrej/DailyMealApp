@@ -5,8 +5,8 @@ import Divider from '@material-ui/core/Divider';
 import { Product } from '../../store/product/Product.types';
 import MealChart from './MealChart';
 import MealProductTag from '../MealSection/MealProductTag';
-import { MEAL } from "../../utils/constants";
-import * as S from "../../styles/components";
+import * as T from '../../utils/constants';
+import * as S from '../../styles/components';
 
 interface MealCardProps {
 	meals: any[];
@@ -29,9 +29,11 @@ const MealCard = (props: MealCardProps) => {
 
 					return (
 						<section key={shortid.generate()}>
-							<header>{MEAL} {index + 1}</header>
+							<header>
+								{T.MEAL} {index + 1}
+							</header>
 
-							<main className="meal">
+							<main className='meal'>
 								{meal.map((item: Product) => {
 									const calories = Math.round(item.food.nutrients.ENERC_KCAL);
 									const protein = Math.round(item.food.nutrients.PROCNT);
@@ -44,7 +46,9 @@ const MealCard = (props: MealCardProps) => {
 									mealTotal.carbs += carbs;
 									mealTotal.protein += protein;
 
-									return <MealProductTag key={shortid.generate()} label={label} calories={calories} />;
+									return (
+										<MealProductTag key={shortid.generate()} label={label} calories={calories} />
+									);
 								})}
 							</main>
 

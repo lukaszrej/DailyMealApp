@@ -7,7 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
 import AddOwnProduct from './AddOwnProduct';
 import FindProduct from './FindProduct';
-import { PRODUCT_SECTION_HEADING, FIND_PRODUCT, ADD_OWN_PRODUCT } from "../../utils/constants";
+import * as T from "../../utils/constants";
 import * as S from "../../styles/components";
 
 const ProductSection = () => {
@@ -22,7 +22,7 @@ const ProductSection = () => {
 		<S.ProductSection>
 			<Paper square>
 				<Typography variant='h6' noWrap>
-					{PRODUCT_SECTION_HEADING}
+					{T.PRODUCT_SECTION_HEADING}
 				</Typography>
 
 				<Tabs
@@ -31,10 +31,10 @@ const ProductSection = () => {
 					variant='fullWidth'
 					indicatorColor='primary'
 					textColor='inherit'
-					aria-label='add or find product tabs'
+					aria-label={T.ADD_OR_FIND_PRODUCT_ARIA}
 				>
-					<Tab icon={<SearchIcon />} label={FIND_PRODUCT} />
-					<Tab icon={<AddIcon />} label={ADD_OWN_PRODUCT} />
+					<Tab icon={<SearchIcon />} label={T.FIND_PRODUCT} />
+					<Tab icon={<AddIcon />} label={T.ADD_OWN_PRODUCT} />
 				</Tabs>
 
 				<div className="tabs">{value ? <AddOwnProduct /> : <FindProduct />}</div>

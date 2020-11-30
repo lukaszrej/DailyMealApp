@@ -1,13 +1,13 @@
-import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import AppBarFixed from './AppBarFixed';
 import Sidebar from './Sidebar';
 
-const drawerWidth: number = 250;
+const drawerWidth = 250;
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
 	createStyles({
 		root: {
 			display: 'flex'
@@ -27,7 +27,7 @@ interface SidebarProps {
 const SidebarWrapper = (props: SidebarProps) => {
 	const { window } = props;
 	const classes = useStyles();
-	const [ mobileOpen, setMobileOpen ] = React.useState(false);
+	const [ mobileOpen, setMobileOpen ] = useState(false);
 
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
@@ -37,7 +37,7 @@ const SidebarWrapper = (props: SidebarProps) => {
 
 	return (
 		<div className={classes.root}>
-			<AppBarFixed handleDrawerToggle={handleDrawerToggle} />
+            <AppBarFixed handleDrawerToggle={handleDrawerToggle} />
 
 			<Hidden mdUp implementation='css'>
 				<Drawer

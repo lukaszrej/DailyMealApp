@@ -8,9 +8,9 @@ import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
 import { storeProduct, updateCurrentKcalSum } from '../../store/product/Product.actions';
 import * as S from '../../styles/components';
-import * as T from "../../utils/constants";
+import * as T from '../../utils/constants';
 
-interface State {
+interface AddOwnProductState {
 	name: string;
 	calories: number;
 	fat: number;
@@ -20,7 +20,7 @@ interface State {
 
 const AddOwnProduct = () => {
 	const dispatch = useDispatch();
-	const [values, setValues] = useState<State>({
+	const [ values, setValues ] = useState<AddOwnProductState>({
 		name: '',
 		calories: 0,
 		fat: 0,
@@ -28,7 +28,7 @@ const AddOwnProduct = () => {
 		protein: 0
 	});
 
-	const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (prop: keyof AddOwnProductState) => (event: React.ChangeEvent<HTMLInputElement>) => {
 		setValues({ ...values, [prop]: event.currentTarget.value });
 	};
 
@@ -64,9 +64,8 @@ const AddOwnProduct = () => {
 	return (
 		<S.AddOwnProduct>
 			<form onSubmit={handleSubmitProduct}>
-				<FormGroup className="group">
+				<FormGroup className='group'>
 					<Input
-						id='standard-adornment-product-name'
 						type='text'
 						placeholder={T.TYPE_PRODUCT_NAME}
 						value={values.name}
@@ -76,7 +75,6 @@ const AddOwnProduct = () => {
 					<FormHelperText id='standard-product-name-helper-text'>{T.PRODUCT_NAME}</FormHelperText>
 
 					<Input
-						id='standard-adornment-calories'
 						value={values.calories}
 						type='number'
 						onChange={handleChange('calories')}
@@ -87,7 +85,6 @@ const AddOwnProduct = () => {
 					<FormHelperText id='standard-weight-helper-text'>{T.CALORIES}</FormHelperText>
 
 					<Input
-						id='standard-adornment-fat'
 						value={values.fat}
 						type='number'
 						onChange={handleChange('fat')}
@@ -98,7 +95,6 @@ const AddOwnProduct = () => {
 					<FormHelperText id='standard-fat-helper-text'>{T.FAT}</FormHelperText>
 
 					<Input
-						id='standard-adornment-carbs'
 						value={values.carbs}
 						type='number'
 						onChange={handleChange('carbs')}
@@ -109,7 +105,6 @@ const AddOwnProduct = () => {
 					<FormHelperText id='standard-carbs-helper-text'>{T.CARBS}</FormHelperText>
 
 					<Input
-						id='standard-adornment-protein'
 						value={values.protein}
 						type='number'
 						onChange={handleChange('protein')}

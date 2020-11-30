@@ -22,7 +22,7 @@ const UserDetails = () => {
 	const userWeight = useSelector(getUserWeight);
 	const userAge = useSelector(getUserAge);
 	const userGender = useSelector(getUserGender);
-	const userActivityLevel = useSelector(getUserActivityLevel);
+    const userActivityLevel = useSelector(getUserActivityLevel);
 
 	const [displayAlert, setDisplayAlert] = useState(false);
 	const [openEditModal, setOpenEditModal] = useState(false);

@@ -5,7 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { createStyles, withStyles, WithStyles } from '@material-ui/core/styles';
 import StepperLink from './SidebarFooterStepperLink';
 import SocialLinks from './SidebarFooterLinks';
-import { FOOTER_HEADING } from "../../utils/constants";
+import * as T from "../../utils/constants";
 
 const styles = () =>
 	createStyles({
@@ -30,7 +30,7 @@ const SidebarFooter = (props: WithStyles<typeof styles>) => {
 		<footer>
 			<List className={classes.root}>
 				<ListItem>
-					<ListItemText primary={FOOTER_HEADING} />
+					<ListItemText primary={T.FOOTER_HEADING} />
 					<StepperLink />
 				</ListItem>
 			</List>
