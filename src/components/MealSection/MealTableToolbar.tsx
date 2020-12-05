@@ -1,12 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import { createStyles, lighten, makeStyles, Theme } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import DeleteIcon from '@material-ui/icons/Delete';
 import * as T from "../../utils/constants";
+import * as S from "../../styles";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -41,28 +37,28 @@ const MealTableToolbar = (props: TableToolbarProps) => {
 	const classes = useStyles();
 
 	return (
-		<Toolbar
+		<S.Toolbar
 			className={clsx(classes.root, {
 				[classes.highlight]: numSelected > 0
 			})}
 		>
 			{numSelected > 0 ? (
-				<Typography color='inherit' variant='subtitle1' component='div'>
+				<S.Typography color='inherit' variant='subtitle1'>
 					{numSelected} {T.SELECTED}
-				</Typography>
+				</S.Typography>
 			) : (
-					<Typography variant='h6' component='div'>
+					<S.Typography variant='h6'>
 						{T.YOUR_MEAL}
-					</Typography>
+					</S.Typography>
 				)}
 			{numSelected > 0 && (
-				<Tooltip title={T.DELETE}>
-					<IconButton aria-label={T.DELETE} onClick={handleDeleteSelectedProducts}>
-						<DeleteIcon />
-					</IconButton>
-				</Tooltip>
+				<S.Tooltip title={T.DELETE}>
+					<S.IconButton aria-label={T.DELETE} onClick={handleDeleteSelectedProducts}>
+						<S.DeleteIcon />
+					</S.IconButton>
+				</S.Tooltip>
 			)}
-		</Toolbar>
+		</S.Toolbar>
 	);
 };
 

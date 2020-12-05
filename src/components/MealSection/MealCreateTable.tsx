@@ -1,7 +1,5 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Table from '@material-ui/core/Table';
-import TableContainer from '@material-ui/core/TableContainer';
 import MealTableToolbar from './MealTableToolbar';
 import MealTableHead from './MealTableHead';
 import MealTableBody from './MealTableBody';
@@ -9,6 +7,7 @@ import { Product } from '../../store/product/Product.types';
 import { getSelectedProducts, getStoredProducts } from '../../store/product/Product.selectors';
 import { selectProduct, selectProductReset, deleteProduct } from '../../store/product/Product.actions';
 import * as T from "../../utils/constants";
+import * as S from "../../styles";
 
 const MealTable = () => {
 	const dispatch = useDispatch();
@@ -44,8 +43,8 @@ const MealTable = () => {
 				numSelected={selectedProducts.length}
 				handleDeleteSelectedProducts={handleDeleteSelectedProducts}
 			/>
-			<TableContainer>
-				<Table size='medium' aria-labelledby={T.CREATE_MEAL_ARIA_LABELLED} aria-label={T.CREATE_MEAL_ARIA}>
+			<S.TableContainer>
+				<S.Table size='medium' aria-labelledby={T.CREATE_MEAL_ARIA_LABELLED} aria-label={T.CREATE_MEAL_ARIA}>
 					<MealTableHead
 						numSelected={selectedProducts.length}
 						onSelectAllClick={handleSelectAllClick}
@@ -54,8 +53,8 @@ const MealTable = () => {
 					<MealTableBody
 						isSelected={isSelected}
 						handleSelectClick={handleSelectClick} />
-				</Table>
-			</TableContainer>
+				</S.Table>
+			</S.TableContainer>
 		</>
 	);
 };

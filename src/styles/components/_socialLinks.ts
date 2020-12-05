@@ -1,7 +1,7 @@
 import List from '@material-ui/core/List';
 import styled from "styled-components";
 
-export const FooterSocialLinks = styled(List)`
+export const SocialLinks = styled(List)`
 	display: flex;
 	justify-content: center;
 

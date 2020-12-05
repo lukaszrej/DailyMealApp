@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Typography from '@material-ui/core/Typography';
 import StepperContent from './StepperContent';
 import { removeStepper, useRemoveStepper } from "../../store/start/Start.actions";
 import { getShowStepper } from '../../store/start/Start.selectors';
-import * as S from "../../styles/components";
 import * as T from "../../utils/constants";
+import * as S from "../../styles";
 
 const Stepper = () => {
 	const dispatch = useDispatch();
@@ -37,10 +36,10 @@ const Stepper = () => {
 	if (!showStepper) return null;
 
 	return (
-		<S.Stepper square>
-			<Typography variant='h6' noWrap>
+		<S.StepperContainer square>
+			<S.Typography variant='h6' noWrap>
 				{T.INFO_STEPPER_HEADING}
-			</Typography>
+			</S.Typography>
 			<StepperContent
 				activeStep={activeStep}
 				handleBack={handleBack}
@@ -48,7 +47,7 @@ const Stepper = () => {
 				handleReset={handleReset}
 				secondsToRemove={secondsToRemove}
 			/>
-		</S.Stepper>
+		</S.StepperContainer>
 	);
 };
 

@@ -1,11 +1,11 @@
 import { withStyles, Theme } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
+import * as S from "../styles";
 
-const TooltipComponent = withStyles((theme: Theme) => ({
+const Tooltip = withStyles((theme: Theme) => ({
 	tooltip: {
 		boxShadow: theme.shadows[1],
 		fontSize: 9
 	}
-}))(Tooltip);
+}))(S.Tooltip);
 
-export default TooltipComponent;
+export default Tooltip;

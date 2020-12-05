@@ -1,12 +1,10 @@
 import React from 'react';
 import shortid from 'shortid';
-import Paper from '@material-ui/core/Paper';
-import Divider from '@material-ui/core/Divider';
-import { Product } from '../../store/product/Product.types';
 import MealChart from './MealChart';
 import MealProductTag from '../MealSection/MealProductTag';
+import { Product } from '../../store/product/Product.types';
 import * as T from '../../utils/constants';
-import * as S from '../../styles/components';
+import * as S from '../../styles';
 
 interface MealCardProps {
 	meals: any[];
@@ -17,7 +15,7 @@ const MealCard = (props: MealCardProps) => {
 	const { meals, dailyNeed } = props;
 
 	return (
-		<Paper square>
+		<S.Paper square>
 			<S.MealCard>
 				{meals.map((meal: Product[], index: number) => {
 					const mealTotal = {
@@ -54,12 +52,12 @@ const MealCard = (props: MealCardProps) => {
 
 							<MealChart mealTotal={mealTotal} dailyNeed={dailyNeed} />
 
-							{meals.length > 1 ? <Divider /> : ''}
+							{meals.length > 1 ? <S.Divider /> : ''}
 						</section>
 					);
 				})}
 			</S.MealCard>
-		</Paper>
+		</S.Paper>
 	);
 };
 

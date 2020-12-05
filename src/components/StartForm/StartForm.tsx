@@ -17,7 +17,7 @@ import { getStarted } from '../../store/start/Start.selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
 import { startApp } from '../../store/start/Start.actions';
-import * as S from '../../styles/components';
+import * as S from '../../styles';
 import * as T from '../../utils/constants';
 
 const StartForm = () => {

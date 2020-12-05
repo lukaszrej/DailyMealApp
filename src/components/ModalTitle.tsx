@@ -1,9 +1,7 @@
 import React from 'react';
 import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-import Typography from '@material-ui/core/Typography';
+import * as S from "../styles";
 
 const styles = (theme: Theme) =>
 	createStyles({
@@ -31,11 +29,11 @@ const ModalTitle = (props: ModalTitleProps) => {
 
 	return (
 		<MuiDialogTitle className={classes.root} disableTypography {...other}>
-			<Typography variant='h6'>{children}</Typography>
+			<S.Typography variant='h6'>{children}</S.Typography>
 			{onClose ? (
-				<IconButton aria-label='close' onClick={onClose}>
-					<CloseIcon />
-				</IconButton>
+				<S.IconButton aria-label='close' onClick={onClose}>
+					<S.CloseIcon />
+				</S.IconButton>
 			) : null}
 		</MuiDialogTitle>
 	);

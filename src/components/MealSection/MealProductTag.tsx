@@ -1,7 +1,6 @@
 import React from 'react';
-import Chip, { ChipProps } from '@material-ui/core/Chip';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
-import * as S from "../../styles/components";
+import { ChipProps } from '@material-ui/core/Chip';
+import * as S from "../../styles";
 
 interface MealTagProps extends ChipProps {
 	label: string;
@@ -14,7 +13,7 @@ const MealProductTag = (props: MealTagProps) => {
 
 	return (
 		<S.MealProductTag>
-			<Chip label={combinedLabel} icon={<FastfoodIcon />} />
+			<S.Chip label={combinedLabel} icon={<S.FastFoodIcon />} />
 		</S.MealProductTag>
 	);
 };

@@ -1,7 +1,7 @@
 import Paper from '@material-ui/core/Paper';
 import styled from "styled-components";
 
-export const Stepper = styled(Paper)`
+export const StepperContainer = styled(Paper)`
 	width: 100%;
 	margin-bottom: 12px;
 

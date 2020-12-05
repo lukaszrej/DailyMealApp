@@ -1,10 +1,7 @@
 import React from 'react';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Checkbox from '@material-ui/core/Checkbox';
 import { headCells } from '../../utils/mealTableConfig';
 import * as T from "../../utils/constants";
+import * as S from "../../styles";
 
 interface TableHeadProps {
 	numSelected: number;
@@ -16,27 +13,27 @@ const MealTableHead = (props: TableHeadProps) => {
 	const { onSelectAllClick, numSelected, rowCount } = props;
 
 	return (
-		<TableHead>
-			<TableRow>
-				<TableCell padding='checkbox'>
-					<Checkbox
+		<S.TableHead>
+			<S.TableRow>
+				<S.TableCell padding='checkbox'>
+					<S.Checkbox
 						indeterminate={numSelected > 0 && numSelected < rowCount}
 						checked={rowCount > 0 && numSelected === rowCount}
 						onChange={onSelectAllClick}
 						inputProps={{ 'aria-label': T.SELECT_ALL_PRODUCTS_ARIA }}
 					/>
-				</TableCell>
+				</S.TableCell>
 				{headCells.map((headCell) => (
-					<TableCell
+					<S.TableCell
 						key={headCell.id}
 						align={headCell.numeric ? 'right' : 'left'}
 						padding={headCell.disablePadding ? 'none' : 'default'}
 					>
 						{headCell.label}
-					</TableCell>
+					</S.TableCell>
 				))}
-			</TableRow>
-		</TableHead>
+			</S.TableRow>
+		</S.TableHead>
 	);
 };
 

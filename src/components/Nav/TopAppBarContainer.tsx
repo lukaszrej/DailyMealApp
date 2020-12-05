@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import AppBarFixed from './AppBarFixed';
+import TopAppBar from './TopAppBar';
 import Sidebar from './Sidebar';
+import * as S from "../../styles";
 
 const drawerWidth = 250;
 
@@ -20,11 +19,11 @@ const useStyles = makeStyles(() =>
 	})
 );
 
-interface SidebarProps {
+interface AppBarProps {
 	window?: () => Window;
 }
 
-const SidebarWrapper = (props: SidebarProps) => {
+const TopAppBarContainer = (props: AppBarProps) => {
 	const { window } = props;
 	const classes = useStyles();
 	const [ mobileOpen, setMobileOpen ] = useState(false);
@@ -37,10 +36,10 @@ const SidebarWrapper = (props: SidebarProps) => {
 
 	return (
 		<div className={classes.root}>
-            <AppBarFixed handleDrawerToggle={handleDrawerToggle} />
+            <TopAppBar handleDrawerToggle={handleDrawerToggle} />
 
-			<Hidden mdUp implementation='css'>
-				<Drawer
+			<S.Hidden mdUp implementation='css'>
+				<S.Drawer
 					container={container}
 					variant='temporary'
 					open={mobileOpen}
@@ -49,16 +48,16 @@ const SidebarWrapper = (props: SidebarProps) => {
 					ModalProps={{ keepMounted: true }}
 				>
 					<Sidebar />
-				</Drawer>
-			</Hidden>
+				</S.Drawer>
+			</S.Hidden>
 
-			<Hidden smDown implementation='css'>
-				<Drawer classes={{ paper: classes.drawer }} variant='permanent' open={mobileOpen}>
+			<S.Hidden smDown implementation='css'>
+				<S.Drawer classes={{ paper: classes.drawer }} variant='permanent' open={mobileOpen}>
 					<Sidebar />
-				</Drawer>
-			</Hidden>
+				</S.Drawer>
+			</S.Hidden>
 		</div>
 	);
 };
 
-export default SidebarWrapper;
+export default TopAppBarContainer;

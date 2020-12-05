@@ -1,13 +1,7 @@
 import React from 'react';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import StepContent from '@material-ui/core/StepContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import { getSteps, getStepContent } from '../../utils/stepperContent';
-import * as S from "../../styles/components";
 import * as T from "../../utils/constants";
+import * as S from "../../styles";
 
 interface StepperMainProps {
 	activeStep: number;
@@ -22,41 +16,41 @@ const StepperMain = (props: StepperMainProps) => {
 	const steps = getSteps();
 
 	return (
-		<Stepper activeStep={activeStep} orientation='vertical'>
+		<S.Stepper activeStep={activeStep} orientation='vertical'>
 			{steps.map((label, index) => (
-				<Step key={label + index}>
-					<StepLabel>{label}</StepLabel>
+				<S.Step key={label + index}>
+					<S.StepLabel>{label}</S.StepLabel>
 
-					<StepContent>
-						<Typography>{getStepContent(index)}</Typography>
+					<S.StepContent>
+						<S.Typography>{getStepContent(index)}</S.Typography>
 						<S.StepperContent>
 							<div>
-								<Button disabled={activeStep === 0} variant="outlined" onClick={handleBack}>
+								<S.Button disabled={activeStep === 0} variant="outlined" onClick={handleBack}>
 									{T.BACK}
-								</Button>
-								<Button
+								</S.Button>
+								<S.Button
 									variant='outlined'
 									color={activeStep === steps.length - 1 ? 'secondary' : 'primary'}
 									onClick={() => handleNext(activeStep, steps)}>
 
 									{activeStep === steps.length - 1 ? T.FINISH_AND_REMOVE : T.NEXT}
-								</Button>
+								</S.Button>
 								{activeStep === steps.length - 1 &&
-									<Button variant='outlined' color="primary" onClick={handleReset}>
+									<S.Button variant='outlined' color="primary" onClick={handleReset}>
 										{T.RESET}
-									</Button>
+									</S.Button>
 								}
 							</div>
 						</S.StepperContent>
-					</StepContent>
-				</Step>
+					</S.StepContent>
+				</S.Step>
 			))}
 
 			{
 				secondsToRemove > 0 &&
 				<S.StepperRemove>{T.WILL_BE_REMOVED_AFTER} <span>{secondsToRemove}</span> {T.SECONDS}</S.StepperRemove>
 			}
-		</Stepper>
+		</S.Stepper>
 	);
 };
 

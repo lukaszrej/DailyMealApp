@@ -4,9 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getFoundProducts } from '../../store/product/Product.selectors';
 import { storeProduct, updateCurrentKcalSum } from '../../store/product/Product.actions';
 import { Product } from '../../store/product/Product.types';
-import TooltipComponent from '../Tooltip';
+import Tooltip from '../Tooltip';
 import ProductNutrients from './ProductListNutrients';
-import * as S from '../../styles/components';
+import * as S from '../../styles';
 
 const ProductList = () => {
 	const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const ProductList = () => {
 			{foundProducts.map((product: Product) => {
 				const label = product.food.label;
 				return (
-					<TooltipComponent
+					<Tooltip
 						key={shortid.generate()}
 						arrow
 						title='Click to add'
@@ -39,7 +39,7 @@ const ProductList = () => {
 							{label}
 							<ProductNutrients product={product} />
 						</li>
-					</TooltipComponent>
+					</Tooltip>
 				);
 			})}
 		</S.ProductList>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import * as S from "../styles";
 
 const styles = (theme: Theme) =>
 	createStyles({
@@ -17,7 +17,7 @@ const Loader = (props: WithStyles<typeof styles>) => {
 
 	return (
 		<div className={classes.root}>
-			<CircularProgress size={24} />
+			<S.CircularProgress size={24} />
 		</div>
 	);
 };

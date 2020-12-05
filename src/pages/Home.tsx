@@ -5,7 +5,7 @@ import MealSection from '../components/MealSection/MealSection';
 import UserDetails from '../components/UserDetails/UserDetails';
 import UserDailyNeed from '../components/UserDailyNeed/UserDailyNeed';
 import MealCounter from '../components/MealCounter/MealCounter';
-import * as S from '../styles/pages';
+import * as S from '../styles';
 
 export default () => {
 	return (

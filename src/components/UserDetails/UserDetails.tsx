@@ -13,7 +13,7 @@ import {
 	getUserGender,
 	getUserActivityLevel
 } from '../../store/user/User.selectors';
-import * as S from '../../styles/components';
+import * as S from '../../styles';
 import * as T from "../../utils/constants";
 
 const UserDetails = () => {

@@ -5,9 +5,10 @@ export * from "./_container";
 export * from "./_startForm";
 
 // sidebar
-export * from "./_appbar";
+export * from "./_topAppBar";
 export * from "./_sidebar";
-export * from "./_footerSocialLinks";
+export * from "./_footerMain";
+export * from "./_socialLinks";
 
 // info stepper
 export * from "./_stepper";

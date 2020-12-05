@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { getUserDailyNeed } from '../../store/user/User.selectors';
 import { getCurrentKcalSum } from '../../store/product/Product.selectors';
 import { calculateDailyNeed } from '../../store/user/User.actions';
-import * as S from '../../styles/components';
+import * as S from '../../styles';
 import * as T from "../../utils/constants";
 
 const UserNeed = () => {

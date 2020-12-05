@@ -1,12 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Button from '@material-ui/core/Button';
 import MealTable from './MealCreateTable';
 import { getStoredProducts } from '../../store/product/Product.selectors';
 import { storeMeal, setIsMealAdded } from '../../store/meal/Meal.actions';
 import { deleteAllProducts } from '../../store/product/Product.actions';
-import * as S from "../../styles/components";
 import * as T from "../../utils/constants";
+import * as S from "../../styles";
 
 const MealSection = () => {
 	const dispatch = useDispatch();
@@ -29,12 +28,12 @@ const MealSection = () => {
 			<MealTable />
 
 			<section>
-				<Button color='primary' variant='contained' onClick={handleSubmitMeal}>
+				<S.Button color='primary' variant='contained' onClick={handleSubmitMeal}>
 					{T.SUBMIT_MEAL}
-				</Button>
-				<Button color='secondary' onClick={handleDismissMeal}>
+				</S.Button>
+				<S.Button color='secondary' onClick={handleDismissMeal}>
 					{T.DISMISS}
-				</Button>
+				</S.Button>
 			</section>
 		</S.MealSection>
 	);

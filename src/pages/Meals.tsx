@@ -10,7 +10,7 @@ import { getMeals } from '../store/meal/Meal.selectors';
 import { getUserDailyNeed } from '../store/user/User.selectors';
 import { useHistory } from 'react-router-dom';
 import * as T from "../utils/constants";
-import * as S from '../styles/pages';
+import * as S from '../styles';
 
 export default () => {
 	const history = useHistory();

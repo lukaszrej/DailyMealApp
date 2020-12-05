@@ -1,5 +1,5 @@
 import { withStyles } from '@material-ui/core/styles';
-import MuiDialogContent from '@material-ui/core/DialogContent';
+import * as S from "../styles";
 
 const ModalContent = withStyles(() => ({
 	root: {
@@ -16,6 +16,6 @@ const ModalContent = withStyles(() => ({
 			}
 		}
 	}
-}))(MuiDialogContent);
+}))(S.DialogContent);
 
 export default ModalContent;

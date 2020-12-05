@@ -1,12 +1,9 @@
 import React from 'react';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import Checkbox from '@material-ui/core/Checkbox';
 import { Product } from '../../store/product/Product.types';
 import { useSelector } from 'react-redux';
 import { getStoredProducts } from '../../store/product/Product.selectors';
 import * as T from "../../utils/constants";
+import * as S from "../../styles";
 
 interface TableBodyProps {
 	isSelected: (name: string) => boolean;
@@ -18,7 +15,7 @@ const MealTableBody = (props: TableBodyProps) => {
 	const storedProducts = useSelector(getStoredProducts);
 
 	return (
-		<TableBody>
+		<S.TableBody>
 			{storedProducts.map((product: Product, index: number) => {
 				const productId = product.food.foodId;
 				const productLabel = product.food.label;
@@ -31,7 +28,7 @@ const MealTableBody = (props: TableBodyProps) => {
 				const labelId = `${T.MEAL_CHECKBOX_LABELLED}-${index}`;
 
 				return (
-					<TableRow
+					<S.TableRow
 						hover
 						onClick={() => handleSelectClick(productId)}
 						role='checkbox'
@@ -40,22 +37,21 @@ const MealTableBody = (props: TableBodyProps) => {
 						key={productId}
 						selected={isItemSelected}
 					>
-						<TableCell padding='checkbox'>
-							<Checkbox checked={isItemSelected} inputProps={{ 'aria-labelledby': labelId }} />
-						</TableCell>
-						<TableCell component='th' id={labelId} scope='row' padding='none'>
+						<S.TableCell padding='checkbox'>
+							<S.Checkbox checked={isItemSelected} inputProps={{ 'aria-labelledby': labelId }} />
+						</S.TableCell>
+						<S.TableCell component='th' id={labelId} scope='row' padding='none'>
 							{productLabel}
-						</TableCell>
-						<TableCell align='right'>{Math.round(calories)}</TableCell>
-						<TableCell align='right'>{Math.round(fat)}</TableCell>
-						<TableCell align='right'>{Math.round(carbs)}</TableCell>
-						<TableCell align='right'>{Math.round(protein)}</TableCell>
-					</TableRow>
+						</S.TableCell>
+						<S.TableCell align='right'>{Math.round(calories)}</S.TableCell>
+						<S.TableCell align='right'>{Math.round(fat)}</S.TableCell>
+						<S.TableCell align='right'>{Math.round(carbs)}</S.TableCell>
+						<S.TableCell align='right'>{Math.round(protein)}</S.TableCell>
+					</S.TableRow>
 				);
 			})}
-		</TableBody>
+		</S.TableBody>
 	);
-	// }
 };
 
 export default MealTableBody;
