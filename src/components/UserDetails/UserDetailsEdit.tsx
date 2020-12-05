@@ -1,22 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import shortid from 'shortid';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import TextField from '@material-ui/core/TextField';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 import ModalTitle from '../ModalTitle';
 import ModalContent from '../ModalContent';
 import { activityOptions } from '../../utils/activityLevels';
 import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
-import * as S from '../../styles';
-import * as T from '../../utils/constants';
 import {
 	getUserName,
 	getUserHeight,
@@ -25,6 +14,8 @@ import {
 	getUserGender,
 	getUserActivityLevel
 } from '../../store/user/User.selectors';
+import * as T from '../../utils/constants';
+import * as S from '../../styles';
 
 interface UserEditProps {
 	handleClose: () => void;
@@ -38,17 +29,17 @@ const UserDetailsEdit = (props: UserEditProps) => {
 	const dispatch = useDispatch();
 
 	const currentName = useSelector(getUserName);
-	const [ name, setName ] = useState(currentName);
+	const [name, setName] = useState(currentName);
 	const currentHeight = useSelector(getUserHeight);
-	const [ height, setHeight ] = useState(currentHeight);
+	const [height, setHeight] = useState(currentHeight);
 	const currentWeight = useSelector(getUserWeight);
-	const [ weight, setWeight ] = useState(currentWeight);
+	const [weight, setWeight] = useState(currentWeight);
 	const currentAge = useSelector(getUserAge);
-	const [ age, setAge ] = useState(currentAge);
+	const [age, setAge] = useState(currentAge);
 	const currentGender = useSelector(getUserGender);
-	const [ gender, setGender ] = useState(currentGender);
+	const [gender, setGender] = useState(currentGender);
 	const currentActivityLevel = useSelector(getUserActivityLevel);
-	const [ activityLevel, setActivityLevel ] = useState(currentActivityLevel);
+	const [activityLevel, setActivityLevel] = useState(currentActivityLevel);
 
 	const handleActivityLevelChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
 		setActivityLevel((event.target as HTMLInputElement).value);
@@ -79,14 +70,14 @@ const UserDetailsEdit = (props: UserEditProps) => {
 	};
 
 	return (
-		<Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={openEditModal}>
+		<S.Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={openEditModal}>
 			<ModalTitle id='customized-dialog-title' onClose={handleClose}>
 				{T.EDIT_USER_DATA}
 			</ModalTitle>
 
 			<form onSubmit={handleSubmit}>
 				<ModalContent dividers>
-					<TextField
+					<S.TextField
 						variant='outlined'
 						fullWidth
 						id='name'
@@ -96,7 +87,7 @@ const UserDetailsEdit = (props: UserEditProps) => {
 						onChange={(e) => setName(e.target.value)}
 						value={name}
 					/>
-					<TextField
+					<S.TextField
 						variant='outlined'
 						margin='normal'
 						fullWidth
@@ -108,7 +99,7 @@ const UserDetailsEdit = (props: UserEditProps) => {
 						onChange={(e) => setHeight(e.target.value)}
 						value={height}
 					/>
-					<TextField
+					<S.TextField
 						variant='outlined'
 						fullWidth
 						id='weight'
@@ -119,7 +110,7 @@ const UserDetailsEdit = (props: UserEditProps) => {
 						onChange={(e) => setWeight(e.target.value)}
 						value={weight}
 					/>
-					<TextField
+					<S.TextField
 						variant='outlined'
 						fullWidth
 						id='age'
@@ -131,8 +122,8 @@ const UserDetailsEdit = (props: UserEditProps) => {
 						value={age}
 					/>
 					<S.UserDetailsEdit variant='outlined' className='activity'>
-						<InputLabel id='demo-simple-select-outlined-label'>{T.ACTIVITY_LEVEL}</InputLabel>
-						<Select
+						<S.InputLabel id='demo-simple-select-outlined-label'>{T.ACTIVITY_LEVEL}</S.InputLabel>
+						<S.Select
 							labelId='demo-simple-select-outlined-label'
 							id='demo-simple-select-outlined'
 							value={activityLevel}
@@ -142,28 +133,28 @@ const UserDetailsEdit = (props: UserEditProps) => {
 						>
 							{activityOptions.map((element) => {
 								return (
-									<MenuItem value={element.activityValue} key={shortid.generate()}>
+									<S.MenuItem value={element.activityValue} key={shortid.generate()}>
 										{element.activityDescription}
-									</MenuItem>
+									</S.MenuItem>
 								);
 							})}
-						</Select>
+						</S.Select>
 					</S.UserDetailsEdit>
 					<FormControl component='fieldset'>
-						<RadioGroup aria-label='gender' name='gender1' value={gender} onChange={handleGenderChange}>
-							<FormControlLabel value='male' control={<Radio />} label={T.MALE} />
-							<FormControlLabel value='female' control={<Radio />} label={T.FEMALE} />
-						</RadioGroup>
+						<S.RadioGroup aria-label='gender' name='gender1' value={gender} onChange={handleGenderChange}>
+							<S.FormControlLabel value='male' control={<S.Radio />} label={T.MALE} />
+							<S.FormControlLabel value='female' control={<S.Radio />} label={T.FEMALE} />
+						</S.RadioGroup>
 					</FormControl>
 				</ModalContent>
 
 				<S.UserDetailsButtons>
-					<Button autoFocus type='submit' color='primary'>
+					<S.Button autoFocus type='submit' color='primary'>
 						{T.SAVE}
-					</Button>
+					</S.Button>
 				</S.UserDetailsButtons>
 			</form>
-		</Dialog>
+		</S.Dialog>
 	);
 };
 

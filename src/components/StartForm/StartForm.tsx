@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
 import shortid from 'shortid';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import Dialog from '@material-ui/core/Dialog';
 import ModalTitle from '../ModalTitle';
 import ModalContent from '../ModalContent';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 import { activityOptions } from '../../utils/activityLevels';
 import { getStarted } from '../../store/start/Start.selectors';
 import { useDispatch, useSelector } from 'react-redux';
@@ -50,12 +41,12 @@ const StartForm = () => {
 	};
 
 	return (
-		<Dialog open={!isStarted} aria-labelledby='start-form-title'>
+		<S.Dialog open={!isStarted} aria-labelledby='start-form-title'>
 			<ModalTitle id='start-form-title'>{T.FILL_THE_FORM}</ModalTitle>
 
 			<ModalContent dividers>
 				<S.StartForm noValidate onSubmit={handleStartSubmit}>
-					<TextField
+					<S.TextField
 						variant='outlined'
 						margin='normal'
 						fullWidth
@@ -66,7 +57,7 @@ const StartForm = () => {
 						onChange={(e) => setName(e.target.value)}
 						value={name}
 					/>
-					<TextField
+					<S.TextField
 						variant='outlined'
 						margin='normal'
 						fullWidth
@@ -78,7 +69,7 @@ const StartForm = () => {
 						onChange={(e) => setHeight(e.target.value)}
 						value={height}
 					/>
-					<TextField
+					<S.TextField
 						variant='outlined'
 						margin='normal'
 						fullWidth
@@ -90,7 +81,7 @@ const StartForm = () => {
 						onChange={(e) => setWeight(e.target.value)}
 						value={weight}
 					/>
-					<TextField
+					<S.TextField
 						variant='outlined'
 						margin='normal'
 						fullWidth
@@ -102,9 +93,9 @@ const StartForm = () => {
 						onChange={(e) => setAge(e.target.value)}
 						value={age}
 					/>
-					<FormControl variant='outlined' className="activity">
-						<InputLabel id='demo-simple-select-outlined-label'>Activity level</InputLabel>
-						<Select
+					<S.FormControl variant='outlined' className="activity">
+						<S.InputLabel id='demo-simple-select-outlined-label'>Activity level</S.InputLabel>
+						<S.Select
 							labelId='demo-simple-select-outlined-label'
 							id='demo-simple-select-outlined'
 							value={activityLevel}
@@ -114,27 +105,27 @@ const StartForm = () => {
 						>
 							{activityOptions.map((element) => {
 								return (
-									<MenuItem value={element.activityValue} key={shortid.generate()}>
+									<S.MenuItem value={element.activityValue} key={shortid.generate()}>
 										{element.activityDescription}
-									</MenuItem>
+									</S.MenuItem>
 								);
 							})}
-						</Select>
-					</FormControl>
+						</S.Select>
+					</S.FormControl>
 
 					<FormControl component='fieldset' className="gender">
-						<RadioGroup aria-label={T.GENDER} name={T.GENDER} value={gender} onChange={handleGenderChange}>
-							<FormControlLabel value='male' control={<Radio />} label={T.MALE} />
-							<FormControlLabel value='female' control={<Radio />} label={T.FEMALE} />
-						</RadioGroup>
+						<S.RadioGroup aria-label={T.GENDER} name={T.GENDER} value={gender} onChange={handleGenderChange}>
+							<S.FormControlLabel value='male' control={<S.Radio />} label={T.MALE} />
+							<S.FormControlLabel value='female' control={<S.Radio />} label={T.FEMALE} />
+						</S.RadioGroup>
 					</FormControl>
 
-					<Button type='submit' variant='contained'>
+					<S.Button type='submit' variant='contained'>
 						{T.START}
-					</Button>
+					</S.Button>
 				</S.StartForm>
 			</ModalContent>
-		</Dialog>
+		</S.Dialog>
 	);
 };
 

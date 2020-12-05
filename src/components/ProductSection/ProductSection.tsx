@@ -1,10 +1,4 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import AddIcon from '@material-ui/icons/Add';
-import SearchIcon from '@material-ui/icons/Search';
-import Typography from '@material-ui/core/Typography';
 import AddOwnProduct from './AddOwnProduct';
 import FindProduct from './FindProduct';
 import * as T from "../../utils/constants";
@@ -20,12 +14,12 @@ const ProductSection = () => {
 
 	return (
 		<S.ProductSection>
-			<Paper square>
-				<Typography variant='h6' noWrap>
+			<S.Paper square>
+				<S.Typography variant='h6' noWrap>
 					{T.PRODUCT_SECTION_HEADING}
-				</Typography>
+				</S.Typography>
 
-				<Tabs
+				<S.Tabs
 					value={value}
 					onChange={handleChange}
 					variant='fullWidth'
@@ -33,12 +27,12 @@ const ProductSection = () => {
 					textColor='inherit'
 					aria-label={T.ADD_OR_FIND_PRODUCT_ARIA}
 				>
-					<Tab icon={<SearchIcon />} label={T.FIND_PRODUCT} />
-					<Tab icon={<AddIcon />} label={T.ADD_OWN_PRODUCT} />
-				</Tabs>
+					<S.Tab icon={<S.SearchIcon />} label={T.FIND_PRODUCT} />
+					<S.Tab icon={<S.AddIcon />} label={T.ADD_OWN_PRODUCT} />
+				</S.Tabs>
 
 				<div className="tabs">{value ? <AddOwnProduct /> : <FindProduct />}</div>
-			</Paper>
+			</S.Paper>
 		</S.ProductSection>
 	);
 };

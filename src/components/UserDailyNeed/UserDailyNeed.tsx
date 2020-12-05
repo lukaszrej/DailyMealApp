@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Typography from '@material-ui/core/Typography';
 import { getUserDailyNeed } from '../../store/user/User.selectors';
 import { getCurrentKcalSum } from '../../store/product/Product.selectors';
 import { calculateDailyNeed } from '../../store/user/User.actions';
@@ -21,21 +20,21 @@ const UserNeed = () => {
 
 	return (
 		<S.UserDailyNeed >
-			<Typography variant='h6' noWrap>
+			<S.Typography variant='h6' noWrap>
 				{T.CALORIE_NEED_HEADING}
-			</Typography>
-			<Typography variant='h3' color='primary' noWrap>
+			</S.Typography>
+			<S.Typography variant='h3' color='primary' noWrap>
 				{dailyNeed} {T.KCAL}
-			</Typography>
+			</S.Typography>
 
 			{currentKcalSum !== 0 && (
 				<>
-					<Typography variant='h6' noWrap>
+					<S.Typography variant='h6' noWrap>
 						{T.CURRENT_MEAL}
-					</Typography>
-					<Typography variant='h3' color='secondary' noWrap>
+					</S.Typography>
+					<S.Typography variant='h3' color='secondary' noWrap>
 						{currentKcalSum} {T.KCAL}
-					</Typography>
+					</S.Typography>
 				</>
 			)}
 		</S.UserDailyNeed>

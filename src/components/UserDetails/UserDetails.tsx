@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import UserDetailsEdit from './UserDetailsEdit';
 import Alert from '../Alert';
+import UserDetailsEdit from './UserDetailsEdit';
 import { useSelector } from 'react-redux';
 import getActivityLevelDesc from '../../utils/activityLevelsDesc';
 import {
@@ -13,8 +11,8 @@ import {
 	getUserGender,
 	getUserActivityLevel
 } from '../../store/user/User.selectors';
-import * as S from '../../styles';
 import * as T from "../../utils/constants";
+import * as S from '../../styles';
 
 const UserDetails = () => {
 	const userName = useSelector(getUserName);
@@ -39,9 +37,9 @@ const UserDetails = () => {
 	return (
 		<>
 			<S.UserDetails>
-				<Typography variant='h6' noWrap>
+				<S.Typography variant='h6' noWrap>
 					{T.USER_DETAILS_HEADING}
-				</Typography>
+				</S.Typography>
 
 				{userName && <p>{T.NAME}: {userName}</p>}
 				{userHeight && <p>{T.HEIGHT}: {userHeight} cm</p>}
@@ -50,9 +48,9 @@ const UserDetails = () => {
 				{userGender && <p>{T.GENDER}: {userGender}</p>}
 				{userActivityLevel && <p>{T.ACTIVITY_LEVEL}: {getActivityLevelDesc(userActivityLevel)}</p>}
 
-				<Button variant='outlined' color='primary' onClick={handleOpen}>
+				<S.Button variant='outlined' color='primary' onClick={handleOpen}>
 					{T.EDIT_DATA}
-				</Button>
+				</S.Button>
 
 				{openEditModal && (
 					<UserDetailsEdit

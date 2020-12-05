@@ -1,9 +1,4 @@
 import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import HomeIcon from '@material-ui/icons/Home';
 import MealCard from '../components/MealsPage/MealCard';
 import { useSelector } from 'react-redux';
 import { getMeals } from '../store/meal/Meal.selectors';
@@ -16,7 +11,6 @@ export default () => {
 	const history = useHistory();
 	const meals = useSelector(getMeals);
 	const dailyNeed = useSelector(getUserDailyNeed);
-
 	const [openModal, setOpenModal] = useState(false);
 
 	const handleOpen = () => {
@@ -27,31 +21,35 @@ export default () => {
 		setOpenModal(false);
 	};
 
+	const handleGoBack = () => {
+		history.push('/home');
+	}
+
 	return (
 		<S.Meals>
-			<Paper square>
-				<Typography variant='h6' noWrap>
+			<S.Paper square>
+				<S.Typography variant='h6' noWrap>
 					{T.MEALS_PAGE_HEADING}
-				</Typography>
-			</Paper>
+				</S.Typography>
+			</S.Paper>
 
-			<Button onClick={handleOpen}>Open modal something</Button>
+			<S.Button onClick={handleOpen}>Open modal something</S.Button>
 
 			<div className="buttons">
-				<Button
+				<S.Button
 					variant='contained'
 					color='primary'
 					size='large'
-					onClick={() => history.push('/home')}
-					endIcon={<HomeIcon />}
+					onClick={handleGoBack}
+					endIcon={<S.HomeIcon />}
 				>
 					{T.GO_BACK}
-				</Button>
+				</S.Button>
 			</div>
 
-			<Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={openModal}>
+			<S.Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={openModal}>
 				<MealCard meals={meals} dailyNeed={dailyNeed} />
-			</Dialog>
+			</S.Dialog>
 		</S.Meals>
 	);
 };

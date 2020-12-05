@@ -1,5 +1,5 @@
 import React from 'react';
-import InfoStepper from '../components/InfoStepper/Stepper';
+import Stepper from '../components/Stepper/Stepper';
 import ProductSection from '../components/ProductSection/ProductSection';
 import MealSection from '../components/MealSection/MealSection';
 import UserDetails from '../components/UserDetails/UserDetails';
@@ -11,7 +11,7 @@ export default () => {
 	return (
 		<S.Home>
 			<article>
-				<InfoStepper />
+				<Stepper />
 				<ProductSection />
 				<MealSection />
 			</article>
