@@ -10,7 +10,7 @@ import {
 } from './Product.types';
 import { Dispatch } from 'redux';
 import { Product } from '../../store/product/Product.types';
-import getData from './Product.api';
+import getAPIProducts from './Product.api';
 
 export const findProduct = (productName: string) => async (dispatch: Dispatch) => {
 	dispatch({
@@ -18,7 +18,9 @@ export const findProduct = (productName: string) => async (dispatch: Dispatch) =
 	});
 
 	try {
-		const response = await getData(productName);
+		const response = await getAPIProducts(productName);
+
+		console.log(response.data.hints, 'resp')
 
 		dispatch({
 			type: FIND_PRODUCT,
@@ -31,19 +33,17 @@ export const findProduct = (productName: string) => async (dispatch: Dispatch) =
 	}
 };
 
-export const storeProduct = (product: Product) => (dispatch: Dispatch) => {
-	dispatch({
-		type: STORE_PRODUCT,
-		payload: product
-	});
-};
+export const storeProduct = (product: Product) => ({
+	type: STORE_PRODUCT,
+	payload: product
+});
 
-export const updateCurrentKcalSum = (productKcal: number) => (dispatch: Dispatch) => {
-	dispatch({
-		type: UPDATE_CURRENT_KCAL_SUM,
-		payload: productKcal
-	});
-};
+
+export const updateCurrentKcalSum = (productKcal: number) => ({
+	type: UPDATE_CURRENT_KCAL_SUM,
+	payload: productKcal
+});
+
 
 export const selectProduct = (selectedProductId: string) => (dispatch: Dispatch, getState: Function) => {
 	const state = getState();
@@ -68,11 +68,9 @@ export const selectProduct = (selectedProductId: string) => (dispatch: Dispatch,
 	});
 };
 
-export const selectProductReset = () => (dispatch: Dispatch) => {
-	dispatch({
-		type: SELECT_PRODUCT_RESET
-	});
-};
+export const selectProductReset = () => ({
+	type: SELECT_PRODUCT_RESET
+});
 
 export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getState: Function) => {
 	const state = getState();
@@ -93,8 +91,6 @@ export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getSta
 	});
 };
 
-export const deleteAllProducts = () => (dispatch: Dispatch) => {
-	dispatch({
-		type: DELETE_ALL_PRODUCTS
-	});
-};
+export const deleteAllProducts = () => ({
+	type: DELETE_ALL_PRODUCTS
+});

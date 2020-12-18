@@ -1,15 +1,14 @@
 import axios from 'axios';
-import { ProductsApiResponse } from '../../store/product/Product.types';
+import * as link from "../../utils/url.repository";
 
-const API_Url: string = 'https://api.edamam.com/api/food-database/parser?nutrition-type=logging&app_id=';
+const API_Url: string = link.edamam;
 const API_ID: string | undefined = process.env.REACT_APP_API_ID;
 const API_Keys: string | undefined = process.env.REACT_APP_API_KEYS;
 
-const getData = async (productName: string): Promise<ProductsApiResponse> => {
+const getAPIProducts = (productName: string) => {
 	const productURL = API_Url + `${API_ID}&&app_key=${API_Keys}&ingr=${productName}`;
-	console.log(productURL, 'product.api')
 
-	return await axios.get(productURL);
+	return axios.get(productURL);
 };
 
-export default getData;
+export default getAPIProducts;

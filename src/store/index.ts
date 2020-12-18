@@ -1,13 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { StartReducer } from './start/Start.reducer';
+import { Reducer } from 'redux';
+import { LoginReducer } from './login/Login.reducer';
 import { UserReducer } from './user/User.reducer';
 import { MealReducer } from './meal/Meal.reducer';
 import { ProductReducer } from './product/Product.reducer';
 
-export const rootReducer: any = combineReducers({
-	start: StartReducer,
+export const rootReducer: Reducer = combineReducers({
+	login: LoginReducer,
 	user: UserReducer,
 	product: ProductReducer,
 	meal: MealReducer

@@ -1,22 +1,17 @@
-import { STORE_MEAL, SET_IS_MEAL_ADDED, allMealActionTypes } from './Meal.types';
+import { MealState, STORE_MEAL, SET_IS_MEAL_ADDED, allMealActions } from './Meal.types';
 import { Product } from '../../store/product/Product.types';
 
-interface MealState {
-	meals: (Product | any)[];
-	isMealAdded: boolean;
-}
-
-export const initialState: MealState = {
-	meals: [],
+const initialState: MealState = {
+	meals: [] as Product[],
 	isMealAdded: false
 };
 
-export const MealReducer = (state: MealState = initialState, action: allMealActionTypes) => {
+export const MealReducer = (state: MealState = initialState, action: allMealActions) => {
 	switch (action.type) {
 		case STORE_MEAL:
 			return {
 				...state,
-				meals: [ ...state.meals, action.payload ]
+				meals: action.payload
 			};
 		case SET_IS_MEAL_ADDED:
 			return {

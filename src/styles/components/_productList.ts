@@ -15,6 +15,7 @@ export const ProductList = styled.ul`
 		font-weight: 700;
 		letter-spacing: 2;
 		text-transform: lowercase;
+		cursor: pointer;
 	}
 
 	& > li:hover {

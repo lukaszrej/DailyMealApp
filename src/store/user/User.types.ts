@@ -1,3 +1,13 @@
+export interface UserState {
+	name: string;
+	height: string;
+	weight: string;
+	age: string;
+	gender: string;
+	activityLevel: string;
+	dailyNeed: number;
+}
+
 export interface UserDetails {
 	name?: string;
 	height: string;
@@ -24,4 +34,6 @@ export interface CalculateDailyNeedAction {
 	payload: number;
 }
 
-export type allUserActionTypes = CreateUserAction | CalculateDailyNeedAction;
+export type allUserActions =
+	CreateUserAction |
+	CalculateDailyNeedAction;

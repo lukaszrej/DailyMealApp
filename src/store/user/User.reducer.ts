@@ -1,18 +1,8 @@
-import { allUserActionTypes, CREATE_USER, CALCULATE_DAILY_NEED } from './User.types';
-
-interface UserState {
-	name: string;
-	height: string;
-	weight: string;
-	age: string;
-	gender: string;
-	activityLevel: string;
-	dailyNeed: number;
-}
+import { UserState, allUserActions, CREATE_USER, CALCULATE_DAILY_NEED } from './User.types';
 
 const localStorageUser = JSON.parse(localStorage.getItem("user") as string);
 
-export const initialState: UserState = {
+const initialState: UserState = {
 	name: localStorageUser ? localStorageUser.name : '',
 	height: localStorageUser ? localStorageUser.height : '',
 	weight: localStorageUser ? localStorageUser.weight : '',
@@ -22,7 +12,7 @@ export const initialState: UserState = {
 	dailyNeed: localStorageUser ? localStorageUser.dailyNeed : 0
 };
 
-export const UserReducer = (state: UserState = initialState, action: allUserActionTypes) => {
+export const UserReducer = (state: UserState = initialState, action: allUserActions) => {
 	switch (action.type) {
 		case CREATE_USER:
 			return {

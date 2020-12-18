@@ -1,19 +1,15 @@
 import { UserDetails, CREATE_USER, CALCULATE_DAILY_NEED } from './User.types';
 import { Dispatch } from 'redux';
 
-export const createUser = ({ name, height, weight, age, gender, activityLevel }: UserDetails) => {
-	return (dispatch: Dispatch) => {
-		dispatch({
-			type: CREATE_USER,
-			name,
-			height,
-			weight,
-			age,
-			gender,
-			activityLevel
-		});
-	};
-};
+export const createUser = ({ name, height, weight, age, gender, activityLevel }: UserDetails) => ({
+	type: CREATE_USER,
+	name,
+	height,
+	weight,
+	age,
+	gender,
+	activityLevel
+});
 
 export const calculateDailyNeed = ({ height, weight, age, gender, activityLevel }: UserDetails) => {
 	return (dispatch: Dispatch) => {
