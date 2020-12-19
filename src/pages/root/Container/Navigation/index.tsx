@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import TopAppBar from './TopAppBar';
-import Sidebar from './Sidebar';
-import * as S from "../../../styles";
+import TopBar from './TopBar';
+import SideBar from './SideBar';
+import * as S from "../../../../styles";
 
 const drawerWidth = 250;
 
@@ -36,7 +36,7 @@ const Navigation = (props: AppBarProps) => {
 
 	return (
 		<div className={classes.root}>
-            <TopAppBar handleDrawerToggle={handleDrawerToggle} />
+            <TopBar handleDrawerToggle={handleDrawerToggle} />
 
 			<S.Hidden mdUp implementation='css'>
 				<S.Drawer
@@ -47,13 +47,13 @@ const Navigation = (props: AppBarProps) => {
 					classes={{ paper: classes.drawer }}
 					ModalProps={{ keepMounted: true }}
 				>
-					<Sidebar />
+					<SideBar />
 				</S.Drawer>
 			</S.Hidden>
 
 			<S.Hidden smDown implementation='css'>
 				<S.Drawer classes={{ paper: classes.drawer }} variant='permanent' open={mobileOpen}>
-					<Sidebar />
+					<SideBar />
 				</S.Drawer>
 			</S.Hidden>
 		</div>

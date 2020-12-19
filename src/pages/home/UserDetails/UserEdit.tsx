@@ -6,39 +6,26 @@ import ModalTitle from '../../../components/ModalTitle';
 import ModalContent from '../../../components/ModalContent';
 import { activityOptions } from '../../../utils/activity-levels/activityLevels';
 import { createUser, calculateDailyNeed } from '../../../store/user/User.actions';
-import {
-	getUserName,
-	getUserHeight,
-	getUserWeight,
-	getUserAge,
-	getUserGender,
-	getUserActivityLevel
-} from '../../../store/user/User.selectors';
+import { UserEditProps } from './UserEdit.types';
+import * as selector from '../../../store/user/User.selectors';
 import * as T from '../../../utils/constants';
 import * as S from '../../../styles';
 
-interface UserEditProps {
-	handleClose: () => void;
-	openEditModal: boolean;
-	setOpenEditModal: (open: boolean) => void;
-	setDisplayAlert: (displayAlert: boolean) => void;
-}
-
-const UserDetailsEdit = (props: UserEditProps) => {
+const UserEdit = (props: UserEditProps) => {
 	const { handleClose, openEditModal, setOpenEditModal, setDisplayAlert } = props;
 	const dispatch = useDispatch();
 
-	const currentName = useSelector(getUserName);
+	const currentName = useSelector(selector.getUserName);
 	const [name, setName] = useState(currentName);
-	const currentHeight = useSelector(getUserHeight);
+	const currentHeight = useSelector(selector.getUserHeight);
 	const [height, setHeight] = useState(currentHeight);
-	const currentWeight = useSelector(getUserWeight);
+	const currentWeight = useSelector(selector.getUserWeight);
 	const [weight, setWeight] = useState(currentWeight);
-	const currentAge = useSelector(getUserAge);
+	const currentAge = useSelector(selector.getUserAge);
 	const [age, setAge] = useState(currentAge);
-	const currentGender = useSelector(getUserGender);
+	const currentGender = useSelector(selector.getUserGender);
 	const [gender, setGender] = useState(currentGender);
-	const currentActivityLevel = useSelector(getUserActivityLevel);
+	const currentActivityLevel = useSelector(selector.getUserActivityLevel);
 	const [activityLevel, setActivityLevel] = useState(currentActivityLevel);
 
 	const handleActivityLevelChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
@@ -158,4 +145,4 @@ const UserDetailsEdit = (props: UserEditProps) => {
 	);
 };
 
-export default UserDetailsEdit;
+export default UserEdit;

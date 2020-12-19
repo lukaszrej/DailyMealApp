@@ -3,7 +3,7 @@ import { ContainerProps } from './index.types';
 import { useSelector } from 'react-redux';
 import { getShowAlert } from '../../../store/login/Login.selectors';
 import { getUserName } from '../../../store/user/User.selectors';
-import Navigation from '../Navigation';
+import Navigation from './Navigation';
 import Alert from '../../../components/Alert';
 import * as S from "../../../styles";
 

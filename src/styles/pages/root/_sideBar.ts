@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Sidebar = styled.nav`
+export const SideBar = styled.nav`
 	& div:first-of-type {
 		display: flex;
 		justify-content: center;

@@ -4,10 +4,10 @@ import ProductSection from './ProductSection';
 import MealSection from './MealSection';
 import UserDetails from './UserDetails';
 import DailyNeed from './DailyNeed';
-import MealCounter from './MealCounter';
+import MealsCounter from './MealCounter';
 import * as S from '../../styles';
 
-export default () => {
+const Home = () => {
 	return (
 		<S.Home>
 			<article>
@@ -18,8 +18,10 @@ export default () => {
 			<aside>
 				<UserDetails />
 				<DailyNeed />
-				<MealCounter />
+				<MealsCounter />
 			</aside>
 		</S.Home>
 	);
 };
+
+export default Home;

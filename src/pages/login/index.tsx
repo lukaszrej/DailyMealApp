@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import shortid from 'shortid';
 import { useHistory } from 'react-router-dom';
 import FormControl from '@material-ui/core/FormControl';
 import ModalTitle from '../../components/ModalTitle';
@@ -34,7 +33,6 @@ const Login = () => {
 
 	const handleStartSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
-
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
 		dispatch(startApp());
@@ -48,7 +46,7 @@ const Login = () => {
 			<ModalTitle id='start-form-title'>{T.FILL_THE_FORM}</ModalTitle>
 
 			<ModalContent dividers>
-				<S.StartForm noValidate onSubmit={handleStartSubmit}>
+				<S.Login noValidate onSubmit={handleStartSubmit}>
 					<S.TextField
 						variant='outlined'
 						margin='normal'
@@ -108,7 +106,7 @@ const Login = () => {
 						>
 							{activityOptions.map((element) => {
 								return (
-									<S.MenuItem value={element.activityValue} key={shortid.generate()}>
+									<S.MenuItem value={element.activityValue} key={element.id}>
 										{element.activityDescription}
 									</S.MenuItem>
 								);
@@ -126,7 +124,7 @@ const Login = () => {
 					<S.Button type='submit' variant='contained'>
 						{T.START}
 					</S.Button>
-				</S.StartForm>
+				</S.Login>
 			</ModalContent>
 		</S.Dialog>
 	);

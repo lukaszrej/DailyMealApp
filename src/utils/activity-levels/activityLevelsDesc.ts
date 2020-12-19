@@ -1,4 +1,4 @@
-const getActivityLevelDesc = (userActivityLevel: string): string | null => {
+const getActivityLevelDesc = (userActivityLevel: string) => {
 	let activityLevelDescription = '';
 
 	switch (userActivityLevel) {

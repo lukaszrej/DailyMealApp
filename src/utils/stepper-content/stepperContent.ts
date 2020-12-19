@@ -1,5 +1,5 @@
-export const getSteps = (): Array<string> => {
-	return [ 'Find or add product', 'Add other product and submit', 'View your charts' ];
+export const getSteps = () => {
+	return ['Find or add product', 'Add other product and submit', 'View your charts'];
 };
 
 export const getStepContent = (step: number) => {

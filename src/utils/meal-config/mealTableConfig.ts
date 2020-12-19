@@ -1,17 +1,4 @@
-interface Data {
-	calories: number;
-	carbs: number;
-	fat: number;
-	name: string;
-	protein: number;
-}
-
-interface HeadCell {
-	disablePadding: boolean;
-	id: keyof Data;
-	label: string;
-	numeric: boolean;
-}
+import { HeadCell } from './mealTableConfig.types';
 
 export const headCells: HeadCell[] = [
 	{ id: 'name', numeric: false, disablePadding: true, label: 'Product (100g serving)' },

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import MealCard from './Card';
 import { useSelector } from 'react-redux';
 import { getMeals } from '../../store/meal/Meal.selectors';
 import { getUserDailyNeed } from '../../store/user/User.selectors';
 import { useHistory } from 'react-router-dom';
+import MealCard from './MealCard';
 import * as T from "../../utils/constants";
 import * as S from '../../styles';
 
-export default () => {
+const Meals = () => {
 	const history = useHistory();
 	const meals = useSelector(getMeals);
 	const dailyNeed = useSelector(getUserDailyNeed);
@@ -24,8 +24,6 @@ export default () => {
 	const handleGoBack = () => {
 		history.push('/home');
 	}
-
-	console.log('meals', meals);
 
 	return (
 		<S.Meals>
@@ -56,3 +54,5 @@ export default () => {
 		</S.Meals>
 	);
 };
+
+export default Meals;

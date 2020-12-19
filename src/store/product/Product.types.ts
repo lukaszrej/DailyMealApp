@@ -13,9 +13,9 @@ export interface Product {
 
 export interface ProductState {
 	isLoading: boolean;
-	foundProducts: Product[] | [];
-	storedProducts: Product[] | [];
-	selectedProducts: string[] | [];
+	foundProducts: Product[];
+	storedProducts: Product[];
+	selectedProducts: string[];
 	currentKcalSum: number;
 }
 

@@ -1,7 +1,7 @@
 import * as S from '@material-ui/core';
 import styled from "styled-components";
 
-export const TopAppBar = styled(S.AppBar)`
+export const TopBar = styled(S.AppBar)`
 	display: flex;
     color: white;
 	background: linear-gradient(270deg, #025997 0%, #00A8CC 55%);

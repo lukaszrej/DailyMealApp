@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import MealTable from './MealTable/MealTable';
+import MealTable from './MealTable';
 import { getStoredProducts } from '../../../store/product/Product.selectors';
 import { storeMeal, setIsMealAdded } from '../../../store/meal/Meal.actions';
 import { deleteAllProducts } from '../../../store/product/Product.actions';

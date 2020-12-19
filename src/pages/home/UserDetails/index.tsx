@@ -1,26 +1,19 @@
 import React, { useState } from 'react';
 import Alert from '../../../components/Alert';
-import UserDetailsEdit from './Edit';
+import UserEdit from './UserEdit';
 import { useSelector } from 'react-redux';
 import getActivityLevelDesc from '../../../utils/activity-levels/activityLevelsDesc';
-import {
-	getUserName,
-	getUserHeight,
-	getUserWeight,
-	getUserAge,
-	getUserGender,
-	getUserActivityLevel
-} from '../../../store/user/User.selectors';
+import * as selector from '../../../store/user/User.selectors';
 import * as T from "../../../utils/constants";
 import * as S from '../../../styles';
 
 const UserDetails = () => {
-	const userName = useSelector(getUserName);
-	const userHeight = useSelector(getUserHeight);
-	const userWeight = useSelector(getUserWeight);
-	const userAge = useSelector(getUserAge);
-	const userGender = useSelector(getUserGender);
-    const userActivityLevel = useSelector(getUserActivityLevel);
+	const userName = useSelector(selector.getUserName);
+	const userHeight = useSelector(selector.getUserHeight);
+	const userWeight = useSelector(selector.getUserWeight);
+	const userAge = useSelector(selector.getUserAge);
+	const userGender = useSelector(selector.getUserGender);
+    const userActivityLevel = useSelector(selector.getUserActivityLevel);
 
 	const [displayAlert, setDisplayAlert] = useState(false);
 	const [openEditModal, setOpenEditModal] = useState(false);
@@ -53,7 +46,7 @@ const UserDetails = () => {
 				</S.Button>
 
 				{openEditModal && (
-					<UserDetailsEdit
+					<UserEdit
 						handleClose={handleClose}
 						openEditModal={openEditModal}
 						setOpenEditModal={setOpenEditModal}

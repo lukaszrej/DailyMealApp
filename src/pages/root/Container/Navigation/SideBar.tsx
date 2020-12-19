@@ -21,7 +21,7 @@ const Sidebar = () => {
 	};
 
 	return (
-		<S.Sidebar>
+		<S.SideBar>
 			<S.Toolbar>
 				<S.Typography variant='h6' noWrap>
 					{T.APP_NAME}
@@ -81,7 +81,7 @@ const Sidebar = () => {
 					</ListItem>
 				</S.SocialLinks>
 			</footer>
-		</S.Sidebar>
+		</S.SideBar>
 	);
 };
 

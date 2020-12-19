@@ -1,25 +1,12 @@
 import React from 'react';
-import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
 import * as S from "../../styles";
 
-const styles = (theme: Theme) =>
-	createStyles({
-		root: {
-			display: 'flex',
-			'& > * + *': {
-				marginLeft: theme.spacing(2)
-			}
-		}
-	});
-
-const Loader = (props: WithStyles<typeof styles>) => {
-	const { classes } = props;
-
+const Loader = () => {
 	return (
-		<div className={classes.root}>
+		<S.Loader>
 			<S.CircularProgress size={24} />
-		</div>
+		</S.Loader>
 	);
 };
 
-export default withStyles(styles)(Loader);
+export default Loader;

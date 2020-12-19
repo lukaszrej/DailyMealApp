@@ -1,8 +1,7 @@
 import { MealState, STORE_MEAL, SET_IS_MEAL_ADDED, allMealActions } from './Meal.types';
-import { Product } from '../../store/product/Product.types';
 
 const initialState: MealState = {
-	meals: [] as Product[],
+	meals: [],
 	isMealAdded: false
 };
 
@@ -11,7 +10,7 @@ export const MealReducer = (state: MealState = initialState, action: allMealActi
 		case STORE_MEAL:
 			return {
 				...state,
-				meals: action.payload
+				meals: [...state.meals, action.payload]
 			};
 		case SET_IS_MEAL_ADDED:
 			return {

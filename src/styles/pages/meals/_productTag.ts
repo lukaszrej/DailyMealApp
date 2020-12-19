@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MealProductTag = styled.div`
+export const ProductTag = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	text-transform: uppercase;

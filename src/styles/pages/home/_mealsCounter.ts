@@ -1,7 +1,7 @@
 import Paper from '@material-ui/core/Paper';
 import styled from "styled-components";
 
-export const MealCounter = styled(Paper)`
+export const MealsCounter = styled(Paper)`
 	display: flex;
 	flex-direction: column;
 	padding: 24px;

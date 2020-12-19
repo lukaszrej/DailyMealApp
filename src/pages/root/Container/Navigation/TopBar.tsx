@@ -1,21 +1,24 @@
 import React from 'react';
-import { AppBarProps } from './index.types';
+import { useHistory } from 'react-router-dom';
+import { AppBarProps } from './TopBar.types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStarted } from '../../../../store/login/Login.selectors';
 import { endApp } from '../../../../store/login/Login.actions';
 import * as S from '../../../../styles';
 
-const TopAppBar = (props: AppBarProps) => {
+const TopBar = (props: AppBarProps) => {
 	const { handleDrawerToggle } = props;
+	const history = useHistory();
 	const dispatch = useDispatch();
 	const isStarted = useSelector(getStarted);
 
 	const onLogout = () => {
 		dispatch(endApp());
+		history.push("login");
 	};
 
 	return (
-		<S.TopAppBar position='sticky'>
+		<S.TopBar position='sticky'>
 			<S.Toolbar>
 				<S.IconButton color='inherit' aria-label='open drawer' edge='start' onClick={handleDrawerToggle}>
 					<S.MenuIcon />
@@ -27,8 +30,8 @@ const TopAppBar = (props: AppBarProps) => {
 					</S.IconButton>
 				)}
 			</S.Toolbar>
-		</S.TopAppBar>
+		</S.TopBar>
 	);
 };
 
-export default TopAppBar;
+export default TopBar;
