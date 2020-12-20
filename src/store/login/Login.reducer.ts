@@ -1,6 +1,5 @@
 import {
 	allLoginActions,
-	LoginState,
 	START_APP,
 	END_APP,
 	REMOVE_WELCOME_ALERT,
@@ -8,6 +7,11 @@ import {
 	REMOVE_STEPPER
 } from './Login.types';
 
+interface LoginState {
+	started: string | boolean | null;
+	showAlert: boolean;
+	showStepper: boolean;
+}
 
 const initialState: LoginState = {
 	started: localStorage.getItem('started') ? localStorage.getItem('started') : false,

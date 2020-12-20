@@ -1,13 +1,3 @@
-export interface UserState {
-	name: string;
-	height: string;
-	weight: string;
-	age: string;
-	gender: string;
-	activityLevel: string;
-	dailyNeed: number;
-}
-
 export interface UserDetails {
 	name?: string;
 	height: string;

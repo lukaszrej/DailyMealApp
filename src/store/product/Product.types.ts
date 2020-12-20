@@ -11,29 +11,21 @@ export interface Product {
 	};
 }
 
-export interface ProductState {
-	isLoading: boolean;
-	foundProducts: Product[];
-	storedProducts: Product[];
-	selectedProducts: string[];
-	currentKcalSum: number;
-}
-
 export const LOADING = 'LOADING';
 export interface LoadingProductsAction {
 	type: typeof LOADING;
 }
 
-export const FIND_PRODUCT = 'FIND_PRODUCT';
+export const FIND_PRODUCTS = 'FIND_PRODUCTS';
 export interface FindProductAction {
-	type: typeof FIND_PRODUCT;
+	type: typeof FIND_PRODUCTS;
 	payload: Product[];
 }
 
 export const STORE_PRODUCT = 'STORE_PRODUCT';
 export interface StoreProductAction {
 	type: typeof STORE_PRODUCT;
-	payload: Product[];
+	payload: Product;
 }
 
 export const UPDATE_CURRENT_KCAL_SUM = 'UPDATE_CURRENT_KCAL_SUM';
@@ -56,10 +48,13 @@ export interface SelectProductResetAction {
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export interface DeleteProductAction {
 	type: typeof DELETE_PRODUCT;
-	payload: {
-		newProducts: Product;
-		newKcal: number
-	};
+	payload: Product[];
+}
+
+export const UPDATE_KCAL = 'UPDATE_KCAL';
+export interface UpdateKcalAction {
+	type: typeof UPDATE_KCAL;
+	payload:  number;
 }
 
 export const DELETE_ALL_PRODUCTS = 'DELETE_ALL_PRODUCTS';
@@ -75,4 +70,5 @@ export type allProductActions =
 	SelectProductAction |
 	SelectProductResetAction |
 	DeleteProductAction |
+	UpdateKcalAction |
 	DeleteAllProductsAction;

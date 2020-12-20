@@ -1,9 +1,3 @@
-export interface LoginState {
-	started: string | boolean | null;
-	showAlert: boolean;
-	showStepper: boolean;
-}
-
 export const START_APP = 'START_APP';
 export interface StartAppAction {
 	type: typeof START_APP;

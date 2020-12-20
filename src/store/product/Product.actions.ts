@@ -1,11 +1,12 @@
 import {
 	LOADING,
-	FIND_PRODUCT,
+	FIND_PRODUCTS,
 	STORE_PRODUCT,
 	UPDATE_CURRENT_KCAL_SUM,
 	SELECT_PRODUCT,
 	SELECT_PRODUCT_RESET,
 	DELETE_PRODUCT,
+	UPDATE_KCAL,
 	DELETE_ALL_PRODUCTS
 } from './Product.types';
 import { Dispatch } from 'redux';
@@ -20,10 +21,8 @@ export const findProduct = (productName: string) => async (dispatch: Dispatch) =
 	try {
 		const response = await getAPIProducts(productName);
 
-		console.log(response.data.hints, 'resp')
-
 		dispatch({
-			type: FIND_PRODUCT,
+			type: FIND_PRODUCTS,
 			payload: response.data.hints
 		});
 
@@ -45,7 +44,7 @@ export const updateCurrentKcalSum = (productKcal: number) => ({
 });
 
 
-export const selectProduct = (selectedProductId: string) => (dispatch: Dispatch, getState: Function) => {
+export const selectProduct = (selectedProductId: string | string[]) => (dispatch: Dispatch, getState: Function) => {
 	const state = getState();
 	const selected = state.product.selectedProducts;
 	const selectedIndex = selected.indexOf(selectedProductId);
@@ -75,7 +74,17 @@ export const selectProductReset = () => ({
 export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getState: Function) => {
 	const state = getState();
 	const products = state.product.storedProducts;
-	const newProducts: Product = products.filter((storedProduct: Product) => storedProduct.food.foodId !== selectedId);
+	const newProducts: Product[] = products.filter((storedProduct: Product) => storedProduct.food.foodId !== selectedId);
+
+	dispatch({
+		type: DELETE_PRODUCT,
+		payload: newProducts
+	});
+};
+
+export const updateKcal = (selectedId: string) => (dispatch: Dispatch, getState: Function) => {
+	const state = getState();
+	const products = state.product.storedProducts;
 
 	let newKcal = 0;
 	products.map((product: Product) => {
@@ -86,8 +95,8 @@ export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getSta
 	});
 
 	dispatch({
-		type: DELETE_PRODUCT,
-		payload: { newProducts, newKcal }
+		type: UPDATE_KCAL,
+		payload: newKcal
 	});
 };
 

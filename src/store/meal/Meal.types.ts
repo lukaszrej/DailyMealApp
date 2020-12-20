@@ -1,10 +1,5 @@
 import { Product } from '../product/Product.types';
 
-export interface MealState {
-	meals: Product[];
-	isMealAdded: boolean;
-}
-
 export const STORE_MEAL = 'STORE_MEAL';
 export interface StoreMealAction {
 	type: typeof STORE_MEAL;

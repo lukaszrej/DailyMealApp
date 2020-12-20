@@ -48,9 +48,7 @@ const Meals = () => {
 
 			</S.Paper>
 
-			<S.Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={openModal}>
-				<MealCard meals={meals} dailyNeed={dailyNeed} />
-			</S.Dialog>
+			<MealCard meals={meals} dailyNeed={dailyNeed} handleClose={handleClose} openModal={openModal} />
 		</S.Meals>
 	);
 };

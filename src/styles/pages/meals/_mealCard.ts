@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
 export const MealCard = styled.article`
-	padding-left: 24px;
+	/* padding-left: 24px;
 	padding-right: 24px;
 	padding-bottom: 26px;
+	width: 800px; */
+
+	.MuiDialog-paperWidthSm {
+		width: 1100px;
+	}
 
 	& h5 {
 		margin-top: 8px;

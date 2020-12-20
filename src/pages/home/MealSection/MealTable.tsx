@@ -1,36 +1,13 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import clsx from 'clsx';
-import { createStyles, lighten, makeStyles, Theme } from '@material-ui/core/styles';
 import { headCells } from '../../../utils/meal-config/mealTableConfig';
 import { useSelector, useDispatch } from 'react-redux';
 import { Product } from '../../../store/product/Product.types';
 import { getSelectedProducts, getStoredProducts } from '../../../store/product/Product.selectors';
-import { selectProduct, selectProductReset, deleteProduct } from '../../../store/product/Product.actions';
+import { selectProduct, selectProductReset, deleteProduct, updateKcal } from '../../../store/product/Product.actions';
+import { useStyles } from "./MealTable.styles";
 import * as T from "../../../utils/constants";
 import * as S from "../../../styles";
-
-const useStyles = makeStyles((theme: Theme) =>
-	createStyles({
-		root: {
-			paddingLeft: theme.spacing(2),
-			paddingRight: theme.spacing(1),
-			'& > div': {
-				flex: '1 1 100%',
-				textAlign: 'center'
-			}
-		},
-		highlight:
-			theme.palette.type === 'light'
-				? {
-					color: theme.palette.secondary.main,
-					backgroundColor: lighten(theme.palette.secondary.light, 0.85)
-				}
-				: {
-					color: theme.palette.text.primary,
-					backgroundColor: theme.palette.secondary.dark
-				}
-	})
-);
 
 const MealTable = () => {
 	const dispatch = useDispatch();
@@ -38,10 +15,9 @@ const MealTable = () => {
 	const selectedProducts = useSelector(getSelectedProducts);
 	const classes = useStyles();
 
-
-	const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleSelectAllClick = (event: ChangeEvent<HTMLInputElement>) => {
 		if (event.target.checked) {
-			const newSelectedItem: string = storedProducts.map((product: Product) => product.food.foodId);
+			const newSelectedItem = storedProducts.map((product: Product) => product.food.foodId);
 			dispatch(selectProduct(newSelectedItem));
 		} else {
 			dispatch(selectProductReset());
@@ -57,6 +33,10 @@ const MealTable = () => {
 	const handleDeleteSelectedProducts = () => {
 		selectedProducts.map((selectedId: string) => {
 			return dispatch(deleteProduct(selectedId));
+		});
+
+		selectedProducts.map((selectedId: string) => {
+			return dispatch(updateKcal(selectedId));
 		});
 	};
 
@@ -122,14 +102,10 @@ const MealTable = () => {
 							const labelId = `${T.MEAL_CHECKBOX_LABELLED}-${index}`;
 
 							return (
-								<S.TableRow
-									hover
-									onClick={() => handleSelectClick(productId)}
-									role='checkbox'
+								<S.TableRow hover role='checkbox' tabIndex={-1} key={productId}
 									aria-checked={isItemSelected}
-									tabIndex={-1}
-									key={productId}
 									selected={isItemSelected}
+									onClick={() => handleSelectClick(productId)}
 								>
 									<S.TableCell padding='checkbox'>
 										<S.Checkbox checked={isItemSelected} inputProps={{ 'aria-labelledby': labelId }} />

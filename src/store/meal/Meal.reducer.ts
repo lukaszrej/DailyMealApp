@@ -1,4 +1,10 @@
-import { MealState, STORE_MEAL, SET_IS_MEAL_ADDED, allMealActions } from './Meal.types';
+import { STORE_MEAL, SET_IS_MEAL_ADDED, allMealActions } from './Meal.types';
+import { Product } from '../product/Product.types';
+
+interface MealState {
+	meals: Array<Product[]>;
+	isMealAdded: boolean;
+}
 
 const initialState: MealState = {
 	meals: [],

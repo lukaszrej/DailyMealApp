@@ -1,6 +1,16 @@
-import { UserState, allUserActions, CREATE_USER, CALCULATE_DAILY_NEED } from './User.types';
+import { allUserActions, CREATE_USER, CALCULATE_DAILY_NEED } from './User.types';
 
 const localStorageUser = JSON.parse(localStorage.getItem("user") as string);
+
+export interface UserState {
+	name: string;
+	height: string;
+	weight: string;
+	age: string;
+	gender: string;
+	activityLevel: string;
+	dailyNeed: number;
+}
 
 const initialState: UserState = {
 	name: localStorageUser ? localStorageUser.name : '',
