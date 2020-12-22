@@ -1,21 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import shortid from 'shortid';
-import { storeProduct, updateCurrentKcalSum } from '../../../store/product/Product.actions';
+import { AddOwnState } from './AddOwn.types';
+import { storeProduct, increaseKcalSum } from '../../../store/product/Product.actions';
 import * as S from '../../../styles';
 import * as T from '../../../utils/constants';
 
-interface AddOwnProductState {
-	name: string;
-	calories: number;
-	fat: number;
-	carbs: number;
-	protein: number;
-}
-
 const AddOwnProduct = () => {
 	const dispatch = useDispatch();
-	const [values, setValues] = useState<AddOwnProductState>({
+	const [values, setValues] = useState<AddOwnState>({
 		name: '',
 		calories: 0,
 		fat: 0,
@@ -23,11 +16,11 @@ const AddOwnProduct = () => {
 		protein: 0
 	});
 
-	const handleChange = (prop: keyof AddOwnProductState) => (event: React.ChangeEvent<HTMLInputElement>) => {
+	const onChange = (prop: keyof AddOwnState) => (event: ChangeEvent<HTMLInputElement>) => {
 		setValues({ ...values, [prop]: event.currentTarget.value });
 	};
 
-	const handleSubmitProduct = (e: React.SyntheticEvent) => {
+	const onProductSubmit = (e: SyntheticEvent) => {
 		e.preventDefault();
 		dispatch(
 			storeProduct({
@@ -44,8 +37,8 @@ const AddOwnProduct = () => {
 			})
 		);
 
-		const currentKcalSum = Math.ceil(Number(values.calories));
-		dispatch(updateCurrentKcalSum(currentKcalSum));
+		const kcalSum = Math.ceil(Number(values.calories));
+		dispatch(increaseKcalSum(kcalSum));
 
 		setValues({
 			name: '',
@@ -58,13 +51,13 @@ const AddOwnProduct = () => {
 
 	return (
 		<S.AddOwnProduct>
-			<form onSubmit={handleSubmitProduct}>
+			<form onSubmit={onProductSubmit}>
 				<S.FormGroup className='group'>
 					<S.Input
 						type='text'
 						placeholder={T.TYPE_PRODUCT_NAME}
 						value={values.name}
-						onChange={handleChange('name')}
+						onChange={onChange('name')}
 						aria-describedby='standard-product-name-helper-text'
 					/>
 					<S.FormHelperText id='standard-product-name-helper-text'>{T.PRODUCT_NAME}</S.FormHelperText>
@@ -72,7 +65,7 @@ const AddOwnProduct = () => {
 					<S.Input
 						value={values.calories}
 						type='number'
-						onChange={handleChange('calories')}
+						onChange={onChange('calories')}
 						endAdornment={<S.InputAdornment position='end'>{T.KCAL}</S.InputAdornment>}
 						aria-describedby='standard-calories-helper-text'
 						inputProps={{ 'aria-label': T.CALORIES, min: '0', max: '600', step: '1' }}
@@ -82,7 +75,7 @@ const AddOwnProduct = () => {
 					<S.Input
 						value={values.fat}
 						type='number'
-						onChange={handleChange('fat')}
+						onChange={onChange('fat')}
 						endAdornment={<S.InputAdornment position='end'>{T.SLASH_100G}</S.InputAdornment>}
 						aria-describedby='standard-fat-helper-text'
 						inputProps={{ 'aria-label': T.FAT, min: '0', max: '100', step: '1' }}
@@ -92,7 +85,7 @@ const AddOwnProduct = () => {
 					<S.Input
 						value={values.carbs}
 						type='number'
-						onChange={handleChange('carbs')}
+						onChange={onChange('carbs')}
 						endAdornment={<S.InputAdornment position='end'>{T.SLASH_100G}</S.InputAdornment>}
 						aria-describedby='standard-carbs-helper-text'
 						inputProps={{ 'aria-label': T.CARBS, min: '0', max: '100', step: '1' }}
@@ -102,7 +95,7 @@ const AddOwnProduct = () => {
 					<S.Input
 						value={values.protein}
 						type='number'
-						onChange={handleChange('protein')}
+						onChange={onChange('protein')}
 						endAdornment={<S.InputAdornment position='end'>{T.SLASH_100G}</S.InputAdornment>}
 						aria-describedby='standard-protein-helper-text'
 						inputProps={{ 'aria-label': T.PROTEIN, min: '0', max: '100', step: '1' }}
@@ -110,7 +103,7 @@ const AddOwnProduct = () => {
 					<S.FormHelperText id='standard-carbs-helper-text'>{T.PROTEIN}</S.FormHelperText>
 
 					<S.Button
-						onSubmit={(e: React.SyntheticEvent) => handleSubmitProduct(e)}
+						onSubmit={(e: SyntheticEvent) => onProductSubmit(e)}
 						variant='contained'
 						color='secondary'
 						type='submit'

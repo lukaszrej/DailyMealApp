@@ -1,23 +1,12 @@
-import {
-	LOADING,
-	FIND_PRODUCTS,
-	STORE_PRODUCT,
-	UPDATE_CURRENT_KCAL_SUM,
-	SELECT_PRODUCT,
-	SELECT_PRODUCT_RESET,
-	DELETE_PRODUCT,
-	UPDATE_KCAL,
-	DELETE_ALL_PRODUCTS,
-	allProductActions,
-	Product
-} from './Product.types';
+import { Product } from '../../types';
+import * as type from './Product.types';
 
 export interface ProductState {
 	isLoading: boolean;
 	foundProducts: Product[];
 	storedProducts: Product[];
 	selectedProducts: string[];
-	currentKcalSum: number;
+	kcalSum: number;
 }
 
 const initialState: ProductState = {
@@ -25,60 +14,60 @@ const initialState: ProductState = {
 	foundProducts: [],
 	storedProducts: [],
 	selectedProducts: [],
-	currentKcalSum: 0
+	kcalSum: 0
 };
 
-export const ProductReducer = (state: ProductState = initialState, action: allProductActions) => {
+export const ProductReducer = (state: ProductState = initialState, action: type.allProductActions) => {
 	switch (action.type) {
-		case LOADING:
+		case type.LOADING:
 			return {
 				...state,
 				isLoading: true
 			};
-		case FIND_PRODUCTS:
+		case type.FIND_PRODUCTS:
 			return {
 				...state,
 				foundProducts: action.payload,
 				isLoading: false
 			};
-		case STORE_PRODUCT:
+		case type.STORE_PRODUCT:
 			return {
 				...state,
 				storedProducts: [...state.storedProducts, action.payload],
 				foundProducts: []
 			};
-		case UPDATE_CURRENT_KCAL_SUM:
+		case type.INCREASE_KCAL_SUM:
 			return {
 				...state,
-				currentKcalSum: state.currentKcalSum + action.payload
+				kcalSum: state.kcalSum + action.payload
 			};
-		case SELECT_PRODUCT:
+		case type.SELECT_PRODUCT:
 			return {
 				...state,
 				selectedProducts: action.payload
 			};
-		case SELECT_PRODUCT_RESET:
+		case type.SELECT_PRODUCT_RESET:
 			return {
 				...state,
 				selectedProducts: []
 			};
-		case DELETE_PRODUCT:
+		case type.DELETE_PRODUCT:
 			return {
 				...state,
 				storedProducts: action.payload,
 				selectedProducts: []
 			};
-		case UPDATE_KCAL:
+		case type.DECREASE_KCAL:
 			return {
 				...state,
-				currentKcalSum: action.payload,
+				kcalSum: action.payload,
 			};
-		case DELETE_ALL_PRODUCTS:
+		case type.DELETE_ALL_PRODUCTS:
 			return {
 				...state,
 				storedProducts: [],
 				selectedProducts: [],
-				currentKcalSum: 0
+				kcalSum: 0
 			};
 		default:
 			return state;

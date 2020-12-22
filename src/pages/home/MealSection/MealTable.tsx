@@ -1,10 +1,10 @@
 import React, { ChangeEvent } from 'react';
 import clsx from 'clsx';
+import { Product } from '../../../types';
 import { headCells } from '../../../utils/meal-config/mealTableConfig';
 import { useSelector, useDispatch } from 'react-redux';
-import { Product } from '../../../store/product/Product.types';
 import { getSelectedProducts, getStoredProducts } from '../../../store/product/Product.selectors';
-import { selectProduct, selectProductReset, deleteProduct, updateKcal } from '../../../store/product/Product.actions';
+import { selectProduct, selectProductReset, deleteProduct, decreaseKcal } from '../../../store/product/Product.actions';
 import { useStyles } from "./MealTable.styles";
 import * as T from "../../../utils/constants";
 import * as S from "../../../styles";
@@ -36,7 +36,7 @@ const MealTable = () => {
 		});
 
 		selectedProducts.map((selectedId: string) => {
-			return dispatch(updateKcal(selectedId));
+			return dispatch(decreaseKcal(selectedId));
 		});
 	};
 

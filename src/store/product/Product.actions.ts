@@ -1,28 +1,18 @@
-import {
-	LOADING,
-	FIND_PRODUCTS,
-	STORE_PRODUCT,
-	UPDATE_CURRENT_KCAL_SUM,
-	SELECT_PRODUCT,
-	SELECT_PRODUCT_RESET,
-	DELETE_PRODUCT,
-	UPDATE_KCAL,
-	DELETE_ALL_PRODUCTS
-} from './Product.types';
 import { Dispatch } from 'redux';
-import { Product } from '../../store/product/Product.types';
+import { Product } from '../../types';
 import getAPIProducts from './Product.api';
+import * as type from './Product.types';
 
-export const findProduct = (productName: string) => async (dispatch: Dispatch) => {
+export const findProducts = (productName: string) => async (dispatch: Dispatch) => {
 	dispatch({
-		type: LOADING
+		type: type.LOADING
 	});
 
 	try {
 		const response = await getAPIProducts(productName);
 
 		dispatch({
-			type: FIND_PRODUCTS,
+			type: type.FIND_PRODUCTS,
 			payload: response.data.hints
 		});
 
@@ -33,42 +23,42 @@ export const findProduct = (productName: string) => async (dispatch: Dispatch) =
 };
 
 export const storeProduct = (product: Product) => ({
-	type: STORE_PRODUCT,
+	type: type.STORE_PRODUCT,
 	payload: product
 });
 
 
-export const updateCurrentKcalSum = (productKcal: number) => ({
-	type: UPDATE_CURRENT_KCAL_SUM,
+export const increaseKcalSum = (productKcal: number) => ({
+	type: type.INCREASE_KCAL_SUM,
 	payload: productKcal
 });
 
 
-export const selectProduct = (selectedProductId: string | string[]) => (dispatch: Dispatch, getState: Function) => {
+export const selectProduct = (selectedItem: string | string[]) => (dispatch: Dispatch, getState: Function) => {
 	const state = getState();
-	const selected = state.product.selectedProducts;
-	const selectedIndex = selected.indexOf(selectedProductId);
+	const selectedProducts = state.product.selectedProducts;
+	const selectedIndex = selectedProducts.indexOf(selectedItem);
 
-	let newSelected: string[] = [];
+	let newSelectedArray: string[] = [];
 
 	if (selectedIndex === -1) {
-		newSelected = newSelected.concat(selected, selectedProductId);
+		newSelectedArray = newSelectedArray.concat(selectedProducts, selectedItem);
 	} else if (selectedIndex === 0) {
-		newSelected = newSelected.concat(selected.slice(1));
-	} else if (selectedIndex === selected.length - 1) {
-		newSelected = newSelected.concat(selected.slice(0, -1));
+		newSelectedArray = newSelectedArray.concat(selectedProducts.slice(1));
+	} else if (selectedIndex === selectedProducts.length - 1) {
+		newSelectedArray = newSelectedArray.concat(selectedProducts.slice(0, -1));
 	} else if (selectedIndex > 0) {
-		newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
+		newSelectedArray = newSelectedArray.concat(selectedProducts.slice(0, selectedIndex), selectedProducts.slice(selectedIndex + 1));
 	}
 
 	dispatch({
-		type: SELECT_PRODUCT,
-		payload: newSelected
+		type: type.SELECT_PRODUCT,
+		payload: newSelectedArray
 	});
 };
 
 export const selectProductReset = () => ({
-	type: SELECT_PRODUCT_RESET
+	type: type.SELECT_PRODUCT_RESET
 });
 
 export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getState: Function) => {
@@ -77,12 +67,12 @@ export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getSta
 	const newProducts: Product[] = products.filter((storedProduct: Product) => storedProduct.food.foodId !== selectedId);
 
 	dispatch({
-		type: DELETE_PRODUCT,
+		type: type.DELETE_PRODUCT,
 		payload: newProducts
 	});
 };
 
-export const updateKcal = (selectedId: string) => (dispatch: Dispatch, getState: Function) => {
+export const decreaseKcal = (selectedId: string) => (dispatch: Dispatch, getState: Function) => {
 	const state = getState();
 	const products = state.product.storedProducts;
 
@@ -95,11 +85,11 @@ export const updateKcal = (selectedId: string) => (dispatch: Dispatch, getState:
 	});
 
 	dispatch({
-		type: UPDATE_KCAL,
+		type: type.DECREASE_KCAL,
 		payload: newKcal
 	});
 };
 
 export const deleteAllProducts = () => ({
-	type: DELETE_ALL_PRODUCTS
+	type: type.DELETE_ALL_PRODUCTS
 });

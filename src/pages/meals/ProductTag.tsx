@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProductTagProps } from './ProductTag.types';
-import * as S from "../../../styles";
+import * as S from "../../styles";
 
 const ProductTag = (props: ProductTagProps) => {
 	const { label, calories } = props;

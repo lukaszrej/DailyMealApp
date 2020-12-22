@@ -1,12 +1,3 @@
-export interface UserDetails {
-	name?: string;
-	height: string;
-	weight: string;
-	age: string;
-	gender: string;
-	activityLevel: string;
-}
-
 export const CREATE_USER = 'CREATE_USER';
 export interface CreateUserAction {
 	type: typeof CREATE_USER;

@@ -1,7 +1,7 @@
 // home
 export * from "./home";
 export * from "./home/_productSection";
-export * from "./home/_findProduct";
+export * from "./home/_addProduct";
 export * from "./home/_addOwnProduct";
 export * from "./home/_productList";
 export * from "./home/_stepper";

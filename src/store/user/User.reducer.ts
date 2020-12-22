@@ -1,4 +1,4 @@
-import { allUserActions, CREATE_USER, CALCULATE_DAILY_NEED } from './User.types';
+import * as type from './User.types';
 
 const localStorageUser = JSON.parse(localStorage.getItem("user") as string);
 
@@ -22,9 +22,9 @@ const initialState: UserState = {
 	dailyNeed: localStorageUser ? localStorageUser.dailyNeed : 0
 };
 
-export const UserReducer = (state: UserState = initialState, action: allUserActions) => {
+export const UserReducer = (state: UserState = initialState, action: type.allUserActions) => {
 	switch (action.type) {
-		case CREATE_USER:
+		case type.CREATE_USER:
 			return {
 				...state,
 				name: action.name,
@@ -35,7 +35,7 @@ export const UserReducer = (state: UserState = initialState, action: allUserActi
 				activityLevel: action.activityLevel
 			};
 
-		case CALCULATE_DAILY_NEED:
+		case type.CALCULATE_DAILY_NEED:
 			return {
 				...state,
 				dailyNeed: action.payload

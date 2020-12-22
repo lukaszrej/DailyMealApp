@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import shortid from 'shortid';
 import FormControl from '@material-ui/core/FormControl';
@@ -25,18 +25,18 @@ const UserEdit = (props: UserEditProps) => {
 	const [age, setAge] = useState(currentAge);
 	const currentGender = useSelector(selector.getUserGender);
 	const [gender, setGender] = useState(currentGender);
-	const currentActivityLevel = useSelector(selector.getUserActivityLevel);
+	const currentActivityLevel = useSelector(selector.getActivityLevel);
 	const [activityLevel, setActivityLevel] = useState(currentActivityLevel);
 
-	const handleActivityLevelChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
+	const onActivityLevelChange = (event: ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
 		setActivityLevel((event.target as HTMLInputElement).value);
 	};
 
-	const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const onGenderChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setGender((event.target as HTMLInputElement).value);
 	};
 
-	const handleSubmit = (e: React.SyntheticEvent) => {
+	const onSubmit = (e: SyntheticEvent) => {
 		e.preventDefault();
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
@@ -62,7 +62,7 @@ const UserEdit = (props: UserEditProps) => {
 				{T.EDIT_USER_DATA}
 			</ModalTitle>
 
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={onSubmit}>
 				<ModalContent dividers>
 					<S.TextField
 						variant='outlined'
@@ -115,7 +115,7 @@ const UserEdit = (props: UserEditProps) => {
 							id='demo-simple-select-outlined'
 							value={activityLevel}
 							displayEmpty
-							onChange={handleActivityLevelChange}
+							onChange={onActivityLevelChange}
 							label={T.ACTIVITY_LEVEL_LABEL}
 						>
 							{activityOptions.map((element) => {
@@ -128,7 +128,7 @@ const UserEdit = (props: UserEditProps) => {
 						</S.Select>
 					</S.UserDetailsEdit>
 					<FormControl component='fieldset'>
-						<S.RadioGroup aria-label='gender' name='gender1' value={gender} onChange={handleGenderChange}>
+						<S.RadioGroup aria-label='gender' name='gender1' value={gender} onChange={onGenderChange}>
 							<S.FormControlLabel value='male' control={<S.Radio />} label={T.MALE} />
 							<S.FormControlLabel value='female' control={<S.Radio />} label={T.FEMALE} />
 						</S.RadioGroup>

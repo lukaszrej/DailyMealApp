@@ -3,59 +3,59 @@ import shortid from 'shortid';
 import Loader from '../../../components/Loader';
 import Tooltip from '../../../components/Tooltip';
 import { useDispatch, useSelector } from 'react-redux';
-import { storeProduct, updateCurrentKcalSum } from '../../../store/product/Product.actions';
-import { findProduct } from '../../../store/product/Product.actions';
+import { Product } from '../../../types';
+import { storeProduct, increaseKcalSum } from '../../../store/product/Product.actions';
+import { findProducts } from '../../../store/product/Product.actions';
 import { getIsLoading } from '../../../store/product/Product.selectors';
 import { getFoundProducts } from '../../../store/product/Product.selectors';
-import { Product } from '../../../store/product/Product.types';
 import * as S from '../../../styles';
 import * as T from '../../../utils/constants';
 
-const FindProduct = () => {
+const AddProduct = () => {
 	const dispatch = useDispatch();
-	const [productToBeFound, setProductToBeFound] = useState('');
+	const [productName, setProductName] = useState('');
 	const isLoading = useSelector(getIsLoading);
 	const foundProducts = useSelector(getFoundProducts);
 
-	const onProductFindChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setProductToBeFound(e.currentTarget.value)
+	const onFindProductsChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setProductName(e.currentTarget.value)
 	}
 
-	const onProductFindSubmit = (e: SyntheticEvent) => {
+	const onFindProducts = (e: SyntheticEvent) => {
 		e.preventDefault();
-		dispatch(findProduct(productToBeFound));
-		setProductToBeFound('');
+		dispatch(findProducts(productName));
+		setProductName('');
 	};
 
-	const onListItemClick = (e: SyntheticEvent, product: Product) => {
+	const onProductClick = (e: SyntheticEvent, product: Product) => {
 		e.preventDefault();
 		const calories = product.food.nutrients.ENERC_KCAL;
-		const currentKcalSum = Math.ceil(Number(calories));
+		const kcalSum = Math.ceil(Number(calories));
 		dispatch(storeProduct(product));
-		dispatch(updateCurrentKcalSum(currentKcalSum));
+		dispatch(increaseKcalSum(kcalSum));
 	};
 
 	return (
 		<>
-			<S.FindProduct onSubmit={onProductFindSubmit} noValidate autoComplete='on'>
+			<S.AddProduct onSubmit={onFindProducts} noValidate autoComplete='on'>
 				<S.Input
 					type='text'
 					placeholder={T.TYPE_PRODUCT_NAME}
-					value={productToBeFound}
-					onChange={(e: ChangeEvent<HTMLInputElement>) => onProductFindChange(e)}
+					value={productName}
+					onChange={(e: ChangeEvent<HTMLInputElement>) => onFindProductsChange(e)}
 					aria-describedby='standard-find-product-helper-text'
 				/>
 				<S.FormHelperText>{T.PRODUCT_NAME}</S.FormHelperText>
 
 				<S.Button
 					type='submit'
-					disabled={productToBeFound === '' ? true : false}
+					disabled={productName === '' ? true : false}
 					color='secondary'
 					variant='contained'
 				>
 					{isLoading ? <Loader /> : T.SEARCH}
 				</S.Button>
-			</S.FindProduct>
+			</S.AddProduct>
 
 			<S.ProductList>
 				{foundProducts.map((product: Product) => {
@@ -67,7 +67,7 @@ const FindProduct = () => {
 
 					return (
 						<Tooltip arrow title='Click to add' placement='top' enterDelay={650} leaveDelay={50} key={shortid.generate()}>
-							<li onClick={(e) => onListItemClick(e, product)}>
+							<li onClick={(e) => onProductClick(e, product)}>
 								{label}
 								<div>
 									{!isNaN(calories) && Math.ceil(calories) + ' kcal'}
@@ -84,4 +84,4 @@ const FindProduct = () => {
 	);
 };
 
-export default FindProduct;
+export default AddProduct;

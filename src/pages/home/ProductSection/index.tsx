@@ -1,15 +1,15 @@
-import React from 'react';
-import AddOwnProduct from './AddOwnProduct';
-import FindProduct from './FindProduct';
+import React, { useState, ChangeEvent } from 'react';
+import AddOwnProduct from './AddOwn';
+import AddProduct from './Add';
 import * as T from "../../../utils/constants";
 import * as S from "../../../styles";
 
 const ProductSection = () => {
-	const [value, setValue] = React.useState(0);
+	const [tabValue, setTabValue] = useState(0);
 
-	const handleChange = (event: React.ChangeEvent<{}>, newValue: number): void => {
+	const onChange = (event: ChangeEvent<{}>, newValue: number): void => {
 		event.preventDefault();
-		setValue(newValue);
+		setTabValue(newValue);
 	};
 
 	return (
@@ -20,19 +20,19 @@ const ProductSection = () => {
 				</S.Typography>
 
 				<S.Tabs
-					value={value}
-					onChange={handleChange}
+					value={tabValue}
+					onChange={onChange}
 					variant='fullWidth'
 					indicatorColor='primary'
 					textColor='inherit'
 					aria-label={T.ADD_OR_FIND_PRODUCT_ARIA}
 				>
-					<S.Tab icon={<S.SearchIcon />} label={T.FIND_PRODUCT} />
+					<S.Tab icon={<S.SearchIcon />} label={T.ADD_PRODUCT} />
 					<S.Tab icon={<S.AddIcon />} label={T.ADD_OWN_PRODUCT} />
 				</S.Tabs>
 
 				<div className="tabs">
-					{value ? <AddOwnProduct /> : <FindProduct />}
+					{tabValue ? <AddOwnProduct /> : <AddProduct />}
 				</div>
 			</S.Paper>
 		</S.ProductSection>

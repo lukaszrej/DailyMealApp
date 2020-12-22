@@ -1,4 +1,4 @@
-import { Product } from '../product/Product.types';
+import { Product } from '../../types';
 
 export const STORE_MEAL = 'STORE_MEAL';
 export interface StoreMealAction {

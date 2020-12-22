@@ -13,7 +13,7 @@ const UserDetails = () => {
 	const userWeight = useSelector(selector.getUserWeight);
 	const userAge = useSelector(selector.getUserAge);
 	const userGender = useSelector(selector.getUserGender);
-    const userActivityLevel = useSelector(selector.getUserActivityLevel);
+    const activityLevel = useSelector(selector.getActivityLevel);
 
 	const [displayAlert, setDisplayAlert] = useState(false);
 	const [openEditModal, setOpenEditModal] = useState(false);
@@ -39,7 +39,7 @@ const UserDetails = () => {
 				{userWeight && <p>{T.CURRENT_WEIGHT}: {userWeight} kg</p>}
 				{userAge && <p>{T.AGE}: {userAge}</p>}
 				{userGender && <p>{T.GENDER}: {userGender}</p>}
-				{userActivityLevel && <p>{T.ACTIVITY_LEVEL}: {getActivityLevelDesc(userActivityLevel)}</p>}
+				{activityLevel && <p>{T.ACTIVITY_LEVEL}: {getActivityLevelDesc(activityLevel)}</p>}
 
 				<S.Button variant='outlined' color='primary' onClick={handleOpen}>
 					{T.EDIT_DATA}

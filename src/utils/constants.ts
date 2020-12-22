@@ -4,7 +4,7 @@ export const APP_NAME = "DailyMealApp";
 // sections headings
 export const FOOTER_HEADING = "@2020 DailyMealApp";
 export const INFO_STEPPER_HEADING = "Welcome, start here";
-export const PRODUCT_SECTION_HEADING = "Find or add own product";
+export const PRODUCT_SECTION_HEADING = "Add product";
 export const MEALS_PAGE_HEADING = "Your meals";
 export const USER_DETAILS_HEADING = "User details";
 export const CALORIE_NEED_HEADING = "Daily calorie need";
@@ -26,7 +26,7 @@ export const SAVE = "Save";
 export const GO_BACK = "Go back";
 export const GO_BACK_HOME = "Go back to the home page";
 export const SEARCH = "Search";
-export const FIND_PRODUCT = "Find product";
+export const ADD_PRODUCT = "Add product";
 export const ADD_OWN_PRODUCT = "Add own product";
 export const EDIT_DATA = "Edit data";
 export const EDIT_USER_DATA = "Edit user data";

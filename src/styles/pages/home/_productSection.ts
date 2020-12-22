@@ -14,7 +14,6 @@ export const ProductSection = styled.section`
 		margin-bottom: 24px;
 
 		& > div > h6 {
-			margin-bottom: 24px;
 			font-size: 18px;
 		}
 	}

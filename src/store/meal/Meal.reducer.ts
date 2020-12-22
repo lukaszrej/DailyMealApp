@@ -1,5 +1,5 @@
-import { STORE_MEAL, SET_IS_MEAL_ADDED, allMealActions } from './Meal.types';
-import { Product } from '../product/Product.types';
+import * as type from './Meal.types';
+import { Product } from '../../types';
 
 interface MealState {
 	meals: Array<Product[]>;
@@ -11,14 +11,14 @@ const initialState: MealState = {
 	isMealAdded: false
 };
 
-export const MealReducer = (state: MealState = initialState, action: allMealActions) => {
+export const MealReducer = (state: MealState = initialState, action: type.allMealActions) => {
 	switch (action.type) {
-		case STORE_MEAL:
+		case type.STORE_MEAL:
 			return {
 				...state,
 				meals: [...state.meals, action.payload]
 			};
-		case SET_IS_MEAL_ADDED:
+		case type.SET_IS_MEAL_ADDED:
 			return {
 				...state,
 				isMealAdded: true

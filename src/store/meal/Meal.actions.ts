@@ -1,11 +1,11 @@
-import { STORE_MEAL, SET_IS_MEAL_ADDED } from './Meal.types';
-import { Product } from '../../store/product/Product.types';
+import { Product } from '../../types';
+import * as type from './Meal.types';
 
 export const storeMeal = (meal: Product[]) => ({
-	type: STORE_MEAL,
+	type: type.STORE_MEAL,
 	payload: meal
 });
 
 export const setIsMealAdded = () => ({
-	type: SET_IS_MEAL_ADDED
+	type: type.SET_IS_MEAL_ADDED
 });

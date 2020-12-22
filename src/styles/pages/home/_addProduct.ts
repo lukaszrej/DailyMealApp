@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FindProduct = styled.form`
+export const AddProduct = styled.form`
 	width: 90%;
 	margin-top: 24;
 

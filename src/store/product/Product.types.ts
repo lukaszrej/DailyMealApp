@@ -1,15 +1,4 @@
-export interface Product {
-	food: {
-		foodId: string;
-		label: string;
-		nutrients: {
-			CHOCDF: number;
-			ENERC_KCAL: number;
-			FAT: number;
-			PROCNT: number;
-		};
-	};
-}
+import { Product } from '../../types'
 
 export const LOADING = 'LOADING';
 export interface LoadingProductsAction {
@@ -28,9 +17,9 @@ export interface StoreProductAction {
 	payload: Product;
 }
 
-export const UPDATE_CURRENT_KCAL_SUM = 'UPDATE_CURRENT_KCAL_SUM';
-export interface UpdateCurrentKcalSumAction {
-	type: typeof UPDATE_CURRENT_KCAL_SUM;
+export const INCREASE_KCAL_SUM = 'INCREASE_KCAL_SUM';
+export interface IncreaseKcalSumAction {
+	type: typeof INCREASE_KCAL_SUM;
 	payload: number;
 }
 
@@ -51,10 +40,10 @@ export interface DeleteProductAction {
 	payload: Product[];
 }
 
-export const UPDATE_KCAL = 'UPDATE_KCAL';
-export interface UpdateKcalAction {
-	type: typeof UPDATE_KCAL;
-	payload:  number;
+export const DECREASE_KCAL = 'DECREASE_KCAL';
+export interface DecreaseKcalAction {
+	type: typeof DECREASE_KCAL;
+	payload: number;
 }
 
 export const DELETE_ALL_PRODUCTS = 'DELETE_ALL_PRODUCTS';
@@ -66,9 +55,9 @@ export type allProductActions =
 	LoadingProductsAction |
 	FindProductAction |
 	StoreProductAction |
-	UpdateCurrentKcalSumAction |
+	IncreaseKcalSumAction |
 	SelectProductAction |
 	SelectProductResetAction |
 	DeleteProductAction |
-	UpdateKcalAction |
+	DecreaseKcalAction |
 	DeleteAllProductsAction;

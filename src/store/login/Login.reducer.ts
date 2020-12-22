@@ -1,11 +1,4 @@
-import {
-	allLoginActions,
-	START_APP,
-	END_APP,
-	REMOVE_WELCOME_ALERT,
-	SHOW_STEPPER,
-	REMOVE_STEPPER
-} from './Login.types';
+import * as type from './Login.types';
 
 interface LoginState {
 	started: string | boolean | null;
@@ -19,30 +12,30 @@ const initialState: LoginState = {
 	showStepper: true
 };
 
-export const LoginReducer = (state: LoginState = initialState, action: allLoginActions) => {
+export const LoginReducer = (state: LoginState = initialState, action: type.allLoginActions) => {
 	switch (action.type) {
-		case START_APP:
+		case type.START_APP:
 			return {
 				...state,
 				started: true,
 				showAlert: true
 			};
-		case REMOVE_WELCOME_ALERT:
+		case type.REMOVE_WELCOME_ALERT:
 			return {
 				...state,
 				showAlert: false
 			};
-		case REMOVE_STEPPER:
+		case type.REMOVE_STEPPER:
 			return {
 				...state,
 				showStepper: false
 			};
-		case SHOW_STEPPER:
+		case type.SHOW_STEPPER:
 			return {
 				...state,
 				showStepper: true
 			};
-		case END_APP:
+		case type.END_APP:
 			return {
 				...state,
 				started: false

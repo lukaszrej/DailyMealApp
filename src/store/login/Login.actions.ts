@@ -1,16 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Dispatch } from 'redux';
-import {
-	START_APP,
-	END_APP,
-	REMOVE_WELCOME_ALERT,
-	SHOW_STEPPER,
-	REMOVE_STEPPER
-} from './Login.types';
+import * as type from './Login.types';
 
 export const startApp = () => ({
-	type: START_APP
+	type: type.START_APP
 });
 
 export const endApp = () => {
@@ -18,21 +12,21 @@ export const endApp = () => {
 		localStorage.clear();
 
 		dispatch({
-			type: END_APP
+			type: type.END_APP
 		});
 	};
 };
 
 export const removeAlert = () => ({
-	type: REMOVE_WELCOME_ALERT
+	type: type.REMOVE_WELCOME_ALERT
 });
 
 export const showStepper = () => ({
-	type: SHOW_STEPPER
+	type: type.SHOW_STEPPER
 });
 
 export const removeStepper = () => ({
-	type: REMOVE_STEPPER
+	type: type.REMOVE_STEPPER
 });
 
 export const useRemoveStepper = (seconds: number, setSeconds: React.Dispatch<React.SetStateAction<number>>) => {
