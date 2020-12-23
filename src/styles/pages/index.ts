@@ -17,8 +17,10 @@ export * from "./login";
 
 // meals
 export * from "./meals";
-export * from "./meals/_mealCard";
+export * from "./meals/_mealChart";
+export * from "./meals/_mealCharts";
 export * from "./meals/_productTag";
+export * from "./meals/_productTags";
 
 // root
 export * from "./root";

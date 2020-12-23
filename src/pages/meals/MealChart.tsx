@@ -3,6 +3,7 @@ import PieChart from '../../components/PieChart';
 import BarChart from '../../components/BarChart';
 import { ChartProps } from './MealChart.types';
 import { getNutrientsChartData, getCaloriesChartData } from '../../utils/meal-config/chartConfig';
+import * as S from '../../styles';
 
 const MealChart = (props: ChartProps) => {
 	const { mealTotal, dailyNeed } = props;
@@ -12,10 +13,10 @@ const MealChart = (props: ChartProps) => {
 	const caloriesData = getCaloriesChartData(calories, dailyNeed);
 
 	return (
-		<>
+		<S.MealChart>
 			<PieChart label="Nutrients" chartData={nutrientsData} />
 			<BarChart label="Calories" chartData={caloriesData} />
-		</>
+		</S.MealChart>
 	);
 };
 

@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-export const ProductTag = styled.div`
+export const ProductTag = styled.span`
 	display: flex;
 	flex-wrap: wrap;
-	text-transform: uppercase;
+	justify-content: center;
+	text-transform: lowercase;
+    padding-bottom: 12px;
 
 	& div > svg {
 		margin-left: 11px;

@@ -16,8 +16,7 @@ const BarChart = (props: BarChartProps) => {
 						text: label
 					},
 					legend: {
-						display: true,
-						position: 'bottom'
+						display: false
 					},
 					scales: {
 						yAxes: [

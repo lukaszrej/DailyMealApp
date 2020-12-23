@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import * as S from '../../index';
 
-export const Meals = styled.main`
+export const Meals = styled(S.Paper)`
 	display: flex;
 	flex-direction: column;
-	width: 100%;
 	margin-bottom: 24px;
 
 	& h6, & h3 {
@@ -11,27 +11,28 @@ export const Meals = styled.main`
 		text-align: center;
 	}
 
-	& h3 {
-		padding-top: 0;
+	& header {
+		padding: 12px;
+		text-align: center;
+		font-size: 22px;
 	}
 
-	& > div:first-of-type {
-		margin-bottom: 24px;
+	& hr {
+		margin-top: 64px;
+    	margin-bottom: 32px;
+		height: 2px;
 	}
 
-	.buttons {
+	& main {
 		display: flex;
-		justify-content: center;
-		margin-top: 48px;
-		margin-bottom: 24px;
+		align-items: center;
+		flex-direction: column;
+		margin-left: 24px;
+		margin-right: 24px;
+		padding: 12px;
 
-		& button {
-			background: #00A8CC;
-			color: white;
-
-			&:hover {
-				background: #025997;
-			}
+		& aside {
+			width: 80%;
 		}
 	}
 `;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 import FormControl from '@material-ui/core/FormControl';
 import ModalTitle from '../../components/ModalTitle';
@@ -23,15 +23,15 @@ const Login = () => {
 	const [gender, setGender] = useState('male');
 	const [activityLevel, setActivityLevel] = useState('1.2');
 
-	const handleGenderChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
+	const onGenderChange = (event: ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
 		setGender((event.target as HTMLInputElement).value);
 	};
 
-	const handleActivityLevelChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
+	const onActivityLevelChange = (event: ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
 		setActivityLevel((event.target as HTMLInputElement).value);
 	};
 
-	const handleStartSubmit = (e: React.SyntheticEvent) => {
+	const onLoginSubmit = (e: SyntheticEvent) => {
 		e.preventDefault();
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
@@ -46,7 +46,7 @@ const Login = () => {
 			<ModalTitle id='start-form-title'>{T.FILL_THE_FORM}</ModalTitle>
 
 			<ModalContent dividers>
-				<S.Login noValidate onSubmit={handleStartSubmit}>
+				<S.Login noValidate onSubmit={onLoginSubmit}>
 					<S.TextField
 						variant='outlined'
 						margin='normal'
@@ -101,7 +101,7 @@ const Login = () => {
 							id='demo-simple-select-outlined'
 							value={activityLevel}
 							displayEmpty
-							onChange={handleActivityLevelChange}
+							onChange={onActivityLevelChange}
 							label={T.ACTIVITY_LEVEL}
 						>
 							{activityOptions.map((element) => {
@@ -115,7 +115,7 @@ const Login = () => {
 					</S.FormControl>
 
 					<FormControl component='fieldset' className="gender">
-						<S.RadioGroup aria-label={T.GENDER} name={T.GENDER} value={gender} onChange={handleGenderChange}>
+						<S.RadioGroup aria-label={T.GENDER} name={T.GENDER} value={gender} onChange={onGenderChange}>
 							<S.FormControlLabel value='male' control={<S.Radio />} label={T.MALE} />
 							<S.FormControlLabel value='female' control={<S.Radio />} label={T.FEMALE} />
 						</S.RadioGroup>
