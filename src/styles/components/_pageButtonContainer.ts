@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BottomButton = styled.div`
+export const PageButtonContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	margin-top: 24px;

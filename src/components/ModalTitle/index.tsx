@@ -9,6 +9,7 @@ export const styles = (theme: Theme) => createStyles({
 		margin: 0,
 		padding: theme.spacing(2),
 		minWidth: 500,
+		textAlign: 'center',
 		'& button': {
 			position: 'absolute',
 			right: theme.spacing(1),

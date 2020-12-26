@@ -10,10 +10,6 @@ export * from "./home/_mealSection";
 export * from "./home/_mealsCounter";
 export * from "./home/_dailyNeed";
 export * from "./home/_userDetails";
-export * from "./home/_userEdit";
-
-// login
-export * from "./login";
 
 // meals
 export * from "./meals";

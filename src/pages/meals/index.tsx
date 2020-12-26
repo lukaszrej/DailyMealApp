@@ -62,11 +62,11 @@ const Meals = () => {
 				);
 			})}
 
-			<S.BottomButton>
+			<S.PageButtonContainer>
 				<S.Button variant='contained' size='large' onClick={onGoHome} endIcon={<S.HomeIcon />}>
 					{T.GO_BACK}
 				</S.Button>
-			</S.BottomButton>
+			</S.PageButtonContainer>
 		</S.Meals >
 	);
 };
