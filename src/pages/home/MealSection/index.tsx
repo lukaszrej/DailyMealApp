@@ -15,6 +15,7 @@ const MealSection = () => {
 		dispatch(storeMeal(storedProducts));
 		dispatch(setIsMealAdded());
 		dispatch(deleteAllProducts());
+		localStorage.setItem("meals", JSON.stringify(storedProducts));
 	};
 
 	const onMealDismiss = () => {

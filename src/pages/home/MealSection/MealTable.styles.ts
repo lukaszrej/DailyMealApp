@@ -5,6 +5,9 @@ export const useStyles = makeStyles((theme: Theme) =>
 		root: {
 			paddingLeft: theme.spacing(2),
 			paddingRight: theme.spacing(1),
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
 			'& > div': {
 				flex: '1 1 100%',
 				textAlign: 'center'

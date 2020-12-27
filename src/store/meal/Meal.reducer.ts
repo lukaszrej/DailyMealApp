@@ -6,9 +6,11 @@ interface MealState {
 	isMealAdded: boolean;
 }
 
+const localStorageMeals = JSON.parse(localStorage.getItem("meals") as string);
+
 const initialState: MealState = {
-	meals: [],
-	isMealAdded: false
+	meals: localStorageMeals ? [localStorageMeals] : [],
+	isMealAdded: localStorageMeals ? true : false
 };
 
 export const MealReducer = (state: MealState = initialState, action: type.allMealActions) => {
