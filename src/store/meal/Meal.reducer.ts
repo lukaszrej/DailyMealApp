@@ -9,7 +9,7 @@ interface MealState {
 const localStorageMeals = JSON.parse(localStorage.getItem("meals") as string);
 
 const initialState: MealState = {
-	meals: localStorageMeals ? [localStorageMeals] : [],
+	meals: localStorageMeals ? localStorageMeals : [],
 	isMealAdded: localStorageMeals ? true : false
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStoredProducts } from '../../../store/product/Product.selectors';
-import { storeMeal, setIsMealAdded } from '../../../store/meal/Meal.actions';
+import { storeMeal, storeToLocalStorage, setIsMealAdded } from '../../../store/meal/Meal.actions';
 import { deleteAllProducts } from '../../../store/product/Product.actions';
 import MealTable from './MealTable';
 import * as T from "../../../utils/constants";
@@ -14,8 +14,8 @@ const MealSection = () => {
 	const onMealSubmit = () => {
 		dispatch(storeMeal(storedProducts));
 		dispatch(setIsMealAdded());
+		dispatch(storeToLocalStorage());
 		dispatch(deleteAllProducts());
-		localStorage.setItem("meals", JSON.stringify(storedProducts));
 	};
 
 	const onMealDismiss = () => {
