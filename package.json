@@ -17,7 +17,7 @@
     "@types/redux": "^3.6.0",
     "@types/shortid": "0.0.29",
     "@types/styled-components": "^5.1.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chart.js": "^2.9.3",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
