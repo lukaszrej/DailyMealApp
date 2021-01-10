@@ -40,7 +40,7 @@ const Sidebar = () => {
 
 				<S.ListItem button onClick={() => history.push('/meals')} disabled={!isMealAdded}>
 					<S.ListItemIcon>
-						<S.Badge badgeContent={meals ? meals.length : 0} max={99} color='primary'>
+						<S.Badge badgeContent={meals ? meals.meals.length : 0} max={99} color='primary'>
 							<S.FormatListBulletedIcon />
 						</S.Badge>
 					</S.ListItemIcon>

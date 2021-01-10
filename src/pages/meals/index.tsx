@@ -1,10 +1,10 @@
 import React from 'react';
-import shortid from 'shortid';
+import { generate } from 'shortid';
 import { useSelector } from 'react-redux';
 import { getMeals } from '../../store/meal/Meal.selectors';
 import { getDailyNeed } from '../../store/user/User.selectors';
 import { useHistory } from 'react-router-dom';
-import { Product } from '../../types';
+import { Product, Meal } from '../../types';
 import MealChart from './MealChart';
 import ProductTag from './ProductTag';
 import * as T from "../../utils/constants";
@@ -12,7 +12,7 @@ import * as S from '../../styles';
 
 const Meals = () => {
 	const history = useHistory();
-	const meals = useSelector(getMeals);
+    const meals = useSelector(getMeals);
 	const dailyNeed = useSelector(getDailyNeed);
 
 	const onGoHome = () => {
@@ -25,30 +25,30 @@ const Meals = () => {
 				{T.MEALS_PAGE_HEADING}
 			</S.Typography>
 
-			{meals.map((meal: Product[], index: number) => {
+			{meals.meals.map((meal: Meal, index: number) => {
 				const mealTotal = { calories: 0, fat: 0, carbs: 0, protein: 0 };
 
 				return (
-					<section key={shortid.generate()}>
+					<section key={generate()}>
 						<header>
 							{T.MEAL} {index + 1}
 						</header>
 
 						<main>
 							<S.ProductTags>
-								{meal.map((item: Product) => {
-									const calories = Math.round(item.food.nutrients.ENERC_KCAL);
-									const protein = Math.round(item.food.nutrients.PROCNT);
-									const carbs = Math.round(item.food.nutrients.CHOCDF);
-									const fat = Math.round(item.food.nutrients.FAT);
-									const label = item.food.label;
+								{meal.map((product: Product) => {
+									const calories = Math.round(product.food.nutrients.ENERC_KCAL);
+									const protein = Math.round(product.food.nutrients.PROCNT);
+									const carbs = Math.round(product.food.nutrients.CHOCDF);
+									const fat = Math.round(product.food.nutrients.FAT);
+									const label = product.food.label;
 
 									mealTotal.calories += calories;
 									mealTotal.fat += fat;
 									mealTotal.carbs += carbs;
 									mealTotal.protein += protein;
 
-									return <ProductTag key={shortid.generate()} label={label} calories={calories} />;
+									return <ProductTag key={generate()} label={label} calories={calories} />;
 								})}
 							</S.ProductTags>
 
@@ -57,7 +57,7 @@ const Meals = () => {
 							</S.MealCharts>
 						</main>
 
-						{meals.length > 1 ? <S.Divider /> : ''}
+						{meals.meals.length > 1 ? <S.Divider /> : ''}
 					</section>
 				);
 			})}

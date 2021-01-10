@@ -1,15 +1,22 @@
+import { generate } from 'shortid';
+import { Meal } from '../../types';
 import * as type from './Meal.types';
-import { Product } from '../../types';
 
 interface MealState {
-	meals: Array<Product[]>;
+	meals: {
+        id: string;
+        meals: Meal[];
+    };
 	isMealAdded: boolean;
 }
 
 const localStorageMeals = JSON.parse(localStorage.getItem("meals") as string);
 
 const initialState: MealState = {
-	meals: localStorageMeals ? localStorageMeals : [],
+    meals: {
+        meals: localStorageMeals ? localStorageMeals.meals : [],
+        id: localStorageMeals ? localStorageMeals.id : ''
+    },
 	isMealAdded: localStorageMeals ? true : false
 };
 
@@ -18,13 +25,18 @@ export const MealReducer = (state: MealState = initialState, action: type.allMea
 		case type.STORE_MEAL:
 			return {
 				...state,
-				meals: [...state.meals, action.payload]
-			};
+				meals: {
+                    meals: [...state.meals.meals, action.payload],
+                    id: generate()
+                }
+            };
+            
 		case type.SET_IS_MEAL_ADDED:
 			return {
 				...state,
 				isMealAdded: true
-			};
+            };
+            
 		default:
 			return state;
 	}

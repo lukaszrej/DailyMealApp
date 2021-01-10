@@ -13,7 +13,7 @@ const MealsCounter = () => {
 				{T.MEAL_COUNTER_HEADING}
 			</S.Typography>
 			<S.Typography variant='h3' color='primary' noWrap>
-				{meals ? meals.length : '0'}
+				{meals ? meals.meals.length : '0'}
 			</S.Typography>
 		</S.MealsCounter>
 	);
