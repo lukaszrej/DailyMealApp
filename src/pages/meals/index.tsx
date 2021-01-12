@@ -17,7 +17,11 @@ const Meals = () => {
 
 	const onGoHome = () => {
 		history.push('/home');
-	}
+    }
+    
+    const onMealDelete = () => {
+        // todo: deleting a meal
+    }
 
 	return (
 		<S.Meals square>
@@ -25,18 +29,19 @@ const Meals = () => {
 				{T.MEALS_PAGE_HEADING}
 			</S.Typography>
 
-			{meals.meals.map((meal: Meal, index: number) => {
+			{meals.map((meal: Meal, index: number) => {
 				const mealTotal = { calories: 0, fat: 0, carbs: 0, protein: 0 };
 
 				return (
 					<section key={generate()}>
 						<header>
-							{T.MEAL} {index + 1}
+							{T.MEAL} {index + 1} 
+                            <S.Button onClick={onMealDelete}>Remove</S.Button>
 						</header>
 
 						<main>
 							<S.ProductTags>
-								{meal.map((product: Product) => {
+								{meal.products.map((product: Product) => {
 									const calories = Math.round(product.food.nutrients.ENERC_KCAL);
 									const protein = Math.round(product.food.nutrients.PROCNT);
 									const carbs = Math.round(product.food.nutrients.CHOCDF);
@@ -57,7 +62,7 @@ const Meals = () => {
 							</S.MealCharts>
 						</main>
 
-						{meals.meals.length > 1 ? <S.Divider /> : ''}
+						{meals.length > 1 ? <S.Divider /> : ''}
 					</section>
 				);
 			})}

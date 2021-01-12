@@ -4,7 +4,7 @@ import ProductSection from './ProductSection';
 import MealSection from './MealSection';
 import UserDetails from './UserDetails';
 import DailyNeed from './DailyNeed';
-import MealsCounter from './MealCounter';
+import MealsCounter from './MealsCounter';
 import * as S from '../../styles';
 
 const Home = () => {

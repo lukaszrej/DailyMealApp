@@ -1,9 +1,12 @@
-import { Meal } from '../../types';
+import { Product } from '../../types';
 
 export const STORE_MEAL = 'STORE_MEAL';
 export interface StoreMealAction {
 	type: typeof STORE_MEAL;
-	payload: Meal;
+	payload: { 
+        products: Product[];
+        id: string;
+    };
 }
 
 export const SET_IS_MEAL_ADDED = 'SET_IS_MEAL_ADDED';

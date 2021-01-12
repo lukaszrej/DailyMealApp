@@ -1,3 +1,6 @@
 import { Product } from './_product'
 
-export type Meal = Product[];
+export interface Meal {
+    id: string;
+    products: Product[];
+}

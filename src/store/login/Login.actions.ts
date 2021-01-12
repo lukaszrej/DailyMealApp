@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, SetStateAction } from 'react';
 import { useDispatch } from 'react-redux';
 import { Dispatch } from 'redux';
 import * as type from './Login.types';
@@ -29,7 +29,7 @@ export const removeStepper = () => ({
 	type: type.REMOVE_STEPPER
 });
 
-export const useRemoveStepper = (seconds: number, setSeconds: React.Dispatch<React.SetStateAction<number>>) => {
+export const useRemoveStepper = (seconds: number, setSeconds: React.Dispatch<SetStateAction<number>>) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {

@@ -9,21 +9,15 @@ const AlertMaterialUI = (props: AlertExtendedProps) => {
 };
 
 const Alert = (props: AlertExtendedProps) => {
-	const dispatch = useDispatch();
 	const { children, severity } = props;
-	const [open, setOpen] = React.useState(true);
+    const dispatch = useDispatch();
 
-	const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
-		if (reason === 'clickaway') {
-			return;
-		}
-
+	const handleClose = () => {
 		dispatch(removeAlert());
-		setOpen(false);
-	};
-
+    };
+    
 	return (
-		<S.Snackbar open={open} autoHideDuration={3500} onClose={handleClose}>
+		<S.Snackbar open={true} autoHideDuration={3500} onClose={handleClose}>
 			<AlertMaterialUI onClose={handleClose} severity={severity}>
 				{children}
 			</AlertMaterialUI>
