@@ -1,7 +1,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import * as S from "../../styles";
 
-const ModalContent = withStyles(() => ({
+export const ModalContent = withStyles(() => ({
 	root: {
 		padding: 16,
 		'& > div': {
@@ -17,5 +17,3 @@ const ModalContent = withStyles(() => ({
 		}
 	}
 }))(S.DialogContent);
-
-export default ModalContent;

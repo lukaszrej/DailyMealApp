@@ -1,13 +1,13 @@
 import React from 'react';
-import shortid from 'shortid';
+import { generate } from 'shortid';
 import { FormProps } from './index.types';
 import { activityOptions } from '../../utils/activity-levels/activityLevels';
-import FormControl from '@material-ui/core/FormControl';
-import ModalContent from '../ModalContent';
+import { FormControl } from '@material-ui/core';
+import { ModalContent } from '../ModalContent';
 import * as S from "../../styles";
 import * as T from "../../utils/constants";
 
-const Form = (props: FormProps) => {
+export const Form = (props: FormProps) => {
 	const {
 		onSubmit,
 		name, setName,
@@ -78,7 +78,7 @@ const Form = (props: FormProps) => {
 					>
 						{activityOptions.map((element) => {
 							return (
-								<S.MenuItem value={element.activityValue} key={shortid.generate()}>
+								<S.MenuItem value={element.activityValue} key={generate()}>
 									{element.activityDescription}
 								</S.MenuItem>
 							);
@@ -101,5 +101,3 @@ const Form = (props: FormProps) => {
 		</S.Form>
 	);
 };
-
-export default Form;

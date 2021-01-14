@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import Alert from '../../../components/Alert';
-import UserEdit from './UserEdit';
+import { Alert } from '../../../components/Alert';
+import { UserEdit } from './UserEdit';
 import { useSelector } from 'react-redux';
-import getActivityLevelDesc from '../../../utils/activity-levels/activityLevelsDesc';
+import { getActivityLevelDesc } from '../../../utils/activity-levels/activityLevelsDesc';
 import * as selector from '../../../store/user/User.selectors';
 import * as T from "../../../utils/constants";
 import * as S from '../../../styles';
 
-const UserDetails = () => {
+export const UserDetails = () => {
 	const userName = useSelector(selector.getUserName);
 	const userHeight = useSelector(selector.getUserHeight);
 	const userWeight = useSelector(selector.getUserWeight);
@@ -59,5 +59,3 @@ const UserDetails = () => {
 		</>
 	);
 };
-
-export default UserDetails;

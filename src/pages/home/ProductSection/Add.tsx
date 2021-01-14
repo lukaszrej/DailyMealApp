@@ -1,8 +1,8 @@
 import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
-import shortid from 'shortid';
-import Loader from '../../../components/Loader';
-import Tooltip from '../../../components/Tooltip';
 import { useDispatch, useSelector } from 'react-redux';
+import { generate } from 'shortid';
+import { Loader } from '../../../components/Loader';
+import { Tooltip } from '../../../components/Tooltip';
 import { Product } from '../../../types';
 import { storeProduct, increaseKcalSum } from '../../../store/product/Product.actions';
 import { findProducts } from '../../../store/product/Product.actions';
@@ -11,7 +11,7 @@ import { getFoundProducts } from '../../../store/product/Product.selectors';
 import * as S from '../../../styles';
 import * as T from '../../../utils/constants';
 
-const AddProduct = () => {
+export const AddProduct = () => {
 	const dispatch = useDispatch();
 	const [productName, setProductName] = useState('');
 	const isLoading = useSelector(getIsLoading);
@@ -66,7 +66,7 @@ const AddProduct = () => {
 					const fat = product.food.nutrients.FAT;
 
 					return (
-						<Tooltip arrow title='Click to add' placement='top' enterDelay={650} leaveDelay={50} key={shortid.generate()}>
+						<Tooltip arrow title='Click to add' placement='top' enterDelay={650} leaveDelay={50} key={generate()}>
 							<li onClick={(e) => onProductClick(e, product)}>
 								{label}
 								<div>
@@ -83,5 +83,3 @@ const AddProduct = () => {
 		</>
 	);
 };
-
-export default AddProduct;

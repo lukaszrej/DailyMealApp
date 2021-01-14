@@ -1,15 +1,15 @@
 import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
-import { useHistory } from 'react-router-dom';
-import ModalTitle from '../../components/ModalTitle';
-import Form from '../../components/Form';
-import { getStarted } from '../../store/login/Login.selectors';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { ModalTitle } from '../../components/ModalTitle';
+import { Form } from '../../components/Form';
+import { getStarted } from '../../store/login/Login.selectors';
 import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
 import { startApp } from '../../store/login/Login.actions';
 import * as S from '../../styles';
 import * as T from '../../utils/constants';
 
-const Login = () => {
+export const Login = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const isStarted = useSelector(getStarted);
@@ -57,5 +57,3 @@ const Login = () => {
 		</S.Dialog>
 	);
 };
-
-export default Login;

@@ -6,7 +6,7 @@ import { getSteps, getStepContent } from '../../../utils/stepper-content/stepper
 import * as T from "../../../utils/constants";
 import * as S from "../../../styles";
 
-const Stepper = () => {
+export const Stepper = () => {
 	const dispatch = useDispatch();
 	const showStepper = useSelector(getShowStepper);
 	const steps = getSteps();
@@ -80,5 +80,3 @@ const Stepper = () => {
 		</S.StepperContainer>
 	);
 };
-
-export default Stepper;

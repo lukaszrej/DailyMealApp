@@ -9,7 +9,7 @@ import { useStyles } from "./MealTable.styles";
 import * as T from "../../../utils/constants";
 import * as S from "../../../styles";
 
-const MealTable = () => {
+export const MealTable = () => {
 	const dispatch = useDispatch();
 	const storedProducts = useSelector(getStoredProducts);
 	const selectedProducts = useSelector(getSelectedProducts);
@@ -126,5 +126,3 @@ const MealTable = () => {
 		</>
 	);
 };
-
-export default MealTable;

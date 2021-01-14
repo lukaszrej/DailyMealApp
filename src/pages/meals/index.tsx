@@ -5,12 +5,12 @@ import { getMeals } from '../../store/meal/Meal.selectors';
 import { getDailyNeed } from '../../store/user/User.selectors';
 import { useHistory } from 'react-router-dom';
 import { Product, Meal } from '../../types';
-import MealChart from './MealChart';
-import ProductTag from './ProductTag';
+import { MealChart } from './MealChart';
+import { ProductTag } from './ProductTag';
 import * as T from "../../utils/constants";
 import * as S from '../../styles';
 
-const Meals = () => {
+export const Meals = () => {
 	const history = useHistory();
     const meals = useSelector(getMeals);
 	const dailyNeed = useSelector(getDailyNeed);
@@ -75,5 +75,3 @@ const Meals = () => {
 		</S.Meals >
 	);
 };
-
-export default Meals;

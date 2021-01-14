@@ -2,7 +2,7 @@ import React from 'react';
 import { ProductTagProps } from './ProductTag.types';
 import * as S from "../../styles";
 
-const ProductTag = (props: ProductTagProps) => {
+export const ProductTag = (props: ProductTagProps) => {
 	const { label, calories } = props;
 	const combinedLabel = `${label} ${calories} kcal`;
 
@@ -12,5 +12,3 @@ const ProductTag = (props: ProductTagProps) => {
 		</S.ProductTag>
 	);
 };
-
-export default ProductTag;

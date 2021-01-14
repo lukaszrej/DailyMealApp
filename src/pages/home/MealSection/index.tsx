@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getStoredProducts } from '../../../store/product/Product.selectors';
 import { storeMeal, storeToLocalStorage, setIsMealAdded } from '../../../store/meal/Meal.actions';
 import { deleteAllProducts } from '../../../store/product/Product.actions';
-import MealTable from './MealTable';
+import { MealTable } from './MealTable';
 import * as T from "../../../utils/constants";
 import * as S from "../../../styles";
 
-const MealSection = () => {
+export const MealSection = () => {
 	const dispatch = useDispatch();
 	const storedProducts = useSelector(getStoredProducts);
 
@@ -39,5 +39,3 @@ const MealSection = () => {
 		</S.MealSection>
 	);
 };
-
-export default MealSection;

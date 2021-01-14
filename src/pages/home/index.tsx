@@ -1,13 +1,13 @@
 import React from 'react';
-import Stepper from './Stepper';
-import ProductSection from './ProductSection';
-import MealSection from './MealSection';
-import UserDetails from './UserDetails';
-import DailyNeed from './DailyNeed';
-import MealsCounter from './MealsCounter';
+import { Stepper } from './Stepper';
+import { ProductSection } from './ProductSection';
+import { MealSection } from './MealSection';
+import { UserDetails } from './UserDetails';
+import { DailyNeed } from './DailyNeed';
+import { MealsCounter } from './MealsCounter';
 import * as S from '../../styles';
 
-const Home = () => {
+export const Home = () => {
 	return (
 		<S.Home>
 			<article>
@@ -23,5 +23,3 @@ const Home = () => {
 		</S.Home>
 	);
 };
-
-export default Home;

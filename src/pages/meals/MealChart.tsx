@@ -1,11 +1,11 @@
 import React from 'react';
-import PieChart from '../../components/PieChart';
-import BarChart from '../../components/BarChart';
+import { PieChart } from '../../components/PieChart';
+import { BarChart } from '../../components/BarChart';
 import { ChartProps } from './MealChart.types';
 import { getNutrientsChartData, getCaloriesChartData } from '../../utils/meal-config/chartConfig';
 import * as S from '../../styles';
 
-const MealChart = (props: ChartProps) => {
+export const MealChart = (props: ChartProps) => {
 	const { mealTotal, dailyNeed } = props;
 	const { calories, fat, carbs, protein } = mealTotal;
 
@@ -19,5 +19,3 @@ const MealChart = (props: ChartProps) => {
 		</S.MealChart>
 	);
 };
-
-export default MealChart;

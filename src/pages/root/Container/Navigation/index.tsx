@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import TopBar from './TopBar';
-import SideBar from './SideBar';
+import { TopBar } from './TopBar';
+import { SideBar } from './SideBar';
 import * as S from "../../../../styles";
 
 const drawerWidth = 250;
@@ -23,7 +23,7 @@ interface AppBarProps {
 	window?: () => Window;
 }
 
-const Navigation = (props: AppBarProps) => {
+export const Navigation = (props: AppBarProps) => {
 	const { window } = props;
 	const classes = useStyles();
 	const [ mobileOpen, setMobileOpen ] = useState(false);
@@ -59,5 +59,3 @@ const Navigation = (props: AppBarProps) => {
 		</div>
 	);
 };
-
-export default Navigation;

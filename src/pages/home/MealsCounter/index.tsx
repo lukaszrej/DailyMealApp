@@ -4,7 +4,7 @@ import { getMeals } from '../../../store/meal/Meal.selectors';
 import * as T from "../../../utils/constants";
 import * as S from "../../../styles";
 
-const MealsCounter = () => {
+export const MealsCounter = () => {
 	const meals = useSelector(getMeals);
 
 	return (
@@ -18,5 +18,3 @@ const MealsCounter = () => {
 		</S.MealsCounter>
 	);
 };
-
-export default MealsCounter;

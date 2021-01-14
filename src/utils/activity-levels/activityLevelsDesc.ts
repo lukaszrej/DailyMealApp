@@ -1,4 +1,4 @@
-const getActivityLevelDesc = (userActivityLevel: string) => {
+export const getActivityLevelDesc = (userActivityLevel: string) => {
 	let activityLevelDescription = '';
 
 	switch (userActivityLevel) {
@@ -23,5 +23,3 @@ const getActivityLevelDesc = (userActivityLevel: string) => {
 
 	return activityLevelDescription;
 };
-
-export default getActivityLevelDesc;

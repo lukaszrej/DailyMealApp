@@ -2,7 +2,7 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { PieChartProps } from './index.types';
 
-const PieChart = (props: PieChartProps) => {
+export const PieChart = (props: PieChartProps) => {
 	const { label, chartData } = props;
 
 	return (
@@ -24,5 +24,3 @@ const PieChart = (props: PieChartProps) => {
 		</div>
 	);
 };
-
-export default PieChart;

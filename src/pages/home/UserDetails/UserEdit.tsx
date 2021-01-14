@@ -1,14 +1,14 @@
 import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ModalTitle from '../../../components/ModalTitle';
-import Form from '../../../components/Form';
+import { ModalTitle } from '../../../components/ModalTitle';
+import { Form } from '../../../components/Form';
 import { createUser, calculateDailyNeed } from '../../../store/user/User.actions';
 import { UserEditProps } from './UserEdit.types';
 import * as selector from '../../../store/user/User.selectors';
 import * as T from '../../../utils/constants';
 import * as S from '../../../styles';
 
-const UserEdit = (props: UserEditProps) => {
+export const UserEdit = (props: UserEditProps) => {
 	const { handleClose, openEditModal, setOpenEditModal, setDisplayAlert } = props;
 	const dispatch = useDispatch();
 
@@ -70,5 +70,3 @@ const UserEdit = (props: UserEditProps) => {
 		</S.Dialog>
 	);
 };
-
-export default UserEdit;

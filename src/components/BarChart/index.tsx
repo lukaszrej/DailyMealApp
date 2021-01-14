@@ -2,7 +2,7 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { BarChartProps } from './index.types';
 
-const BarChart = (props: BarChartProps) => {
+export const BarChart = (props: BarChartProps) => {
 	const { label, chartData } = props;
 
 	return (
@@ -32,5 +32,3 @@ const BarChart = (props: BarChartProps) => {
 		</div>
 	);
 };
-
-export default BarChart;

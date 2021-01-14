@@ -8,7 +8,7 @@ const AlertMaterialUI = (props: AlertExtendedProps) => {
 	return <S.Alert elevation={6} variant='filled' {...props} />;
 };
 
-const Alert = (props: AlertExtendedProps) => {
+export const Alert = (props: AlertExtendedProps) => {
 	const { children, severity } = props;
     const dispatch = useDispatch();
 
@@ -24,5 +24,3 @@ const Alert = (props: AlertExtendedProps) => {
 		</S.Snackbar>
 	);
 };
-
-export default Alert;

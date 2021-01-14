@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import { Route, RouteProps } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getStarted } from '../store/login/Login.selectors';
-import Login from '../pages/login';
+import { Login } from '../pages/login';
 
 interface Props extends RouteProps {
-    component: React.ComponentType<any>;
+    component: ComponentType<any>;
     path?: string;
 }
 
-export default ({ component, ...options }: Props) => {
+export const PrivateRoute = ({ component, ...options }: Props) => {
     const isStarted = useSelector(getStarted);
     const finalComponent = isStarted ? component : Login;
 

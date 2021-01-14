@@ -4,12 +4,12 @@ import { useHistory } from 'react-router-dom';
 import { getMeals, getIsMealAdded } from '../../../../store/meal/Meal.selectors';
 import { getShowStepper } from '../../../../store/login/Login.selectors';
 import { showStepper } from '../../../../store/login/Login.actions';
-import ListItem from '@material-ui/core/ListItem';
+import { ListItem } from '@material-ui/core/';
 import * as link from "../../../../utils/url.repository";
 import * as T from '../../../../utils/constants';
 import * as S from '../../../../styles';
 
-const Sidebar = () => {
+export const SideBar = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const meals = useSelector(getMeals);
@@ -84,5 +84,3 @@ const Sidebar = () => {
 		</S.SideBar>
 	);
 };
-
-export default Sidebar;

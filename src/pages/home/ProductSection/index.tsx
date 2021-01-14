@@ -1,10 +1,10 @@
 import React, { useState, ChangeEvent } from 'react';
-import AddOwnProduct from './AddOwn';
-import AddProduct from './Add';
+import { AddOwnProduct } from './AddOwn';
+import { AddProduct } from './Add';
 import * as T from "../../../utils/constants";
 import * as S from "../../../styles";
 
-const ProductSection = () => {
+export const ProductSection = () => {
 	const [tabValue, setTabValue] = useState(0);
 
 	const onChange = (event: ChangeEvent<{}>, newValue: number): void => {
@@ -38,5 +38,3 @@ const ProductSection = () => {
 		</S.ProductSection>
 	);
 };
-
-export default ProductSection;

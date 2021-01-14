@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStyles, Theme, withStyles } from '@material-ui/core/styles';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import { DialogTitle } from '@material-ui/core';
 import { ModalTitleProps } from './index.types';
 import * as S from "../../styles";
 
@@ -19,19 +19,17 @@ export const styles = (theme: Theme) => createStyles({
 	}
 });
 
-const ModalTitle = (props: ModalTitleProps) => {
+export const ModalTitle = withStyles(styles)((props: ModalTitleProps) => {
 	const { children, classes, onClose, ...other } = props;
 
 	return (
-		<MuiDialogTitle className={classes.root} disableTypography {...other}>
+		<DialogTitle className={classes.root} disableTypography {...other}>
 			<S.Typography variant='h6'>{children}</S.Typography>
 			{onClose ? (
 				<S.IconButton aria-label='close' onClick={onClose}>
 					<S.CloseIcon />
 				</S.IconButton>
 			) : null}
-		</MuiDialogTitle>
+		</DialogTitle>
 	);
-};
-
-export default withStyles(styles)(ModalTitle);
+});

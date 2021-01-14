@@ -1,12 +1,12 @@
 import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import shortid from 'shortid';
+import { generate } from 'shortid';
 import { AddOwnState } from './AddOwn.types';
 import { storeProduct, increaseKcalSum } from '../../../store/product/Product.actions';
 import * as S from '../../../styles';
 import * as T from '../../../utils/constants';
 
-const AddOwnProduct = () => {
+export const AddOwnProduct = () => {
 	const dispatch = useDispatch();
 	const [values, setValues] = useState<AddOwnState>({
 		name: '',
@@ -25,7 +25,7 @@ const AddOwnProduct = () => {
 		dispatch(
 			storeProduct({
 				food: {
-					foodId: shortid.generate(),
+					foodId: generate(),
 					label: values.name,
 					nutrients: {
 						CHOCDF: values.carbs,
@@ -116,5 +116,3 @@ const AddOwnProduct = () => {
 		</S.AddOwnProduct>
 	);
 };
-
-export default AddOwnProduct;

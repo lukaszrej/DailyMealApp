@@ -6,7 +6,7 @@ import { getStarted } from '../../../../store/login/Login.selectors';
 import { endApp } from '../../../../store/login/Login.actions';
 import * as S from '../../../../styles';
 
-const TopBar = (props: AppBarProps) => {
+export const TopBar = (props: AppBarProps) => {
 	const { handleDrawerToggle } = props;
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -33,5 +33,3 @@ const TopBar = (props: AppBarProps) => {
 		</S.TopBar>
 	);
 };
-
-export default TopBar;

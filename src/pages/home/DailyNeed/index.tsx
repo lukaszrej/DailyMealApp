@@ -6,7 +6,7 @@ import { calculateDailyNeed } from '../../../store/user/User.actions';
 import * as S from '../../../styles';
 import * as T from "../../../utils/constants";
 
-const DailyNeed = () => {
+export const DailyNeed = () => {
 	const dispatch = useDispatch();
 	const dailyNeed = useSelector(getDailyNeed);
 	const kcalSum = useSelector(getKcalSum);
@@ -41,4 +41,3 @@ const DailyNeed = () => {
 	);
 };
 
-export default DailyNeed;

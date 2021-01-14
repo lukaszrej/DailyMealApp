@@ -3,11 +3,11 @@ import { ContainerProps } from './index.types';
 import { useSelector } from 'react-redux';
 import { getShowAlert } from '../../../store/login/Login.selectors';
 import { getUserName } from '../../../store/user/User.selectors';
-import Navigation from './Navigation';
-import Alert from '../../../components/Alert';
+import { Navigation } from './Navigation';
+import { Alert } from '../../../components/Alert';
 import * as S from "../../../styles";
 
-const Container = (props: ContainerProps) => {
+export const Container = (props: ContainerProps) => {
 	const { children } = props;
 	const showAlert = useSelector(getShowAlert);
 	const userName = useSelector(getUserName);
@@ -26,5 +26,3 @@ const Container = (props: ContainerProps) => {
 		</>
 	);
 };
-
-export default Container;
