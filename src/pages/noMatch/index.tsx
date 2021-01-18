@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import * as T from "../../utils/constants";
+import * as T from "../../constants/constants";
 
 export const NoMatch = () => {
 	return (

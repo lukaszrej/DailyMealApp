@@ -1,3 +1,4 @@
+import { allUserActions } from './User.types';
 import * as type from './User.types';
 
 const localStorageUser = JSON.parse(localStorage.getItem("user") as string);
@@ -22,7 +23,7 @@ const initialState: UserState = {
 	dailyNeed: localStorageUser ? localStorageUser.dailyNeed : 0
 };
 
-export const UserReducer = (state: UserState = initialState, action: type.allUserActions) => {
+export const UserReducer = (state: UserState = initialState, action: allUserActions) => {
 	switch (action.type) {
 		case type.CREATE_USER:
 			return {

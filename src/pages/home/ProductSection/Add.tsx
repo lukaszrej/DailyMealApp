@@ -1,15 +1,15 @@
 import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { generate } from 'shortid';
-import { Loader } from '../../../components/Loader';
-import { Tooltip } from '../../../components/Tooltip';
 import { Product } from '../../../types';
 import { storeProduct, increaseKcalSum } from '../../../store/product/Product.actions';
 import { findProducts } from '../../../store/product/Product.actions';
 import { getIsLoading } from '../../../store/product/Product.selectors';
 import { getFoundProducts } from '../../../store/product/Product.selectors';
+import { Loader } from '../../../components/Loader';
+import { Tooltip } from '../../../components/Tooltip';
 import * as S from '../../../styles';
-import * as T from '../../../utils/constants';
+import * as T from '../../../constants/constants';
 
 export const AddProduct = () => {
 	const dispatch = useDispatch();
@@ -49,7 +49,7 @@ export const AddProduct = () => {
 
 				<S.Button
 					type='submit'
-					disabled={productName === '' ? true : false}
+					disabled={!productName}
 					color='secondary'
 					variant='contained'
 				>

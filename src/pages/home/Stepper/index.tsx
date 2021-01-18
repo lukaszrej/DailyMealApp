@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeStepper, useRemoveStepper } from "../../../store/login/Login.actions";
-import { getShowStepper } from '../../../store/login/Login.selectors';
-import { getSteps, getStepContent } from '../../../utils/stepper-content/stepperContent';
-import * as T from "../../../utils/constants";
-import * as S from "../../../styles";
+import { removeStepper, useRemoveStepper } from '../../../store/login/Login.actions';
+import { getDisplayedStepper } from '../../../store/login/Login.selectors';
+import { getSteps } from '../../../utils/getSteps';
+import { getStepContent } from '../../../utils/getStepContent';
+import * as T from '../../../constants/constants';
+import * as S from '../../../styles';
 
 export const Stepper = () => {
 	const dispatch = useDispatch();
-	const showStepper = useSelector(getShowStepper);
+	const showStepper = useSelector(getDisplayedStepper);
 	const steps = getSteps();
-	const [activeStep, setActiveStep] = useState(0);
-	const [secondsToRemove, setSecondsToRemove] = useState(15);
+	const [ activeStep, setActiveStep ] = useState(0);
+	const [ secondsToRemove, setSecondsToRemove ] = useState(15);
 
 	const handleNext = (activeStep: number, steps: string[]) => {
 		setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -51,31 +52,32 @@ export const Stepper = () => {
 							<S.Typography>{getStepContent(index)}</S.Typography>
 							<S.StepperContent>
 								<div>
-									<S.Button disabled={activeStep === 0} variant="outlined" onClick={handleBack}>
+									<S.Button onClick={handleBack} disabled={activeStep === 0} variant='outlined'>
 										{T.BACK}
 									</S.Button>
 									<S.Button
 										variant='outlined'
 										color={activeStep === steps.length - 1 ? 'secondary' : 'primary'}
-										onClick={() => handleNext(activeStep, steps)}>
-
+										onClick={() => handleNext(activeStep, steps)}
+									>
 										{activeStep === steps.length - 1 ? T.FINISH_AND_REMOVE : T.NEXT}
 									</S.Button>
-									{activeStep === steps.length - 1 &&
-										<S.Button variant='outlined' color="primary" onClick={handleReset}>
+									{activeStep === steps.length - 1 && (
+										<S.Button onClick={handleReset} variant='outlined' color='primary'>
 											{T.RESET}
 										</S.Button>
-									}
+									)}
 								</div>
 							</S.StepperContent>
 						</S.StepContent>
 					</S.Step>
 				))}
 
-				{
-					secondsToRemove > 0 &&
-					<S.StepperRemove>{T.WILL_BE_REMOVED_AFTER} <span>{secondsToRemove}</span> {T.SECONDS}</S.StepperRemove>
-				}
+				{secondsToRemove > 0 && (
+					<S.StepperRemove>
+						{T.WILL_BE_REMOVED_AFTER} <span>{secondsToRemove}</span> {T.SECONDS}
+					</S.StepperRemove>
+				)}
 			</S.Stepper>
 		</S.StepperContainer>
 	);

@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { Product, Meal } from '../../types';
 import { MealChart } from './MealChart';
 import { ProductTag } from './ProductTag';
-import * as T from "../../utils/constants";
+import * as T from "../../constants/constants";
 import * as S from '../../styles';
 
 export const Meals = () => {
@@ -19,8 +19,8 @@ export const Meals = () => {
 		history.push('/home');
     }
     
-    const onMealDelete = () => {
-        // todo: deleting a meal
+    const onMealDelete = (id: string) => {
+
     }
 
 	return (
@@ -36,7 +36,7 @@ export const Meals = () => {
 					<section key={generate()}>
 						<header>
 							{T.MEAL} {index + 1} 
-                            <S.Button onClick={onMealDelete}>Remove</S.Button>
+                            <S.Button onClick={() => onMealDelete(meal.id)}>Remove</S.Button>
 						</header>
 
 						<main>

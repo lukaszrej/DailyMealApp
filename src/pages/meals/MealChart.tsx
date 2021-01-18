@@ -1,8 +1,9 @@
 import React from 'react';
+import { ChartProps } from './MealChart.types';
+import { getNutrientsChartData } from '../../utils/getNutrientsChartData';
+import { getCaloriesChartData } from '../../utils/getCaloriesChartData';
 import { PieChart } from '../../components/PieChart';
 import { BarChart } from '../../components/BarChart';
-import { ChartProps } from './MealChart.types';
-import { getNutrientsChartData, getCaloriesChartData } from '../../utils/meal-config/chartConfig';
 import * as S from '../../styles';
 
 export const MealChart = (props: ChartProps) => {

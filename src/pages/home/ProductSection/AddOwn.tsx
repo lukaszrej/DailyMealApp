@@ -4,7 +4,7 @@ import { generate } from 'shortid';
 import { AddOwnState } from './AddOwn.types';
 import { storeProduct, increaseKcalSum } from '../../../store/product/Product.actions';
 import * as S from '../../../styles';
-import * as T from '../../../utils/constants';
+import * as T from '../../../constants/constants';
 
 export const AddOwnProduct = () => {
 	const dispatch = useDispatch();

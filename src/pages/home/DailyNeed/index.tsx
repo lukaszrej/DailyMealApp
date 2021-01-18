@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDailyNeed } from '../../../store/user/User.selectors';
-import { getKcalSum } from '../../../store/product/Product.selectors';
 import { calculateDailyNeed } from '../../../store/user/User.actions';
+import { getKcalSum } from '../../../store/product/Product.selectors';
 import * as S from '../../../styles';
-import * as T from "../../../utils/constants";
+import * as T from "../../../constants/constants";
 
 export const DailyNeed = () => {
 	const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export const DailyNeed = () => {
 				{dailyNeed} {T.KCAL}
 			</S.Typography>
 
-			{kcalSum !== 0 && (
+			{!kcalSum && (
 				<>
 					<S.Typography variant='h6' noWrap>
 						{T.CURRENT_MEAL}

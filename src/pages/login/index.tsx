@@ -1,18 +1,18 @@
 import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { ModalTitle } from '../../components/ModalTitle';
-import { Form } from '../../components/Form';
-import { getStarted } from '../../store/login/Login.selectors';
+import { getStartedApp } from '../../store/login/Login.selectors';
 import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
 import { startApp } from '../../store/login/Login.actions';
+import { ModalTitle } from '../../components/ModalTitle';
+import { Form } from '../../components/Form';
 import * as S from '../../styles';
-import * as T from '../../utils/constants';
+import * as T from '../../constants/constants';
 
 export const Login = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
-	const isStarted = useSelector(getStarted);
+	const isStarted = useSelector(getStartedApp);
 
 	const [name, setName] = useState('');
 	const [height, setHeight] = useState('170');
@@ -45,13 +45,20 @@ export const Login = () => {
 				{T.FILL_THE_FORM}
 			</ModalTitle>
 
-			<Form onSubmit={onLoginSubmit}
-				name={name} setName={setName}
-				height={height} setHeight={setHeight}
-				weight={weight} setWeight={setWeight}
-				age={age} setAge={setAge}
-				activityLevel={activityLevel} onActivityLevelChange={onActivityLevelChange}
-				gender={gender} onGenderChange={onGenderChange}
+            <Form 
+                onSubmit={onLoginSubmit}
+                name={name}
+                setName={setName}
+                height={height}
+                setHeight={setHeight}
+                weight={weight}
+                setWeight={setWeight}
+                age={age}
+                setAge={setAge}
+                activityLevel={activityLevel}
+                onActivityLevelChange={onActivityLevelChange}
+                gender={gender}
+                onGenderChange={onGenderChange}
 				isInitialComponent
 			/>
 		</S.Dialog>

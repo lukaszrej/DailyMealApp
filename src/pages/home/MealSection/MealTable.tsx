@@ -1,13 +1,21 @@
 import React, { ChangeEvent } from 'react';
 import clsx from 'clsx';
 import { Product } from '../../../types';
-import { headCells } from '../../../utils/meal-config/mealTableConfig';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSelectedProducts, getStoredProducts } from '../../../store/product/Product.selectors';
 import { selectProduct, selectProductReset, deleteProduct, decreaseKcal } from '../../../store/product/Product.actions';
+import { HeadCell } from './MealTable.types';
 import { useStyles } from "./MealTable.styles";
-import * as T from "../../../utils/constants";
+import * as T from "../../../constants/constants";
 import * as S from "../../../styles";
+
+export const headCells: HeadCell[] = [
+	{ id: 'name', numeric: false, disablePadding: true, label: 'Product (100g serving)' },
+	{ id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
+	{ id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
+	{ id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
+	{ id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' }
+];
 
 export const MealTable = () => {
 	const dispatch = useDispatch();
@@ -40,7 +48,7 @@ export const MealTable = () => {
 		});
 	};
 
-	if (storedProducts.length === 0) return null;
+	if (!storedProducts.length) return null;
 
 	return (
 		<>

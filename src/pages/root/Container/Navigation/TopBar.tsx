@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppBarProps } from './TopBar.types';
 import { useSelector, useDispatch } from 'react-redux';
-import { getStarted } from '../../../../store/login/Login.selectors';
+import { getStartedApp } from '../../../../store/login/Login.selectors';
 import { endApp } from '../../../../store/login/Login.actions';
 import * as S from '../../../../styles';
 
@@ -10,7 +10,7 @@ export const TopBar = (props: AppBarProps) => {
 	const { handleDrawerToggle } = props;
 	const history = useHistory();
 	const dispatch = useDispatch();
-	const isStarted = useSelector(getStarted);
+	const isStarted = useSelector(getStartedApp);
 
 	const onLogout = () => {
 		dispatch(endApp());

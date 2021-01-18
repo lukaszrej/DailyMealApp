@@ -64,4 +64,3 @@ export const LinkedInIcon = styled(icons.LinkedIn)``;
 export const MailIcon = styled(icons.Mail)``;
 export const MenuIcon = styled(icons.Menu)``;
 export const SearchIcon = styled(icons.Search)``;
-

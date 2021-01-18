@@ -4,7 +4,7 @@ import { getStoredProducts } from '../../../store/product/Product.selectors';
 import { storeMeal, storeToLocalStorage, setIsMealAdded } from '../../../store/meal/Meal.actions';
 import { deleteAllProducts } from '../../../store/product/Product.actions';
 import { MealTable } from './MealTable';
-import * as T from "../../../utils/constants";
+import * as T from "../../../constants/constants";
 import * as S from "../../../styles";
 
 export const MealSection = () => {
@@ -22,17 +22,17 @@ export const MealSection = () => {
 		dispatch(deleteAllProducts());
 	};
 
-	if (storedProducts.length === 0) return null;
+	if (!storedProducts.length) return null;
 
 	return (
 		<S.MealSection>
 			<MealTable />
 
 			<section>
-				<S.Button color='primary' variant='contained' onClick={onMealSubmit}>
+				<S.Button onClick={onMealSubmit} color='primary' variant='contained'>
 					{T.SUBMIT_MEAL}
 				</S.Button>
-				<S.Button color='secondary' onClick={onMealDismiss}>
+				<S.Button onClick={onMealDismiss} color='secondary'>
 					{T.DISMISS}
 				</S.Button>
 			</section>

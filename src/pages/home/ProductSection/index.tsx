@@ -1,14 +1,14 @@
 import React, { useState, ChangeEvent } from 'react';
 import { AddOwnProduct } from './AddOwn';
 import { AddProduct } from './Add';
-import * as T from "../../../utils/constants";
+import * as T from "../../../constants/constants";
 import * as S from "../../../styles";
 
 export const ProductSection = () => {
 	const [tabValue, setTabValue] = useState(0);
 
-	const onChange = (event: ChangeEvent<{}>, newValue: number): void => {
-		event.preventDefault();
+	const onChange = (e: ChangeEvent<{}>, newValue: number) => {
+		e.preventDefault();
 		setTabValue(newValue);
 	};
 
@@ -31,9 +31,9 @@ export const ProductSection = () => {
 					<S.Tab icon={<S.AddIcon />} label={T.ADD_OWN_PRODUCT} />
 				</S.Tabs>
 
-				<div className="tabs">
+				<S.TabContent>
 					{tabValue ? <AddOwnProduct /> : <AddProduct />}
-				</div>
+				</S.TabContent>
 			</S.Paper>
 		</S.ProductSection>
 	);

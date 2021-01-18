@@ -2,11 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getMeals, getIsMealAdded } from '../../../../store/meal/Meal.selectors';
-import { getShowStepper } from '../../../../store/login/Login.selectors';
+import { getDisplayedStepper } from '../../../../store/login/Login.selectors';
 import { showStepper } from '../../../../store/login/Login.actions';
 import { ListItem } from '@material-ui/core/';
-import * as link from "../../../../utils/url.repository";
-import * as T from '../../../../utils/constants';
+import * as link from "../../../../constants/url-repository";
+import * as T from '../../../../constants/constants';
 import * as S from '../../../../styles';
 
 export const SideBar = () => {
@@ -14,7 +14,7 @@ export const SideBar = () => {
 	const history = useHistory();
 	const meals = useSelector(getMeals);
 	const isMealAdded = useSelector(getIsMealAdded);
-	const isStepperShown = useSelector(getShowStepper);
+	const isStepperShown = useSelector(getDisplayedStepper);
 
 	const handleClick = () => {
 		dispatch(showStepper());

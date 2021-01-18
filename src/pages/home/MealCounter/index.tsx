@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { getMeals } from '../../../store/meal/Meal.selectors';
-import * as T from "../../../utils/constants";
+import * as T from "../../../constants/constants";
 import * as S from "../../../styles";
 
-export const MealsCounter = () => {
+export const MealCounter = () => {
 	const meals = useSelector(getMeals);
 
 	return (

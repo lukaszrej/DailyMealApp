@@ -17,18 +17,18 @@ export const ProductSection = styled.section`
 			font-size: 18px;
 		}
 	}
+`;
 
-	.tabs {
-		padding-bottom: 24px;
-		padding-top: 24px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+export const TabContent = styled.div`
+    padding-bottom: 24px;
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-		@media screen and (min-width: 600px) {
-			padding-right: 12px;
-			padding-left: 12px;
-		}
-	}
+    @media screen and (min-width: 600px) {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
 `;

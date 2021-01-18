@@ -1,11 +1,11 @@
 import React from 'react';
 import { generate } from 'shortid';
 import { FormProps } from './index.types';
-import { activityOptions } from '../../utils/activity-levels/activityLevels';
+import { activityOptions } from '../../constants/activity-options';
 import { FormControl } from '@material-ui/core';
 import { ModalContent } from '../ModalContent';
 import * as S from "../../styles";
-import * as T from "../../utils/constants";
+import * as T from "../../constants/constants";
 
 export const Form = (props: FormProps) => {
 	const {

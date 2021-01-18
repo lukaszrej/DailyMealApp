@@ -4,7 +4,7 @@ import { ProductSection } from './ProductSection';
 import { MealSection } from './MealSection';
 import { UserDetails } from './UserDetails';
 import { DailyNeed } from './DailyNeed';
-import { MealsCounter } from './MealsCounter';
+import { MealCounter } from './MealCounter';
 import * as S from '../../styles';
 
 export const Home = () => {
@@ -18,7 +18,7 @@ export const Home = () => {
 			<aside>
 				<UserDetails />
 				<DailyNeed />
-				<MealsCounter />
+				<MealCounter />
 			</aside>
 		</S.Home>
 	);

@@ -1,6 +1,6 @@
-import { ChartData } from '../../utils/meal-config/chartConfig.types';
+import { ChartConfig } from '../../types';
 
 export interface PieChartProps {
 	label: string;
-	chartData: ChartData;
+	chartData: ChartConfig;
 }

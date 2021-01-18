@@ -16,7 +16,7 @@ export const findProducts = (productName: string) => async (dispatch: Dispatch) 
 			payload: response.data.hints
 		});
 
-		!response.data.hints.length && alert('nothing found');
+        !response.data.hints.length && alert('nothing found');
 	} catch (error) {
 		console.warn('server problem, error -> ', error);
 	}
@@ -26,7 +26,6 @@ export const storeProduct = (product: Product) => ({
 	type: type.STORE_PRODUCT,
 	payload: product
 });
-
 
 export const increaseKcalSum = (productKcal: number) => ({
 	type: type.INCREASE_KCAL_SUM,

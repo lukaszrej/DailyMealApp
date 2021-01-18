@@ -1,4 +1,4 @@
-import { ActivityOption } from './activityLevels.types';
+import { ActivityOption } from '../types';
 
 export const activityOptions: ActivityOption[] = [
 	{

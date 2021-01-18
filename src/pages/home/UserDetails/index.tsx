@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getActivityLevelDesc } from '../../../utils/getActivityLevelDesc';
 import { Alert } from '../../../components/Alert';
 import { UserEdit } from './UserEdit';
-import { useSelector } from 'react-redux';
-import { getActivityLevelDesc } from '../../../utils/activity-levels/activityLevelsDesc';
 import * as selector from '../../../store/user/User.selectors';
-import * as T from "../../../utils/constants";
+import * as T from "../../../constants/constants";
 import * as S from '../../../styles';
 
 export const UserDetails = () => {
@@ -15,16 +15,16 @@ export const UserDetails = () => {
 	const userGender = useSelector(selector.getUserGender);
     const activityLevel = useSelector(selector.getActivityLevel);
 
-	const [displayAlert, setDisplayAlert] = useState(false);
-	const [openEditModal, setOpenEditModal] = useState(false);
+	const [isAlertDisplayed, setIsAlertDisplayed] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const handleOpen = () => {
-		setOpenEditModal(true);
-		setDisplayAlert(false);
+		setIsModalOpen(true);
+		setIsAlertDisplayed(false);
 	};
 
 	const handleClose = () => {
-		setOpenEditModal(false);
+		setIsModalOpen(false);
 	};
 
 	return (
@@ -45,17 +45,17 @@ export const UserDetails = () => {
 					{T.EDIT_DATA}
 				</S.Button>
 
-				{openEditModal && (
+				{isModalOpen && (
 					<UserEdit
 						handleClose={handleClose}
-						openEditModal={openEditModal}
-						setOpenEditModal={setOpenEditModal}
-						setDisplayAlert={setDisplayAlert}
+						isModalOpen={isModalOpen}
+						setIsModalOpen={setIsModalOpen}
+						setIsAlertDisplayed={setIsAlertDisplayed}
 					/>
 				)}
 			</S.UserDetails>
 
-			{displayAlert && <Alert severity='success'>{T.DATA_CORRECTLY_UPDATED}</Alert>}
+			{isAlertDisplayed && <Alert severity='success'>{T.DATA_CORRECTLY_UPDATED}</Alert>}
 		</>
 	);
 };

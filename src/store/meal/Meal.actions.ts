@@ -22,3 +22,6 @@ export const setIsMealAdded = () => ({
 	type: type.SET_IS_MEAL_ADDED
 });
 
+export const deleteMeal = () => ({
+    type: type.DELETE_MEAL
+})

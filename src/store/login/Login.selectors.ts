@@ -1,5 +1,5 @@
 import { AppState } from '..';
 
-export const getStarted = (state: AppState) => state.login.started;
-export const getShowAlert = (state: AppState) => state.login.showAlert;
-export const getShowStepper = (state: AppState) => state.login.showStepper;
+export const getStartedApp = (state: AppState) => state.login.startedApp;
+export const getDisplayedAlert = (state: AppState) => state.login.displayedAlert;
+export const getDisplayedStepper = (state: AppState) => state.login.displayedStepper;
