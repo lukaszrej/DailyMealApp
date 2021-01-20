@@ -9,7 +9,7 @@ export const ButtonContainer = styled.div`
 	& button {
 		width: 100%;
 		min-height: 48px;
-    	margin: 8px;
+        margin: 8px;
 	}
 `;
 

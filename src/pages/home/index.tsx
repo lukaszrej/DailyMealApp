@@ -1,4 +1,3 @@
-import React from 'react';
 import { Stepper } from './Stepper';
 import { ProductSection } from './ProductSection';
 import { MealSection } from './MealSection';

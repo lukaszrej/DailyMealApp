@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { TopBar } from './TopBar';
 import { SideBar } from './SideBar';

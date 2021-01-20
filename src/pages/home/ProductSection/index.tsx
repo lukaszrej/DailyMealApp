@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { AddOwnProduct } from './AddOwn';
 import { AddProduct } from './Add';
 import * as T from "../../../constants/constants";

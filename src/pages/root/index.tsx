@@ -1,4 +1,3 @@
-import React from 'react';
 import { Provider } from 'react-redux';
 import { CssBaseline } from '@material-ui/core/';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';

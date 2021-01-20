@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeStepper, useRemoveStepper } from '../../../store/login/Login.actions';
 import { getDisplayedStepper } from '../../../store/login/Login.selectors';

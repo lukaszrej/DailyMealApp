@@ -1,4 +1,3 @@
-import React from 'react';
 import { generate } from 'shortid';
 import { useSelector } from 'react-redux';
 import { getMeals } from '../../store/meal/Meal.selectors';
@@ -33,7 +32,7 @@ export const Meals = () => {
 				const mealTotal = { calories: 0, fat: 0, carbs: 0, protein: 0 };
 
 				return (
-					<section key={generate()}>
+					<section key={meal.id}>
 						<header>
 							{T.MEAL} {index + 1} 
                             <S.Button onClick={() => onMealDelete(meal.id)}>Remove</S.Button>

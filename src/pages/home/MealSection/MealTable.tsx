@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 import clsx from 'clsx';
 import { Product } from '../../../types';
 import { useSelector, useDispatch } from 'react-redux';

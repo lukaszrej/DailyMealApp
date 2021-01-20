@@ -1,4 +1,3 @@
-import React from 'react';
 import { generate } from 'shortid';
 import { FormProps } from './index.types';
 import { activityOptions } from '../../constants/activity-options';

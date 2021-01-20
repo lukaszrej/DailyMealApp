@@ -1,4 +1,3 @@
-import React from 'react';
 import { ProductTagProps } from './ProductTag.types';
 import * as S from "../../styles";
 

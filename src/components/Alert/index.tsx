@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { AlertExtendedProps } from './index.types';
 import { removeAlert } from '../../store/login/Login.actions';

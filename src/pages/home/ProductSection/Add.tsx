@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
+import { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { generate } from 'shortid';
 import { Product } from '../../../types';

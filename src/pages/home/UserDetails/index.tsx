@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getActivityLevelDesc } from '../../../utils/getActivityLevelDesc';
 import { Alert } from '../../../components/Alert';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ContainerProps } from './index.types';
 import { useSelector } from 'react-redux';
 import { getDisplayedAlert } from '../../../store/login/Login.selectors';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppBarProps } from './TopBar.types';
 import { useSelector, useDispatch } from 'react-redux';

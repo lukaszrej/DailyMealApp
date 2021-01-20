@@ -1,4 +1,4 @@
-import React, { ComponentType } from 'react';
+import { ComponentType } from 'react';
 import { Route, RouteProps } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getStartedApp } from '../store/login/Login.selectors';

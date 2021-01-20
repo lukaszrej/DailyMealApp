@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
+import { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createUser, calculateDailyNeed } from '../../../store/user/User.actions';
 import { UserEditProps } from './UserEdit.types';

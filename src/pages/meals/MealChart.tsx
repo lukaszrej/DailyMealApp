@@ -1,4 +1,3 @@
-import React from 'react';
 import { ChartProps } from './MealChart.types';
 import { getNutrientsChartData } from '../../utils/getNutrientsChartData';
 import { getCaloriesChartData } from '../../utils/getCaloriesChartData';

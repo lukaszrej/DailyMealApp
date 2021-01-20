@@ -1,4 +1,4 @@
-import { allLoginActions }from './Login.types';
+import { allLoginActions } from './Login.types';
 import * as type from './Login.types';
 
 interface LoginState {

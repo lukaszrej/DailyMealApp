@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { getMeals } from '../../../store/meal/Meal.selectors';
 import * as T from "../../../constants/constants";

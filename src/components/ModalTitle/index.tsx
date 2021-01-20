@@ -1,4 +1,3 @@
-import React from 'react';
 import { createStyles, Theme, withStyles } from '@material-ui/core/styles';
 import { DialogTitle } from '@material-ui/core';
 import { ModalTitleProps } from './index.types';
