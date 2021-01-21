@@ -15,11 +15,17 @@ export const Meals = styled(S.Paper)`
 		padding: 12px;
 		text-align: center;
 		font-size: 22px;
+
+        & button {
+            background: rgb(255, 226, 236);
+            color: rgb(245, 0, 87);
+            margin-left: 12px;
+        }
 	}
 
 	& hr {
 		margin-top: 64px;
-    	margin-bottom: 32px;
+        margin-bottom: 32px;
 		height: 2px;
 	}
 

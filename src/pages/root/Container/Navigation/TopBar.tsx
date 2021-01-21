@@ -3,6 +3,7 @@ import { AppBarProps } from './TopBar.types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStartedApp } from '../../../../store/login/Login.selectors';
 import { endApp } from '../../../../store/login/Login.actions';
+import { routes } from '../../../../routing/routes';
 import * as S from '../../../../styles';
 
 export const TopBar = (props: AppBarProps) => {
@@ -13,7 +14,7 @@ export const TopBar = (props: AppBarProps) => {
 
 	const onLogout = () => {
 		dispatch(endApp());
-		history.push("login");
+		history.push(routes.login);
 	};
 
 	return (

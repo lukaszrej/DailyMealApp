@@ -4,6 +4,7 @@ import { getMeals, getIsMealAdded } from '../../../../store/meal/Meal.selectors'
 import { getDisplayedStepper } from '../../../../store/login/Login.selectors';
 import { showStepper } from '../../../../store/login/Login.actions';
 import { ListItem } from '@material-ui/core/';
+import { routes } from '../../../../routing/routes';
 import * as link from "../../../../constants/url-repository";
 import * as T from '../../../../constants/constants';
 import * as S from '../../../../styles';
@@ -30,14 +31,14 @@ export const SideBar = () => {
 			<S.Divider />
 
 			<S.List>
-				<S.ListItem button onClick={() => history.push('/home')}>
+				<S.ListItem button onClick={() => history.push(routes.home)}>
 					<S.ListItemIcon>
 						<S.HomeIcon />
 					</S.ListItemIcon>
 					<S.ListItemText primary={T.HOME} />
 				</S.ListItem>
 
-				<S.ListItem button onClick={() => history.push('/meals')} disabled={!isMealAdded}>
+				<S.ListItem button onClick={() => history.push(routes.meals)} disabled={!isMealAdded}>
 					<S.ListItemIcon>
 						<S.Badge badgeContent={meals ? meals.length : 0} max={99} color='primary'>
 							<S.FormatListBulletedIcon />

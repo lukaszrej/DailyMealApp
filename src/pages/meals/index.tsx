@@ -1,26 +1,30 @@
 import { generate } from 'shortid';
-import { useSelector } from 'react-redux';
-import { getMeals } from '../../store/meal/Meal.selectors';
-import { getDailyNeed } from '../../store/user/User.selectors';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { getMeals } from '../../store/meal/Meal.selectors';
+import { removeMeal, removeMealFromStorage } from '../../store/meal/Meal.actions';
+import { getDailyNeed } from '../../store/user/User.selectors';
 import { Product, Meal } from '../../types';
 import { MealChart } from './MealChart';
 import { ProductTag } from './ProductTag';
-import * as T from "../../constants/constants";
+import { routes } from '../../routing/routes';
+import * as T from '../../constants/constants';
 import * as S from '../../styles';
 
 export const Meals = () => {
 	const history = useHistory();
-    const meals = useSelector(getMeals);
+	const dispatch = useDispatch();
+	const meals = useSelector(getMeals);
 	const dailyNeed = useSelector(getDailyNeed);
 
 	const onGoHome = () => {
-		history.push('/home');
-    }
-    
-    const onMealDelete = (id: string) => {
+		history.push(routes.home);
+	};
 
-    }
+	const onMealDelete = (mealId: string) => {
+		dispatch(removeMeal(mealId));
+		dispatch(removeMealFromStorage(mealId));
+	};
 
 	return (
 		<S.Meals square>
@@ -34,8 +38,10 @@ export const Meals = () => {
 				return (
 					<section key={meal.id}>
 						<header>
-							{T.MEAL} {index + 1} 
-                            <S.Button onClick={() => onMealDelete(meal.id)}>Remove</S.Button>
+							{T.MEAL} {index + 1}
+							<S.IconButton>
+								<S.DeleteIcon onClick={() => onMealDelete(meal.id)}/>
+							</S.IconButton>
 						</header>
 
 						<main>
@@ -71,6 +77,6 @@ export const Meals = () => {
 					{T.GO_BACK}
 				</S.Button>
 			</S.PageButtonContainer>
-		</S.Meals >
+		</S.Meals>
 	);
 };

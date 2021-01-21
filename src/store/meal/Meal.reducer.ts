@@ -2,7 +2,7 @@ import { Meal } from '../../types';
 import { allMealActions } from './Meal.types';
 import * as type from './Meal.types';
 
-interface MealState {
+export interface MealState {
 	meals: Meal[];
 	isMealAdded: boolean;
 }
@@ -30,7 +30,8 @@ export const MealReducer = (state: MealState = initialState, action: allMealActi
 
 		case type.DELETE_MEAL:
 			return {
-				...state
+                ...state,
+                meals: action.payload
 			};
 
 		default:

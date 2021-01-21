@@ -1,6 +1,7 @@
 import { Dispatch } from 'redux';
 import { Product } from '../../types';
-import getAPIProducts from './Product.api';
+import { AppState } from '../index';
+import { getAPIProducts } from './Product.api';
 import * as type from './Product.types';
 
 export const findProducts = (productName: string) => async (dispatch: Dispatch) => {
@@ -16,7 +17,7 @@ export const findProducts = (productName: string) => async (dispatch: Dispatch) 
 			payload: response.data.hints
 		});
 
-        !response.data.hints.length && alert('nothing found');
+		!response.data.hints.length && alert('nothing found');
 	} catch (error) {
 		console.warn('server problem, error -> ', error);
 	}
@@ -27,11 +28,20 @@ export const storeProduct = (product: Product) => ({
 	payload: product
 });
 
+// export const storeProduct = (product: Product) => (dispatch: Dispatch, getState: Function) => {
+// 	const state = getState();
+//     const storedProducts = state.product.storedProducts;
+
+//     dispatch({
+//         type: type.STORE_PRODUCT,
+//         payload: product
+//     })
+// };
+
 export const increaseKcalSum = (productKcal: number) => ({
 	type: type.INCREASE_KCAL_SUM,
 	payload: productKcal
 });
-
 
 export const selectProduct = (selectedItem: string | string[]) => (dispatch: Dispatch, getState: Function) => {
 	const state = getState();
@@ -47,7 +57,10 @@ export const selectProduct = (selectedItem: string | string[]) => (dispatch: Dis
 	} else if (selectedIndex === selectedProducts.length - 1) {
 		newSelectedArray = newSelectedArray.concat(selectedProducts.slice(0, -1));
 	} else if (selectedIndex > 0) {
-		newSelectedArray = newSelectedArray.concat(selectedProducts.slice(0, selectedIndex), selectedProducts.slice(selectedIndex + 1));
+		newSelectedArray = newSelectedArray.concat(
+			selectedProducts.slice(0, selectedIndex),
+			selectedProducts.slice(selectedIndex + 1)
+		);
 	}
 
 	dispatch({
@@ -61,9 +74,9 @@ export const selectProductReset = () => ({
 });
 
 export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getState: Function) => {
-	const state = getState();
+	const state: AppState = getState();
 	const products = state.product.storedProducts;
-	const newProducts: Product[] = products.filter((storedProduct: Product) => storedProduct.food.foodId !== selectedId);
+	const newProducts = products.filter((storedProduct) => storedProduct.food.foodId !== selectedId);
 
 	dispatch({
 		type: type.DELETE_PRODUCT,
@@ -72,11 +85,11 @@ export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getSta
 };
 
 export const decreaseKcal = (selectedId: string) => (dispatch: Dispatch, getState: Function) => {
-	const state = getState();
+	const state: AppState = getState();
 	const products = state.product.storedProducts;
 
 	let newKcal = 0;
-	products.map((product: Product) => {
+	products.map((product) => {
 		if (product.food.foodId !== selectedId) {
 			newKcal += Number(product.food.nutrients.ENERC_KCAL);
 		}

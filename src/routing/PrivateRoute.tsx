@@ -1,11 +1,11 @@
-import { ComponentType } from 'react';
+import { ComponentType, FunctionComponent } from 'react';
 import { Route, RouteProps } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getStartedApp } from '../store/login/Login.selectors';
 import { Login } from '../pages/login';
 
 interface Props extends RouteProps {
-    component: ComponentType<any>;
+    component: ComponentType<FunctionComponent>;
     path?: string;
 }
 

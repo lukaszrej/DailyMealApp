@@ -6,6 +6,7 @@ import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
 import { startApp } from '../../store/login/Login.actions';
 import { ModalTitle } from '../../components/ModalTitle';
 import { Form } from '../../components/Form';
+import { routes } from '../../routing/routes';
 import * as S from '../../styles';
 import * as T from '../../constants/constants';
 
@@ -36,7 +37,7 @@ export const Login = () => {
 		dispatch(startApp());
 		localStorage.setItem("started", "true");
 		localStorage.setItem("user", JSON.stringify({ name, height, weight, age, gender, activityLevel }));
-		history.push("home");
+		history.push(routes.home);
 	};
 
 	return (

@@ -25,7 +25,7 @@ export const MealTable = () => {
 
 	const handleSelectAllClick = (event: ChangeEvent<HTMLInputElement>) => {
 		if (event.target.checked) {
-			const newSelectedItem = storedProducts.map((product: Product) => product.food.foodId);
+			const newSelectedItem = storedProducts.map(product => product.food.foodId);
 			dispatch(selectProduct(newSelectedItem));
 		} else {
 			dispatch(selectProductReset());
@@ -39,11 +39,11 @@ export const MealTable = () => {
 	const isSelected = (itemIndex: string) => selectedProducts.indexOf(itemIndex) !== -1;
 
 	const handleDeleteSelectedProducts = () => {
-		selectedProducts.map((selectedId: string) => {
+		selectedProducts.map(selectedId => {
 			return dispatch(deleteProduct(selectedId));
 		});
 
-		selectedProducts.map((selectedId: string) => {
+		selectedProducts.map(selectedId => {
 			return dispatch(decreaseKcal(selectedId));
 		});
 	};

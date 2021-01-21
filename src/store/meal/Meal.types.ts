@@ -14,6 +14,7 @@ export interface SetIsMealAddedAction {
 export const DELETE_MEAL = 'DELETE_MEAL';
 export interface DeleteMealAction {
     type: typeof DELETE_MEAL; 
+    payload: Meal[];
 }
 
 export type allMealActions =
