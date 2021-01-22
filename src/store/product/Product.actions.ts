@@ -23,25 +23,25 @@ export const findProducts = (productName: string) => async (dispatch: Dispatch) 
 	}
 };
 
-export const storeProduct = (product: Product) => ({
-	type: type.STORE_PRODUCT,
-	payload: product
-});
+export const storeProduct = (product: Product) => (dispatch: Dispatch, getState: Function) => {
+    const state = getState();
+    const storedProducts = state.product.storedProducts;
 
-// export const storeProduct = (product: Product) => (dispatch: Dispatch, getState: Function) => {
-// 	const state = getState();
-//     const storedProducts = state.product.storedProducts;
+	dispatch({
+		type: type.STORE_PRODUCT,
+		payload: [ ...storedProducts, product ]
+	});
+};
 
-//     dispatch({
-//         type: type.STORE_PRODUCT,
-//         payload: product
-//     })
-// };
+export const increaseKcalSum = (productKcal: number) => (dispatch: Dispatch, getState: Function) => {
+	const state = getState();
+	const kcalSum = state.product.kcalSum;
 
-export const increaseKcalSum = (productKcal: number) => ({
-	type: type.INCREASE_KCAL_SUM,
-	payload: productKcal
-});
+	dispatch({
+		type: type.INCREASE_KCAL_SUM,
+		payload: kcalSum + productKcal
+	});
+};
 
 export const selectProduct = (selectedItem: string | string[]) => (dispatch: Dispatch, getState: Function) => {
 	const state = getState();

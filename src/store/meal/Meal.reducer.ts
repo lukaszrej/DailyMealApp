@@ -19,7 +19,7 @@ export const MealReducer = (state: MealState = initialState, action: allMealActi
 		case type.STORE_MEAL:
 			return {
 				...state,
-				meals: [ ...state.meals, action.payload ]
+				meals: action.payload
 			};
 
 		case type.SET_IS_MEAL_ADDED:
@@ -28,7 +28,7 @@ export const MealReducer = (state: MealState = initialState, action: allMealActi
 				isMealAdded: true
 			};
 
-		case type.DELETE_MEAL:
+		case type.REMOVE_MEAL:
 			return {
                 ...state,
                 meals: action.payload

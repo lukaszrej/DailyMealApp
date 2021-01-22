@@ -36,14 +36,14 @@ export const ProductReducer = (state: ProductState = initialState, action: allPr
 		case type.STORE_PRODUCT:
 			return {
 				...state,
-				storedProducts: [ ...state.storedProducts, action.payload ],
+				storedProducts: action.payload,
 				foundProducts: []
 			};
 
 		case type.INCREASE_KCAL_SUM:
 			return {
 				...state,
-				kcalSum: state.kcalSum + action.payload
+				kcalSum: action.payload
 			};
 
 		case type.SELECT_PRODUCT:

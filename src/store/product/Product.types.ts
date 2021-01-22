@@ -14,7 +14,7 @@ export interface FindProductAction {
 export const STORE_PRODUCT = 'STORE_PRODUCT';
 export interface StoreProductAction {
 	type: typeof STORE_PRODUCT;
-	payload: Product;
+	payload: Product[];
 }
 
 export const INCREASE_KCAL_SUM = 'INCREASE_KCAL_SUM';

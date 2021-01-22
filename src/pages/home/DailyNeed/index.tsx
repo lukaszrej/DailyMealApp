@@ -27,7 +27,7 @@ export const DailyNeed = () => {
 				{dailyNeed} {T.KCAL}
 			</S.Typography>
 
-			{!kcalSum && (
+			{kcalSum !== 0 && (
 				<>
 					<S.Typography variant='h6' noWrap>
 						{T.CURRENT_MEAL}
