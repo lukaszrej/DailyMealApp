@@ -22,14 +22,16 @@ export const AddProduct = () => {
 	}
 
 	const onFindProducts = (e: SyntheticEvent) => {
-		e.preventDefault();
+        e.preventDefault();
+        
 		dispatch(findProducts(productName));
 		setProductName('');
 	};
 
 	const onProductClick = (e: SyntheticEvent, product: Product) => {
-		e.preventDefault();
-		const calories = product.food.nutrients.ENERC_KCAL;
+        e.preventDefault();
+        
+        const { calories } = product;
 		const kcalSum = Math.ceil(Number(calories));
 		dispatch(storeProduct(product));
 		dispatch(increaseKcalSum(kcalSum));
@@ -58,12 +60,8 @@ export const AddProduct = () => {
 			</S.AddProduct>
 
 			<S.ProductList>
-				{foundProducts.map((product: Product) => {
-					const label = product.food.label;
-					const calories = product.food.nutrients.ENERC_KCAL;
-					const protein = product.food.nutrients.PROCNT;
-					const carbs = product.food.nutrients.CHOCDF;
-					const fat = product.food.nutrients.FAT;
+				{foundProducts.map((product) => {
+                    const { label, calories, protein, carbs, fat } = product;
 
 					return (
 						<Tooltip arrow title='Click to add' placement='top' enterDelay={650} leaveDelay={50} key={generate()}>

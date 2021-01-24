@@ -8,7 +8,7 @@ import * as T from '../../../constants/constants';
 
 export const AddOwnProduct = () => {
 	const dispatch = useDispatch();
-	const [values, setValues] = useState<AddOwnState>({
+	const [ values, setValues ] = useState<AddOwnState>({
 		name: '',
 		calories: 0,
 		fat: 0,
@@ -24,16 +24,12 @@ export const AddOwnProduct = () => {
 		e.preventDefault();
 		dispatch(
 			storeProduct({
-				food: {
-					foodId: generate(),
-					label: values.name,
-					nutrients: {
-						CHOCDF: values.carbs,
-						ENERC_KCAL: values.calories,
-						FAT: values.fat,
-						PROCNT: values.protein
-					}
-				}
+				foodId: generate(),
+				label: values.name,
+				carbs: values.carbs,
+				calories: values.calories,
+				fat: values.fat,
+				protein: values.protein
 			})
 		);
 

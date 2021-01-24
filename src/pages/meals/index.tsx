@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { getMeals } from '../../store/meal/Meal.selectors';
 import { removeMeal, removeMealFromStorage } from '../../store/meal/Meal.actions';
 import { getDailyNeed } from '../../store/user/User.selectors';
-import { Product, Meal } from '../../types';
 import { MealChart } from './MealChart';
 import { ProductTag } from './ProductTag';
 import { routes } from '../../routing/routes';
@@ -32,31 +31,27 @@ export const Meals = () => {
 				{T.MEALS_PAGE_HEADING}
 			</S.Typography>
 
-			{meals.map((meal: Meal, index: number) => {
+			{meals.map((meal, index) => {
 				const mealTotal = { calories: 0, fat: 0, carbs: 0, protein: 0 };
 
 				return (
 					<section key={meal.id}>
 						<header>
 							{T.MEAL} {index + 1}
-							<S.IconButton>
-								<S.DeleteIcon onClick={() => onMealDelete(meal.id)}/>
+							<S.IconButton onClick={() => onMealDelete(meal.id)}>
+								<S.DeleteIcon/>
 							</S.IconButton>
 						</header>
 
 						<main>
 							<S.ProductTags>
-								{meal.products.map((product: Product) => {
-									const calories = Math.round(product.food.nutrients.ENERC_KCAL);
-									const protein = Math.round(product.food.nutrients.PROCNT);
-									const carbs = Math.round(product.food.nutrients.CHOCDF);
-									const fat = Math.round(product.food.nutrients.FAT);
-									const label = product.food.label;
-
-									mealTotal.calories += calories;
-									mealTotal.fat += fat;
-									mealTotal.carbs += carbs;
-									mealTotal.protein += protein;
+								{meal.products.map((product) => {
+                                    const { label, calories, protein, carbs, fat } = product;
+                                    
+									mealTotal.calories += Math.round(calories);
+									mealTotal.fat += Math.round(fat);
+									mealTotal.carbs += Math.round(carbs);
+									mealTotal.protein += Math.round(protein);
 
 									return <ProductTag key={generate()} label={label} calories={calories} />;
 								})}

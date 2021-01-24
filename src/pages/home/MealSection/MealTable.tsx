@@ -1,6 +1,5 @@
 import { ChangeEvent } from 'react';
 import clsx from 'clsx';
-import { Product } from '../../../types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSelectedProducts, getStoredProducts } from '../../../store/product/Product.selectors';
 import { selectProduct, selectProductReset, deleteProduct, decreaseKcal } from '../../../store/product/Product.actions';
@@ -25,7 +24,7 @@ export const MealTable = () => {
 
 	const handleSelectAllClick = (event: ChangeEvent<HTMLInputElement>) => {
 		if (event.target.checked) {
-			const newSelectedItem = storedProducts.map(product => product.food.foodId);
+			const newSelectedItem = storedProducts.map(product => product.foodId);
 			dispatch(selectProduct(newSelectedItem));
 		} else {
 			dispatch(selectProductReset());
@@ -98,14 +97,8 @@ export const MealTable = () => {
 						</S.TableRow>
 					</S.TableHead>
 					<S.TableBody>
-						{storedProducts.map((product: Product, index: number) => {
-							const productId = product.food.foodId;
-							const productLabel = product.food.label;
-							const calories = product.food.nutrients.ENERC_KCAL;
-							const protein = product.food.nutrients.PROCNT;
-							const carbs = product.food.nutrients.CHOCDF;
-							const fat = product.food.nutrients.FAT;
-
+						{storedProducts.map((product, index) => {
+                            const { foodId: productId, label: productLabel, calories, protein, carbs, fat } = product;
 							const isItemSelected = isSelected(productId);
 							const labelId = `${T.MEAL_CHECKBOX_LABELLED}-${index}`;
 

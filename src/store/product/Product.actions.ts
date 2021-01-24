@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import { Product } from '../../types';
 import { AppState } from '../index';
-import { getAPIProducts } from './Product.api';
+import { getAPIProducts, configProducts } from './Product.api';
 import * as type from './Product.types';
 
 export const findProducts = (productName: string) => async (dispatch: Dispatch) => {
@@ -11,10 +11,11 @@ export const findProducts = (productName: string) => async (dispatch: Dispatch) 
 
 	try {
 		const response = await getAPIProducts(productName);
+		const configuredProducts = configProducts(response.data.hints);
 
 		dispatch({
 			type: type.FIND_PRODUCTS,
-			payload: response.data.hints
+			payload: configuredProducts
 		});
 
 		!response.data.hints.length && alert('nothing found');
@@ -24,8 +25,8 @@ export const findProducts = (productName: string) => async (dispatch: Dispatch) 
 };
 
 export const storeProduct = (product: Product) => (dispatch: Dispatch, getState: Function) => {
-    const state = getState();
-    const storedProducts = state.product.storedProducts;
+	const state = getState();
+	const storedProducts = state.product.storedProducts;
 
 	dispatch({
 		type: type.STORE_PRODUCT,
@@ -76,7 +77,7 @@ export const selectProductReset = () => ({
 export const deleteProduct = (selectedId: string) => (dispatch: Dispatch, getState: Function) => {
 	const state: AppState = getState();
 	const products = state.product.storedProducts;
-	const newProducts = products.filter((storedProduct) => storedProduct.food.foodId !== selectedId);
+	const newProducts = products.filter((storedProduct) => storedProduct.foodId !== selectedId);
 
 	dispatch({
 		type: type.DELETE_PRODUCT,
@@ -90,8 +91,8 @@ export const decreaseKcal = (selectedId: string) => (dispatch: Dispatch, getStat
 
 	let newKcal = 0;
 	products.map((product) => {
-		if (product.food.foodId !== selectedId) {
-			newKcal += Number(product.food.nutrients.ENERC_KCAL);
+		if (product.foodId !== selectedId) {
+			newKcal += Number(product.calories);
 		}
 		return newKcal;
 	});
