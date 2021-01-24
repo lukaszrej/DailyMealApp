@@ -1,11 +1,11 @@
-import { ChartProps } from './MealChart.types';
+import { Props } from './MealChart.types';
 import { getNutrientsChartData } from '../../utils/getNutrientsChartData';
 import { getCaloriesChartData } from '../../utils/getCaloriesChartData';
 import { PieChart } from '../../components/PieChart';
 import { BarChart } from '../../components/BarChart';
 import * as S from '../../styles';
 
-export const MealChart = (props: ChartProps) => {
+export const MealChart = (props: Props) => {
 	const { mealTotal, dailyNeed } = props;
 	const { calories, fat, carbs, protein } = mealTotal;
 

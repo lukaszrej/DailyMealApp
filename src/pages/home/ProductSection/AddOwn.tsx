@@ -51,12 +51,12 @@ export const AddOwnProduct = () => {
 				<S.FormGroup className='group'>
 					<S.Input
 						type='text'
-						placeholder={T.TYPE_PRODUCT_NAME}
+						placeholder='Type product name'
 						value={values.name}
 						onChange={onChange('name')}
-						aria-describedby='standard-product-name-helper-text'
+						aria-describedby='add-product-helper-text'
 					/>
-					<S.FormHelperText id='standard-product-name-helper-text'>{T.PRODUCT_NAME}</S.FormHelperText>
+					<S.FormHelperText id='add-product-helper-text'>{T.PRODUCT_NAME}</S.FormHelperText>
 
 					<S.Input
 						value={values.calories}

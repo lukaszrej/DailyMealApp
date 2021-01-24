@@ -1,9 +1,9 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { WithStyles } from '@material-ui/core/styles';
 import { styles } from './';
 
-export interface ModalTitleProps extends WithStyles<typeof styles> {
+export interface Props extends WithStyles<typeof styles> {
 	id: string;
-	children: React.ReactNode;
+	children: ReactNode;
 	onClose?: () => void;
 }

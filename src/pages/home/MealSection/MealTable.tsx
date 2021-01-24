@@ -38,13 +38,8 @@ export const MealTable = () => {
 	const isSelected = (itemIndex: string) => selectedProducts.indexOf(itemIndex) !== -1;
 
 	const handleDeleteSelectedProducts = () => {
-		selectedProducts.map(selectedId => {
-			return dispatch(deleteProduct(selectedId));
-		});
-
-		selectedProducts.map(selectedId => {
-			return dispatch(decreaseKcal(selectedId));
-		});
+		selectedProducts.map(selectedId => dispatch(deleteProduct(selectedId)));
+		selectedProducts.map(selectedId => dispatch(decreaseKcal(selectedId)));
 	};
 
 	if (!storedProducts.length) return null;
@@ -56,25 +51,28 @@ export const MealTable = () => {
 					[classes.highlight]: selectedProducts.length > 0
 				})}
 			>
-				{selectedProducts.length > 0 ? (
-					<S.Typography color='inherit' variant='subtitle1'>
-						{selectedProducts.length} {T.SELECTED}
-					</S.Typography>
-				) : (
-						<S.Typography variant='h6'>
-							{T.YOUR_MEAL}
-						</S.Typography>
-					)}
-				{selectedProducts.length > 0 && (
-					<S.Tooltip title={T.DELETE}>
-						<S.IconButton aria-label={T.DELETE} onClick={handleDeleteSelectedProducts}>
+                {selectedProducts.length > 0 
+                    ? 
+                        <S.Typography color='inherit' variant='subtitle1'>
+                            {selectedProducts.length} selected
+                        </S.Typography>
+                    : 
+                        <S.Typography variant='h6'>
+                            {T.YOUR_MEAL}
+                        </S.Typography>
+				}
+
+				{selectedProducts.length > 0 && 
+					<S.Tooltip title='Delete'>
+						<S.IconButton onClick={handleDeleteSelectedProducts} aria-label='delete'>
 							<S.DeleteIcon />
 						</S.IconButton>
 					</S.Tooltip>
-				)}
+				}
 			</S.Toolbar>
+            
 			<S.TableContainer>
-				<S.Table size='medium' aria-labelledby={T.CREATE_MEAL_ARIA_LABELLED} aria-label={T.CREATE_MEAL_ARIA}>
+				<S.Table size='medium' aria-labelledby='create-meal-table' aria-label='create meal table'>
 					<S.TableHead>
 						<S.TableRow>
 							<S.TableCell padding='checkbox'>
@@ -82,10 +80,11 @@ export const MealTable = () => {
 									indeterminate={selectedProducts.length > 0 && selectedProducts.length < storedProducts.length}
 									checked={storedProducts.length > 0 && selectedProducts.length === storedProducts.length}
 									onChange={handleSelectAllClick}
-									inputProps={{ 'aria-label': T.SELECT_ALL_PRODUCTS_ARIA }}
+									inputProps={{ 'aria-label': 'select all products' }}
 								/>
 							</S.TableCell>
-							{headCells.map((headCell) => (
+
+							{headCells.map(headCell => 
 								<S.TableCell
 									key={headCell.id}
 									align={headCell.numeric ? 'right' : 'left'}
@@ -93,14 +92,14 @@ export const MealTable = () => {
 								>
 									{headCell.label}
 								</S.TableCell>
-							))}
+							)}
 						</S.TableRow>
 					</S.TableHead>
 					<S.TableBody>
 						{storedProducts.map((product, index) => {
                             const { foodId: productId, label: productLabel, calories, protein, carbs, fat } = product;
 							const isItemSelected = isSelected(productId);
-							const labelId = `${T.MEAL_CHECKBOX_LABELLED}-${index}`;
+							const labelId = `meal-table-checkbox-${index}`;
 
 							return (
 								<S.TableRow hover role='checkbox' tabIndex={-1} key={productId}

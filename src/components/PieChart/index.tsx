@@ -1,7 +1,7 @@
 import { Pie } from 'react-chartjs-2';
-import { PieChartProps } from './index.types';
+import { Props } from './index.types';
 
-export const PieChart = (props: PieChartProps) => {
+export const PieChart = (props: Props) => {
 	const { label, chartData } = props;
 
 	return (

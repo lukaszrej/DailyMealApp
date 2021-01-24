@@ -13,13 +13,13 @@ import * as T from '../../../constants/constants';
 
 export const AddProduct = () => {
 	const dispatch = useDispatch();
-	const [productName, setProductName] = useState('');
+	const [ productName, setProductName ] = useState('');
 	const isLoading = useSelector(getIsLoading);
 	const foundProducts = useSelector(getFoundProducts);
 
 	const onFindProductsChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setProductName(e.currentTarget.value)
-	}
+	};
 
 	const onFindProducts = (e: SyntheticEvent) => {
         e.preventDefault();
@@ -42,18 +42,18 @@ export const AddProduct = () => {
 			<S.AddProduct onSubmit={onFindProducts} noValidate autoComplete='on'>
 				<S.Input
 					type='text'
-					placeholder={T.TYPE_PRODUCT_NAME}
 					value={productName}
+					placeholder='Type product name'
 					onChange={(e: ChangeEvent<HTMLInputElement>) => onFindProductsChange(e)}
-					aria-describedby='standard-find-product-helper-text'
+					aria-describedby='find-product-helper-text'
 				/>
 				<S.FormHelperText>{T.PRODUCT_NAME}</S.FormHelperText>
 
 				<S.Button
 					type='submit'
-					disabled={!productName}
 					color='secondary'
 					variant='contained'
+					disabled={!productName}
 				>
 					{isLoading ? <Loader /> : T.SEARCH}
 				</S.Button>

@@ -1,7 +1,7 @@
 import { Bar } from 'react-chartjs-2';
-import { BarChartProps } from './index.types';
+import { Props } from './index.types';
 
-export const BarChart = (props: BarChartProps) => {
+export const BarChart = (props: Props) => {
 	const { label, chartData } = props;
 
 	return (

@@ -34,7 +34,7 @@ export const removeMeal = (mealId: string) => (dispatch: Dispatch, getState: Fun
 	const state: AppState = getState();
 	const meals = state.meal.meals;
 
-	const filteredMeals = meals.filter((meal) => meal.id !== mealId);
+    const filteredMeals = meals.filter((meal) => meal.id !== mealId);
 
 	dispatch({
 		type: type.REMOVE_MEAL,

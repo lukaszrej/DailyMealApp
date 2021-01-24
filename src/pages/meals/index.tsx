@@ -45,7 +45,7 @@ export const Meals = () => {
 
 						<main>
 							<S.ProductTags>
-								{meal.products.map((product) => {
+								{meal.products.map(product => {
                                     const { label, calories, protein, carbs, fat } = product;
                                     
 									mealTotal.calories += Math.round(calories);
@@ -68,7 +68,12 @@ export const Meals = () => {
 			})}
 
 			<S.PageButtonContainer>
-				<S.Button variant='contained' size='large' onClick={onGoHome} endIcon={<S.HomeIcon />}>
+                <S.Button 
+                    onClick={onGoHome}
+                    endIcon={<S.HomeIcon />}
+                    variant='contained'
+                    size='large'
+                >
 					{T.GO_BACK}
 				</S.Button>
 			</S.PageButtonContainer>

@@ -5,7 +5,7 @@ interface MealTotal {
 	protein?: number;
 }
 
-export interface ChartProps {
+export interface Props {
 	mealTotal: MealTotal;
 	dailyNeed: number;
 }

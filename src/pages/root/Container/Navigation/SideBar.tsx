@@ -15,10 +15,18 @@ export const SideBar = () => {
 	const meals = useSelector(getMeals);
 	const isMealAdded = useSelector(getIsMealAdded);
 	const isStepperShown = useSelector(getDisplayedStepper);
+    
+    const onHomeClick = () => {
+        history.push(routes.home);
+    };
 
-	const handleClick = () => {
+    const onMealsClick = () => {
+        history.push(routes.meals);
+    };
+
+    const onHowToUseClick = () => {
 		dispatch(showStepper());
-	};
+    };
 
 	return (
 		<S.SideBar>
@@ -31,20 +39,24 @@ export const SideBar = () => {
 			<S.Divider />
 
 			<S.List>
-				<S.ListItem button onClick={() => history.push(routes.home)}>
+				<S.ListItem onClick={onHomeClick} button>
 					<S.ListItemIcon>
 						<S.HomeIcon />
 					</S.ListItemIcon>
-					<S.ListItemText primary={T.HOME} />
+					<S.ListItemText primary="Home" />
 				</S.ListItem>
 
-				<S.ListItem button onClick={() => history.push(routes.meals)} disabled={!isMealAdded}>
+				<S.ListItem onClick={onMealsClick} disabled={!isMealAdded} button>
 					<S.ListItemIcon>
-						<S.Badge badgeContent={meals ? meals.length : 0} max={99} color='primary'>
+                        <S.Badge 
+                            max={99}
+                            color='primary'
+                            badgeContent={meals ? meals.length : 0}
+                        >
 							<S.FormatListBulletedIcon />
 						</S.Badge>
 					</S.ListItemIcon>
-					<S.ListItemText primary={T.YOUR_MEALS} />
+					<S.ListItemText primary="Your meals" />
 				</S.ListItem>
 			</S.List>
 
@@ -53,13 +65,13 @@ export const SideBar = () => {
 			<footer>
 				<S.FooterMain>
 					<ListItem>
-						<S.ListItemText primary={T.FOOTER_HEADING} />
+						<S.ListItemText primary='@2020 DailyMealApp' />
 
-						{!isStepperShown && (
-							<S.Link variant='body2' onClick={handleClick}>
+						{!isStepperShown && 
+							<S.Link variant='body2' onClick={onHowToUseClick}>
 								{T.STEPPER_LINK_TEXT}
 							</S.Link>
-						)}
+						}
 					</ListItem>
 				</S.FooterMain>
 

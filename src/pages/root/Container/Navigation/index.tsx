@@ -19,11 +19,11 @@ const useStyles = makeStyles(() =>
 	})
 );
 
-interface AppBarProps {
+interface Props {
 	window?: () => Window;
 }
 
-export const Navigation = (props: AppBarProps) => {
+export const Navigation = (props: Props) => {
 	const { window } = props;
 	const classes = useStyles();
 	const [ mobileOpen, setMobileOpen ] = useState(false);
@@ -40,9 +40,9 @@ export const Navigation = (props: AppBarProps) => {
 
 			<S.Hidden mdUp implementation='css'>
 				<S.Drawer
+					open={mobileOpen}
 					container={container}
 					variant='temporary'
-					open={mobileOpen}
 					onClose={handleDrawerToggle}
 					classes={{ paper: classes.drawer }}
 					ModalProps={{ keepMounted: true }}

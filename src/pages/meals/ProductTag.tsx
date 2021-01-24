@@ -1,7 +1,7 @@
-import { ProductTagProps } from './ProductTag.types';
+import { Props } from './ProductTag.types';
 import * as S from "../../styles";
 
-export const ProductTag = (props: ProductTagProps) => {
+export const ProductTag = (props: Props) => {
 	const { label, calories } = props;
 	const combinedLabel = `${label} ${calories} kcal`;
 

@@ -1,6 +1,6 @@
 import { ChartConfig } from '../../types';
 
-export interface PieChartProps {
+export interface Props {
 	label: string;
 	chartData: ChartConfig;
 }

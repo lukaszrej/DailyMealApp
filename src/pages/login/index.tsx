@@ -47,18 +47,18 @@ export const Login = () => {
 			</ModalTitle>
 
             <Form 
-                onSubmit={onLoginSubmit}
                 name={name}
-                setName={setName}
                 height={height}
-                setHeight={setHeight}
                 weight={weight}
-                setWeight={setWeight}
                 age={age}
-                setAge={setAge}
                 activityLevel={activityLevel}
-                onActivityLevelChange={onActivityLevelChange}
                 gender={gender}
+                onSubmit={onLoginSubmit}
+                setName={setName}
+                setHeight={setHeight}
+                setWeight={setWeight}
+                setAge={setAge}
+                onActivityLevelChange={onActivityLevelChange}
                 onGenderChange={onGenderChange}
 				isInitialComponent
 			/>

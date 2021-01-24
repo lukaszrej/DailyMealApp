@@ -1,3 +1,3 @@
-export interface AppBarProps {
+export interface Props {
 	handleDrawerToggle: () => void;
 }
