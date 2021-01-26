@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Props } from './index.types';
 import { activityOptions } from '../../constants/activity-options';
 import { FormControl } from '@material-ui/core';
@@ -21,7 +22,13 @@ export const Form = (props: Props) => {
         setAge,
         onActivityLevelChange,
         onGenderChange
-	} = props;
+    } = props;
+    
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, [])
 
 	return (
 		<S.Form onSubmit={onSubmit}>
@@ -31,10 +38,11 @@ export const Form = (props: Props) => {
 					id='name'
 					name='name'
 					label='Name'
-					fullWidth
+                    fullWidth
+                    inputRef={inputRef}
 					variant='outlined'
 					autoComplete='name'
-					onChange={e => setName(e.target.value)}
+                    onChange={e => setName(e.target.value)}
 				/>
 
 				<S.TextField
