@@ -26,7 +26,7 @@ export const AddProduct = () => {
 	const onFindProducts = (e: SyntheticEvent) => {
         e.preventDefault();
         
-		dispatch(findProducts(productName));
+        dispatch(findProducts(productName));
 		setProductName('');
 	};
 

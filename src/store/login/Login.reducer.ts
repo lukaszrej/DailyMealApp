@@ -21,13 +21,7 @@ export const LoginReducer = (state: LoginState = initialState, action: allLoginA
 				startedApp: true,
 				displayedAlert: true
             };
-            
-		case type.REMOVE_WELCOME_ALERT:
-			return {
-				...state,
-				displayedAlert: false
-            };
-            
+                        
 		case type.REMOVE_STEPPER:
 			return {
 				...state,

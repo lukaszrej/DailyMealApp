@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Props } from './index.types';
-import { removeAlert } from '../../store/login/Login.actions';
+import { closeAlert } from '../../store/alert/Alert.actions';
 import * as S from '../../styles';
 
 const MuiAlert = (props: Props) => {
@@ -12,7 +12,7 @@ export const Alert = (props: Props) => {
 	const dispatch = useDispatch();
 
 	const handleClose = () => {
-		dispatch(removeAlert());
+		dispatch(closeAlert());
 	};
 
 	return (

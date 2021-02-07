@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { getStartedApp } from '../../store/login/Login.selectors';
 import { createUser, calculateDailyNeed } from '../../store/user/User.actions';
 import { startApp } from '../../store/login/Login.actions';
+import { openAlert } from '../../store/alert/Alert.actions';
 import { ModalTitle } from '../../components/ModalTitle';
 import { Form } from '../../components/Form';
 import { routes } from '../../routing/routes';
@@ -34,7 +35,8 @@ export const Login = () => {
 		e.preventDefault();
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
-		dispatch(startApp());
+        dispatch(startApp());
+        dispatch(openAlert(`Hello ${name ? name : 'User'}!`, 'success'));
 		localStorage.setItem("started", "true");
 		localStorage.setItem("user", JSON.stringify({ name, height, weight, age, gender, activityLevel }));
 		history.push(routes.home);

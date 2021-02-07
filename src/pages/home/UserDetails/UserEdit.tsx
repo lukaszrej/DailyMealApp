@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createUser, calculateDailyNeed } from '../../../store/user/User.actions';
+import { openAlert } from '../../../store/alert/Alert.actions';
 import { UserEditProps } from './UserEdit.types';
 import { ModalTitle } from '../../../components/ModalTitle';
 import { Form } from '../../../components/Form';
@@ -9,7 +10,7 @@ import * as T from '../../../constants/constants';
 import * as S from '../../../styles';
 
 export const UserEdit = (props: UserEditProps) => {
-	const { handleClose, isModalOpen, setIsModalOpen, setIsAlertDisplayed } = props;
+	const { handleClose, isModalOpen, setIsModalOpen } = props;
 	const dispatch = useDispatch();
 
 	const currentName = useSelector(selector.getUserName);
@@ -49,7 +50,7 @@ export const UserEdit = (props: UserEditProps) => {
 			gender !== currentGender ||
 			activityLevel !== currentActivityLevel
 		) {
-			setIsAlertDisplayed(true);
+            dispatch(openAlert(T.DATA_CORRECTLY_UPDATED, 'success'));
 		}
 	};
 

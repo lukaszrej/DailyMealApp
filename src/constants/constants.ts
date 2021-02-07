@@ -61,3 +61,4 @@ export const SLASH_100G = "g/100g";
 export const STEPPER_LINK_TEXT = "Still don't know how to use?";
 export const DATA_CORRECTLY_UPDATED = "The data has been correctly updated.";
 export const PAGE_NOT_EXIST = "The page does not exist.";
+export const NOTHING_FOUND = "Nothing found. Try again!";

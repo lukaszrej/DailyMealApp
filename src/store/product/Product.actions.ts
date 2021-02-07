@@ -1,8 +1,10 @@
 import { Dispatch } from 'redux';
 import { Product } from '../../types';
 import { AppState } from '../index';
+import { openAlert } from '../alert/Alert.actions';
 import { getAPIProducts, configProducts } from './Product.api';
 import * as type from './Product.types';
+import * as T from '../../constants/constants';
 
 export const findProducts = (productName: string) => async (dispatch: Dispatch) => {
 	dispatch({
@@ -18,7 +20,7 @@ export const findProducts = (productName: string) => async (dispatch: Dispatch) 
 			payload: configuredProducts
 		});
 
-		!response.data.hints.length && alert('nothing found');
+        !response.data.hints.length && dispatch(openAlert(T.NOTHING_FOUND, 'warning'));
 	} catch (error) {
 		console.warn('server problem, error -> ', error);
 	}

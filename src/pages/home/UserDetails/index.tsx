@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getActivityLevelDesc } from '../../../utils/getActivityLevelDesc';
-import { Alert } from '../../../components/Alert';
 import { UserEdit } from './UserEdit';
 import * as selector from '../../../store/user/User.selectors';
 import * as T from "../../../constants/constants";
@@ -15,12 +14,10 @@ export const UserDetails = () => {
 	const userGender = useSelector(selector.getUserGender);
     const activityLevel = useSelector(selector.getActivityLevel);
 
-	const [isAlertDisplayed, setIsAlertDisplayed] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const handleOpen = () => {
 		setIsModalOpen(true);
-		setIsAlertDisplayed(false);
 	};
 
 	const handleClose = () => {
@@ -50,12 +47,9 @@ export const UserDetails = () => {
 						handleClose={handleClose}
 						isModalOpen={isModalOpen}
 						setIsModalOpen={setIsModalOpen}
-						setIsAlertDisplayed={setIsAlertDisplayed}
 					/>
 				)}
 			</S.UserDetails>
-
-			{isAlertDisplayed && <Alert severity='success'>{T.DATA_CORRECTLY_UPDATED}</Alert>}
 		</>
 	);
 };

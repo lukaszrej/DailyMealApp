@@ -17,10 +17,6 @@ export const endApp = () => {
 	};
 };
 
-export const removeAlert = () => ({
-	type: type.REMOVE_WELCOME_ALERT
-});
-
 export const showStepper = () => ({
 	type: type.SHOW_STEPPER
 });
@@ -41,7 +37,6 @@ export const useRemoveStepper = (seconds: number, setSeconds: React.Dispatch<Set
 
 		return () => {
 			clearInterval(interval);
-
 		}
 	}, [seconds, setSeconds, dispatch]);
 };
