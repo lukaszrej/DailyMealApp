@@ -13,7 +13,7 @@ import * as T from '../../constants/constants';
 export const Login = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
-	const isStarted = useSelector(getStartedApp);
+    const isStarted = useSelector(getStartedApp);
 
 	const [name, setName] = useState('');
 	const [height, setHeight] = useState('170');

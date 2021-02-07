@@ -14,12 +14,12 @@ export const MealSection = () => {
 		dispatch(storeMeal(storedProducts));
 		dispatch(setIsMealAdded());
 		dispatch(storeToLocalStorage());
-		dispatch(deleteAllProducts());
+        dispatch(deleteAllProducts());
 	};
 
 	const onMealDismiss = () => {
 		dispatch(deleteAllProducts());
-	};
+    };
 
 	if (!storedProducts.length) return null;
 

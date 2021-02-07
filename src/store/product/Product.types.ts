@@ -60,4 +60,4 @@ export type allProductActions =
 	SelectProductResetAction |
 	DeleteProductAction |
 	DecreaseKcalAction |
-	DeleteAllProductsAction;
+    DeleteAllProductsAction;

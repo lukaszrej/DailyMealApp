@@ -1,34 +1,30 @@
-import { useEffect, useRef } from 'react';
 import { Props } from './index.types';
 import { activityOptions } from '../../constants/activity-options';
 import { FormControl } from '@material-ui/core';
 import { ModalContent } from '../ModalContent';
-import * as S from "../../styles";
-import * as T from "../../constants/constants";
+import { useInputRef } from '../../hooks/useInputRef';
+import * as S from '../../styles';
+import * as T from '../../constants/constants';
 
 export const Form = (props: Props) => {
 	const {
-        name, 
-        height,
-        weight,
-        age,
-        activityLevel,
-        gender,
-        isInitialComponent,
+		name,
+		height,
+		weight,
+		age,
+		activityLevel,
+		gender,
+		isInitialComponent,
 		onSubmit,
-        setName,
-        setHeight,
-        setWeight,
-        setAge,
-        onActivityLevelChange,
-        onGenderChange
-    } = props;
-    
-    const inputRef = useRef<HTMLInputElement>(null);
+		setName,
+		setHeight,
+		setWeight,
+		setAge,
+		onActivityLevelChange,
+		onGenderChange
+	} = props;
 
-    useEffect(() => {
-        inputRef.current?.focus();
-    }, [])
+	const [ inputRef ] = useInputRef();
 
 	return (
 		<S.Form onSubmit={onSubmit}>
@@ -38,11 +34,11 @@ export const Form = (props: Props) => {
 					id='name'
 					name='name'
 					label='Name'
-                    fullWidth
-                    inputRef={inputRef}
+					fullWidth
+					inputRef={inputRef}
 					variant='outlined'
 					autoComplete='name'
-                    onChange={e => setName(e.target.value)}
+					onChange={(e) => setName(e.target.value)}
 				/>
 
 				<S.TextField
@@ -55,7 +51,7 @@ export const Form = (props: Props) => {
 					variant='outlined'
 					margin='normal'
 					autoComplete='height'
-					onChange={e => setHeight(e.target.value)}
+					onChange={(e) => setHeight(e.target.value)}
 				/>
 
 				<S.TextField
@@ -67,7 +63,7 @@ export const Form = (props: Props) => {
 					fullWidth
 					variant='outlined'
 					autoComplete='weight'
-					onChange={e => setWeight(e.target.value)}
+					onChange={(e) => setWeight(e.target.value)}
 				/>
 
 				<S.TextField
@@ -79,13 +75,11 @@ export const Form = (props: Props) => {
 					variant='outlined'
 					fullWidth
 					autoComplete='age'
-					onChange={e => setAge(e.target.value)}
+					onChange={(e) => setAge(e.target.value)}
 				/>
 
 				<S.FullFormControl variant='outlined'>
-					<S.InputLabel id='activity-level-select'>
-                        {T.ACTIVITY_LEVEL}
-                    </S.InputLabel>
+					<S.InputLabel id='activity-level-select'>{T.ACTIVITY_LEVEL}</S.InputLabel>
 
 					<S.Select
 						value={activityLevel}
@@ -95,21 +89,16 @@ export const Form = (props: Props) => {
 						displayEmpty
 						onChange={onActivityLevelChange}
 					>
-						{activityOptions.map(element => 
-                            <S.MenuItem key={element.id} value={element.activityValue}>
-                                {element.activityDescription}
-                            </S.MenuItem>
-						)}
+						{activityOptions.map((element) => (
+							<S.MenuItem key={element.id} value={element.activityValue}>
+								{element.activityDescription}
+							</S.MenuItem>
+						))}
 					</S.Select>
 				</S.FullFormControl>
 
 				<FormControl component='fieldset'>
-                    <S.RadioGroup 
-                        value={gender}
-                        onChange={onGenderChange}
-                        aria-label='gender'
-                        name='gender1' 
-                    >
+					<S.RadioGroup value={gender} onChange={onGenderChange} aria-label='gender' name='gender1'>
 						<S.FormControlLabel value='male' label='Male' control={<S.Radio />} />
 						<S.FormControlLabel value='female' label='Female' control={<S.Radio />} />
 					</S.RadioGroup>
@@ -117,12 +106,12 @@ export const Form = (props: Props) => {
 			</ModalContent>
 
 			<S.ButtonContainer>
-                <S.Button 
-                    type='submit'
-                    color='primary'
-                    autoFocus
-                    variant={isInitialComponent ? "contained" : "outlined"}
-                >
+				<S.Button
+					type='submit'
+					color='primary'
+					autoFocus
+					variant={isInitialComponent ? 'contained' : 'outlined'}
+				>
 					{isInitialComponent ? T.START : T.SAVE}
 				</S.Button>
 			</S.ButtonContainer>

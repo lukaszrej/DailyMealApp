@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux';
 import { generate } from 'shortid';
 import { AddOwnState } from './AddOwn.types';
 import { storeProduct, increaseKcalSum } from '../../../store/product/Product.actions';
+import { useInputRef } from '../../../hooks/useInputRef';
 import * as S from '../../../styles';
 import * as T from '../../../constants/constants';
 
 export const AddOwnProduct = () => {
-	const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const [ inputRef ] = useInputRef();
 	const [ values, setValues ] = useState<AddOwnState>({
 		name: '',
 		calories: 0,
@@ -53,7 +55,8 @@ export const AddOwnProduct = () => {
 						type='text'
 						placeholder='Type product name'
 						value={values.name}
-						onChange={onChange('name')}
+                        onChange={onChange('name')}
+                        inputRef={inputRef}
 						aria-describedby='add-product-helper-text'
 					/>
 					<S.FormHelperText id='add-product-helper-text'>{T.PRODUCT_NAME}</S.FormHelperText>

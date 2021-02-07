@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import { generate } from 'shortid';
 import clsx from 'clsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSelectedProducts, getStoredProducts } from '../../../store/product/Product.selectors';
@@ -102,7 +103,7 @@ export const MealTable = () => {
 							const labelId = `meal-table-checkbox-${index}`;
 
 							return (
-								<S.TableRow hover role='checkbox' tabIndex={-1} key={productId}
+								<S.TableRow hover role='checkbox' tabIndex={-1} key={`${productId}-${generate()}`}
 									aria-checked={isItemSelected}
 									selected={isItemSelected}
 									onClick={() => handleSelectClick(productId)}

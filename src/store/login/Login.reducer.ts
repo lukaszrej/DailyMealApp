@@ -2,15 +2,15 @@ import { allLoginActions } from './Login.types';
 import * as type from './Login.types';
 
 interface LoginState {
-	startedApp: string | boolean | null;
+	startedApp: boolean;
 	displayedAlert: boolean;
 	displayedStepper: boolean;
 }
 
 const initialState: LoginState = {
-	startedApp: localStorage.getItem('started') ? localStorage.getItem('started') : false,
+	startedApp: localStorage.getItem('started') ? JSON.parse(localStorage.getItem('started') as string) : false,
 	displayedAlert: false,
-	displayedStepper: true
+	displayedStepper: localStorage.getItem('started') ? false : true,
 };
 
 export const LoginReducer = (state: LoginState = initialState, action: allLoginActions) => {

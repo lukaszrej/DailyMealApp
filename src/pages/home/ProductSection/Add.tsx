@@ -8,12 +8,14 @@ import { getIsLoading } from '../../../store/product/Product.selectors';
 import { getFoundProducts } from '../../../store/product/Product.selectors';
 import { Loader } from '../../../components/Loader';
 import { Tooltip } from '../../../components/Tooltip';
+import { useInputRef } from '../../../hooks/useInputRef';
 import * as S from '../../../styles';
 import * as T from '../../../constants/constants';
 
 export const AddProduct = () => {
 	const dispatch = useDispatch();
-	const [ productName, setProductName ] = useState('');
+    const [ productName, setProductName ] = useState('');
+    const [ inputRef ] = useInputRef();
 	const isLoading = useSelector(getIsLoading);
 	const foundProducts = useSelector(getFoundProducts);
 
@@ -44,7 +46,8 @@ export const AddProduct = () => {
 					type='text'
 					value={productName}
 					placeholder='Type product name'
-					onChange={(e: ChangeEvent<HTMLInputElement>) => onFindProductsChange(e)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => onFindProductsChange(e)}
+                    inputRef={inputRef}
 					aria-describedby='find-product-helper-text'
 				/>
 				<S.FormHelperText>{T.PRODUCT_NAME}</S.FormHelperText>
