@@ -29,7 +29,6 @@ export const AlertReducer = (state: AlertState = initialState, action: allAlertA
 				...state,
                 isAlertOpen: false,
                 alertText: '',
-                alertType: 'info'
 			};
 
 		default:

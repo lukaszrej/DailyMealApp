@@ -1,1 +1,1 @@
-export type MuiAlert = 'info' | 'warning' | 'success' | 'error';
+export type MuiAlert = "info" | "error" | "success" | "warning";

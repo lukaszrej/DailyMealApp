@@ -14,14 +14,14 @@ import * as T from '../../constants/constants';
 export const Login = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
-    const isStarted = useSelector(getStartedApp);
+	const isStarted = useSelector(getStartedApp);
 
-	const [name, setName] = useState('');
-	const [height, setHeight] = useState('170');
-	const [weight, setWeight] = useState('70');
-	const [age, setAge] = useState('28');
-	const [gender, setGender] = useState('male');
-	const [activityLevel, setActivityLevel] = useState('1.2');
+	const [ name, setName ] = useState('');
+	const [ height, setHeight ] = useState('170');
+	const [ weight, setWeight ] = useState('70');
+	const [ age, setAge ] = useState('28');
+	const [ gender, setGender ] = useState('male');
+	const [ activityLevel, setActivityLevel ] = useState('1.2');
 
 	const onGenderChange = (event: ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
 		setGender((event.target as HTMLInputElement).value);
@@ -35,33 +35,31 @@ export const Login = () => {
 		e.preventDefault();
 		dispatch(createUser({ name, height, weight, age, gender, activityLevel }));
 		dispatch(calculateDailyNeed({ height, weight, age, gender, activityLevel }));
-        dispatch(startApp());
-        dispatch(openAlert(`Hello ${name ? name : 'User'}!`, 'success'));
-		localStorage.setItem("started", "true");
-		localStorage.setItem("user", JSON.stringify({ name, height, weight, age, gender, activityLevel }));
+		dispatch(startApp());
+		dispatch(openAlert(`Hello ${name ? name : 'User'}!`, 'success'));
+		localStorage.setItem('started', 'true');
+		localStorage.setItem('user', JSON.stringify({ name, height, weight, age, gender, activityLevel }));
 		history.push(routes.home);
 	};
 
 	return (
 		<S.Dialog open={!isStarted} aria-labelledby='start-form-title'>
-			<ModalTitle id='start-form-title'>
-				{T.FILL_THE_FORM}
-			</ModalTitle>
+			<ModalTitle id='start-form-title'>{T.FILL_THE_FORM}</ModalTitle>
 
-            <Form 
-                name={name}
-                height={height}
-                weight={weight}
-                age={age}
-                activityLevel={activityLevel}
-                gender={gender}
-                onSubmit={onLoginSubmit}
-                setName={setName}
-                setHeight={setHeight}
-                setWeight={setWeight}
-                setAge={setAge}
-                onActivityLevelChange={onActivityLevelChange}
-                onGenderChange={onGenderChange}
+			<Form
+				name={name}
+				height={height}
+				weight={weight}
+				age={age}
+				activityLevel={activityLevel}
+				gender={gender}
+				onSubmit={onLoginSubmit}
+				setName={setName}
+				setHeight={setHeight}
+				setWeight={setWeight}
+				setAge={setAge}
+				onActivityLevelChange={onActivityLevelChange}
+				onGenderChange={onGenderChange}
 				isInitialComponent
 			/>
 		</S.Dialog>

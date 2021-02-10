@@ -5,7 +5,7 @@ import * as S from "../../../styles";
 
 export const Container = (props: Props) => {
     const { children } = props;
-    
+
 	return (
 		<>
 			<S.Container >

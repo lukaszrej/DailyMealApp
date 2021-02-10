@@ -6,7 +6,7 @@ import { storeProduct, increaseKcalSum } from '../../../store/product/Product.ac
 import { findProducts } from '../../../store/product/Product.actions';
 import { getIsLoading } from '../../../store/product/Product.selectors';
 import { getFoundProducts } from '../../../store/product/Product.selectors';
-import { Loader } from '../../../components/Loader';
+import { InlineLoader } from '../../../components/InlineLoader';
 import { Tooltip } from '../../../components/Tooltip';
 import { useInputRef } from '../../../hooks/useInputRef';
 import * as S from '../../../styles';
@@ -58,7 +58,7 @@ export const AddProduct = () => {
 					variant='contained'
 					disabled={!productName}
 				>
-					{isLoading ? <Loader /> : T.SEARCH}
+					{isLoading ? <InlineLoader /> : T.SEARCH}
 				</S.Button>
 			</S.AddProduct>
 
