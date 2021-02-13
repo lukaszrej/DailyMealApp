@@ -1,9 +1,9 @@
-import * as S from "../../styles";
+import { InlineLoader as InlineLoaderContainer, CircularProgress } from '../../styles';
 
 export const InlineLoader = () => {
 	return (
-		<S.InlineLoader>
-			<S.CircularProgress size={24} />
-		</S.InlineLoader>
+		<InlineLoaderContainer>
+			<CircularProgress size={24} />
+		</InlineLoaderContainer>
 	);
 };

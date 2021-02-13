@@ -1,13 +1,13 @@
-import { Props } from './ProductTag.types';
-import * as S from "../../styles";
+import { ProductTagProps } from './types';
+import { ProductTag as ProductTagContainer, Chip, FastFoodIcon } from '../../styles';
 
-export const ProductTag = (props: Props) => {
+export const ProductTag = (props: ProductTagProps) => {
 	const { label, calories } = props;
 	const combinedLabel = `${label} ${calories} kcal`;
 
 	return (
-		<S.ProductTag>
-			<S.Chip label={combinedLabel} icon={<S.FastFoodIcon />} />
-		</S.ProductTag>
+		<ProductTagContainer>
+			<Chip label={combinedLabel} icon={<FastFoodIcon />} />
+		</ProductTagContainer>
 	);
 };

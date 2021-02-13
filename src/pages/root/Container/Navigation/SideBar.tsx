@@ -5,9 +5,26 @@ import { getDisplayedStepper } from '../../../../store/login/Login.selectors';
 import { showStepper } from '../../../../store/login/Login.actions';
 import { ListItem } from '@material-ui/core/';
 import { routes } from '../../../../routing/routes';
-import * as link from "../../../../constants/url-repository";
+import * as link from '../../../../constants/url-repository';
 import * as T from '../../../../constants/constants';
-import * as S from '../../../../styles';
+import {
+	SideBar as SideBarContainer,
+	Toolbar,
+	Typography,
+	ListItemIcon,
+	HomeIcon,
+	Divider,
+	List,
+	FooterMain,
+	ListItemText,
+	Badge,
+	Link,
+	LinkedInIcon,
+	GitHubIcon,
+	FormatListBulletedIcon,
+	SocialLinks,
+	MailIcon
+} from '../../../../styles';
 
 export const SideBar = () => {
 	const dispatch = useDispatch();
@@ -15,84 +32,80 @@ export const SideBar = () => {
 	const meals = useSelector(getMeals);
 	const isMealAdded = useSelector(getIsMealAdded);
 	const isStepperShown = useSelector(getDisplayedStepper);
-    
-    const onHomeClick = () => {
-        history.push(routes.home);
-    };
 
-    const onMealsClick = () => {
-        history.push(routes.meals);
-    };
+	const onHomeClick = () => {
+		history.push(routes.home);
+	};
 
-    const onHowToUseClick = () => {
+	const onMealsClick = () => {
+		history.push(routes.meals);
+	};
+
+	const onHowToUseClick = () => {
 		dispatch(showStepper());
-    };
+	};
 
 	return (
-		<S.SideBar>
-			<S.Toolbar>
-				<S.Typography variant='h6' noWrap>
+		<SideBarContainer>
+			<Toolbar>
+				<Typography variant='h6' noWrap>
 					{T.APP_NAME}
-				</S.Typography>
-			</S.Toolbar>
+				</Typography>
+			</Toolbar>
 
-			<S.Divider />
+			<Divider />
 
-			<S.List>
-				<S.ListItem onClick={onHomeClick} button>
-					<S.ListItemIcon>
-						<S.HomeIcon />
-					</S.ListItemIcon>
-					<S.ListItemText primary="Home" />
-				</S.ListItem>
+			<List>
+				<ListItem onClick={onHomeClick} button>
+					<ListItemIcon>
+						<HomeIcon />
+					</ListItemIcon>
+					<ListItemText primary='Home' />
+				</ListItem>
 
-				<S.ListItem onClick={onMealsClick} disabled={!isMealAdded} button>
-					<S.ListItemIcon>
-                        <S.Badge 
-                            max={99}
-                            color='primary'
-                            badgeContent={meals ? meals.length : 0}
-                        >
-							<S.FormatListBulletedIcon />
-						</S.Badge>
-					</S.ListItemIcon>
-					<S.ListItemText primary="Your meals" />
-				</S.ListItem>
-			</S.List>
+				<ListItem onClick={onMealsClick} disabled={!isMealAdded} button>
+					<ListItemIcon>
+						<Badge max={99} color='primary' badgeContent={meals ? meals.length : 0}>
+							<FormatListBulletedIcon />
+						</Badge>
+					</ListItemIcon>
+					<ListItemText primary='Your meals' />
+				</ListItem>
+			</List>
 
-			<S.Divider />
+			<Divider />
 
 			<footer>
-				<S.FooterMain>
+				<FooterMain>
 					<ListItem>
-						<S.ListItemText primary='@2020 DailyMealApp' />
+						<ListItemText primary='@2020 DailyMealApp' />
 
-						{!isStepperShown && 
-							<S.Link variant='body2' onClick={onHowToUseClick}>
+						{!isStepperShown && (
+							<Link variant='body2' onClick={onHowToUseClick}>
 								{T.STEPPER_LINK_TEXT}
-							</S.Link>
-						}
+							</Link>
+						)}
 					</ListItem>
-				</S.FooterMain>
+				</FooterMain>
 
-				<S.SocialLinks>
+				<SocialLinks>
 					<ListItem>
-						<S.Link variant='body2' href={link.linkedIn} target='_blank' rel='noopener'>
-							<S.LinkedInIcon fontSize='small' />
-						</S.Link>
+						<Link variant='body2' href={link.linkedIn} target='_blank' rel='noopener'>
+							<LinkedInIcon fontSize='small' />
+						</Link>
 					</ListItem>
 					<ListItem>
-						<S.Link variant='body2' href={link.github} target='_blank' rel='noopener'>
-							<S.GitHubIcon fontSize='small' />
-						</S.Link>
+						<Link variant='body2' href={link.github} target='_blank' rel='noopener'>
+							<GitHubIcon fontSize='small' />
+						</Link>
 					</ListItem>
 					<ListItem>
-						<S.Link variant='body2' href={`mailto:${link.email}`}>
-							<S.MailIcon color='inherit' fontSize='small' />
-						</S.Link>
+						<Link variant='body2' href={`mailto:${link.email}`}>
+							<MailIcon color='inherit' fontSize='small' />
+						</Link>
 					</ListItem>
-				</S.SocialLinks>
+				</SocialLinks>
 			</footer>
-		</S.SideBar>
+		</SideBarContainer>
 	);
 };

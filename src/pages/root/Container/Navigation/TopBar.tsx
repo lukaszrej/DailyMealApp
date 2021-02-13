@@ -1,10 +1,10 @@
 import { useHistory } from 'react-router-dom';
-import { Props } from './TopBar.types';
+import { Props } from './types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStartedApp } from '../../../../store/login/Login.selectors';
 import { endApp } from '../../../../store/login/Login.actions';
 import { routes } from '../../../../routing/routes';
-import * as S from '../../../../styles';
+import { TopBar as TopBarContainer, Toolbar, IconButton, MenuIcon, ExitToAppIcon } from '../../../../styles';
 
 export const TopBar = (props: Props) => {
 	const { handleDrawerToggle } = props;
@@ -18,27 +18,18 @@ export const TopBar = (props: Props) => {
 	};
 
 	return (
-		<S.TopBar position='sticky'>
-			<S.Toolbar>
-                <S.IconButton 
-                    onClick={handleDrawerToggle}
-                    color='inherit'
-                    aria-label='open drawer'
-                    edge='start' >
-					<S.MenuIcon />
-				</S.IconButton>
+		<TopBarContainer position='sticky'>
+			<Toolbar>
+				<IconButton onClick={handleDrawerToggle} color='inherit' aria-label='open drawer' edge='start'>
+					<MenuIcon />
+				</IconButton>
 
-				{isStarted && 
-                    <S.IconButton
-                        onClick={onLogout}
-                        color='inherit'
-                        aria-label='open drawer'
-                        edge='start'
-                    >
-						<S.ExitToAppIcon />
-					</S.IconButton>
-				}
-			</S.Toolbar>
-		</S.TopBar>
+				{isStarted && (
+					<IconButton onClick={onLogout} color='inherit' aria-label='open drawer' edge='start'>
+						<ExitToAppIcon />
+					</IconButton>
+				)}
+			</Toolbar>
+		</TopBarContainer>
 	);
 };

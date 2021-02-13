@@ -47,6 +47,12 @@ export const AGE = "Age";
 export const GENDER = "Gender";
 export const ACTIVITY_LEVEL = "Activity level";
 
+// meals page
+export const DELETE_CONFIRMATION = "Deleting confirmation";
+export const DELETE_CONFIRMATION_TEXT = "Do you really want to delete this meal?";
+export const CONFIRM_AND_DELETE = "Confirm and delete";
+export const CANCEL = "Cancel";
+
 // meals, calories etc. texts
 export const KCAL = "kcal";
 export const CALORIES = "Calories";

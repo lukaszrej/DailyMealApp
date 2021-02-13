@@ -2,7 +2,16 @@ import { useState, ChangeEvent } from 'react';
 import { AddOwnProduct } from './AddOwn';
 import { AddProduct } from './Add';
 import * as T from '../../../constants/constants';
-import * as S from '../../../styles';
+import {
+	ProductSection as ProductSectionContainer,
+	Paper,
+	Typography,
+	Tabs,
+	Tab,
+	TabContent,
+	SearchIcon,
+	AddIcon
+} from '../../../styles';
 
 export const ProductSection = () => {
 	const [ tabValue, setTabValue ] = useState(0);
@@ -14,13 +23,13 @@ export const ProductSection = () => {
 	};
 
 	return (
-		<S.ProductSection>
-			<S.Paper square>
-				<S.Typography variant='h6' noWrap>
+		<ProductSectionContainer>
+			<Paper square>
+				<Typography variant='h6' noWrap>
 					{T.PRODUCT_SECTION_HEADING}
-				</S.Typography>
+				</Typography>
 
-				<S.Tabs
+				<Tabs
 					value={tabValue}
 					onChange={onChange}
 					variant='fullWidth'
@@ -28,14 +37,12 @@ export const ProductSection = () => {
 					textColor='inherit'
 					aria-label='add or find product tabs'
 				>
-					<S.Tab icon={<S.SearchIcon />} label='Add product' />
-					<S.Tab icon={<S.AddIcon />} label='Add product' />
-				</S.Tabs>
+					<Tab icon={<SearchIcon />} label='Add product' />
+					<Tab icon={<AddIcon />} label='Add product' />
+				</Tabs>
 
-				<S.TabContent>
-                    {tabValue ? <AddOwnProduct /> : <AddProduct />}
-                </S.TabContent>
-			</S.Paper>
-		</S.ProductSection>
+				<TabContent>{tabValue ? <AddOwnProduct /> : <AddProduct />}</TabContent>
+			</Paper>
+		</ProductSectionContainer>
 	);
 };

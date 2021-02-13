@@ -1,5 +1,5 @@
 import { withStyles } from '@material-ui/core/styles';
-import * as S from "../../styles";
+import { DialogContent } from "../../styles";
 
 export const ModalContent = withStyles(() => ({
 	root: {
@@ -16,4 +16,4 @@ export const ModalContent = withStyles(() => ({
 			}
 		}
 	}
-}))(S.DialogContent);
+}))(DialogContent);

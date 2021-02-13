@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { getIsLoading } from '../../store/loader/Loader.selectors';
-import * as S from '../../styles';
+import { Loader as LoaderContainer, CircularProgress } from '../../styles';
 
 export const Loader = () => {
     const isLoading = useSelector(getIsLoading);
@@ -8,9 +8,9 @@ export const Loader = () => {
 	return (
         <>
             {isLoading && 
-                <S.Loader>
-                    <S.CircularProgress size={48} />
-                </S.Loader>
+                <LoaderContainer>
+                    <CircularProgress size={48} />
+                </LoaderContainer>
             }
         </>
 	);

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { TopBar } from './TopBar';
 import { SideBar } from './SideBar';
-import * as S from "../../../../styles";
+import { Hidden, Drawer } from '../../../../styles';
 
 const drawerWidth = 250;
 
@@ -36,10 +36,10 @@ export const Navigation = (props: Props) => {
 
 	return (
 		<div className={classes.root}>
-            <TopBar handleDrawerToggle={handleDrawerToggle} />
+			<TopBar handleDrawerToggle={handleDrawerToggle} />
 
-			<S.Hidden mdUp implementation='css'>
-				<S.Drawer
+			<Hidden mdUp implementation='css'>
+				<Drawer
 					open={mobileOpen}
 					container={container}
 					variant='temporary'
@@ -48,14 +48,14 @@ export const Navigation = (props: Props) => {
 					ModalProps={{ keepMounted: true }}
 				>
 					<SideBar />
-				</S.Drawer>
-			</S.Hidden>
+				</Drawer>
+			</Hidden>
 
-			<S.Hidden smDown implementation='css'>
-				<S.Drawer classes={{ paper: classes.drawer }} variant='permanent' open={mobileOpen}>
+			<Hidden smDown implementation='css'>
+				<Drawer classes={{ paper: classes.drawer }} variant='permanent' open={mobileOpen}>
 					<SideBar />
-				</S.Drawer>
-			</S.Hidden>
+				</Drawer>
+			</Hidden>
 		</div>
 	);
 };

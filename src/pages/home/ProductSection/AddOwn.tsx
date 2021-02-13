@@ -1,15 +1,22 @@
 import { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { generate } from 'shortid';
-import { AddOwnState } from './AddOwn.types';
+import { AddOwnState } from './types';
 import { storeProduct, increaseKcalSum } from '../../../store/product/Product.actions';
-import { useInputRef } from '../../../hooks/useInputRef';
-import * as S from '../../../styles';
+import { useInputFocus } from '../../../hooks/useInputFocus';
 import * as T from '../../../constants/constants';
+import {
+	AddOwnProduct as AddOwnProductContainer,
+	FormGroup,
+	Input,
+	FormHelperText,
+	InputAdornment,
+	Button
+} from '../../../styles';
 
 export const AddOwnProduct = () => {
-    const dispatch = useDispatch();
-    const [ inputRef ] = useInputRef();
+	const dispatch = useDispatch();
+	const [ inputRef ] = useInputFocus();
 	const [ values, setValues ] = useState<AddOwnState>({
 		name: '',
 		calories: 0,
@@ -48,60 +55,60 @@ export const AddOwnProduct = () => {
 	};
 
 	return (
-		<S.AddOwnProduct>
+		<AddOwnProductContainer>
 			<form onSubmit={onProductSubmit}>
-				<S.FormGroup className='group'>
-					<S.Input
+				<FormGroup className='group'>
+					<Input
 						type='text'
 						placeholder='Type product name'
 						value={values.name}
-                        onChange={onChange('name')}
-                        inputRef={inputRef}
+						onChange={onChange('name')}
+						inputRef={inputRef}
 						aria-describedby='add-product-helper-text'
 					/>
-					<S.FormHelperText id='add-product-helper-text'>{T.PRODUCT_NAME}</S.FormHelperText>
+					<FormHelperText id='add-product-helper-text'>{T.PRODUCT_NAME}</FormHelperText>
 
-					<S.Input
+					<Input
 						value={values.calories}
 						type='number'
 						onChange={onChange('calories')}
-						endAdornment={<S.InputAdornment position='end'>{T.KCAL}</S.InputAdornment>}
+						endAdornment={<InputAdornment position='end'>{T.KCAL}</InputAdornment>}
 						aria-describedby='standard-calories-helper-text'
 						inputProps={{ 'aria-label': T.CALORIES, min: '0', max: '600', step: '1' }}
 					/>
-					<S.FormHelperText id='standard-weight-helper-text'>{T.CALORIES}</S.FormHelperText>
+					<FormHelperText id='standard-weight-helper-text'>{T.CALORIES}</FormHelperText>
 
-					<S.Input
+					<Input
 						value={values.fat}
 						type='number'
 						onChange={onChange('fat')}
-						endAdornment={<S.InputAdornment position='end'>{T.SLASH_100G}</S.InputAdornment>}
+						endAdornment={<InputAdornment position='end'>{T.SLASH_100G}</InputAdornment>}
 						aria-describedby='standard-fat-helper-text'
 						inputProps={{ 'aria-label': T.FAT, min: '0', max: '100', step: '1' }}
 					/>
-					<S.FormHelperText id='standard-fat-helper-text'>{T.FAT}</S.FormHelperText>
+					<FormHelperText id='standard-fat-helper-text'>{T.FAT}</FormHelperText>
 
-					<S.Input
+					<Input
 						value={values.carbs}
 						type='number'
 						onChange={onChange('carbs')}
-						endAdornment={<S.InputAdornment position='end'>{T.SLASH_100G}</S.InputAdornment>}
+						endAdornment={<InputAdornment position='end'>{T.SLASH_100G}</InputAdornment>}
 						aria-describedby='standard-carbs-helper-text'
 						inputProps={{ 'aria-label': T.CARBS, min: '0', max: '100', step: '1' }}
 					/>
-					<S.FormHelperText id='standard-carbs-helper-text'>{T.CARBS}</S.FormHelperText>
+					<FormHelperText id='standard-carbs-helper-text'>{T.CARBS}</FormHelperText>
 
-					<S.Input
+					<Input
 						value={values.protein}
 						type='number'
 						onChange={onChange('protein')}
-						endAdornment={<S.InputAdornment position='end'>{T.SLASH_100G}</S.InputAdornment>}
+						endAdornment={<InputAdornment position='end'>{T.SLASH_100G}</InputAdornment>}
 						aria-describedby='standard-protein-helper-text'
 						inputProps={{ 'aria-label': T.PROTEIN, min: '0', max: '100', step: '1' }}
 					/>
-					<S.FormHelperText id='standard-carbs-helper-text'>{T.PROTEIN}</S.FormHelperText>
+					<FormHelperText id='standard-carbs-helper-text'>{T.PROTEIN}</FormHelperText>
 
-					<S.Button
+					<Button
 						onSubmit={(e: SyntheticEvent) => onProductSubmit(e)}
 						variant='contained'
 						color='secondary'
@@ -109,9 +116,9 @@ export const AddOwnProduct = () => {
 						disabled={values.name === '' ? true : false}
 					>
 						{T.SUBMIT_PRODUCT}
-					</S.Button>
-				</S.FormGroup>
+					</Button>
+				</FormGroup>
 			</form>
-		</S.AddOwnProduct>
+		</AddOwnProductContainer>
 	);
 };

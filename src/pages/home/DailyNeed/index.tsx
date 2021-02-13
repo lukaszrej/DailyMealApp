@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getDailyNeed } from '../../../store/user/User.selectors';
 import { calculateDailyNeed } from '../../../store/user/User.actions';
 import { getKcalSum } from '../../../store/product/Product.selectors';
-import * as S from '../../../styles';
+import { UserDailyNeed, Typography } from '../../../styles';
 import * as T from "../../../constants/constants";
 
 export const DailyNeed = () => {
@@ -19,25 +19,25 @@ export const DailyNeed = () => {
 	});
 
 	return (
-		<S.UserDailyNeed >
-			<S.Typography variant='h6' noWrap>
+		<UserDailyNeed >
+			<Typography variant='h6' noWrap>
 				{T.CALORIE_NEED_HEADING}
-			</S.Typography>
-			<S.Typography variant='h3' color='primary' noWrap>
+			</Typography>
+			<Typography variant='h3' color='primary' noWrap>
 				{dailyNeed} {T.KCAL}
-			</S.Typography>
+			</Typography>
 
 			{kcalSum !== 0 && 
 				<>
-					<S.Typography variant='h6' noWrap>
+					<Typography variant='h6' noWrap>
 						{T.CURRENT_MEAL}
-					</S.Typography>
-					<S.Typography variant='h3' color='secondary' noWrap>
+					</Typography>
+					<Typography variant='h3' color='secondary' noWrap>
 						{kcalSum} {T.KCAL}
-					</S.Typography>
+					</Typography>
 				</>
 			}
-		</S.UserDailyNeed>
+		</UserDailyNeed>
 	);
 };
 

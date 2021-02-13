@@ -12,6 +12,7 @@ export const Chip = styled(core.Chip)``;
 export const CircularProgress = styled(core.CircularProgress)``;
 export const Dialog = styled(core.Dialog)``;
 export const DialogContent = styled(core.DialogContent)``;
+export const DialogTitle = styled(core.DialogTitle)``;
 export const Divider = styled(core.Divider)``;
 export const Drawer = styled(core.Drawer)``;
 export const FormControl = styled(core.FormControl)``;

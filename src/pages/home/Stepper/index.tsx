@@ -5,7 +5,17 @@ import { getDisplayedStepper } from '../../../store/login/Login.selectors';
 import { getSteps } from '../../../utils/getSteps';
 import { getStepContent } from '../../../utils/getStepContent';
 import * as T from '../../../constants/constants';
-import * as S from '../../../styles';
+import {
+	StepperContainer,
+	Stepper as StepperWrapper,
+	Typography,
+	Button,
+	Step,
+	StepLabel,
+	StepContent,
+	StepperContent,
+	StepperRemove
+} from '../../../styles';
 
 export const Stepper = () => {
 	const dispatch = useDispatch();
@@ -38,47 +48,47 @@ export const Stepper = () => {
 	if (!showStepper) return null;
 
 	return (
-		<S.StepperContainer square>
-			<S.Typography variant='h6' noWrap>
+		<StepperContainer square>
+			<Typography variant='h6' noWrap>
 				{T.INFO_STEPPER_HEADING}
-			</S.Typography>
+			</Typography>
 
-			<S.Stepper activeStep={activeStep} orientation='vertical'>
+			<StepperWrapper activeStep={activeStep} orientation='vertical'>
 				{steps.map((label, index) => (
-					<S.Step key={label + index}>
-						<S.StepLabel>{label}</S.StepLabel>
+					<Step key={label + index}>
+						<StepLabel>{label}</StepLabel>
 
-						<S.StepContent>
-							<S.Typography>{getStepContent(index)}</S.Typography>
-							<S.StepperContent>
+						<StepContent>
+							<Typography>{getStepContent(index)}</Typography>
+							<StepperContent>
 								<div>
-									<S.Button onClick={handleBack} disabled={activeStep === 0} variant='outlined'>
+									<Button onClick={handleBack} disabled={activeStep === 0} variant='outlined'>
 										{T.BACK}
-									</S.Button>
-									<S.Button
+									</Button>
+									<Button
 										variant='outlined'
 										color={activeStep === steps.length - 1 ? 'secondary' : 'primary'}
 										onClick={() => handleNext(activeStep, steps)}
 									>
 										{activeStep === steps.length - 1 ? T.FINISH_AND_REMOVE : T.NEXT}
-									</S.Button>
+									</Button>
 									{activeStep === steps.length - 1 && (
-										<S.Button onClick={handleReset} variant='outlined' color='primary'>
+										<Button onClick={handleReset} variant='outlined' color='primary'>
 											{T.RESET}
-										</S.Button>
+										</Button>
 									)}
 								</div>
-							</S.StepperContent>
-						</S.StepContent>
-					</S.Step>
+							</StepperContent>
+						</StepContent>
+					</Step>
 				))}
 
 				{secondsToRemove > 0 && (
-					<S.StepperRemove>
+					<StepperRemove>
 						{T.WILL_BE_REMOVED_AFTER} <span>{secondsToRemove}</span> {T.SECONDS}
-					</S.StepperRemove>
+					</StepperRemove>
 				)}
-			</S.Stepper>
-		</S.StepperContainer>
+			</StepperWrapper>
+		</StepperContainer>
 	);
 };

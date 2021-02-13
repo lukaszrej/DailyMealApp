@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { generate } from 'shortid';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -6,30 +7,65 @@ import { removeMeal, removeMealFromStorage } from '../../store/meal/Meal.actions
 import { getDailyNeed } from '../../store/user/User.selectors';
 import { MealChart } from './MealChart';
 import { ProductTag } from './ProductTag';
+import { MealDeleteModal } from './MealDeleteModal';
+import { openAlert } from '../../store/alert/Alert.actions';
 import { routes } from '../../routing/routes';
+import { Meal } from '../../types';
+import { Loader } from '../../components/Loader';
+import { getIsLoading } from '../../store/loader/Loader.selectors';
+import { showLoader, hideLoader } from '../../store/loader/Loader.actions';
+import { useTimeoutLoader } from '../../hooks/useTimeoutLoader';
 import * as T from '../../constants/constants';
-import * as S from '../../styles';
+import {
+	Meals as MealsContainer,
+	Typography,
+	IconButton,
+	DeleteIcon,
+	ProductTags,
+	MealCharts,
+	PageButtonContainer,
+	Button,
+	HomeIcon,
+	Divider
+} from '../../styles';
 
 export const Meals = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const meals = useSelector(getMeals);
 	const dailyNeed = useSelector(getDailyNeed);
+	const [ isModalOpen, setIsModalOpen ] = useState(false);
+	const [ selectedMealId, setSelectedMealId ] = useState('');
+    const isLoading = useSelector(getIsLoading);
+
+	const onDeleteModalOpen = (meal: Meal) => {
+		setIsModalOpen(true);
+		setSelectedMealId(meal.id);
+	};
+
+	const onMealDelete = () => {
+        dispatch(showLoader());
+		dispatch(removeMeal(selectedMealId));
+		dispatch(removeMealFromStorage(selectedMealId));
+		setIsModalOpen(false);
+		dispatch(openAlert(`Meal ${selectedMealId} deleted!`, 'success'));
+	};
+
+	const handleClose = () => {
+		setIsModalOpen(false);
+	};
 
 	const onGoHome = () => {
 		history.push(routes.home);
 	};
 
-	const onMealDelete = (mealId: string) => {
-		dispatch(removeMeal(mealId));
-		dispatch(removeMealFromStorage(mealId));
-	};
+    useTimeoutLoader(hideLoader, isLoading);
 
 	return (
-		<S.Meals square>
-			<S.Typography variant='h6' noWrap>
+		<MealsContainer square>
+			<Typography variant='h6' noWrap>
 				{T.MEALS_PAGE_HEADING}
-			</S.Typography>
+			</Typography>
 
 			{meals.map((meal, index) => {
 				const mealTotal = { calories: 0, fat: 0, carbs: 0, protein: 0 };
@@ -38,16 +74,16 @@ export const Meals = () => {
 					<section key={meal.id}>
 						<header>
 							{T.MEAL} {index + 1}
-							<S.IconButton onClick={() => onMealDelete(meal.id)}>
-								<S.DeleteIcon/>
-							</S.IconButton>
+							<IconButton onClick={() => onDeleteModalOpen(meal)}>
+								<DeleteIcon />
+							</IconButton>
 						</header>
 
 						<main>
-							<S.ProductTags>
-								{meal.products.map(product => {
-                                    const { label, calories, protein, carbs, fat } = product;
-                                    
+							<ProductTags>
+								{meal.products.map((product) => {
+									const { label, calories, protein, carbs, fat } = product;
+
 									mealTotal.calories += Math.round(calories);
 									mealTotal.fat += Math.round(fat);
 									mealTotal.carbs += Math.round(carbs);
@@ -55,28 +91,31 @@ export const Meals = () => {
 
 									return <ProductTag key={generate()} label={label} calories={calories} />;
 								})}
-							</S.ProductTags>
+							</ProductTags>
 
-							<S.MealCharts>
+							<MealCharts>
 								<MealChart mealTotal={mealTotal} dailyNeed={dailyNeed} />
-							</S.MealCharts>
+							</MealCharts>
 						</main>
 
-						{meals.length > 1 ? <S.Divider /> : ''}
+						{meals.length > 1 ? <Divider /> : ''}
 					</section>
 				);
 			})}
 
-			<S.PageButtonContainer>
-                <S.Button 
-                    onClick={onGoHome}
-                    endIcon={<S.HomeIcon />}
-                    variant='contained'
-                    size='large'
-                >
+			<PageButtonContainer>
+				<Button onClick={onGoHome} endIcon={<HomeIcon />} variant='contained' size='large'>
 					{T.GO_BACK}
-				</S.Button>
-			</S.PageButtonContainer>
-		</S.Meals>
+				</Button>
+			</PageButtonContainer>
+
+			{isModalOpen && (
+				<MealDeleteModal handleClose={handleClose} isModalOpen={isModalOpen} onMealDelete={onMealDelete} />
+			)}
+
+            {isLoading && (
+                <Loader />
+            )}
+		</MealsContainer>
 	);
 };

@@ -1,7 +1,6 @@
 import { createStyles, Theme, withStyles } from '@material-ui/core/styles';
-import { DialogTitle } from '@material-ui/core';
-import { Props } from './index.types';
-import * as S from '../../styles';
+import { Typography, IconButton, CloseIcon, DialogTitle } from '../../styles';
+import { Props } from './types';
 
 export const styles = (theme: Theme) =>
 	createStyles({
@@ -24,16 +23,13 @@ export const ModalTitle = withStyles(styles)((props: Props) => {
 
 	return (
 		<DialogTitle className={classes.root} disableTypography {...other}>
-			<S.Typography variant='h6'>
-                {children}
-            </S.Typography>
+			<Typography variant='h6'>{children}</Typography>
 
-            {onClose ? 
-				<S.IconButton aria-label='close' onClick={onClose}>
-					<S.CloseIcon />
-				</S.IconButton>
-                : null
-            }
+			{onClose ? (
+				<IconButton onClick={onClose} aria-label='close'>
+					<CloseIcon />
+				</IconButton>
+			) : null}
 		</DialogTitle>
 	);
 });

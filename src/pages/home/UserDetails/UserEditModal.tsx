@@ -2,14 +2,14 @@ import { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createUser, calculateDailyNeed } from '../../../store/user/User.actions';
 import { openAlert } from '../../../store/alert/Alert.actions';
-import { UserEditProps } from './UserEdit.types';
+import { UserEditProps } from './types';
 import { ModalTitle } from '../../../components/ModalTitle';
 import { Form } from '../../../components/Form';
+import { Dialog } from '../../../styles';
 import * as selector from '../../../store/user/User.selectors';
 import * as T from '../../../constants/constants';
-import * as S from '../../../styles';
 
-export const UserEdit = (props: UserEditProps) => {
+export const UserEditModal = (props: UserEditProps) => {
 	const { handleClose, isModalOpen, setIsModalOpen } = props;
 	const dispatch = useDispatch();
 
@@ -50,12 +50,12 @@ export const UserEdit = (props: UserEditProps) => {
 			gender !== currentGender ||
 			activityLevel !== currentActivityLevel
 		) {
-            dispatch(openAlert(T.DATA_CORRECTLY_UPDATED, 'success'));
+			dispatch(openAlert(T.DATA_CORRECTLY_UPDATED, 'success'));
 		}
 	};
 
 	return (
-		<S.Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={isModalOpen}>
+		<Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={isModalOpen}>
 			<ModalTitle id='customized-dialog-title' onClose={handleClose}>
 				{T.EDIT_USER_DATA}
 			</ModalTitle>
@@ -75,6 +75,6 @@ export const UserEdit = (props: UserEditProps) => {
 				gender={gender}
 				onGenderChange={onGenderChange}
 			/>
-		</S.Dialog>
+		</Dialog>
 	);
 };
