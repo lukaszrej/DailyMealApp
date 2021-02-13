@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getActivityLevelDesc } from '../../../utils/getActivityLevelDesc';
-import { UserEdit } from './UserEdit';
+import { UserEditModal } from './UserEditModal';
+import { UserDetails as UserDetailsContainer, Typography, Button } from '../../../styles';
 import * as selector from '../../../store/user/User.selectors';
 import * as T from "../../../constants/constants";
-import * as S from '../../../styles';
 
 export const UserDetails = () => {
 	const userName = useSelector(selector.getUserName);
@@ -25,31 +25,29 @@ export const UserDetails = () => {
 	};
 
 	return (
-		<>
-			<S.UserDetails>
-				<S.Typography variant='h6' noWrap>
-					{T.USER_DETAILS_HEADING}
-				</S.Typography>
+        <UserDetailsContainer>
+            <Typography variant='h6' noWrap>
+                {T.USER_DETAILS_HEADING}
+            </Typography>
 
-				{userName && <p>{T.NAME}: {userName}</p>}
-				{userHeight && <p>{T.HEIGHT}: {userHeight} cm</p>}
-				{userWeight && <p>{T.CURRENT_WEIGHT}: {userWeight} kg</p>}
-				{userAge && <p>{T.AGE}: {userAge}</p>}
-				{userGender && <p>{T.GENDER}: {userGender}</p>}
-				{activityLevel && <p>{T.ACTIVITY_LEVEL}: {getActivityLevelDesc(activityLevel)}</p>}
+            {userName && <p>{T.NAME}: {userName}</p>}
+            {userHeight && <p>{T.HEIGHT}: {userHeight} cm</p>}
+            {userWeight && <p>{T.CURRENT_WEIGHT}: {userWeight} kg</p>}
+            {userAge && <p>{T.AGE}: {userAge}</p>}
+            {userGender && <p>{T.GENDER}: {userGender}</p>}
+            {activityLevel && <p>{T.ACTIVITY_LEVEL}: {getActivityLevelDesc(activityLevel)}</p>}
 
-				<S.Button variant='outlined' color='primary' onClick={handleOpen}>
-					{T.EDIT_DATA}
-				</S.Button>
+            <Button variant='outlined' color='primary' onClick={handleOpen}>
+                {T.EDIT_DATA}
+            </Button>
 
-				{isModalOpen && (
-					<UserEdit
-						handleClose={handleClose}
-						isModalOpen={isModalOpen}
-						setIsModalOpen={setIsModalOpen}
-					/>
-				)}
-			</S.UserDetails>
-		</>
+            {isModalOpen && (
+                <UserEditModal
+                    handleClose={handleClose}
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                />
+            )}
+        </UserDetailsContainer>
 	);
 };

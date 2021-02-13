@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonContainer = styled.div`
+export const ModalButtonContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	margin: 0;

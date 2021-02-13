@@ -1,20 +1,20 @@
-import { Props } from './index.types';
+import { Props } from './types';
 import { Navigation } from './Navigation';
 import { Notifier } from './Notifier';
-import * as S from "../../../styles";
+import { Container as StyledContainer } from "../../../styles";
 
 export const Container = (props: Props) => {
     const { children } = props;
 
 	return (
 		<>
-			<S.Container >
+			<StyledContainer >
 				<Navigation />
 
 				<main>
 					{children}
 				</main>
-			</S.Container>
+			</StyledContainer>
 
             <Notifier />
 		</>

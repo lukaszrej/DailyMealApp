@@ -1,10 +1,22 @@
-import { Props } from './index.types';
+import { Props } from './types';
 import { activityOptions } from '../../constants/activity-options';
 import { FormControl } from '@material-ui/core';
 import { ModalContent } from '../ModalContent';
-import { useInputRef } from '../../hooks/useInputRef';
-import * as S from '../../styles';
+import { useInputFocus } from '../../hooks/useInputFocus';
 import * as T from '../../constants/constants';
+import {
+	Form as FormContainer,
+	TextField,
+	FullFormControl,
+	InputLabel,
+	Select,
+	MenuItem,
+	RadioGroup,
+	FormControlLabel,
+	ModalButtonContainer,
+	Button,
+	Radio
+} from '../../styles';
 
 export const Form = (props: Props) => {
 	const {
@@ -24,12 +36,12 @@ export const Form = (props: Props) => {
 		onGenderChange
 	} = props;
 
-	const [ inputRef ] = useInputRef();
+	const [ inputRef ] = useInputFocus();
 
 	return (
-		<S.Form onSubmit={onSubmit}>
+		<FormContainer onSubmit={onSubmit} autoComplete="off">
 			<ModalContent dividers>
-				<S.TextField
+				<TextField
 					value={name}
 					id='name'
 					name='name'
@@ -38,10 +50,10 @@ export const Form = (props: Props) => {
 					inputRef={inputRef}
 					variant='outlined'
 					autoComplete='name'
-					onChange={(e) => setName(e.target.value)}
+					onChange={e => setName(e.target.value)}
 				/>
 
-				<S.TextField
+				<TextField
 					value={height}
 					type='number'
 					id='height'
@@ -51,10 +63,10 @@ export const Form = (props: Props) => {
 					variant='outlined'
 					margin='normal'
 					autoComplete='height'
-					onChange={(e) => setHeight(e.target.value)}
+					onChange={e => setHeight(e.target.value)}
 				/>
 
-				<S.TextField
+				<TextField
 					value={weight}
 					type='number'
 					id='weight'
@@ -63,10 +75,10 @@ export const Form = (props: Props) => {
 					fullWidth
 					variant='outlined'
 					autoComplete='weight'
-					onChange={(e) => setWeight(e.target.value)}
+					onChange={e => setWeight(e.target.value)}
 				/>
 
-				<S.TextField
+				<TextField
 					value={age}
 					type='number'
 					id='age'
@@ -75,13 +87,13 @@ export const Form = (props: Props) => {
 					variant='outlined'
 					fullWidth
 					autoComplete='age'
-					onChange={(e) => setAge(e.target.value)}
+					onChange={e => setAge(e.target.value)}
 				/>
 
-				<S.FullFormControl variant='outlined'>
-					<S.InputLabel id='activity-level-select'>{T.ACTIVITY_LEVEL}</S.InputLabel>
+				<FullFormControl variant='outlined'>
+					<InputLabel id='activity-level-select'>{T.ACTIVITY_LEVEL}</InputLabel>
 
-					<S.Select
+					<Select
 						value={activityLevel}
 						id='activity-level-select'
 						label='Activity level'
@@ -90,31 +102,26 @@ export const Form = (props: Props) => {
 						onChange={onActivityLevelChange}
 					>
 						{activityOptions.map((element) => (
-							<S.MenuItem key={element.id} value={element.activityValue}>
+							<MenuItem key={element.id} value={element.activityValue}>
 								{element.activityDescription}
-							</S.MenuItem>
+							</MenuItem>
 						))}
-					</S.Select>
-				</S.FullFormControl>
+					</Select>
+				</FullFormControl>
 
 				<FormControl component='fieldset'>
-					<S.RadioGroup value={gender} onChange={onGenderChange} aria-label='gender' name='gender1'>
-						<S.FormControlLabel value='male' label='Male' control={<S.Radio />} />
-						<S.FormControlLabel value='female' label='Female' control={<S.Radio />} />
-					</S.RadioGroup>
+					<RadioGroup value={gender} onChange={onGenderChange} aria-label='gender' name='gender1'>
+						<FormControlLabel value='male' label='Male' control={<Radio />} />
+						<FormControlLabel value='female' label='Female' control={<Radio />} />
+					</RadioGroup>
 				</FormControl>
 			</ModalContent>
 
-			<S.ButtonContainer>
-				<S.Button
-					type='submit'
-					color='primary'
-					autoFocus
-					variant={isInitialComponent ? 'contained' : 'outlined'}
-				>
+			<ModalButtonContainer>
+				<Button type='submit' color='primary' autoFocus variant={isInitialComponent ? 'contained' : 'outlined'}>
 					{isInitialComponent ? T.START : T.SAVE}
-				</S.Button>
-			</S.ButtonContainer>
-		</S.Form>
+				</Button>
+			</ModalButtonContainer>
+		</FormContainer>
 	);
 };

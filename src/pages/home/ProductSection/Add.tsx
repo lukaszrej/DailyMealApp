@@ -8,14 +8,20 @@ import { getIsLoading } from '../../../store/product/Product.selectors';
 import { getFoundProducts } from '../../../store/product/Product.selectors';
 import { InlineLoader } from '../../../components/InlineLoader';
 import { Tooltip } from '../../../components/Tooltip';
-import { useInputRef } from '../../../hooks/useInputRef';
-import * as S from '../../../styles';
+import { useInputFocus } from '../../../hooks/useInputFocus';
 import * as T from '../../../constants/constants';
+import { 
+    AddProduct as AddProductContainer,
+    Input,
+    FormHelperText,
+    Button,
+    ProductList
+} from '../../../styles';
 
 export const AddProduct = () => {
 	const dispatch = useDispatch();
     const [ productName, setProductName ] = useState('');
-    const [ inputRef ] = useInputRef();
+    const [ inputRef ] = useInputFocus();
 	const isLoading = useSelector(getIsLoading);
 	const foundProducts = useSelector(getFoundProducts);
 
@@ -41,8 +47,8 @@ export const AddProduct = () => {
 
 	return (
 		<>
-			<S.AddProduct onSubmit={onFindProducts} noValidate autoComplete='on'>
-				<S.Input
+			<AddProductContainer onSubmit={onFindProducts} noValidate autoComplete='on'>
+				<Input
 					type='text'
 					value={productName}
 					placeholder='Type product name'
@@ -50,19 +56,19 @@ export const AddProduct = () => {
                     inputRef={inputRef}
 					aria-describedby='find-product-helper-text'
 				/>
-				<S.FormHelperText>{T.PRODUCT_NAME}</S.FormHelperText>
+				<FormHelperText>{T.PRODUCT_NAME}</FormHelperText>
 
-				<S.Button
+				<Button
 					type='submit'
 					color='secondary'
 					variant='contained'
 					disabled={!productName}
 				>
 					{isLoading ? <InlineLoader /> : T.SEARCH}
-				</S.Button>
-			</S.AddProduct>
+				</Button>
+			</AddProductContainer>
 
-			<S.ProductList>
+			<ProductList>
 				{foundProducts.map((product) => {
                     const { label, calories, protein, carbs, fat } = product;
 
@@ -80,7 +86,7 @@ export const AddProduct = () => {
 						</Tooltip>
 					);
 				})}
-			</S.ProductList>
+			</ProductList>
 		</>
 	);
 };

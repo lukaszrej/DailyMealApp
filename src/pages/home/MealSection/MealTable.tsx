@@ -4,10 +4,23 @@ import clsx from 'clsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSelectedProducts, getStoredProducts } from '../../../store/product/Product.selectors';
 import { selectProduct, selectProductReset, deleteProduct, decreaseKcal } from '../../../store/product/Product.actions';
-import { HeadCell } from './MealTable.types';
-import { useStyles } from "./MealTable.styles";
+import { HeadCell } from './types';
+import { useStyles } from "./styles";
 import * as T from "../../../constants/constants";
-import * as S from "../../../styles";
+import { 
+    Toolbar,
+    Typography,
+    Tooltip,
+    IconButton,
+    DeleteIcon,
+    TableContainer,
+    Table,
+    TableHead,
+    TableRow,
+    TableCell,
+    Checkbox,
+    TableBody 
+} from "../../../styles";
 
 export const headCells: HeadCell[] = [
 	{ id: 'name', numeric: false, disablePadding: true, label: 'Product (100g serving)' },
@@ -47,83 +60,83 @@ export const MealTable = () => {
 
 	return (
 		<>
-			<S.Toolbar
+			<Toolbar
 				className={clsx(classes.root, {
 					[classes.highlight]: selectedProducts.length > 0
 				})}
 			>
                 {selectedProducts.length > 0 
                     ? 
-                        <S.Typography color='inherit' variant='subtitle1'>
+                        <Typography color='inherit' variant='subtitle1'>
                             {selectedProducts.length} selected
-                        </S.Typography>
+                        </Typography>
                     : 
-                        <S.Typography variant='h6'>
+                        <Typography variant='h6'>
                             {T.YOUR_MEAL}
-                        </S.Typography>
+                        </Typography>
 				}
 
 				{selectedProducts.length > 0 && 
-					<S.Tooltip title='Delete'>
-						<S.IconButton onClick={handleDeleteSelectedProducts} aria-label='delete'>
-							<S.DeleteIcon />
-						</S.IconButton>
-					</S.Tooltip>
+					<Tooltip title='Delete'>
+						<IconButton onClick={handleDeleteSelectedProducts} aria-label='delete'>
+							<DeleteIcon />
+						</IconButton>
+					</Tooltip>
 				}
-			</S.Toolbar>
+			</Toolbar>
             
-			<S.TableContainer>
-				<S.Table size='medium' aria-labelledby='create-meal-table' aria-label='create meal table'>
-					<S.TableHead>
-						<S.TableRow>
-							<S.TableCell padding='checkbox'>
-								<S.Checkbox
+			<TableContainer>
+				<Table size='medium' aria-labelledby='create-meal-table' aria-label='create meal table'>
+					<TableHead>
+						<TableRow>
+							<TableCell padding='checkbox'>
+								<Checkbox
 									indeterminate={selectedProducts.length > 0 && selectedProducts.length < storedProducts.length}
 									checked={storedProducts.length > 0 && selectedProducts.length === storedProducts.length}
 									onChange={handleSelectAllClick}
 									inputProps={{ 'aria-label': 'select all products' }}
 								/>
-							</S.TableCell>
+							</TableCell>
 
 							{headCells.map(headCell => 
-								<S.TableCell
+								<TableCell
 									key={headCell.id}
 									align={headCell.numeric ? 'right' : 'left'}
 									padding={headCell.disablePadding ? 'none' : 'default'}
 								>
 									{headCell.label}
-								</S.TableCell>
+								</TableCell>
 							)}
-						</S.TableRow>
-					</S.TableHead>
-					<S.TableBody>
+						</TableRow>
+					</TableHead>
+					<TableBody>
 						{storedProducts.map((product, index) => {
                             const { foodId: productId, label: productLabel, calories, protein, carbs, fat } = product;
 							const isItemSelected = isSelected(productId);
 							const labelId = `meal-table-checkbox-${index}`;
 
 							return (
-								<S.TableRow hover role='checkbox' tabIndex={-1} key={`${productId}-${generate()}`}
+								<TableRow hover role='checkbox' tabIndex={-1} key={`${productId}-${generate()}`}
 									aria-checked={isItemSelected}
 									selected={isItemSelected}
 									onClick={() => handleSelectClick(productId)}
 								>
-									<S.TableCell padding='checkbox'>
-										<S.Checkbox checked={isItemSelected} inputProps={{ 'aria-labelledby': labelId }} />
-									</S.TableCell>
-									<S.TableCell component='th' id={labelId} scope='row' padding='none'>
+									<TableCell padding='checkbox'>
+										<Checkbox checked={isItemSelected} inputProps={{ 'aria-labelledby': labelId }} />
+									</TableCell>
+									<TableCell component='th' id={labelId} scope='row' padding='none'>
 										{productLabel}
-									</S.TableCell>
-									<S.TableCell align='right'>{Math.round(calories)}</S.TableCell>
-									<S.TableCell align='right'>{Math.round(fat)}</S.TableCell>
-									<S.TableCell align='right'>{Math.round(carbs)}</S.TableCell>
-									<S.TableCell align='right'>{Math.round(protein)}</S.TableCell>
-								</S.TableRow>
+									</TableCell>
+									<TableCell align='right'>{Math.round(calories)}</TableCell>
+									<TableCell align='right'>{Math.round(fat)}</TableCell>
+									<TableCell align='right'>{Math.round(carbs)}</TableCell>
+									<TableCell align='right'>{Math.round(protein)}</TableCell>
+								</TableRow>
 							);
 						})}
-					</S.TableBody>
-				</S.Table>
-			</S.TableContainer>
+					</TableBody>
+				</Table>
+			</TableContainer>
 		</>
 	);
 };

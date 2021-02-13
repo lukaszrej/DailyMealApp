@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { Props } from './index.types';
+import { Props } from './types';
 import { closeAlert } from '../../store/alert/Alert.actions';
-import * as S from '../../styles';
+import { Snackbar, Alert as MUIAlert } from '../../styles';
 
 const MuiAlert = (props: Props) => {
-	return <S.Alert elevation={6} variant='filled' {...props} />;
+	return <MUIAlert elevation={6} variant='filled' {...props} />;
 };
 
 export const Alert = (props: Props) => {
@@ -16,10 +16,10 @@ export const Alert = (props: Props) => {
 	};
 
 	return (
-		<S.Snackbar open={true} autoHideDuration={3500} onClose={handleClose}>
+		<Snackbar open={true} onClose={handleClose} autoHideDuration={3500}>
 			<MuiAlert onClose={handleClose} severity={severity}>
 				{children}
 			</MuiAlert>
-		</S.Snackbar>
+		</Snackbar>
 	);
 };

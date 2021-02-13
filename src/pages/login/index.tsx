@@ -8,7 +8,7 @@ import { openAlert } from '../../store/alert/Alert.actions';
 import { ModalTitle } from '../../components/ModalTitle';
 import { Form } from '../../components/Form';
 import { routes } from '../../routing/routes';
-import * as S from '../../styles';
+import { Dialog } from '../../styles';
 import * as T from '../../constants/constants';
 
 export const Login = () => {
@@ -43,7 +43,7 @@ export const Login = () => {
 	};
 
 	return (
-		<S.Dialog open={!isStarted} aria-labelledby='start-form-title'>
+		<Dialog open={!isStarted} aria-labelledby='start-form-title'>
 			<ModalTitle id='start-form-title'>{T.FILL_THE_FORM}</ModalTitle>
 
 			<Form
@@ -62,6 +62,6 @@ export const Login = () => {
 				onGenderChange={onGenderChange}
 				isInitialComponent
 			/>
-		</S.Dialog>
+		</Dialog>
 	);
 };
